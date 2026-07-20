@@ -5,10 +5,14 @@ license = "MIT"
 [[mods]]
 modId = "stardewcraftsve"
 version = "0.1.0"
-displayName = "Stardewcraft: SVE Items"
-credits = "Textures from Stardew Valley Expanded by FlashShifter"
-authors = "stardewcraft addon"
-description = "Adds 188 items and supporting gameplay from Stardew Valley Expanded as a Stardewcraft addon."
+displayName = "StardewCraftSVE"
+credits = "Stardew Valley Expanded by FlashShifter and the SVE team; StarfieldPastoral by ChangQingElysium and contributors"
+authors = "thornks"
+description = '''
+A non-commercial fan addon that adapts selected Stardew Valley Expanded content and gameplay for StarfieldPastoral (StardewCraft).
+
+Includes SVE crops, forage, fish, artisan machines, trees, farm animals, bundles, museum content, collection integration, and related acquisition systems. SVE maps and the complete NPC and story experience are not currently included.
+'''
 
 [[dependencies.stardewcraftsve]]
     modId = "neoforge"
