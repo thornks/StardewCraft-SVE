@@ -30,13 +30,14 @@ public final class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks(StardewcraftsveMod.MODID);
 
-    private static final BlockBehaviour.Properties CROP_PROPS = BlockBehaviour.Properties.of()
-            .mapColor(MapColor.PLANT)
-            .pushReaction(PushReaction.DESTROY)
-            .noOcclusion()
-            .instabreak()
-            .noCollission()
-            .sound(net.minecraft.world.level.block.SoundType.CROP);
+    private static BlockBehaviour.Properties cropProps() {
+        return BlockBehaviour.Properties.of()
+                .mapColor(MapColor.PLANT)
+                .pushReaction(PushReaction.DESTROY)
+                .noOcclusion()
+                .instabreak()
+                .sound(net.minecraft.world.level.block.SoundType.CROP);
+    }
 
     private static final BlockBehaviour.Properties FORAGE_PROPS = BlockBehaviour.Properties.of()
             .mapColor(MapColor.PLANT)
@@ -134,139 +135,87 @@ public final class ModBlocks {
     // ===== Crops =====
     // Cucumber: Spring, 12 days, regrow every 2d
     public static final DeferredBlock<Block> CUCUMBER_CROP = BLOCKS.register("cucumber_crop",
-            () -> new SveCropBlock(CROP_PROPS,
+            () -> new SveCropBlock(cropProps(),
                     () -> ModItems.CUCUMBER_SEED.get(),
                     () -> ModItems.CUCUMBER.get(),
-                    new int[]{0},           // Spring only
-                    new int[]{3, 3, 3, 3},  // 12 days total
-                    true,                   // regrow
-                    1,                      // regrow to stage 1
-                    2,                      // every 2 days
-                    "Cucumber"));
+                    SveCropData.CUCUMBER));
 
     // Butternut Squash: Summer, 12 days, no regrow
     public static final DeferredBlock<Block> BUTTERNUT_SQUASH_CROP = BLOCKS.register("butternut_squash_crop",
-            () -> new SveCropBlock(CROP_PROPS,
+            () -> new SveCropBlock(cropProps(),
                     () -> ModItems.BUTTERNUT_SQUASH_SEED.get(),
                     () -> ModItems.BUTTERNUT_SQUASH.get(),
-                    new int[]{1},           // Summer only
-                    new int[]{3, 3, 3, 3},
-                    false, 0, 0,
-                    "Butternut Squash"));
+                    SveCropData.BUTTERNUT_SQUASH));
 
     // Gold Carrot: Spring/Summer/Fall, 6 days, no regrow
     public static final DeferredBlock<Block> GOLD_CARROT_CROP = BLOCKS.register("gold_carrot_crop",
-            () -> new SveCropBlock(CROP_PROPS,
+            () -> new SveCropBlock(cropProps(),
                     () -> ModItems.GOLD_CARROT_SEED.get(),
                     () -> ModItems.GOLD_CARROT.get(),
-                    new int[]{0, 1, 2},     // Spring/Summer/Fall
-                    new int[]{1, 2, 1, 2},  // 6 days total
-                    false, 0, 0,
-                    "Gold Carrot"));
+                    SveCropData.GOLD_CARROT));
 
     // Sweet Potato: Fall, 12 days, no regrow
     public static final DeferredBlock<Block> SWEET_POTATO_CROP = BLOCKS.register("sweet_potato_crop",
-            () -> new SveCropBlock(CROP_PROPS,
+            () -> new SveCropBlock(cropProps(),
                     () -> ModItems.SWEET_POTATO_SEED.get(),
                     () -> ModItems.SWEET_POTATO.get(),
-                    new int[]{2},           // Fall only
-                    new int[]{3, 3, 3, 3},
-                    false, 0, 0,
-                    "Sweet Potato"));
+                    SveCropData.SWEET_POTATO));
 
     // Joja Berry: Spring/Summer/Fall, 25 days, regrow every 4d
     public static final DeferredBlock<Block> JOJA_BERRY_CROP = BLOCKS.register("joja_berry_crop",
-            () -> new SveCropBlock(CROP_PROPS,
+            () -> new SveCropBlock(cropProps(),
                     () -> ModItems.JOJA_BERRY_STARTER.get(),
                     () -> ModItems.JOJA_BERRY.get(),
-                    new int[]{0, 1, 2},     // Spring/Summer/Fall
-                    new int[]{6, 6, 7, 6},  // 25 days total
-                    true,                   // regrow
-                    1,                      // regrow to stage 1
-                    4,                      // every 4 days
-                    "Joja Berry"));
+                    SveCropData.JOJA_BERRY));
 
     // Joja Veggie: Spring/Summer/Fall, 13 days, no regrow
     public static final DeferredBlock<Block> JOJA_VEGGIE_CROP = BLOCKS.register("joja_veggie_crop",
-            () -> new SveCropBlock(CROP_PROPS,
+            () -> new SveCropBlock(cropProps(),
                     () -> ModItems.JOJA_VEGGIE_SEEDS.get(),
                     () -> ModItems.JOJA_VEGGIE.get(),
-                    new int[]{0, 1, 2},     // Spring/Summer/Fall
-                    new int[]{3, 3, 4, 3},  // 13 days total
-                    false, 0, 0,
-                    "Joja Veggie"));
+                    SveCropData.JOJA_VEGGIE));
 
     // Monster Fruit (from Stalk Seed): Summer, 25 days, no regrow
     public static final DeferredBlock<Block> MONSTER_FRUIT_CROP = BLOCKS.register("monster_fruit_crop",
-            () -> new SveCropBlock(CROP_PROPS,
+            () -> new SveCropBlock(cropProps(),
                     () -> ModItems.STALK_SEED.get(),
                     () -> ModItems.MONSTER_FRUIT.get(),
-                    new int[]{1},           // Summer only
-                    new int[]{6, 6, 7, 6},  // 25 days total
-                    false, 0, 0,
-                    "Monster Fruit"));
+                    SveCropData.MONSTER_FRUIT));
 
-    // ===== New crops =====
-    // Salal Berry: Spring/Summer, 14 days, regrow every 4d, fixed 2 harvest
-    // Wiki: 5 stages (2+2+3+3+3=14) → merged to 4 ages (2+2→4)
+    // Salal Berry: Spring/Summer, 13 days, regrow every 4d, 2-4 harvest
     public static final DeferredBlock<Block> SALAL_BERRY_CROP = BLOCKS.register("salal_berry_crop",
-            () -> new SveCropBlock(CROP_PROPS,
+            () -> new SveCropBlock(cropProps(),
                     () -> ModItems.SALAL_BERRY_SEED.get(),
                     () -> ModItems.SALAL_BERRY.get(),
-                    new int[]{0, 1},        // Spring/Summer
-                    new int[]{4, 3, 3, 4},  // 14 days total
-                    true,                   // regrow
-                    1,
-                    4,                      // every 4 days
-                    "Salal Berry",
-                    2, 2));                 // fixed 2 harvest
+                    SveCropData.SALAL_BERRY));
 
     // Slime Berry: Spring, 13 days, regrow every 4d
-    // Wiki: 5 stages (2+3+2+3+3=13) → merged to 4 ages (2+3→5)
     public static final DeferredBlock<Block> SLIME_BERRY_CROP = BLOCKS.register("slime_berry_crop",
-            () -> new SveCropBlock(CROP_PROPS,
+            () -> new SveCropBlock(cropProps(),
                     () -> ModItems.SLIME_SEED.get(),
                     () -> ModItems.SLIME_BERRY.get(),
-                    new int[]{0},           // Spring only
-                    new int[]{5, 2, 3, 3},  // 13 days total
-                    true,                   // regrow
-                    1,
-                    4,                      // every 4 days
-                    "Slime Berry"));
+                    SveCropData.SLIME_BERRY));
 
-    // Ancient Fiber: Summer, 12 days, no regrow, 2~4 harvest
-    // Wiki: 5 stages (2+2+2+3+3=12) → merged to 4 ages (2+2→4)
+    // Ancient Fiber: Summer, 12 days, no regrow, 2-4 harvest
     public static final DeferredBlock<Block> ANCIENT_FIBER_CROP = BLOCKS.register("ancient_fiber_crop",
-            () -> new SveCropBlock(CROP_PROPS,
+            () -> new SveCropBlock(cropProps(),
                     () -> ModItems.ANCIENT_FERNS_SEED.get(),
                     () -> ModItems.ANCIENT_FIBER.get(),
-                    new int[]{1},           // Summer only
-                    new int[]{4, 2, 3, 3},  // 12 days total
-                    false, 0, 0,
-                    "Ancient Fiber",
-                    2, 4));                 // 2~4 harvest
+                    SveCropData.ANCIENT_FIBER));
 
     // Monster Mushroom: Fall, 13 days, no regrow
-    // Wiki: 5 stages (2+2+3+3+3=13) → merged to 4 ages (2+2→4)
     public static final DeferredBlock<Block> MONSTER_MUSHROOM_CROP = BLOCKS.register("monster_mushroom_crop",
-            () -> new SveCropBlock(CROP_PROPS,
+            () -> new SveCropBlock(cropProps(),
                     () -> ModItems.FUNGUS_SEED.get(),
                     () -> ModItems.MONSTER_MUSHROOM.get(),
-                    new int[]{2},           // Fall only
-                    new int[]{4, 3, 3, 3},  // 13 days total
-                    false, 0, 0,
-                    "Monster Mushroom"));
+                    SveCropData.MONSTER_MUSHROOM));
 
     // Void Root: Winter, 8 days, no regrow
-    // Wiki: 4 stages (2+2+2+2=8) → matches directly
     public static final DeferredBlock<Block> VOID_ROOT_CROP = BLOCKS.register("void_root_crop",
-            () -> new SveCropBlock(CROP_PROPS,
+            () -> new SveCropBlock(cropProps(),
                     () -> ModItems.VOID_SEED.get(),
                     () -> ModItems.VOID_ROOT.get(),
-                    new int[]{3},           // Winter only
-                    new int[]{2, 2, 2, 2},  // 8 days total
-                    false, 0, 0,
-                    "Void Root"));
+                    SveCropData.VOID_ROOT));
 
     // ===== Forage: Mushrooms =====
     public static final DeferredBlock<Block> FORAGE_GREEN_MUSHROOM = forage("green_mushroom", 1, 2);

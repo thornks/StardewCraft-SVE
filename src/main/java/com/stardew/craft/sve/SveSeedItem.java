@@ -33,7 +33,7 @@ public class SveSeedItem extends Item implements IStardewItem {
     public SveSeedItem(Properties properties, Supplier<Block> cropBlock, int[] allowedSeasons, int sellPrice) {
         super(properties);
         this.cropBlock = cropBlock;
-        this.allowedSeasons = allowedSeasons;
+        this.allowedSeasons = allowedSeasons.clone();
         this.sellPrice = sellPrice;
     }
 

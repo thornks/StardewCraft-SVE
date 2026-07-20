@@ -30,8 +30,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import java.util.List;
 
 /**
- * Auto-generated registry for all 188 SVE-ported items.
- * Most items are plain {@link Item} (textures only). Items with typed behavior
+ * Registry for SVE-ported items. Most items are plain {@link Item} (textures only). Items with typed behavior
  * (elixirs, foods, weapons, ...) are registered as their proper stardewcraft
  * subclass and carry SVE's original numeric values.
  */
@@ -78,6 +77,26 @@ public final class ModItems {
 
     private static Item.Properties unstackableProperties() {
         return new Item.Properties().stacksTo(1);
+    }
+
+    private static StardewQualityItem cropItem(SveCropData.Definition definition) {
+        return new StardewQualityItem(
+                "stardewcraft.type.crop",
+                definition.produceSellPrice(),
+                definition.edibility(),
+                true,
+                stackableProperties());
+    }
+
+    private static SveSeedItem seedItem(
+            java.util.function.Supplier<net.minecraft.world.level.block.Block> cropBlock,
+            SveCropData.Definition definition
+    ) {
+        return new SveSeedItem(
+                stackableProperties(),
+                cropBlock,
+                definition.seasonIdsArray(),
+                definition.seedSellPrice());
     }
 
     // Creative-only animal test items. Farm-managed animals still come from Marnie's shop.
@@ -351,43 +370,43 @@ public final class ModItems {
 
     // ===== crops =====
     public static final DeferredHolder<Item, StardewQualityItem> BUTTERNUT_SQUASH = ITEMS.register("butternut_squash",
-        () -> new StardewQualityItem("stardewcraft.type.crop", 200, 20, true, stackableProperties()));
+        () -> cropItem(SveCropData.BUTTERNUT_SQUASH));
     public static final DeferredHolder<Item, StardewQualityItem> CUCUMBER = ITEMS.register("cucumber",
-        () -> new StardewQualityItem("stardewcraft.type.crop", 35, 18, true, stackableProperties()));
+        () -> cropItem(SveCropData.CUCUMBER));
     public static final DeferredHolder<Item, StardewQualityItem> GOLD_CARROT = ITEMS.register("gold_carrot",
-        () -> new StardewQualityItem("stardewcraft.type.crop", 1000, 115, true, stackableProperties()));
+        () -> cropItem(SveCropData.GOLD_CARROT));
     public static final DeferredHolder<Item, StardewQualityItem> JOJA_BERRY = ITEMS.register("joja_berry",
-        () -> new StardewQualityItem("stardewcraft.type.crop", 650, 75, true, stackableProperties()));
+        () -> cropItem(SveCropData.JOJA_BERRY));
     public static final DeferredHolder<Item, StardewQualityItem> JOJA_VEGGIE = ITEMS.register("joja_veggie",
-        () -> new StardewQualityItem("stardewcraft.type.crop", 1140, 200, true, stackableProperties()));
+        () -> cropItem(SveCropData.JOJA_VEGGIE));
     public static final DeferredHolder<Item, StardewQualityItem> MONSTER_FRUIT = ITEMS.register("monster_fruit",
-        () -> new StardewQualityItem("stardewcraft.type.crop", 1525, 85, true, stackableProperties()));
+        () -> cropItem(SveCropData.MONSTER_FRUIT));
     public static final DeferredHolder<Item, StardewQualityItem> SWEET_POTATO = ITEMS.register("sweet_potato",
-        () -> new StardewQualityItem("stardewcraft.type.crop", 280, 20, true, stackableProperties()));
+        () -> cropItem(SveCropData.SWEET_POTATO));
     public static final DeferredHolder<Item, StardewQualityItem> SALAL_BERRY = ITEMS.register("salal_berry",
-        () -> new StardewQualityItem("stardewcraft.type.crop", 75, 28, true, stackableProperties()));
+        () -> cropItem(SveCropData.SALAL_BERRY));
     public static final DeferredHolder<Item, StardewQualityItem> VOID_ROOT = ITEMS.register("void_root",
-        () -> new StardewQualityItem("stardewcraft.type.crop", 235, -35, true, stackableProperties()));
+        () -> cropItem(SveCropData.VOID_ROOT));
     public static final DeferredHolder<Item, StardewQualityItem> ANCIENT_FIBER = ITEMS.register("ancient_fiber",
-        () -> new StardewQualityItem("stardewcraft.type.crop", 145, 35, true, stackableProperties()));
+        () -> cropItem(SveCropData.ANCIENT_FIBER));
 
     // ===== seeds =====
     public static final DeferredHolder<Item, SveSeedItem> ANCIENT_FERNS_SEED = ITEMS.register("ancient_ferns_seed",
-        () -> new SveSeedItem(stackableProperties(), ModBlocks.ANCIENT_FIBER_CROP, new int[]{1}, 0));
+        () -> seedItem(ModBlocks.ANCIENT_FIBER_CROP, SveCropData.ANCIENT_FIBER));
     public static final DeferredHolder<Item, BirchSeedItem> BIRCH_SEED = ITEMS.register("birch_seed",
         () -> new BirchSeedItem(stackableProperties()));
     public static final DeferredHolder<Item, SveSeedItem> BUTTERNUT_SQUASH_SEED = ITEMS.register("butternut_squash_seed",
-        () -> new SveSeedItem(stackableProperties(), ModBlocks.BUTTERNUT_SQUASH_CROP, new int[]{1}, 30));
+        () -> seedItem(ModBlocks.BUTTERNUT_SQUASH_CROP, SveCropData.BUTTERNUT_SQUASH));
     public static final DeferredHolder<Item, SveSeedItem> CUCUMBER_SEED = ITEMS.register("cucumber_seed",
-        () -> new SveSeedItem(stackableProperties(), ModBlocks.CUCUMBER_CROP, new int[]{0}, 75));
+        () -> seedItem(ModBlocks.CUCUMBER_CROP, SveCropData.CUCUMBER));
     public static final DeferredHolder<Item, SveSeedItem> FUNGUS_SEED = ITEMS.register("fungus_seed",
-        () -> new SveSeedItem(stackableProperties(), ModBlocks.MONSTER_MUSHROOM_CROP, new int[]{2}, 0));
+        () -> seedItem(ModBlocks.MONSTER_MUSHROOM_CROP, SveCropData.MONSTER_MUSHROOM));
     public static final DeferredHolder<Item, SveSeedItem> GOLD_CARROT_SEED = ITEMS.register("gold_carrot_seed",
-        () -> new SveSeedItem(stackableProperties(), ModBlocks.GOLD_CARROT_CROP, new int[]{0, 1, 2}, 300));
+        () -> seedItem(ModBlocks.GOLD_CARROT_CROP, SveCropData.GOLD_CARROT));
     public static final DeferredHolder<Item, SveSeedItem> JOJA_BERRY_STARTER = ITEMS.register("joja_berry_starter",
-        () -> new SveSeedItem(stackableProperties(), ModBlocks.JOJA_BERRY_CROP, new int[]{0, 1, 2}, 1000));
+        () -> seedItem(ModBlocks.JOJA_BERRY_CROP, SveCropData.JOJA_BERRY));
     public static final DeferredHolder<Item, SveSeedItem> JOJA_VEGGIE_SEEDS = ITEMS.register("joja_veggie_seeds",
-        () -> new SveSeedItem(stackableProperties(), ModBlocks.JOJA_VEGGIE_CROP, new int[]{0, 1, 2}, 200));
+        () -> seedItem(ModBlocks.JOJA_VEGGIE_CROP, SveCropData.JOJA_VEGGIE));
     public static final DeferredHolder<Item, SveFruitTreeSaplingItem> NECTARINE_SAPLING = ITEMS.register("nectarine_sapling",
         () -> new SveFruitTreeSaplingItem(SveFruitTreeType.NECTARINE, ModBlocks.NECTARINE_SAPLING, stackableProperties()));
     public static final DeferredHolder<Item, SveFruitTreeSaplingItem> PEAR_SAPLING = ITEMS.register("pear_sapling",
@@ -395,15 +414,15 @@ public final class ModItems {
     public static final DeferredHolder<Item, SveFruitTreeSaplingItem> PERSIMMON_SAPLING = ITEMS.register("persimmon_sapling",
         () -> new SveFruitTreeSaplingItem(SveFruitTreeType.PERSIMMON, ModBlocks.PERSIMMON_SAPLING, stackableProperties()));
     public static final DeferredHolder<Item, SveSeedItem> SLIME_SEED = ITEMS.register("slime_seed",
-        () -> new SveSeedItem(stackableProperties(), ModBlocks.SLIME_BERRY_CROP, new int[]{0}, 0));
+        () -> seedItem(ModBlocks.SLIME_BERRY_CROP, SveCropData.SLIME_BERRY));
     public static final DeferredHolder<Item, SveSeedItem> STALK_SEED = ITEMS.register("stalk_seed",
-        () -> new SveSeedItem(stackableProperties(), ModBlocks.MONSTER_FRUIT_CROP, new int[]{1}, 0));
+        () -> seedItem(ModBlocks.MONSTER_FRUIT_CROP, SveCropData.MONSTER_FRUIT));
     public static final DeferredHolder<Item, SveSeedItem> SWEET_POTATO_SEED = ITEMS.register("sweet_potato_seed",
-        () -> new SveSeedItem(stackableProperties(), ModBlocks.SWEET_POTATO_CROP, new int[]{2}, 45));
+        () -> seedItem(ModBlocks.SWEET_POTATO_CROP, SveCropData.SWEET_POTATO));
     public static final DeferredHolder<Item, SveSeedItem> SALAL_BERRY_SEED = ITEMS.register("salal_berry_seed",
-        () -> new SveSeedItem(stackableProperties(), ModBlocks.SALAL_BERRY_CROP, new int[]{0, 1}, 40));
+        () -> seedItem(ModBlocks.SALAL_BERRY_CROP, SveCropData.SALAL_BERRY));
     public static final DeferredHolder<Item, SveSeedItem> VOID_SEED = ITEMS.register("void_seed",
-        () -> new SveSeedItem(stackableProperties(), ModBlocks.VOID_ROOT_CROP, new int[]{3}, 0));
+        () -> seedItem(ModBlocks.VOID_ROOT_CROP, SveCropData.VOID_ROOT));
 
     // ===== fruit =====
     public static final DeferredHolder<Item, StardewQualityItem> BEARBERRYS = ITEMS.register("bearberrys",
@@ -420,7 +439,7 @@ public final class ModItems {
     public static final DeferredHolder<Item, StardewQualityItem> PERSIMMON = ITEMS.register("persimmon",
         () -> new StardewQualityItem("stardewcraft.type.fruit", 200, 28, true, stackableProperties()));
     public static final DeferredHolder<Item, StardewQualityItem> SLIME_BERRY = ITEMS.register("slime_berry",
-        () -> new StardewQualityItem("stardewcraft.type.fruit", 65, -10, true, stackableProperties()));
+        () -> cropItem(SveCropData.SLIME_BERRY));
 
     // ===== mushroom =====
     public static final DeferredHolder<Item, StardewQualityItem> GREEN_MUSHROOM = ITEMS.register("green_mushroom",
@@ -428,7 +447,7 @@ public final class ModItems {
     public static final DeferredHolder<Item, StardewQualityItem> MEGA_PURPLE_MUSHROOM = ITEMS.register("mega_purple_mushroom",
         () -> new StardewQualityItem("stardewcraft.type.forage", 8000, 999, true, stackableProperties()));
     public static final DeferredHolder<Item, StardewQualityItem> MONSTER_MUSHROOM = ITEMS.register("monster_mushroom",
-        () -> new StardewQualityItem("stardewcraft.type.forage", 850, 75, true, stackableProperties()));
+        () -> cropItem(SveCropData.MONSTER_MUSHROOM));
     public static final DeferredHolder<Item, StardewQualityItem> MUSHROOM_COLONY = ITEMS.register("mushroom_colony",
         () -> new StardewQualityItem("stardewcraft.type.forage", 105, 18, true, stackableProperties()));
     public static final DeferredHolder<Item, StardewQualityItem> POISON_MUSHROOM = ITEMS.register("poison_mushroom",

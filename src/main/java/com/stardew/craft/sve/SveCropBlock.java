@@ -21,50 +21,24 @@ public class SveCropBlock extends StardewCropBlock {
 
     private final Supplier<Item> seedsItem;
     private final Supplier<Item> cropItem;
-    private final int[] seasonIds;        // stardew season ids: 0=spring 1=summer 2=fall 3=winter
-    private final int[] phaseDays;        // 4-element array, one per growth stage
-    private final boolean regrow;
-    private final int regrowAge;          // stage to revert to on harvest
-    private final int regrowDays;
-    private final String displayName;
-    private final int minHarvest;
-    private final int maxHarvest;
+    private final SveCropData.Definition definition;
 
     public SveCropBlock(BlockBehaviour.Properties props,
                         Supplier<Item> seedsItem,
                         Supplier<Item> cropItem,
-                        int[] seasonIds,
-                        int[] phaseDays,
-                        boolean regrow,
-                        int regrowAge,
-                        int regrowDays,
-                        String displayName) {
-        this(props, seedsItem, cropItem, seasonIds, phaseDays,
-             regrow, regrowAge, regrowDays, displayName, 1, 1);
-    }
-
-    public SveCropBlock(BlockBehaviour.Properties props,
-                        Supplier<Item> seedsItem,
-                        Supplier<Item> cropItem,
-                        int[] seasonIds,
-                        int[] phaseDays,
-                        boolean regrow,
-                        int regrowAge,
-                        int regrowDays,
-                        String displayName,
-                        int minHarvest,
-                        int maxHarvest) {
-        super(props);
+                        SveCropData.Definition definition) {
+        super(props, requireDefinition(definition).raised());
         this.seedsItem = seedsItem;
         this.cropItem = cropItem;
-        this.seasonIds = seasonIds;
-        this.phaseDays = phaseDays;
-        this.regrow = regrow;
-        this.regrowAge = regrowAge;
-        this.regrowDays = regrowDays;
-        this.displayName = displayName;
-        this.minHarvest = minHarvest;
-        this.maxHarvest = maxHarvest;
+        this.definition = definition;
+    }
+
+    private static SveCropData.Definition requireDefinition(SveCropData.Definition definition) {
+        return java.util.Objects.requireNonNull(definition, "definition");
+    }
+
+    SveCropData.Definition definition() {
+        return definition;
     }
 
     @Override
@@ -80,15 +54,12 @@ public class SveCropBlock extends StardewCropBlock {
     @Override
     protected boolean isInSeason(Level level) {
         int current = StardewTimeManager.get().getCurrentSeason();
-        for (int s : seasonIds) {
-            if (s == current) return true;
-        }
-        return false;
+        return definition.isInSeason(current);
     }
 
     @Override
     protected int[] getPhaseDays() {
-        return phaseDays;
+        return definition.phaseDaysArray();
     }
 
     @Override
@@ -102,32 +73,42 @@ public class SveCropBlock extends StardewCropBlock {
 
     @Override
     protected boolean canRegrow() {
-        return regrow;
+        return definition.regrows();
     }
 
     @Override
     protected int getRegrowAge() {
-        return regrowAge;
+        return definition.regrows() ? 1 : 0;
     }
 
     @Override
     protected int getRegrowDays() {
-        return regrowDays;
+        return definition.regrowDays();
     }
 
     @Override
     public String getCropDisplayNameKey() {
         Item item = cropItem.get();
-        return item != null ? item.getDescriptionId() : displayName;
+        return item != null ? item.getDescriptionId() : definition.producePath();
     }
 
     @Override
     protected int getHarvestMinStack() {
-        return minHarvest;
+        return definition.minHarvest();
     }
 
     @Override
     protected int getHarvestMaxStack() {
-        return maxHarvest;
+        return definition.maxHarvest();
+    }
+
+    @Override
+    protected float getHarvestMaxIncreasePerFarmingLevel() {
+        return definition.harvestMaxIncreasePerFarmingLevel();
+    }
+
+    @Override
+    protected double getExtraHarvestChance() {
+        return definition.extraHarvestChance();
     }
 }

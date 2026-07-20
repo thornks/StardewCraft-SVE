@@ -84,6 +84,14 @@ tasks.register('contentAcquisitionRegressionTest', JavaExec) {
     mainClass = 'com.stardew.craft.sve.SveContentAcquisitionTest'
 }
 
+tasks.register('cropForageRegressionTest', JavaExec) {
+    group = 'verification'
+    description = 'Runs the SVE crop and forage rule regression suite.'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.stardew.craft.sve.SveCropAndForageRegressionTest'
+}
+
 tasks.register('mixinConfigRegressionTest', JavaExec) {
     group = 'verification'
     description = 'Checks that the strict Mixin config matches its source set.'
@@ -98,5 +106,6 @@ tasks.named('check') {
     dependsOn treeRegressionTest
     dependsOn fishPondRegressionTest
     dependsOn contentAcquisitionRegressionTest
+    dependsOn cropForageRegressionTest
     dependsOn mixinConfigRegressionTest
 }

@@ -34,6 +34,7 @@ public class StardewcraftsveMod {
         SveActions.register();
         verifyRecipeShopNamespaceCompatibility();
         SveWeaponData.register();
+        SveCropData.register();
         SveAnimalData.register();
 
         ModItems.ITEMS.register(modEventBus);
