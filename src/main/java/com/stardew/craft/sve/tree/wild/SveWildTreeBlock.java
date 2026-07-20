@@ -49,6 +49,12 @@ public final class SveWildTreeBlock extends Block implements EntityBlock {
 
     public SveWildTreeType getType() { return type; }
 
+    public static boolean isLiveTree(BlockState state, SveWildTreeType type) {
+        return state.getBlock() instanceof SveWildTreeBlock tree
+                && tree.getType() == type
+                && (!state.hasProperty(STUMP) || !state.getValue(STUMP));
+    }
+
     @Override
     public RenderShape getRenderShape(BlockState state) { return RenderShape.ENTITYBLOCK_ANIMATED; }
 
@@ -165,10 +171,10 @@ public final class SveWildTreeBlock extends Block implements EntityBlock {
 
     @Nullable
     public static BlockPos findRoot(LevelReader level, BlockPos pos, SveWildTreeType type) {
-        if (level.getBlockState(pos).is(type.matureBlock())) return pos;
+        if (isLiveTree(level.getBlockState(pos), type)) return pos;
         for (int y = 1; y < type.trunkHeight(); y++) {
             BlockPos candidate = pos.below(y);
-            if (level.getBlockState(candidate).is(type.matureBlock())) return candidate;
+            if (isLiveTree(level.getBlockState(candidate), type)) return candidate;
         }
         return null;
     }

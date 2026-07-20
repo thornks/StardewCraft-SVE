@@ -42,6 +42,13 @@ public final class SveTreeRulesTest {
         expectEquals(13, SveWildTreeType.BIRCH.trunkHeight(), "birch trunk height");
         expectEquals(15, SveWildTreeType.BIRCH.requiredHeight(), "birch clearance height");
         expectEquals(3, SveWildTreeType.BIRCH.tapperDays(), "birch tapper interval");
+        expect(SveWildTreeType.FIR.trunkHeight() > 0, "fir must have a trunk");
+        expect(SveWildTreeType.BIRCH.trunkHeight() > SveWildTreeType.FIR.trunkHeight(),
+                "birch trunk must be taller than fir");
+    }
+
+    private static void expect(boolean condition, String label) {
+        if (!condition) throw new AssertionError(label);
     }
 
     private static void expectEquals(int expected, int actual, String label) {

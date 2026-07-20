@@ -21,6 +21,7 @@ public abstract class TapperBlockMixin {
             LevelReader level, BlockPos root, WildTrees.Def def,
             CallbackInfoReturnable<Integer> callback) {
         if (!(level.getBlockState(root).getBlock() instanceof SveWildTreeBlock tree)
+                || !SveWildTreeBlock.isLiveTree(level.getBlockState(root), tree.getType())
                 || SveWildTreeCompat.byId(def.id()) == null
                 || !tree.getType().id().equals(def.id())) {
             return;
