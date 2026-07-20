@@ -19,6 +19,7 @@
     "BundleSyncDifficultyMixin",
     "BundleClaimRewardDifficultyMixin",
     "BundleItemResolverMixin",
+    "CaskBlockEntityMixin",
     "CommunityCenterPlayerProgressAccessor",
     "CommunityCenterSavedDataMixin",
     "FairRecipePurchaseMixin",

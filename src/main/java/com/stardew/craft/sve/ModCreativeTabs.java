@@ -129,6 +129,16 @@ public final class ModCreativeTabs {
             output.accept(ModItems.GOOSE_MAYONNAISE.get());
             output.accept(ModItems.HONEY_JAR.get());
             quality(output, ModItems.YARN);
+            quality(output, ModItems.JOJA_BERRY_WINE, ModItems.MONSTER_FRUIT_WINE,
+                ModItems.SALAL_BERRY_WINE, ModItems.SLIME_BERRY_WINE);
+            output.accept(ModItems.CUCUMBER_JUICE.get());
+            output.accept(ModItems.BUTTERNUT_SQUASH_JUICE.get());
+            output.accept(ModItems.GOLD_CARROT_JUICE.get());
+            output.accept(ModItems.SWEET_POTATO_JUICE.get());
+            output.accept(ModItems.JOJA_VEGGIE_JUICE.get());
+            output.accept(ModItems.ANCIENT_FIBER_JUICE.get());
+            output.accept(ModItems.MONSTER_MUSHROOM_JUICE.get());
+            output.accept(ModItems.VOID_ROOT_JUICE.get());
             // Machines
             output.accept(ModItems.BUTTER_CHURNER.get());
             output.accept(ModItems.YARN_SPOOLER.get());

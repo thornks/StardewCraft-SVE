@@ -114,6 +114,7 @@ public final class SveContentAcquisitionCatalog {
                 "Original SVE data defines the item but no initial acquisition route",
                 "fungus_seed", "slime_seed", "stalk_seed", "void_seed",
                 "monster_mushroom", "slime_berry", "monster_fruit", "void_root",
+                "monster_mushroom_juice", "slime_berry_wine", "monster_fruit_wine", "void_root_juice",
                 "void_mayo_sandwich", "super_joja_cola", "super_starfruit");
         exclude(exclusions, ExclusionType.PLANNED_CONTENT,
                 "Requires an SVE map, monster, or resource zone that is not ported",

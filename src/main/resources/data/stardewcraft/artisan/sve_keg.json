@@ -1,0 +1,17 @@
+{
+  "machine": "keg",
+  "recipes": [
+    { "input": "stardewcraftsve:joja_berry", "output": "stardewcraftsve:joja_berry_wine", "minutes": 8820 },
+    { "input": "stardewcraftsve:monster_fruit", "output": "stardewcraftsve:monster_fruit_wine", "minutes": 8820 },
+    { "input": "stardewcraftsve:salal_berry", "output": "stardewcraftsve:salal_berry_wine", "minutes": 8820 },
+    { "input": "stardewcraftsve:slime_berry", "output": "stardewcraftsve:slime_berry_wine", "minutes": 8820 },
+    { "input": "stardewcraftsve:cucumber", "output": "stardewcraftsve:cucumber_juice", "minutes": 5040 },
+    { "input": "stardewcraftsve:butternut_squash", "output": "stardewcraftsve:butternut_squash_juice", "minutes": 5040 },
+    { "input": "stardewcraftsve:gold_carrot", "output": "stardewcraftsve:gold_carrot_juice", "minutes": 5040 },
+    { "input": "stardewcraftsve:sweet_potato", "output": "stardewcraftsve:sweet_potato_juice", "minutes": 5040 },
+    { "input": "stardewcraftsve:joja_veggie", "output": "stardewcraftsve:joja_veggie_juice", "minutes": 5040 },
+    { "input": "stardewcraftsve:ancient_fiber", "output": "stardewcraftsve:ancient_fiber_juice", "minutes": 5040 },
+    { "input": "stardewcraftsve:monster_mushroom", "output": "stardewcraftsve:monster_mushroom_juice", "minutes": 5040 },
+    { "input": "stardewcraftsve:void_root", "output": "stardewcraftsve:void_root_juice", "minutes": 5040 }
+  ]
+}

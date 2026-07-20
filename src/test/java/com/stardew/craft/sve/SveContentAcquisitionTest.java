@@ -45,7 +45,7 @@ public final class SveContentAcquisitionTest {
                     .forEach(issue -> message.append(" - ").append(issue.message()).append('\n'));
             throw new AssertionError(message);
         }
-        if (registered.size() != 259) {
+        if (registered.size() != 271) {
             throw new AssertionError("Unexpected SVE item registry size: " + registered.size());
         }
         validateCollections(registered, evaluation);
@@ -122,6 +122,9 @@ public final class SveContentAcquisitionTest {
             var matcher = pattern.matcher(source);
             while (matcher.find()) items.add(StardewcraftsveMod.MODID + ":" + matcher.group(1));
         }
+        SveKegData.all().stream()
+                .map(product -> StardewcraftsveMod.MODID + ":" + product.outputPath())
+                .forEach(items::add);
         return Set.copyOf(items);
     }
 

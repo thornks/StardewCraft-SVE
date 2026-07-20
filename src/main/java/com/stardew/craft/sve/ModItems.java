@@ -8,6 +8,7 @@ import com.stardew.craft.item.cooking.CookingDishItem.DishBuff;
 import com.stardew.craft.item.SimpleStardewItem;
 import com.stardew.craft.item.EdibleSimpleStardewItem;
 import com.stardew.craft.item.StardewQualityItem;
+import com.stardew.craft.item.artisan.ArtisanDrinkItem;
 import com.stardew.craft.item.artisan.PreserveType;
 import com.stardew.craft.item.artisan.PreservesItem;
 import com.stardew.craft.item.artisan.SmokedFishItem;
@@ -615,6 +616,19 @@ public final class ModItems {
             stackableProperties(),
             false));
 
+    public static final DeferredHolder<Item, ArtisanDrinkItem> JOJA_BERRY_WINE = kegProduct("joja_berry");
+    public static final DeferredHolder<Item, ArtisanDrinkItem> MONSTER_FRUIT_WINE = kegProduct("monster_fruit");
+    public static final DeferredHolder<Item, ArtisanDrinkItem> SALAL_BERRY_WINE = kegProduct("salal_berry");
+    public static final DeferredHolder<Item, ArtisanDrinkItem> SLIME_BERRY_WINE = kegProduct("slime_berry");
+    public static final DeferredHolder<Item, ArtisanDrinkItem> CUCUMBER_JUICE = kegProduct("cucumber");
+    public static final DeferredHolder<Item, ArtisanDrinkItem> BUTTERNUT_SQUASH_JUICE = kegProduct("butternut_squash");
+    public static final DeferredHolder<Item, ArtisanDrinkItem> GOLD_CARROT_JUICE = kegProduct("gold_carrot");
+    public static final DeferredHolder<Item, ArtisanDrinkItem> SWEET_POTATO_JUICE = kegProduct("sweet_potato");
+    public static final DeferredHolder<Item, ArtisanDrinkItem> JOJA_VEGGIE_JUICE = kegProduct("joja_veggie");
+    public static final DeferredHolder<Item, ArtisanDrinkItem> ANCIENT_FIBER_JUICE = kegProduct("ancient_fiber");
+    public static final DeferredHolder<Item, ArtisanDrinkItem> MONSTER_MUSHROOM_JUICE = kegProduct("monster_mushroom");
+    public static final DeferredHolder<Item, ArtisanDrinkItem> VOID_ROOT_JUICE = kegProduct("void_root");
+
     // ===== cooking =====
     // ===== Block Items =====
     public static final DeferredHolder<Item, BlockItem> BUTTER_CHURNER = ITEMS.register("butter_churner",
@@ -1000,6 +1014,13 @@ public final class ModItems {
 
     private static DeferredHolder<Item, Item> artisan(String id, PreserveType type) {
         return ARTISAN_ITEMS.register(id, () -> new PreservesItem(type, stackableProperties()));
+    }
+
+    private static DeferredHolder<Item, ArtisanDrinkItem> kegProduct(String inputPath) {
+        SveKegData.Product product = SveKegData.byInputPath(inputPath);
+        return ARTISAN_ITEMS.register(product.outputPath(), () -> new ArtisanDrinkItem(
+                product.sellPrice(), product.energy(), product.health(), 0, 0,
+                product.supportsQuality(), stackableProperties()));
     }
 
     // ===== flavored artisan display items (registered under stardewcraftsve for JEI mod tag) =====

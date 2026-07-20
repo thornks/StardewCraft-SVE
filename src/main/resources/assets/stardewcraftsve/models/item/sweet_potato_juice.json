@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "stardewcraftsve:item/artisan/juice/sweet_potato",
+    "particle": "stardewcraftsve:item/artisan/juice/sweet_potato"
+  }
+}
