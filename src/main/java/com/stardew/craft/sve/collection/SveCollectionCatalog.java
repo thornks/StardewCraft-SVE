@@ -67,6 +67,18 @@ public final class SveCollectionCatalog {
         return entry != null && entry.key().startsWith(NAMESPACE + ":");
     }
 
+    /** Static collection IDs used by validation without requiring a live item registry. */
+    public static List<String> configuredItemIdsForTab(int tab) {
+        List<String> paths = switch (tab) {
+            case 0 -> SHIPPING;
+            case 1 -> FISH;
+            case 2 -> ARTIFACTS;
+            case 3 -> MINERALS;
+            default -> List.of();
+        };
+        return paths.stream().map(path -> NAMESPACE + ":" + path).toList();
+    }
+
     private static List<VanillaObjectCatalog.Entry> staticEntries(
             List<String> paths,
             String type,

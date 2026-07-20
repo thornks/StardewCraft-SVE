@@ -76,9 +76,18 @@ tasks.register('fishPondRegressionTest', JavaExec) {
     mainClass = 'com.stardew.craft.sve.SveFishPondDataTest'
 }
 
+tasks.register('contentAcquisitionRegressionTest', JavaExec) {
+    group = 'verification'
+    description = 'Runs the SVE content acquisition closure regression suite.'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.stardew.craft.sve.SveContentAcquisitionTest'
+}
+
 tasks.named('check') {
     dependsOn animalRegressionTest
     dependsOn bundleRegressionTest
     dependsOn treeRegressionTest
     dependsOn fishPondRegressionTest
+    dependsOn contentAcquisitionRegressionTest
 }
