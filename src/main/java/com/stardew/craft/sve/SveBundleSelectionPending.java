@@ -17,4 +17,12 @@ public final class SveBundleSelectionPending {
     public static Boolean consume(UUID player) {
         return PENDING.remove(player);
     }
+
+    public static void remove(UUID player) {
+        PENDING.remove(player);
+    }
+
+    static void clear() {
+        PENDING.clear();
+    }
 }

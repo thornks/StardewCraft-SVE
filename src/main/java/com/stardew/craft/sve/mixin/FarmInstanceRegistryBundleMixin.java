@@ -35,7 +35,13 @@ public abstract class FarmInstanceRegistryBundleMixin {
             UUID oldOwner, UUID newOwner, String newOwnerName, CallbackInfoReturnable<Boolean> cir) {
         if (!cir.getReturnValue()) return;
         var server = ServerLifecycleHooks.getCurrentServer();
-        if (server != null) SveBundleDifficultyData.get(server.overworld()).transfer(oldOwner, newOwner);
+        if (server != null) {
+            SveBundleDifficultyData.get(server.overworld()).transfer(oldOwner, newOwner);
+            var oldPlayer = server.getPlayerList().getPlayer(oldOwner);
+            var newPlayer = server.getPlayerList().getPlayer(newOwner);
+            if (oldPlayer != null) BundleSyncPayload.sendFullSync(oldPlayer);
+            if (newPlayer != null) BundleSyncPayload.sendFullSync(newPlayer);
+        }
     }
 
     @Inject(method = "deleteFarm", at = @At("RETURN"), require = 1)
@@ -43,6 +49,10 @@ public abstract class FarmInstanceRegistryBundleMixin {
             UUID owner, CallbackInfoReturnable<FarmInstance> cir) {
         if (cir.getReturnValue() == null) return;
         var server = ServerLifecycleHooks.getCurrentServer();
-        if (server != null) SveBundleDifficultyData.get(server.overworld()).remove(owner);
+        if (server != null) {
+            SveBundleDifficultyData.get(server.overworld()).remove(owner);
+            var player = server.getPlayerList().getPlayer(owner);
+            if (player != null) BundleSyncPayload.sendFullSync(player);
+        }
     }
 }

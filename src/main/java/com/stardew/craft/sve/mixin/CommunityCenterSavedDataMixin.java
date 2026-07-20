@@ -6,6 +6,7 @@ import com.stardew.craft.communitycenter.data.BundleDefinition;
 import com.stardew.craft.communitycenter.state.CommunityCenterSavedData;
 import com.stardew.craft.sve.SveBundleContext;
 import com.stardew.craft.sve.SveCommunityBundles;
+import com.stardew.craft.sve.SveCommunityCenterDataView;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -18,8 +19,13 @@ import java.util.Map;
 import java.util.UUID;
 
 @Mixin(value = CommunityCenterSavedData.class, remap = false)
-public abstract class CommunityCenterSavedDataMixin {
+public abstract class CommunityCenterSavedDataMixin implements SveCommunityCenterDataView {
     @Shadow @Final private Map<UUID, ?> playerData;
+
+    @Override
+    public Map<UUID, ?> stardewcraftsve$getPlayerDataView() {
+        return Map.copyOf(playerData);
+    }
 
     @Inject(method = "getSlots(Ljava/util/UUID;I)[Z", at = @At("RETURN"), cancellable = true, require = 1)
     private void stardewcraftsve$resizeBundleSlots(

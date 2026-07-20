@@ -28,6 +28,7 @@ On Windows:
 
 ```powershell
 .\gradlew.bat animalRegressionTest --no-daemon
+.\gradlew.bat bundleRegressionTest --no-daemon
 .\gradlew.bat jar --no-daemon
 ```
 

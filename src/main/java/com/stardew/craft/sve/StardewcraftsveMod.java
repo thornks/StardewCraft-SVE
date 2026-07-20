@@ -46,6 +46,9 @@ public class StardewcraftsveMod {
         NeoForge.EVENT_BUS.addListener(
                 PlayerEvent.PlayerLoggedInEvent.class,
                 SveFriendshipRewards::onPlayerLoggedIn);
+        NeoForge.EVENT_BUS.addListener(
+                PlayerEvent.PlayerLoggedOutEvent.class,
+                event -> SveBundleSelectionPending.remove(event.getEntity().getUUID()));
 
         // Service NPCs route to shops before the generic gift flow.
         SveNpcGiftInteractionProvider.register();

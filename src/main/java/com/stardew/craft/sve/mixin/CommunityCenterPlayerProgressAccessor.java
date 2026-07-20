@@ -9,4 +9,7 @@ import java.util.Map;
 public interface CommunityCenterPlayerProgressAccessor {
     @Accessor("bundleSlots")
     Map<Integer, boolean[]> stardewcraftsve$getBundleSlots();
+
+    @Accessor("bundleRewards")
+    Map<Integer, Boolean> stardewcraftsve$getBundleRewards();
 }

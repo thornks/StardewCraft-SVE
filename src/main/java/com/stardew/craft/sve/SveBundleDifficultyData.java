@@ -30,14 +30,20 @@ public final class SveBundleDifficultyData extends SavedData {
     }
 
     public void transfer(UUID oldOwner, UUID newOwner) {
-        if (hardFarmOwners.remove(oldOwner)) {
-            hardFarmOwners.add(newOwner);
-            setDirty();
-        }
+        if (oldOwner.equals(newOwner)) return;
+
+        boolean wasHard = hardFarmOwners.remove(oldOwner);
+        boolean changed = wasHard;
+        changed |= wasHard ? hardFarmOwners.add(newOwner) : hardFarmOwners.remove(newOwner);
+        if (changed) setDirty();
     }
 
     public void remove(UUID owner) {
         if (hardFarmOwners.remove(owner)) setDirty();
+    }
+
+    public Set<UUID> hardFarmOwners() {
+        return Set.copyOf(hardFarmOwners);
     }
 
     public static boolean isHardForPlayer(UUID player) {
@@ -52,7 +58,7 @@ public final class SveBundleDifficultyData extends SavedData {
                 new SavedData.Factory<>(SveBundleDifficultyData::new, SveBundleDifficultyData::load), DATA_NAME);
     }
 
-    private static SveBundleDifficultyData load(CompoundTag tag, HolderLookup.Provider registries) {
+    static SveBundleDifficultyData load(CompoundTag tag, HolderLookup.Provider registries) {
         SveBundleDifficultyData data = new SveBundleDifficultyData();
         ListTag owners = tag.getList("HardFarmOwners", Tag.TAG_COMPOUND);
         for (int i = 0; i < owners.size(); i++) {

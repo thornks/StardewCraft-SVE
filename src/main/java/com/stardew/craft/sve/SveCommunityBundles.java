@@ -9,14 +9,28 @@ import org.slf4j.Logger;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 /** Builds the standard and hard SVE community-center catalogs from StardewCraft's reload snapshot. */
 public final class SveCommunityBundles {
     private static final Logger LOGGER = LogUtils.getLogger();
+
+    private static final Map<Integer, Integer> REQUIRED_BASE_SLOTS = Map.ofEntries(
+            Map.entry(0, 4), Map.entry(1, 4), Map.entry(2, 4), Map.entry(3, 4),
+            Map.entry(4, 6), Map.entry(5, 9),
+            Map.entry(6, 4), Map.entry(7, 4), Map.entry(8, 4), Map.entry(9, 3),
+            Map.entry(10, 4), Map.entry(11, 10),
+            Map.entry(13, 4), Map.entry(14, 3), Map.entry(15, 4), Map.entry(16, 4),
+            Map.entry(17, 4), Map.entry(19, 8),
+            Map.entry(20, 3), Map.entry(21, 4), Map.entry(22, 4),
+            Map.entry(23, 1), Map.entry(24, 1), Map.entry(25, 1), Map.entry(26, 1),
+            Map.entry(31, 3), Map.entry(32, 4), Map.entry(33, 4), Map.entry(34, 6),
+            Map.entry(35, 3), Map.entry(36, 6));
 
     private static volatile Map<Integer, BundleDefinition> standardBundles = Map.of();
     private static volatile Map<Integer, BundleDefinition> hardBundles = Map.of();
@@ -24,13 +38,19 @@ public final class SveCommunityBundles {
     private SveCommunityBundles() {}
 
     public static synchronized void apply() {
-        Map<Integer, BundleDefinition> base = copy(BundleDataManager.getAllBundles());
+        Collection<BundleDefinition> base = BundleDataManager.getAllBundles();
         if (base.isEmpty()) return;
 
-        Map<Integer, BundleDefinition> standard = buildStandard(base);
-        Map<Integer, BundleDefinition> hard = buildHard(base);
-        standardBundles = Collections.unmodifiableMap(new LinkedHashMap<>(standard));
-        hardBundles = Collections.unmodifiableMap(new LinkedHashMap<>(hard));
+        Catalog candidate;
+        try {
+            candidate = buildCatalogs(base);
+        } catch (RuntimeException exception) {
+            LOGGER.error("[SVE] Rejected incompatible community-center catalogs; retaining previous snapshot",
+                    exception);
+            return;
+        }
+        standardBundles = candidate.standard();
+        hardBundles = candidate.hard();
 
         Map<Integer, String> areaNames = new LinkedHashMap<>();
         Map<Integer, String> areaDisplayKeys = new LinkedHashMap<>();
@@ -42,9 +62,26 @@ public final class SveCommunityBundles {
         }
 
         // Standard remains the context-free server catalog. Player operations are selected per farm.
-        BundleDataManager.applyFromNetwork(standard.values(), areaNames, areaDisplayKeys);
+        BundleDataManager.applyFromNetwork(standardBundles.values(), areaNames, areaDisplayKeys);
         LOGGER.info("[SVE] Prepared standard and hard community-center catalogs ({} bundles each)",
-                standard.size());
+                standardBundles.size());
+    }
+
+    public static Catalog buildCatalogs(Collection<BundleDefinition> definitions) {
+        Map<Integer, BundleDefinition> base = copy(definitions);
+        validateBaseCatalog(base);
+
+        Catalog catalog = new Catalog(buildStandard(base), buildHard(base));
+        List<String> problems = new ArrayList<>();
+        problems.addAll(validateCatalog("standard", catalog.standard()));
+        problems.addAll(validateCatalog("hard", catalog.hard()));
+        if (!catalog.standard().keySet().equals(catalog.hard().keySet())) {
+            problems.add("standard and hard bundle ID sets differ");
+        }
+        if (!problems.isEmpty()) {
+            throw new IllegalStateException(String.join("; ", problems));
+        }
+        return catalog;
     }
 
     public static BundleDefinition getBundleForPlayer(UUID player, int bundleId) {
@@ -64,6 +101,21 @@ public final class SveCommunityBundles {
         return catalogFor(player).values();
     }
 
+    public static Map<Integer, BundleDefinition> standardBundlesSnapshot() {
+        return standardBundles;
+    }
+
+    public static Map<Integer, BundleDefinition> hardBundlesSnapshot() {
+        return hardBundles;
+    }
+
+    public static Set<String> sveIngredientIds(Catalog catalog) {
+        Set<String> result = new LinkedHashSet<>();
+        collectSveIngredientIds(catalog.standard(), result);
+        collectSveIngredientIds(catalog.hard(), result);
+        return Set.copyOf(result);
+    }
+
     public static boolean isReady() {
         return !standardBundles.isEmpty();
     }
@@ -73,6 +125,65 @@ public final class SveCommunityBundles {
             return hardBundles;
         }
         return standardBundles;
+    }
+
+    public static List<String> validateCatalog(String label, Map<Integer, BundleDefinition> bundles) {
+        List<String> problems = new ArrayList<>();
+        if (bundles.isEmpty()) {
+            problems.add(label + " catalog is empty");
+            return problems;
+        }
+
+        for (Map.Entry<Integer, BundleDefinition> entry : bundles.entrySet()) {
+            BundleDefinition definition = entry.getValue();
+            if (definition == null) {
+                problems.add(label + " bundle " + entry.getKey() + " is null");
+                continue;
+            }
+            if (entry.getKey() != definition.bundleId()) {
+                problems.add(label + " bundle key " + entry.getKey() + " contains ID "
+                        + definition.bundleId());
+            }
+            if (definition.areaId() < 0 || definition.areaId() > 6) {
+                problems.add(label + " bundle " + definition.bundleId() + " has invalid area "
+                        + definition.areaId());
+            }
+            if (definition.internalName() == null || definition.internalName().isBlank()) {
+                problems.add(label + " bundle " + definition.bundleId() + " has no internal name");
+            }
+            if (definition.ingredients() == null || definition.ingredients().isEmpty()) {
+                problems.add(label + " bundle " + definition.bundleId() + " has no ingredients");
+                continue;
+            }
+            if (definition.requiredCount() <= 0
+                    || definition.requiredCount() > definition.ingredients().size()) {
+                problems.add(label + " bundle " + definition.bundleId() + " requires "
+                        + definition.requiredCount() + " of " + definition.ingredients().size() + " slots");
+            }
+
+            for (int slot = 0; slot < definition.ingredients().size(); slot++) {
+                BundleIngredient ingredient = definition.ingredients().get(slot);
+                if (ingredient == null) {
+                    problems.add(label + " bundle " + definition.bundleId() + " slot " + slot + " is null");
+                    continue;
+                }
+                if (!ingredient.isMoneyIngredient()
+                        && (ingredient.itemId() == null || ingredient.itemId().isBlank())) {
+                    problems.add(label + " bundle " + definition.bundleId() + " slot " + slot
+                            + " has no item ID");
+                }
+                if (ingredient.stack() <= 0) {
+                    problems.add(label + " bundle " + definition.bundleId() + " slot " + slot
+                            + " has invalid stack " + ingredient.stack());
+                }
+                if (!ingredient.isMoneyIngredient()
+                        && (ingredient.quality() < 0 || ingredient.quality() > 4)) {
+                    problems.add(label + " bundle " + definition.bundleId() + " slot " + slot
+                            + " has invalid quality " + ingredient.quality());
+                }
+            }
+        }
+        return problems;
     }
 
     private static Map<Integer, BundleDefinition> buildStandard(Map<Integer, BundleDefinition> base) {
@@ -270,8 +381,44 @@ public final class SveCommunityBundles {
 
     private static Map<Integer, BundleDefinition> copy(Collection<BundleDefinition> source) {
         Map<Integer, BundleDefinition> result = new LinkedHashMap<>();
-        for (BundleDefinition definition : source) result.put(definition.bundleId(), definition);
+        for (BundleDefinition definition : source) {
+            if (definition == null) {
+                throw new IllegalArgumentException("Base bundle catalog contains a null definition");
+            }
+            BundleDefinition previous = result.put(definition.bundleId(), definition);
+            if (previous != null) {
+                throw new IllegalArgumentException("Duplicate base bundle ID " + definition.bundleId());
+            }
+        }
         return result;
+    }
+
+    private static void validateBaseCatalog(Map<Integer, BundleDefinition> base) {
+        for (Map.Entry<Integer, Integer> requirement : REQUIRED_BASE_SLOTS.entrySet()) {
+            BundleDefinition definition = base.get(requirement.getKey());
+            if (definition == null) {
+                throw new IllegalArgumentException("Missing StardewCraft bundle " + requirement.getKey());
+            }
+            if (definition.ingredients().size() < requirement.getValue()) {
+                throw new IllegalArgumentException("StardewCraft bundle " + requirement.getKey()
+                        + " has " + definition.ingredients().size() + " slots; expected at least "
+                        + requirement.getValue());
+            }
+        }
+    }
+
+    private static void collectSveIngredientIds(
+            Map<Integer, BundleDefinition> bundles,
+            Set<String> result
+    ) {
+        for (BundleDefinition definition : bundles.values()) {
+            for (BundleIngredient ingredient : definition.ingredients()) {
+                if (ingredient.itemId() != null
+                        && ingredient.itemId().startsWith(StardewcraftsveMod.MODID + ":")) {
+                    result.add(ingredient.itemId());
+                }
+            }
+        }
     }
 
     private static boolean hasIngredients(BundleDefinition definition, int minimum) {
@@ -311,5 +458,15 @@ public final class SveCommunityBundles {
 
     private static BundleIngredient item(String id, int count, int quality) {
         return new BundleIngredient(id, id, 0, count, quality);
+    }
+
+    public record Catalog(
+            Map<Integer, BundleDefinition> standard,
+            Map<Integer, BundleDefinition> hard
+    ) {
+        public Catalog {
+            standard = Collections.unmodifiableMap(new LinkedHashMap<>(standard));
+            hard = Collections.unmodifiableMap(new LinkedHashMap<>(hard));
+        }
     }
 }

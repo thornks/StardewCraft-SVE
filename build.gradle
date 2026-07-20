@@ -28,6 +28,7 @@ dependencies {
     runtimeOnly files('libs/geckolib-neoforge-1.21.1-4.7.7.jar')
     compileOnly files('libs/jade-1.21.1-NeoForge-15.10.5.jar')
     runtimeOnly files('libs/jade-1.21.1-NeoForge-15.10.5.jar')
+    testCompileOnly files('../stardewcraft-0.5.1fix4.jar')
     testRuntimeOnly files('../stardewcraft-0.5.1fix4.jar')
 }
 
@@ -51,6 +52,15 @@ tasks.register('animalRegressionTest', JavaExec) {
     mainClass = 'com.stardew.craft.sve.animal.SveAnimalRulesTest'
 }
 
+tasks.register('bundleRegressionTest', JavaExec) {
+    group = 'verification'
+    description = 'Runs the SVE community-center catalog regression suite.'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.stardew.craft.sve.SveBundleRegressionTest'
+}
+
 tasks.named('check') {
     dependsOn animalRegressionTest
+    dependsOn bundleRegressionTest
 }
