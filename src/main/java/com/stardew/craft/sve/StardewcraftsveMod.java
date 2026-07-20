@@ -3,10 +3,13 @@ package com.stardew.craft.sve;
 import com.stardew.craft.core.ModDimensions;
 import com.stardew.craft.shop.SaloonService;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
+import net.neoforged.bus.api.EventPriority;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.loading.FMLEnvironment;
+import net.neoforged.neoforge.event.AddReloadListenerEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
@@ -20,6 +23,8 @@ import com.stardew.craft.sve.network.SveNetwork;
 @Mod(StardewcraftsveMod.MODID)
 public class StardewcraftsveMod {
     public static final String MODID = "stardewcraftsve";
+    private static final ResourceManagerReloadListener BUNDLE_RELOAD_LISTENER =
+            resourceManager -> SveCommunityBundles.apply();
 
     public StardewcraftsveMod(IEventBus modEventBus) {
         if (FMLEnvironment.dist == Dist.CLIENT) {
@@ -49,6 +54,9 @@ public class StardewcraftsveMod {
         NeoForge.EVENT_BUS.addListener(
                 PlayerEvent.PlayerLoggedOutEvent.class,
                 event -> SveBundleSelectionPending.remove(event.getEntity().getUUID()));
+        NeoForge.EVENT_BUS.addListener(
+                EventPriority.LOWEST,
+                StardewcraftsveMod::onAddReloadListeners);
 
         // Service NPCs route to shops before the generic gift flow.
         SveNpcGiftInteractionProvider.register();
@@ -76,5 +84,9 @@ public class StardewcraftsveMod {
             throw new IllegalStateException(
                     "Stardewcraft 0.5.1 recipe shops discarded addon namespace: " + actual);
         }
+    }
+
+    private static void onAddReloadListeners(AddReloadListenerEvent event) {
+        event.addListener(BUNDLE_RELOAD_LISTENER);
     }
 }

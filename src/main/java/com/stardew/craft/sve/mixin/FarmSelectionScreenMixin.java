@@ -3,7 +3,6 @@ package com.stardew.craft.sve.mixin;
 import com.stardew.craft.client.gui.FarmSelectionScreen;
 import com.stardew.craft.sve.client.SveFarmDifficultyCheckbox;
 import com.stardew.craft.sve.network.BundleDifficultySelectionPayload;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.screens.Screen;
@@ -23,7 +22,6 @@ public abstract class FarmSelectionScreenMixin extends Screen {
     @Shadow private EditBox nameField;
 
     @Unique private boolean stardewcraftsve$hardBundles;
-    @Unique private SveFarmDifficultyCheckbox stardewcraftsve$hardBundlesCheckbox;
 
     protected FarmSelectionScreenMixin(Component title) {
         super(title);
@@ -32,25 +30,14 @@ public abstract class FarmSelectionScreenMixin extends Screen {
     @Inject(method = "init", at = @At("RETURN"), require = 1)
     private void stardewcraftsve$addHardBundleOption(CallbackInfo ci) {
         int y = nameField.getY() + nameField.getHeight() + 7;
-        stardewcraftsve$hardBundlesCheckbox = new SveFarmDifficultyCheckbox(
+        SveFarmDifficultyCheckbox checkbox = new SveFarmDifficultyCheckbox(
                 rightX, y, rightW, font,
                 Component.translatable("gui.stardewcraftsve.farm_selection.hard_bundles"),
                 stardewcraftsve$hardBundles,
                 selected -> stardewcraftsve$hardBundles = selected);
-        stardewcraftsve$hardBundlesCheckbox.setTooltip(Tooltip.create(Component.translatable(
+        checkbox.setTooltip(Tooltip.create(Component.translatable(
                 "gui.stardewcraftsve.farm_selection.hard_bundles.tooltip")));
-        addRenderableWidget(stardewcraftsve$hardBundlesCheckbox);
-    }
-
-    @Inject(method = "render", at = @At("RETURN"), require = 1)
-    private void stardewcraftsve$renderHardBundleOption(
-            GuiGraphics graphics, int mouseX, int mouseY, float partialTick, CallbackInfo ci) {
-        if (stardewcraftsve$hardBundlesCheckbox == null) return;
-        stardewcraftsve$hardBundlesCheckbox.render(graphics, mouseX, mouseY, partialTick);
-        if (stardewcraftsve$hardBundlesCheckbox.isHovered()) {
-            graphics.renderTooltip(font, Component.translatable(
-                    "gui.stardewcraftsve.farm_selection.hard_bundles.tooltip"), mouseX, mouseY);
-        }
+        addRenderableWidget(checkbox);
     }
 
     @Inject(method = "sendSelection", at = @At("HEAD"), require = 1)
