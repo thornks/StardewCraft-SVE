@@ -1,7 +1,12 @@
 package com.stardew.craft.sve.animal;
 
-import com.stardew.craft.animal.service.AnimalShopService;
 import com.stardew.craft.entity.animal.CoopAnimalVariant;
+
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /** Central gameplay values for SVE farm animals. */
 public final class SveAnimalRules {
@@ -22,82 +27,112 @@ public final class SveAnimalRules {
     public static final int CAMEL_SELL_BASE_PRICE = 28_616;
     public static final int CAMEL_MAX_SELL_PRICE = 37_200;
 
-    public static final boolean SHOP_MODELS_READY = true;
+    private static final List<Definition> DEFINITIONS = List.of(
+            new Definition(
+                    GOOSE_ID,
+                    "coop",
+                    3,
+                    GOOSE_PURCHASE_PRICE,
+                    GOOSE_DAYS_TO_MATURE,
+                    GOOSE_PRODUCE_INTERVAL_DAYS,
+                    "goose_egg",
+                    "goose_egg",
+                    GOOSE_SELL_BASE_PRICE,
+                    15_600,
+                    true,
+                    GOOSE_VARIANT_INDEX,
+                    "Goose",
+                    "stardewcraftsve.animal.shop.desc.goose",
+                    "stardewcraft.animal.shop.lock.coop_t3"
+            ),
+            new Definition(
+                    CAMEL_ID,
+                    "barn",
+                    3,
+                    CAMEL_PURCHASE_PRICE,
+                    CAMEL_DAYS_TO_MATURE,
+                    CAMEL_PRODUCE_INTERVAL_DAYS,
+                    "camel_wool",
+                    null,
+                    CAMEL_SELL_BASE_PRICE,
+                    CAMEL_MAX_SELL_PRICE,
+                    false,
+                    CAMEL_VARIANT_INDEX,
+                    "Camel",
+                    "stardewcraftsve.animal.shop.desc.camel",
+                    "stardewcraft.animal.shop.lock.barn_t3"
+            )
+    );
+    private static final Map<String, Definition> BY_ID = DEFINITIONS.stream()
+            .collect(Collectors.toUnmodifiableMap(Definition::id, Function.identity()));
 
     private SveAnimalRules() {
     }
 
     public static boolean isSveAnimal(String animalTypeId) {
-        return GOOSE_ID.equals(animalTypeId) || CAMEL_ID.equals(animalTypeId);
+        return definition(animalTypeId) != null;
+    }
+
+    public static List<Definition> definitions() {
+        return DEFINITIONS;
+    }
+
+    public static Definition definition(String animalTypeId) {
+        if (animalTypeId == null || animalTypeId.isBlank()) return null;
+        return BY_ID.get(animalTypeId.trim().toLowerCase(Locale.ROOT));
     }
 
     public static String requiredBuildingFamily(String animalTypeId) {
-        if (GOOSE_ID.equals(animalTypeId)) return "coop";
-        if (CAMEL_ID.equals(animalTypeId)) return "barn";
-        return "";
+        Definition definition = definition(animalTypeId);
+        return definition == null ? "" : definition.buildingFamily();
     }
 
     public static int purchasePrice(String animalTypeId) {
-        if (GOOSE_ID.equals(animalTypeId)) return GOOSE_PURCHASE_PRICE;
-        if (CAMEL_ID.equals(animalTypeId)) return CAMEL_PURCHASE_PRICE;
-        return 0;
+        Definition definition = definition(animalTypeId);
+        return definition == null ? 0 : definition.purchasePrice();
     }
 
     public static int daysToMature(String animalTypeId) {
-        if (GOOSE_ID.equals(animalTypeId)) return GOOSE_DAYS_TO_MATURE;
-        if (CAMEL_ID.equals(animalTypeId)) return CAMEL_DAYS_TO_MATURE;
-        return 0;
+        Definition definition = definition(animalTypeId);
+        return definition == null ? 0 : definition.daysToMature();
     }
 
     public static int produceIntervalDays(String animalTypeId) {
-        if (GOOSE_ID.equals(animalTypeId)) return GOOSE_PRODUCE_INTERVAL_DAYS;
-        if (CAMEL_ID.equals(animalTypeId)) return CAMEL_PRODUCE_INTERVAL_DAYS;
-        return 0;
+        Definition definition = definition(animalTypeId);
+        return definition == null ? 0 : definition.produceIntervalDays();
     }
 
     public static boolean canReproduce(String animalTypeId) {
-        return !CAMEL_ID.equals(animalTypeId);
+        Definition definition = definition(animalTypeId);
+        return definition == null || definition.canReproduce();
     }
 
     public static int sellPrice(String animalTypeId, int friendship) {
-        int basePrice;
-        if (GOOSE_ID.equals(animalTypeId)) {
-            basePrice = GOOSE_SELL_BASE_PRICE;
-        } else if (CAMEL_ID.equals(animalTypeId)) {
-            basePrice = CAMEL_SELL_BASE_PRICE;
-        } else {
-            return 0;
-        }
+        Definition definition = definition(animalTypeId);
+        if (definition == null) return 0;
 
         int clampedFriendship = Math.max(0, Math.min(1_000, friendship));
-        if (CAMEL_ID.equals(animalTypeId) && clampedFriendship == 1_000) {
-            return CAMEL_MAX_SELL_PRICE;
-        }
         double friendshipRatio = clampedFriendship / 1_000.0D;
-        return (int) Math.floor(basePrice * (friendshipRatio + 0.3D));
+        int price = (int) Math.floor(definition.sellBasePrice() * (friendshipRatio + 0.3D));
+        return Math.min(definition.maxSellPrice(), price);
     }
 
-    public static AnimalShopService.ShopAnimalRule gooseShopRule() {
-        return new AnimalShopService.ShopAnimalRule(
-                GOOSE_ID,
-                "coop",
-                3,
-                GOOSE_PURCHASE_PRICE,
-                "Goose",
-                "stardewcraftsve.animal.shop.desc.goose",
-                "stardewcraft.animal.shop.lock.coop_t3"
-        );
-    }
-
-    public static AnimalShopService.ShopAnimalRule camelShopRule() {
-        return new AnimalShopService.ShopAnimalRule(
-                CAMEL_ID,
-                "barn",
-                3,
-                CAMEL_PURCHASE_PRICE,
-                "Camel",
-                "stardewcraftsve.animal.shop.desc.camel",
-                "stardewcraft.animal.shop.lock.barn_t3"
-        );
+    public record Definition(
+            String id,
+            String buildingFamily,
+            int requiredBuildingTier,
+            int purchasePrice,
+            int daysToMature,
+            int produceIntervalDays,
+            String produceItemPath,
+            String incubationItemPath,
+            int sellBasePrice,
+            int maxSellPrice,
+            boolean canReproduce,
+            int variantIndex,
+            String displayName,
+            String descriptionKey,
+            String lockReasonKey
+    ) {
     }
 }

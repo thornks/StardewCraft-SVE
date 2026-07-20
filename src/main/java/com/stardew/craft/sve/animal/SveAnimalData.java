@@ -20,18 +20,20 @@ public final class SveAnimalData {
 
     private static final StardewAnimalData GOOSE = new StardewAnimalData(
             COOP,
-            SveAnimalRules.GOOSE_PURCHASE_PRICE,
-            SveAnimalRules.GOOSE_DAYS_TO_MATURE,
-            ResourceLocation.fromNamespaceAndPath(StardewcraftsveMod.MODID, "goose_egg"),
-            SveAnimalRules.GOOSE_PRODUCE_INTERVAL_DAYS
+            definition(SveAnimalRules.GOOSE_ID).purchasePrice(),
+            definition(SveAnimalRules.GOOSE_ID).daysToMature(),
+            ResourceLocation.fromNamespaceAndPath(
+                    StardewcraftsveMod.MODID, definition(SveAnimalRules.GOOSE_ID).produceItemPath()),
+            definition(SveAnimalRules.GOOSE_ID).produceIntervalDays()
     );
 
     private static final StardewAnimalData CAMEL = new StardewAnimalData(
             BARN,
-            SveAnimalRules.CAMEL_PURCHASE_PRICE,
-            SveAnimalRules.CAMEL_DAYS_TO_MATURE,
-            ResourceLocation.fromNamespaceAndPath(StardewcraftsveMod.MODID, "camel_wool"),
-            SveAnimalRules.CAMEL_PRODUCE_INTERVAL_DAYS
+            definition(SveAnimalRules.CAMEL_ID).purchasePrice(),
+            definition(SveAnimalRules.CAMEL_ID).daysToMature(),
+            ResourceLocation.fromNamespaceAndPath(
+                    StardewcraftsveMod.MODID, definition(SveAnimalRules.CAMEL_ID).produceItemPath()),
+            definition(SveAnimalRules.CAMEL_ID).produceIntervalDays()
     );
 
     private SveAnimalData() {
@@ -90,14 +92,8 @@ public final class SveAnimalData {
     }
 
     public static StardewAnimalData suppressBaseProduction(String animalTypeId, StardewAnimalData resolved) {
-        StardewAnimalData data;
-        if (SveAnimalRules.GOOSE_ID.equals(animalTypeId)) {
-            data = GOOSE;
-        } else if (SveAnimalRules.CAMEL_ID.equals(animalTypeId)) {
-            data = CAMEL;
-        } else {
-            return resolved;
-        }
+        StardewAnimalData data = forType(animalTypeId);
+        if (data == null) return resolved;
         return new StardewAnimalData(
                 data.buildingType(),
                 data.purchasePrice(),
@@ -105,5 +101,21 @@ public final class SveAnimalData {
                 data.produce(),
                 Integer.MAX_VALUE
         );
+    }
+
+    public static StardewAnimalData forType(String animalTypeId) {
+        SveAnimalRules.Definition definition = SveAnimalRules.definition(animalTypeId);
+        if (definition == null) return null;
+        return switch (definition.id()) {
+            case SveAnimalRules.GOOSE_ID -> GOOSE;
+            case SveAnimalRules.CAMEL_ID -> CAMEL;
+            default -> null;
+        };
+    }
+
+    private static SveAnimalRules.Definition definition(String animalTypeId) {
+        SveAnimalRules.Definition definition = SveAnimalRules.definition(animalTypeId);
+        if (definition == null) throw new IllegalStateException("Missing SVE animal definition: " + animalTypeId);
+        return definition;
     }
 }

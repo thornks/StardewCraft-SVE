@@ -1,9 +1,8 @@
 package com.stardew.craft.sve.mixin;
 
-import com.stardew.craft.animal.data.AnimalWorldData;
-import com.stardew.craft.animal.model.AnimalBuildingRecord;
 import com.stardew.craft.menu.BarnManagerMenu;
 import com.stardew.craft.menu.CoopManagerMenu;
+import com.stardew.craft.sve.animal.SveAnimalCompatibility;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -29,19 +28,7 @@ public abstract class AnimalManagerMenuMixin {
         }
 
         String family = (Object) this instanceof CoopManagerMenu ? "coop" : "barn";
-        AnimalWorldData worldData = AnimalWorldData.get(level);
-        AnimalBuildingRecord building = worldData.findBuildingByManagerAnyOwner(
-                level.dimension().location().toString(),
-                family,
-                managerPos
-        ).orElse(null);
-        if (building == null) {
-            return;
-        }
-
-        long recordCount = worldData.getAnimals().stream()
-                .filter(record -> building.buildingId().equals(record.buildingId()))
-                .count();
-        boundAnimalCount = Math.max(building.memberAnimalIds().size(), (int) recordCount);
+        SveAnimalCompatibility.managedAnimalCount(level, family, managerPos)
+                .ifPresent(count -> boundAnimalCount = count);
     }
 }

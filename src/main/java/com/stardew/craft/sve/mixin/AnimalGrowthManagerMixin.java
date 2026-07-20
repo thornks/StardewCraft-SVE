@@ -1,14 +1,11 @@
 package com.stardew.craft.sve.mixin;
 
 import com.stardew.craft.api.v1.agriculture.StardewAnimalData;
-import com.stardew.craft.api.v1.agriculture.StardewAgricultureDataApi;
 import com.stardew.craft.animal.data.AnimalWorldData;
 import com.stardew.craft.animal.model.FarmAnimalRecord;
-import com.stardew.craft.entity.animal.BaseCoopAnimalEntity;
 import com.stardew.craft.manager.AnimalGrowthManager;
-import com.stardew.craft.sve.animal.SveAnimalData;
+import com.stardew.craft.sve.animal.SveAnimalCompatibility;
 import com.stardew.craft.sve.animal.SveAnimalProduction;
-import com.stardew.craft.sve.animal.SveAnimalRules;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import org.spongepowered.asm.mixin.Mixin;
@@ -50,11 +47,7 @@ public abstract class AnimalGrowthManagerMixin {
     private StardewAnimalData stardewcraftsve$suppressGenericProduction(
             Entity entity
     ) {
-        StardewAnimalData resolved = StardewAgricultureDataApi.animal(entity);
-        if (entity instanceof BaseCoopAnimalEntity animal) {
-            return SveAnimalData.suppressBaseProduction(animal.getManagedAnimalType(), resolved);
-        }
-        return resolved;
+        return SveAnimalCompatibility.suppressBaseProduction(entity);
     }
 
     @Redirect(
@@ -66,6 +59,6 @@ public abstract class AnimalGrowthManagerMixin {
             require = 1
     )
     private boolean stardewcraftsve$excludeCamelsFromReproduction(FarmAnimalRecord record) {
-        return SveAnimalRules.canReproduce(record.animalTypeId()) && record.allowReproduction();
+        return SveAnimalCompatibility.allowsRecordReproduction(record);
     }
 }

@@ -20,7 +20,11 @@ public final class SveAnimalProduction {
             int absoluteDaysPlayed,
             boolean offlineCatchUp
     ) {
-        if (offlineCatchUp || record.isBaby()) {
+        if (!isProductionDue(
+                record.animalTypeId(),
+                record.isBaby(),
+                offlineCatchUp,
+                record.daysSinceLastProduce())) {
             return;
         }
 
@@ -37,10 +41,6 @@ public final class SveAnimalProduction {
             FarmAnimalRecord record,
             int absoluteDaysPlayed
     ) {
-        if (record.daysSinceLastProduce() < SveAnimalRules.GOOSE_PRODUCE_INTERVAL_DAYS) {
-            return;
-        }
-
         RandomSource random = randomForAnimalDay(record.animalId(), absoluteDaysPlayed);
         int quality = rollQuality(record, random);
         ItemStack egg = new ItemStack(ModItems.GOOSE_EGG.get());
@@ -50,7 +50,7 @@ public final class SveAnimalProduction {
         }
 
         record.resetDaysSinceLastProduce();
-        if (random.nextDouble() < SveAnimalRules.GOLDEN_GOOSE_EGG_CHANCE) {
+        if (isGoldenGooseEggRoll(random.nextDouble())) {
             ItemStack goldenEgg = new ItemStack(ModItems.GOLDEN_GOOSE_EGG.get());
             QualityHelper.setQuality(goldenEgg, quality);
             placeProduce(level, worldData, record, goldenEgg);
@@ -63,10 +63,6 @@ public final class SveAnimalProduction {
             FarmAnimalRecord record,
             int absoluteDaysPlayed
     ) {
-        if (record.daysSinceLastProduce() < SveAnimalRules.CAMEL_PRODUCE_INTERVAL_DAYS) {
-            return;
-        }
-
         RandomSource random = randomForAnimalDay(record.animalId(), absoluteDaysPlayed);
         ItemStack wool = new ItemStack(ModItems.CAMEL_WOOL.get());
         QualityHelper.setQuality(wool, rollQuality(record, random));
@@ -115,5 +111,19 @@ public final class SveAnimalProduction {
         seed ^= animalId * 0xBF58476D1CE4E5B9L;
         seed ^= (long) absoluteDaysPlayed * 0x94D049BB133111EBL;
         return RandomSource.create(seed);
+    }
+
+    public static boolean isProductionDue(
+            String animalTypeId,
+            boolean baby,
+            boolean offlineCatchUp,
+            int daysSinceLastProduce
+    ) {
+        int interval = SveAnimalRules.produceIntervalDays(animalTypeId);
+        return interval > 0 && !baby && !offlineCatchUp && daysSinceLastProduce >= interval;
+    }
+
+    public static boolean isGoldenGooseEggRoll(double roll) {
+        return roll >= 0.0D && roll < SveAnimalRules.GOLDEN_GOOSE_EGG_CHANCE;
     }
 }

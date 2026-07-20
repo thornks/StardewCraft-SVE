@@ -2,8 +2,7 @@ package com.stardew.craft.sve.mixin;
 
 import com.stardew.craft.animal.service.AnimalEntitySyncService;
 import com.stardew.craft.entity.animal.BaseCoopAnimalEntity;
-import com.stardew.craft.sve.animal.SveAnimalEntities;
-import com.stardew.craft.sve.animal.SveAnimalRules;
+import com.stardew.craft.sve.animal.SveAnimalCompatibility;
 import net.minecraft.world.entity.EntityType;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -17,10 +16,8 @@ public abstract class AnimalEntitySyncServiceMixin {
             String animalTypeId,
             CallbackInfoReturnable<EntityType<? extends BaseCoopAnimalEntity>> cir
     ) {
-        if (SveAnimalRules.GOOSE_ID.equals(animalTypeId)) {
-            cir.setReturnValue(SveAnimalEntities.GOOSE.get());
-        } else if (SveAnimalRules.CAMEL_ID.equals(animalTypeId)) {
-            cir.setReturnValue(SveAnimalEntities.CAMEL.get());
-        }
+        EntityType<? extends BaseCoopAnimalEntity> entityType =
+                SveAnimalCompatibility.entityType(animalTypeId);
+        if (entityType != null) cir.setReturnValue(entityType);
     }
 }
