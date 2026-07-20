@@ -1,0 +1,14 @@
+{
+  "output": "stardewcraftsve:nectarine_fruit_bread",
+  "ingredients": [
+    {
+      "item": "stardewcraftsve:nectarine"
+    },
+    {
+      "item": "stardewcraft:wheat_flour"
+    },
+    {
+      "item": "stardewcraft:sugar"
+    }
+  ]
+}

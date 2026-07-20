@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "stardewcraftsve:item/forage/shark_tooth",
+    "particle": "stardewcraftsve:item/forage/shark_tooth"
+  },
+  "render_type": "minecraft:cutout"
+}

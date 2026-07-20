@@ -1,0 +1,40 @@
+{
+  "npc_id": "sophia",
+  "loved": [
+    "stardewcraft:vegan_cone",
+    "stardewcraft:candy",
+    "stardewcraftsve:golden_goose_egg",
+    "stardewcraftsve:prismatic_pop",
+    "stardewcraftsve:puppyfish",
+    "stardewcraft:mixed_berry_pie",
+    "stardewcraft:grampleton_orange_chicken",
+    "stardewcraft:flower_cookie"
+  ],
+  "liked": [
+    "stardewcraftsve:gold_carrot"
+  ],
+  "neutral": [
+    "stardewcraftsve:stamina_capsule",
+    "stardewcraftsve:sports_drink",
+    "stardewcraftsve:green_mushroom",
+    "stardewcraftsve:blue_moon_wine",
+    "stardewcraftsve:aged_blue_moon_wine"
+  ],
+  "disliked": [
+    "stardewcraftsve:super_joja_cola",
+    "stardewcraft:seaweed_salad",
+    "stardewcraftsve:mushroom_colony",
+    "stardewcraftsve:dulse_seaweed"
+  ],
+  "hated": [
+    "stardewcraftsve:void_eel",
+    "stardewcraftsve:starfish",
+    "stardewcraftsve:seahorse",
+    "stardewcraftsve:sea_sponge",
+    "stardewcraftsve:minnow",
+    "stardewcraftsve:king_salmon",
+    "stardewcraft:frog_legs",
+    "stardewcraftsve:clownfish",
+    "stardewcraft:big_bark_burger"
+  ]
+}

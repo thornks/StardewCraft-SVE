@@ -1,0 +1,27 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "stardewcraftsve:item/crops/cucumber",
+    "particle": "stardewcraftsve:item/crops/cucumber"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 1
+      },
+      "model": "stardewcraftsve:item/cucumber_silver"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 2
+      },
+      "model": "stardewcraftsve:item/cucumber_gold"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 3
+      },
+      "model": "stardewcraftsve:item/cucumber_iridium"
+    }
+  ]
+}

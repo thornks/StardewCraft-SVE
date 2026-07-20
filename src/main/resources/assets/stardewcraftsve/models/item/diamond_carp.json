@@ -1,0 +1,27 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "stardewcraftsve:item/fish/diamond_carp",
+    "particle": "stardewcraftsve:item/fish/diamond_carp"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 1
+      },
+      "model": "stardewcraftsve:item/diamond_carp_silver"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 2
+      },
+      "model": "stardewcraftsve:item/diamond_carp_gold"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 3
+      },
+      "model": "stardewcraftsve:item/diamond_carp_iridium"
+    }
+  ]
+}

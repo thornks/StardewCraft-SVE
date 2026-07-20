@@ -1,0 +1,27 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "stardewcraftsve:item/flower/winter_star_rose",
+    "particle": "stardewcraftsve:item/flower/winter_star_rose"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 1
+      },
+      "model": "stardewcraftsve:item/winter_star_rose_silver"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 2
+      },
+      "model": "stardewcraftsve:item/winter_star_rose_gold"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 3
+      },
+      "model": "stardewcraftsve:item/winter_star_rose_iridium"
+    }
+  ]
+}

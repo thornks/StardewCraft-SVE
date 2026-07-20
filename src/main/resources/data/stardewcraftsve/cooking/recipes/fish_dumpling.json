@@ -1,0 +1,18 @@
+{
+  "output": "stardewcraftsve:fish_dumpling",
+  "ingredients": [
+    {
+      "categories": [
+        "stardewcraft:fish",
+        "stardewcraft:legendary_fish"
+      ],
+      "display_item": "stardewcraft:sardine"
+    },
+    {
+      "item": "stardewcraft:wheat_flour"
+    },
+    {
+      "item": "stardewcraft:oil"
+    }
+  ]
+}

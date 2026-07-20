@@ -1,0 +1,17 @@
+{
+  "areas": [
+    { "min_x": -123, "min_y": 69, "min_z": -104, "max_x": -43, "max_y": 79, "max_z": -65 },
+    { "min_x": 11, "min_y": 81, "min_z": -151, "max_x": 121, "max_y": 93, "max_z": -80 }
+  ],
+  "min_daily_spawn": 1,
+  "max_daily_spawn": 4,
+  "max_spawned_at_once": 6,
+  "surface": "natural",
+  "entries": [
+    { "block": "stardewcraftsve:forage_thistle", "chance": 0.4 },
+    { "block": "stardewcraftsve:forage_ferngill_primrose", "seasons": ["spring"], "chance": 0.4 },
+    { "block": "stardewcraftsve:forage_goldenrod", "seasons": ["summer", "fall"], "chance": 0.3 },
+    { "block": "stardewcraftsve:forage_diamond_flower", "seasons": ["winter"], "chance": 0.4 },
+    { "block": "stardewcraftsve:forage_winter_star_rose", "seasons": ["winter"], "chance": 0.3 }
+  ]
+}

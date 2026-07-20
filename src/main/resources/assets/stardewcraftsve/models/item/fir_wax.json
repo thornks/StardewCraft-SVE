@@ -1,0 +1,27 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "stardewcraftsve:item/animal_product/fir_wax",
+    "particle": "stardewcraftsve:item/animal_product/fir_wax"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 1
+      },
+      "model": "stardewcraftsve:item/fir_wax_silver"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 2
+      },
+      "model": "stardewcraftsve:item/fir_wax_gold"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 3
+      },
+      "model": "stardewcraftsve:item/fir_wax_iridium"
+    }
+  ]
+}

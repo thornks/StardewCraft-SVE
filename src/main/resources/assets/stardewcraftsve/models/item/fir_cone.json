@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "stardewcraftsve:item/forage/fir_cone",
+    "particle": "stardewcraftsve:item/forage/fir_cone"
+  }
+}

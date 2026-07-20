@@ -1,0 +1,24 @@
+{
+  "legacy_id": "isaac_vendor",
+  "owner_npc": "isaac",
+  "owner_dialogue": "stardewcraftsve.shop.isaac_vendor.dialogue",
+  "entries": [
+    {
+      "item": "stardewcraftsve:bonefish",
+      "price": 6000
+    },
+    {
+      "item": "stardewcraftsve:hero_elixir",
+      "price": 12000
+    },
+    {
+      "item": "stardewcraftsve:tempered_galaxy_hammer",
+      "price": 400000
+    },
+    {
+      "item": "stardewcraftsve:tempered_galaxy_sword",
+      "price": 600000
+    }
+  ],
+  "accepted_sell_types": []
+}

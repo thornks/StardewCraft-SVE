@@ -1,0 +1,14 @@
+{
+  "output": "stardewcraftsve:gingerbread_man",
+  "ingredients": [
+    {
+      "item": "stardewcraft:ginger"
+    },
+    {
+      "item": "stardewcraft:wheat_flour"
+    },
+    {
+      "item": "stardewcraft:sugar"
+    }
+  ]
+}

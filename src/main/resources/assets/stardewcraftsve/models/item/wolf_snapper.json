@@ -1,0 +1,27 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "stardewcraftsve:item/fish/wolf_snapper",
+    "particle": "stardewcraftsve:item/fish/wolf_snapper"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 1
+      },
+      "model": "stardewcraftsve:item/wolf_snapper_silver"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 2
+      },
+      "model": "stardewcraftsve:item/wolf_snapper_gold"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 3
+      },
+      "model": "stardewcraftsve:item/wolf_snapper_iridium"
+    }
+  ]
+}

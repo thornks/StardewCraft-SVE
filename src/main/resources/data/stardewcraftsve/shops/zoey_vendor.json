@@ -1,0 +1,16 @@
+{
+  "legacy_id": "zoey_vendor",
+  "owner_npc": "zoey",
+  "owner_dialogue": "stardewcraftsve.shop.zoey_vendor.dialogue",
+  "entries": [
+    {
+      "item": "stardewcraftsve:joja_veggie_seeds",
+      "price": 600
+    },
+    {
+      "item": "stardewcraftsve:joja_berry_starter",
+      "price": 6500
+    }
+  ],
+  "accepted_sell_types": []
+}

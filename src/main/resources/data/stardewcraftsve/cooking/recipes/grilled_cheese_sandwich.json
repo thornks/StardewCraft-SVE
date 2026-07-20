@@ -1,0 +1,14 @@
+{
+  "output": "stardewcraftsve:grilled_cheese_sandwich",
+  "ingredients": [
+    {
+      "item": "stardewcraft:bread"
+    },
+    {
+      "item": "stardewcraft:cheese"
+    },
+    {
+      "item": "stardewcraftsve:butter"
+    }
+  ]
+}

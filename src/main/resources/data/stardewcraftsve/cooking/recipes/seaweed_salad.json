@@ -1,0 +1,16 @@
+{
+  "output": "stardewcraftsve:seaweed_salad",
+  "ingredients": [
+    {
+      "item": "stardewcraftsve:dulse_seaweed",
+      "count": 2
+    },
+    {
+      "item": "stardewcraft:seaweed",
+      "count": 2
+    },
+    {
+      "item": "stardewcraft:oil"
+    }
+  ]
+}

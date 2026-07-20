@@ -1,0 +1,47 @@
+{
+  "npc_id": "marlonfay",
+  "loved": [
+    "stardewcraftsve:golden_goose_egg",
+    "stardewcraftsve:prismatic_pop",
+    "stardewcraftsve:void_shard",
+    "stardewcraftsve:void_pebble",
+    "stardewcraft:void_delight",
+    "stardewcraftsve:swirl_stone",
+    "stardewcraftsve:slime_berry",
+    "stardewcraftsve:lightning_elixir",
+    "stardewcraftsve:hero_elixir",
+    "stardewcraftsve:haste_elixir",
+    "stardewcraftsve:gravity_elixir",
+    "stardewcraftsve:goldenfish",
+    "stardewcraftsve:daggerfish",
+    "stardewcraftsve:barbarian_elixir",
+    "stardewcraftsve:armor_elixir",
+    "stardewcraftsve:aged_blue_moon_wine",
+    "stardewcraftsve:aegis_elixir"
+  ],
+  "liked": [
+    "stardewcraftsve:gold_carrot",
+    "stardewcraftsve:void_soul",
+    "stardewcraft:void_salmon_sushi",
+    "stardewcraftsve:void_root",
+    "stardewcraft:mushroom_berry_rice",
+    "stardewcraftsve:monster_mushroom",
+    "stardewcraftsve:monster_fruit",
+    "stardewcraftsve:golden_ocean_flower",
+    "stardewcraftsve:gemfish",
+    "stardewcraft:frog_legs"
+  ],
+  "neutral": [
+    "stardewcraftsve:smelly_rafflesia"
+  ],
+  "disliked": [
+    "stardewcraftsve:dulse_seaweed"
+  ],
+  "hated": [
+    "stardewcraft:vegan_cone",
+    "stardewcraft:ice_cream_sundae",
+    "stardewcraftsve:super_joja_cola",
+    "stardewcraftsve:rusty_blade",
+    "stardewcraftsve:marsh_tonic"
+  ]
+}

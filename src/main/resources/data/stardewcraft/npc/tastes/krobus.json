@@ -1,0 +1,34 @@
+{
+  "npc_id": "krobus",
+  "loved": [
+    "stardewcraftsve:stone_of_yoba",
+    "stardewcraftsve:golden_goose_egg",
+    "stardewcraftsve:prismatic_pop",
+    "stardewcraftsve:void_soul",
+    "stardewcraftsve:void_shard",
+    "stardewcraft:void_salmon_sushi",
+    "stardewcraftsve:void_root",
+    "stardewcraftsve:void_pebble",
+    "stardewcraft:void_delight",
+    "stardewcraftsve:swirl_stone",
+    "stardewcraftsve:poison_mushroom",
+    "stardewcraftsve:meteor_carp"
+  ],
+  "neutral": [
+    "stardewcraftsve:stamina_capsule",
+    "stardewcraftsve:sports_drink",
+    "stardewcraft:seaweed_salad",
+    "stardewcraftsve:mushroom_colony",
+    "stardewcraft:flower_cookie",
+    "stardewcraftsve:dulse_seaweed"
+  ],
+  "disliked": [
+    "stardewcraftsve:swamp_essence",
+    "stardewcraftsve:sludge",
+    "stardewcraftsve:gold_carrot",
+    "stardewcraftsve:slime_berry",
+    "stardewcraftsve:radioactive_bass",
+    "stardewcraftsve:monster_mushroom",
+    "stardewcraftsve:monster_fruit"
+  ]
+}

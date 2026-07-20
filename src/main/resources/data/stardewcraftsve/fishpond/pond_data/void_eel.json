@@ -1,0 +1,60 @@
+{
+  "fish": "stardewcraftsve:void_eel",
+  "max_population": -1,
+  "spawn_time": -1,
+  "base_min_produce_chance": 0.15,
+  "base_max_produce_chance": 0.95,
+  "produced_items": [
+    {
+      "item": "stardewcraftsve:swirl_stone",
+      "required_population": 10,
+      "chance": 0.02,
+      "min_count": 1,
+      "max_count": 1
+    },
+    {
+      "item": "stardewcraftsve:void_pebble",
+      "required_population": 8,
+      "chance": 0.06,
+      "min_count": 1,
+      "max_count": 1
+    },
+    {
+      "item": "stardewcraft:void_essence",
+      "required_population": 5,
+      "chance": 0.2,
+      "min_count": 10,
+      "max_count": 30
+    },
+    {
+      "item": "stardewcraft:roe",
+      "required_population": 0,
+      "chance": 1,
+      "min_count": 1,
+      "max_count": 1
+    }
+  ],
+  "population_gates": {
+    "2": [
+      {
+        "item": "stardewcraft:void_essence",
+        "min_count": 30,
+        "max_count": 30
+      }
+    ],
+    "7": [
+      {
+        "item": "stardewcraft:void_egg",
+        "min_count": 5,
+        "max_count": 5
+      }
+    ],
+    "10": [
+      {
+        "item": "stardewcraftsve:void_pebble",
+        "min_count": 1,
+        "max_count": 1
+      }
+    ]
+  }
+}

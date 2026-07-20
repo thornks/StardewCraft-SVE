@@ -1,0 +1,16 @@
+{
+  "legacy_id": "axel_vendor",
+  "owner_npc": "axel",
+  "owner_dialogue": "stardewcraftsve.shop.axel_vendor.dialogue",
+  "entries": [
+    {
+      "item": "stardewcraftsve:wolf_snapper",
+      "price": 40000
+    },
+    {
+      "item": "stardewcraftsve:turretfish",
+      "price": 60000
+    }
+  ],
+  "accepted_sell_types": []
+}

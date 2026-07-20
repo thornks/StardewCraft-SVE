@@ -1,0 +1,42 @@
+[
+  {
+    "id": "marlon_two_hearts",
+    "text": "stardewcraftsve.mail.marlon.cherry_bomb",
+    "background": 0,
+    "attachedItems": [
+      {"id": "stardewcraft:cherry_bomb", "count": 5}
+    ]
+  },
+  {
+    "id": "marlon_four_hearts",
+    "text": "stardewcraftsve.mail.marlon.four_hearts",
+    "background": 0,
+    "attachedItems": [
+      {"id": "stardewcraft:cherry_bomb", "count": 10}
+    ]
+  },
+  {
+    "id": "marlon_six_hearts",
+    "text": "stardewcraftsve.mail.marlon.six_hearts",
+    "background": 0,
+    "attachedItems": [
+      {"id": "stardewcraft:bomb_item", "count": 10}
+    ]
+  },
+  {
+    "id": "marlon_eight_hearts",
+    "text": "stardewcraftsve.mail.marlon.eight_hearts",
+    "background": 0,
+    "attachedItems": [
+      {"id": "stardewcraft:mega_bomb", "count": 10}
+    ]
+  },
+  {
+    "id": "marlon_ten_hearts",
+    "text": "stardewcraftsve.mail.marlon.ten_hearts",
+    "background": 0,
+    "attachedItems": [
+      {"id": "stardewcraft:life_elixir", "count": 15}
+    ]
+  }
+]

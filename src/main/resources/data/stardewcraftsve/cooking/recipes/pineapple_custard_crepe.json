@@ -1,0 +1,17 @@
+{
+  "output": "stardewcraftsve:pineapple_custard_crepe",
+  "ingredients": [
+    {
+      "item": "stardewcraft:pineapple"
+    },
+    {
+      "item": "stardewcraft:sugar"
+    },
+    {
+      "item": "stardewcraft:wheat_flour"
+    },
+    {
+      "item": "stardewcraftsve:butter"
+    }
+  ]
+}

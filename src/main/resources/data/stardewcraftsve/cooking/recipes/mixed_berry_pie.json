@@ -1,0 +1,23 @@
+{
+  "output": "stardewcraftsve:mixed_berry_pie",
+  "ingredients": [
+    {
+      "item": "stardewcraft:strawberry"
+    },
+    {
+      "item": "stardewcraftsve:salal_berry"
+    },
+    {
+      "item": "stardewcraft:blackberry"
+    },
+    {
+      "item": "stardewcraftsve:bearberrys"
+    },
+    {
+      "item": "stardewcraft:sugar"
+    },
+    {
+      "item": "stardewcraft:wheat_flour"
+    }
+  ]
+}

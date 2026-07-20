@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "stardewcraftsve:ancient_ferns_seed",
+    "stardewcraftsve:birch_seed",
+    "stardewcraftsve:butternut_squash_seed",
+    "stardewcraftsve:cucumber_seed",
+    "stardewcraftsve:fungus_seed",
+    "stardewcraftsve:fir_cone",
+    "stardewcraftsve:gold_carrot_seed",
+    "stardewcraftsve:joja_berry_starter",
+    "stardewcraftsve:joja_veggie_seeds",
+    "stardewcraftsve:nectarine_sapling",
+    "stardewcraftsve:pear_sapling",
+    "stardewcraftsve:persimmon_sapling",
+    "stardewcraftsve:slime_seed",
+    "stardewcraftsve:stalk_seed",
+    "stardewcraftsve:sweet_potato_seed",
+    "stardewcraftsve:void_seed"
+  ]
+}

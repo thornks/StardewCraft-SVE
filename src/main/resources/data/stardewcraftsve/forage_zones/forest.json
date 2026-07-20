@@ -1,0 +1,16 @@
+{
+  "areas": [
+    { "min_x": -194, "min_y": 50, "min_z": -12, "max_x": -47, "max_y": 74, "max_z": 138 }
+  ],
+  "min_daily_spawn": 1,
+  "max_daily_spawn": 4,
+  "max_spawned_at_once": 6,
+  "surface": "natural",
+  "entries": [
+    {
+      "block": "stardewcraftsve:forage_mushroom_colony",
+      "seasons": ["fall"],
+      "chance": 0.5
+    }
+  ]
+}

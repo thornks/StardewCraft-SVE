@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "stardewcraftsve:block/crops/void_root_stage3"
+  },
+  "render_type": "minecraft:cutout"
+}

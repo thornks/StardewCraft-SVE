@@ -1,0 +1,21 @@
+{
+  "npc_id": "scarlett",
+  "loved": [
+    "stardewcraftsve:golden_goose_egg",
+    "stardewcraftsve:prismatic_pop",
+    "stardewcraft:cheese_charcuterie",
+    "stardewcraft:grampleton_orange_chicken",
+    "stardewcraft:baked_berry_oatmeal_supreme",
+    "stardewcraftsve:aged_blue_moon_wine"
+  ],
+  "liked": [
+    "stardewcraftsve:gold_carrot"
+  ],
+  "disliked": [
+    "stardewcraftsve:dulse_seaweed"
+  ],
+  "hated": [
+    "stardewcraft:frog_legs",
+    "stardewcraftsve:frog"
+  ]
+}

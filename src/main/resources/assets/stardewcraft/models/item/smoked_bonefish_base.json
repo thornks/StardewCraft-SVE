@@ -1,0 +1,27 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "stardewcraft:item/fish/smoked/bonefish",
+    "particle": "stardewcraft:item/fish/smoked/bonefish"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 1
+      },
+      "model": "stardewcraft:item/smoked_bonefish_base_silver"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 2
+      },
+      "model": "stardewcraft:item/smoked_bonefish_base_gold"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 3
+      },
+      "model": "stardewcraft:item/smoked_bonefish_base_iridium"
+    }
+  ]
+}

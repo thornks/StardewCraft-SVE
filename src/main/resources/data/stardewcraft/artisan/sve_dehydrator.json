@@ -1,0 +1,61 @@
+{
+  "machine": "dehydrator",
+  "recipes": [
+    {
+      "input": "stardewcraftsve:joja_berry",
+      "output": "stardewcraft:dried_fruit",
+      "minutes": 1260,
+      "consume": 5,
+      "preserveType": "DRIED_FRUIT",
+      "keepInputQuality": true
+    },
+    {
+      "input": "stardewcraftsve:monster_fruit",
+      "output": "stardewcraft:dried_fruit",
+      "minutes": 1260,
+      "consume": 5,
+      "preserveType": "DRIED_FRUIT",
+      "keepInputQuality": true
+    },
+    {
+      "input": "stardewcraftsve:green_mushroom",
+      "output": "stardewcraft:dried_mushrooms",
+      "minutes": 1260,
+      "consume": 5,
+      "preserveType": "DRIED_MUSHROOMS",
+      "keepInputQuality": true
+    },
+    {
+      "input": "stardewcraftsve:mega_purple_mushroom",
+      "output": "stardewcraft:dried_mushrooms",
+      "minutes": 1260,
+      "consume": 5,
+      "preserveType": "DRIED_MUSHROOMS",
+      "keepInputQuality": true
+    },
+    {
+      "input": "stardewcraftsve:monster_mushroom",
+      "output": "stardewcraft:dried_mushrooms",
+      "minutes": 1260,
+      "consume": 5,
+      "preserveType": "DRIED_MUSHROOMS",
+      "keepInputQuality": true
+    },
+    {
+      "input": "stardewcraftsve:mushroom_colony",
+      "output": "stardewcraft:dried_mushrooms",
+      "minutes": 1260,
+      "consume": 5,
+      "preserveType": "DRIED_MUSHROOMS",
+      "keepInputQuality": true
+    },
+    {
+      "input": "stardewcraftsve:poison_mushroom",
+      "output": "stardewcraft:dried_mushrooms",
+      "minutes": 1260,
+      "consume": 5,
+      "preserveType": "DRIED_MUSHROOMS",
+      "keepInputQuality": true
+    }
+  ]
+}

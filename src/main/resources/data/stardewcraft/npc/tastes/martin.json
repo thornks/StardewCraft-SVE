@@ -1,0 +1,32 @@
+{
+  "npc_id": "martin",
+  "loved": [
+    "stardewcraft:candy",
+    "stardewcraft:grilled_cheese_sandwich",
+    "stardewcraft:mixed_berry_pie",
+    "stardewcraft:big_bark_burger"
+  ],
+  "liked": [
+    "stardewcraftsve:super_joja_cola"
+  ],
+  "neutral": [
+    "stardewcraftsve:green_mushroom",
+    "stardewcraftsve:ancient_fiber"
+  ],
+  "disliked": [
+    "stardewcraftsve:mushroom_colony",
+    "stardewcraftsve:dulse_seaweed"
+  ],
+  "hated": [
+    "stardewcraftsve:void_eel",
+    "stardewcraftsve:starfish",
+    "stardewcraftsve:seahorse",
+    "stardewcraftsve:sea_sponge",
+    "stardewcraftsve:minnow",
+    "stardewcraftsve:goldenfish",
+    "stardewcraftsve:daggerfish",
+    "stardewcraftsve:clownfish",
+    "stardewcraftsve:blue_moon_wine",
+    "stardewcraftsve:aged_blue_moon_wine"
+  ]
+}

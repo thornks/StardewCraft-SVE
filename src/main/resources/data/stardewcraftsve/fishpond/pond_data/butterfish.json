@@ -1,0 +1,46 @@
+{
+  "fish": "stardewcraftsve:butterfish",
+  "max_population": -1,
+  "spawn_time": -1,
+  "base_min_produce_chance": 0.15,
+  "base_max_produce_chance": 0.95,
+  "produced_items": [
+    {
+      "item": "stardewcraftsve:glazed_butterfish",
+      "required_population": 10,
+      "chance": 0.1,
+      "min_count": 1,
+      "max_count": 2
+    },
+    {
+      "item": "stardewcraftsve:butter",
+      "required_population": 7,
+      "chance": 0.33,
+      "min_count": 1,
+      "max_count": 6
+    },
+    {
+      "item": "stardewcraft:roe",
+      "required_population": 0,
+      "chance": 1,
+      "min_count": 1,
+      "max_count": 1
+    }
+  ],
+  "population_gates": {
+    "5": [
+      {
+        "item": "stardewcraft:honey",
+        "min_count": 5,
+        "max_count": 5
+      }
+    ],
+    "9": [
+      {
+        "item": "stardewcraft:pineapple",
+        "min_count": 1,
+        "max_count": 1
+      }
+    ]
+  }
+}

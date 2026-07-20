@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "stardewcraftsve:item/mushroom/mushroom_colony",
+    "particle": "stardewcraftsve:item/mushroom/mushroom_colony"
+  },
+  "render_type": "minecraft:cutout"
+}

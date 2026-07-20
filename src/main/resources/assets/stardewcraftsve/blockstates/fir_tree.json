@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "stump=false": { "model": "stardewcraftsve:block/tree/wild/fir_tree_particle" },
+    "stump=true": { "model": "stardewcraftsve:block/tree/wild/fir_tree_particle" }
+  }
+}

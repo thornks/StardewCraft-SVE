@@ -1,0 +1,20 @@
+{
+  "output": "stardewcraftsve:mushroom_berry_rice",
+  "ingredients": [
+    {
+      "item": "stardewcraftsve:poison_mushroom",
+      "count": 3
+    },
+    {
+      "item": "stardewcraftsve:red_baneberry",
+      "count": 10
+    },
+    {
+      "item": "stardewcraft:rice"
+    },
+    {
+      "item": "stardewcraft:sugar",
+      "count": 2
+    }
+  ]
+}

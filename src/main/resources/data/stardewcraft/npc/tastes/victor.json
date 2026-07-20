@@ -1,0 +1,21 @@
+{
+  "npc_id": "victor",
+  "loved": [
+    "stardewcraftsve:golden_goose_egg",
+    "stardewcraftsve:prismatic_pop",
+    "stardewcraft:ramen",
+    "stardewcraftsve:butterfish",
+    "stardewcraftsve:blue_moon_wine",
+    "stardewcraftsve:ancient_fiber",
+    "stardewcraftsve:aged_blue_moon_wine"
+  ],
+  "liked": [
+    "stardewcraftsve:gold_carrot"
+  ],
+  "hated": [
+    "stardewcraftsve:mega_purple_mushroom",
+    "stardewcraftsve:super_joja_cola",
+    "stardewcraftsve:mushroom_colony",
+    "stardewcraftsve:green_mushroom"
+  ]
+}

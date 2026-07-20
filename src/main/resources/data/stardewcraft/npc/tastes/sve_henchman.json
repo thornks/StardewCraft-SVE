@@ -1,0 +1,18 @@
+{
+  "npc_id": "sve_henchman",
+  "loved": [
+    "stardewcraftsve:marsh_tonic",
+    "stardewcraftsve:golden_goose_egg",
+    "stardewcraftsve:supernatural_goo",
+    "stardewcraftsve:void_shard",
+    "stardewcraft:void_salmon_sushi",
+    "stardewcraftsve:void_root",
+    "stardewcraftsve:void_pebble",
+    "stardewcraft:void_delight",
+    "stardewcraftsve:swirl_stone"
+  ],
+  "liked": [
+    "stardewcraftsve:smelly_rafflesia",
+    "stardewcraftsve:void_soul"
+  ]
+}

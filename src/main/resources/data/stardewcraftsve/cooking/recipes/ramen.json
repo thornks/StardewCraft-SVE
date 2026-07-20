@@ -1,0 +1,18 @@
+{
+  "output": "stardewcraftsve:ramen",
+  "ingredients": [
+    {
+      "item": "stardewcraft:wheat_flour"
+    },
+    {
+      "item": "stardewcraft:seaweed"
+    },
+    {
+      "tag": "c:eggs",
+      "display_item": "stardewcraft:egg_white"
+    },
+    {
+      "item": "stardewcraft:oil"
+    }
+  ]
+}

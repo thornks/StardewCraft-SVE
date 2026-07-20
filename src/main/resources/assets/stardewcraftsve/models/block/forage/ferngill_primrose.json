@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "stardewcraftsve:item/flower/ferngill_primrose",
+    "particle": "stardewcraftsve:item/flower/ferngill_primrose"
+  },
+  "render_type": "minecraft:cutout"
+}

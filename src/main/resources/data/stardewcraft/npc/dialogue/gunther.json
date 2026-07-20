@@ -1,0 +1,14 @@
+{
+  "npc_id": "gunther",
+  "entries": {
+    "Introduction": "stardewcraftsve.npc.gunther.introduction",
+    "default": "stardewcraftsve.npc.gunther.default",
+    "Mon": "stardewcraftsve.npc.gunther.mon",
+    "Tue": "stardewcraftsve.npc.gunther.tue",
+    "Wed": "stardewcraftsve.npc.gunther.wed",
+    "Thu": "stardewcraftsve.npc.gunther.thu",
+    "Fri": "stardewcraftsve.npc.gunther.fri",
+    "Sat": "stardewcraftsve.npc.gunther.sat",
+    "Sun": "stardewcraftsve.npc.gunther.sun"
+  }
+}

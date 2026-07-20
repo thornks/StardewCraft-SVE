@@ -1,0 +1,53 @@
+{
+  "fish": "stardewcraftsve:radioactive_bass",
+  "max_population": -1,
+  "spawn_time": -1,
+  "base_min_produce_chance": 0.15,
+  "base_max_produce_chance": 0.95,
+  "produced_items": [
+    {
+      "item": "stardewcraft:radioactive_bar",
+      "required_population": 10,
+      "chance": 0.05,
+      "min_count": 1,
+      "max_count": 2
+    },
+    {
+      "item": "stardewcraft:radioactive_ore",
+      "required_population": 5,
+      "chance": 0.1,
+      "min_count": 1,
+      "max_count": 4
+    },
+    {
+      "item": "stardewcraft:radioactive_ore",
+      "required_population": 1,
+      "chance": 0.15,
+      "min_count": 1,
+      "max_count": 1
+    },
+    {
+      "item": "stardewcraft:roe",
+      "required_population": 1,
+      "chance": 0.4,
+      "min_count": 1,
+      "max_count": 1
+    }
+  ],
+  "population_gates": {
+    "5": [
+      {
+        "item": "stardewcraft:gold_bar",
+        "min_count": 5,
+        "max_count": 5
+      }
+    ],
+    "10": [
+      {
+        "item": "stardewcraft:iridium_bar",
+        "min_count": 5,
+        "max_count": 5
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "output": "stardewcraftsve:hedge_fence",
+  "ingredients": [
+    {
+      "item": "stardewcraft:fiber",
+      "count": 3
+    },
+    {
+      "item": "stardewcraft:wood_normal"
+    }
+  ],
+  "legacy_unlock_condition": "s Farming 6"
+}

@@ -1,0 +1,18 @@
+{
+  "npc_id": "susan",
+  "loved": [
+    "stardewcraftsve:golden_goose_egg",
+    "stardewcraftsve:prismatic_pop",
+    "stardewcraft:gingerbread_man",
+    "stardewcraft:mixed_berry_pie"
+  ],
+  "liked": [
+    "stardewcraftsve:gold_carrot"
+  ],
+  "disliked": [
+    "stardewcraftsve:dulse_seaweed"
+  ],
+  "hated": [
+    "stardewcraftsve:super_joja_cola"
+  ]
+}

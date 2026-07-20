@@ -1,0 +1,19 @@
+{
+  "output": "stardewcraftsve:hero_elixir",
+  "ingredients": [
+    {
+      "item": "stardewcraft:slime_item",
+      "count": 6
+    },
+    {
+      "item": "stardewcraftsve:void_soul"
+    },
+    {
+      "item": "stardewcraftsve:void_pebble"
+    },
+    {
+      "item": "stardewcraft:oil"
+    }
+  ],
+  "legacy_unlock_condition": "s Combat 9"
+}

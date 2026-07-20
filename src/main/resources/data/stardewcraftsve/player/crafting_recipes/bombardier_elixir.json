@@ -1,0 +1,24 @@
+{
+  "output": "stardewcraftsve:bombardier_elixir",
+  "ingredients": [
+    {
+      "item": "stardewcraft:solar_essence",
+      "count": 2
+    },
+    {
+      "item": "stardewcraft:void_essence",
+      "count": 3
+    },
+    {
+      "item": "stardewcraftsve:void_pebble",
+      "count": 2
+    },
+    {
+      "item": "stardewcraftsve:void_soul"
+    },
+    {
+      "item": "stardewcraft:cherry_bomb"
+    }
+  ],
+  "legacy_unlock_condition": "s Combat 9"
+}

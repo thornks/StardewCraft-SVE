@@ -1,0 +1,26 @@
+{
+  "legacy_id": "bear_vendor",
+  "owner_npc": "bear",
+  "owner_dialogue": "stardewcraftsve.shop.bear_vendor.dialogue",
+  "entries": [
+    {
+      "item": "stardewcraftsve:fir_wax",
+      "price": 2000
+    },
+    {
+      "item": "stardewcraftsve:birch_water",
+      "price": 1000
+    },
+    {
+      "item": "recipe:stardewcraftsve:baked_berry_oatmeal_supreme",
+      "price": 12500,
+      "stock": 1
+    },
+    {
+      "item": "recipe:stardewcraftsve:flower_cookie",
+      "price": 8750,
+      "stock": 1
+    }
+  ],
+  "accepted_sell_types": []
+}

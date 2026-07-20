@@ -1,0 +1,12 @@
+{
+  "legacy_id": "chloe_vendor",
+  "owner_npc": "chloe",
+  "owner_dialogue": "stardewcraftsve.shop.chloe_vendor.dialogue",
+  "entries": [
+    {
+      "item": "stardewcraftsve:void_delight",
+      "price": 35000
+    }
+  ],
+  "accepted_sell_types": []
+}

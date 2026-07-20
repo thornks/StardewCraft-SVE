@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "stardewcraftsve:green_mushroom",
+    "stardewcraftsve:mega_purple_mushroom",
+    "stardewcraftsve:monster_mushroom",
+    "stardewcraftsve:mushroom_colony",
+    "stardewcraftsve:poison_mushroom"
+  ]
+}

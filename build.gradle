@@ -1,0 +1,56 @@
+plugins {
+    id 'java'
+    id 'net.neoforged.gradle.userdev' version '7.0.165'
+}
+
+group = 'com.stardew.craft.sve'
+version = '0.1.0'
+
+base {
+    archivesName = "stardewcraftsve"
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+repositories {
+    mavenCentral()
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    implementation "net.neoforged:neoforge:${neo_version}"
+    compileOnly files('../stardewcraft-0.5.1fix4.jar')
+    runtimeOnly files('../stardewcraft-0.5.1fix4.jar')
+    compileOnly files('libs/jei-1.21.1-neoforge-19.27.0.340.jar')
+    compileOnly files('libs/geckolib-neoforge-1.21.1-4.7.7.jar')
+    runtimeOnly files('libs/geckolib-neoforge-1.21.1-4.7.7.jar')
+    compileOnly files('libs/jade-1.21.1-NeoForge-15.10.5.jar')
+    runtimeOnly files('libs/jade-1.21.1-NeoForge-15.10.5.jar')
+    testRuntimeOnly files('../stardewcraft-0.5.1fix4.jar')
+}
+
+runs {
+    server {
+        server()
+        arguments.add 'nogui'
+        modSource sourceSets.main
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+tasks.register('animalRegressionTest', JavaExec) {
+    group = 'verification'
+    description = 'Runs the SVE farm-animal rule regression suite.'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.stardew.craft.sve.animal.SveAnimalRulesTest'
+}
+
+tasks.named('check') {
+    dependsOn animalRegressionTest
+}

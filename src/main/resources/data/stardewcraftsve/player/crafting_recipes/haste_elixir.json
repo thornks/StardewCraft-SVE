@@ -1,0 +1,19 @@
+{
+  "output": "stardewcraftsve:haste_elixir",
+  "ingredients": [
+    {
+      "item": "stardewcraft:void_essence",
+      "count": 6
+    },
+    {
+      "item": "stardewcraftsve:void_soul"
+    },
+    {
+      "item": "stardewcraft:spicy_eel"
+    },
+    {
+      "item": "stardewcraft:sugar"
+    }
+  ],
+  "legacy_unlock_condition": "s Combat 8"
+}

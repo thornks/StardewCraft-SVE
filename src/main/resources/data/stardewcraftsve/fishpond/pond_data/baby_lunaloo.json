@@ -1,0 +1,46 @@
+{
+  "fish": "stardewcraftsve:baby_lunaloo",
+  "max_population": -1,
+  "spawn_time": -1,
+  "base_min_produce_chance": 0.15,
+  "base_max_produce_chance": 0.95,
+  "produced_items": [
+    {
+      "item": "stardewcraft:jelly",
+      "required_population": 7,
+      "chance": 0.4,
+      "min_count": 1,
+      "max_count": 2
+    },
+    {
+      "item": "stardewcraft:slime_item",
+      "required_population": 3,
+      "chance": 0.75,
+      "min_count": 1,
+      "max_count": 2
+    },
+    {
+      "item": "stardewcraft:roe",
+      "required_population": 1,
+      "chance": 0.5,
+      "min_count": 1,
+      "max_count": 1
+    }
+  ],
+  "population_gates": {
+    "3": [
+      {
+        "item": "stardewcraft:slime_item",
+        "min_count": 3,
+        "max_count": 3
+      }
+    ],
+    "7": [
+      {
+        "item": "stardewcraft:slime_item",
+        "min_count": 10,
+        "max_count": 10
+      }
+    ]
+  }
+}

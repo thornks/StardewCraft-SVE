@@ -1,0 +1,16 @@
+{
+  "output": "stardewcraftsve:wind_totem",
+  "ingredients": [
+    {
+      "item": "stardewcraft:bat_wing",
+      "count": 7
+    },
+    {
+      "item": "stardewcraft:wood_hard"
+    },
+    {
+      "item": "stardewcraftsve:fir_wax"
+    }
+  ],
+  "legacy_unlock_condition": "s Foraging 9"
+}

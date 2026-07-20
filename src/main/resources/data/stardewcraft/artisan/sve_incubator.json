@@ -1,0 +1,6 @@
+{
+  "machine": "incubator",
+  "recipes": [
+    { "input": "stardewcraftsve:goose_egg", "outputMode": "copy_input", "minutes": 18000 }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "stardewcraftsve:block/machine/yarn_spooler",
+    "particle": "stardewcraftsve:block/machine/yarn_spooler"
+  }
+}

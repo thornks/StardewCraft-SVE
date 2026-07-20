@@ -1,0 +1,262 @@
+{
+  "joja_berry": {
+    "price": 650,
+    "edibility": 75,
+    "color": "#FF4081"
+  },
+  "monster_fruit": {
+    "price": 1525,
+    "edibility": 85,
+    "color": "#8E24AA"
+  },
+  "cucumber": {
+    "price": 35,
+    "edibility": 18,
+    "color": "#4CAF50"
+  },
+  "butternut_squash": {
+    "price": 200,
+    "edibility": 20,
+    "color": "#FF9800"
+  },
+  "gold_carrot": {
+    "price": 1000,
+    "edibility": 115,
+    "color": "#FFD700"
+  },
+  "sweet_potato": {
+    "price": 280,
+    "edibility": 20,
+    "color": "#E65100"
+  },
+  "joja_veggie": {
+    "price": 1140,
+    "edibility": 200,
+    "color": "#00E676"
+  },
+  "green_mushroom": {
+    "price": 1250,
+    "edibility": 500,
+    "color": "#69F0AE"
+  },
+  "mega_purple_mushroom": {
+    "price": 8000,
+    "edibility": 999,
+    "color": "#AA00FF"
+  },
+  "monster_mushroom": {
+    "price": 850,
+    "edibility": 75,
+    "color": "#FF6F00"
+  },
+  "mushroom_colony": {
+    "price": 105,
+    "edibility": 18,
+    "color": "#8D6E63"
+  },
+  "poison_mushroom": {
+    "price": 60,
+    "edibility": -100,
+    "color": "#76FF03"
+  },
+  "alligator": {
+    "price": 400,
+    "edibility": 63,
+    "color": "#5D4037"
+  },
+  "arrowhead_shark": {
+    "price": 700,
+    "edibility": 70,
+    "color": "#607D8B"
+  },
+  "baby_lunaloo": {
+    "price": 35,
+    "edibility": -25,
+    "color": "#E1BEE7"
+  },
+  "barred_knifejaw": {
+    "price": 250,
+    "edibility": 33,
+    "color": "#90A4AE"
+  },
+  "blue_tang": {
+    "price": 130,
+    "edibility": 25,
+    "color": "#42A5F5"
+  },
+  "bonefish": {
+    "price": 450,
+    "edibility": -75,
+    "color": "#BCAAA4"
+  },
+  "bull_trout": {
+    "price": 185,
+    "edibility": 25,
+    "color": "#4E342E"
+  },
+  "butterfish": {
+    "price": 200,
+    "edibility": 50,
+    "color": "#FFCA28"
+  },
+  "clownfish": {
+    "price": 70,
+    "edibility": 50,
+    "color": "#FF7043"
+  },
+  "daggerfish": {
+    "price": 200,
+    "edibility": -150,
+    "color": "#CFD8DC"
+  },
+  "diamond_carp": {
+    "price": 575,
+    "edibility": -25,
+    "color": "#80CBC4"
+  },
+  "fiber_goby": {
+    "price": 250,
+    "edibility": 55,
+    "color": "#A5D6A7"
+  },
+  "frog": {
+    "price": 100,
+    "edibility": -75,
+    "color": "#66BB6A"
+  },
+  "gar": {
+    "price": 175,
+    "edibility": 50,
+    "color": "#78909C"
+  },
+  "gemfish": {
+    "price": 800,
+    "edibility": -30,
+    "color": "#CE93D8"
+  },
+  "goldfish": {
+    "price": 80,
+    "edibility": 23,
+    "color": "#FFB300"
+  },
+  "goldenfish": {
+    "price": 150,
+    "edibility": 13,
+    "color": "#FFA000"
+  },
+  "grass_carp": {
+    "price": 150,
+    "edibility": 38,
+    "color": "#81C784"
+  },
+  "highlands_bass": {
+    "price": 200,
+    "edibility": 38,
+    "color": "#558B2F"
+  },
+  "king_salmon": {
+    "price": 320,
+    "edibility": 130,
+    "color": "#EF5350"
+  },
+  "kittyfish": {
+    "price": 250,
+    "edibility": 100,
+    "color": "#F48FB1"
+  },
+  "lunaloo": {
+    "price": 100,
+    "edibility": -62,
+    "color": "#B39DDB"
+  },
+  "meteor_carp": {
+    "price": 175,
+    "edibility": -50,
+    "color": "#7E57C2"
+  },
+  "minnow": {
+    "price": 20,
+    "edibility": 3,
+    "color": "#B0BEC5"
+  },
+  "ocean_sunfish": {
+    "price": 650,
+    "edibility": 50,
+    "color": "#29B6F6"
+  },
+  "puppyfish": {
+    "price": 250,
+    "edibility": 100,
+    "color": "#FFCCBC"
+  },
+  "radioactive_bass": {
+    "price": 500,
+    "edibility": -125,
+    "color": "#76FF03"
+  },
+  "razor_trout": {
+    "price": 400,
+    "edibility": -87,
+    "color": "#BDBDBD"
+  },
+  "seahorse": {
+    "price": 60,
+    "edibility": 13,
+    "color": "#FFAB91"
+  },
+  "shark": {
+    "price": 800,
+    "edibility": 88,
+    "color": "#37474F"
+  },
+  "shiny_lunaloo": {
+    "price": 400,
+    "edibility": -125,
+    "color": "#9575CD"
+  },
+  "snatcher_worm": {
+    "price": 280,
+    "edibility": 33,
+    "color": "#795548"
+  },
+  "tadpole": {
+    "price": 15,
+    "edibility": 5,
+    "color": "#212121"
+  },
+  "torpedo_trout": {
+    "price": 300,
+    "edibility": -25,
+    "color": "#1E88E5"
+  },
+  "turretfish": {
+    "price": 10000,
+    "edibility": -125,
+    "color": "#D50000"
+  },
+  "undeadfish": {
+    "price": 600,
+    "edibility": -150,
+    "color": "#616161"
+  },
+  "viper_eel": {
+    "price": 600,
+    "edibility": -325,
+    "color": "#33691E"
+  },
+  "void_eel": {
+    "price": 450,
+    "edibility": -500,
+    "color": "#4A148C"
+  },
+  "water_grub": {
+    "price": 170,
+    "edibility": 100,
+    "color": "#00BFA5"
+  },
+  "wolf_snapper": {
+    "price": 4000,
+    "edibility": 125,
+    "color": "#BF360C"
+  }
+}

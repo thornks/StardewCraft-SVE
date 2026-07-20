@@ -1,0 +1,36 @@
+{
+  "npc_id": "andy",
+  "loved": [
+    "stardewcraftsve:prismatic_pop",
+    "stardewcraft:mixed_berry_pie",
+    "stardewcraft:glazed_butterfish",
+    "stardewcraftsve:butterfish",
+    "stardewcraft:baked_berry_oatmeal_supreme",
+    "stardewcraftsve:golden_goose_egg",
+    "stardewcraft:stuffed_persimmon"
+  ],
+  "liked": [
+    "stardewcraftsve:gold_carrot",
+    "stardewcraftsve:salal_berry",
+    "stardewcraftsve:king_salmon",
+    "stardewcraftsve:golden_ocean_flower",
+    "stardewcraftsve:bearberrys"
+  ],
+  "neutral": [
+    "stardewcraftsve:ancient_fiber"
+  ],
+  "disliked": [
+    "stardewcraftsve:winter_star_rose",
+    "stardewcraftsve:thistle",
+    "stardewcraftsve:goldenrod",
+    "stardewcraftsve:galdoran_gem",
+    "stardewcraftsve:dulse_seaweed"
+  ],
+  "hated": [
+    "stardewcraftsve:puppyfish",
+    "stardewcraftsve:goldenfish",
+    "stardewcraftsve:daggerfish",
+    "stardewcraftsve:blue_moon_wine",
+    "stardewcraftsve:aged_blue_moon_wine"
+  ]
+}

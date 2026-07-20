@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "stardewcraftsve:block/butter_churner"
+    },
+    "facing=east": {
+      "model": "stardewcraftsve:block/butter_churner",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "stardewcraftsve:block/butter_churner",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "stardewcraftsve:block/butter_churner",
+      "y": 270
+    }
+  }
+}

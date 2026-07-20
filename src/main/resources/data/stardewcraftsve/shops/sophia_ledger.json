@@ -1,0 +1,16 @@
+{
+  "legacy_id": "sophia_ledger",
+  "owner_npc": "sophia",
+  "owner_dialogue": "stardewcraftsve.shop.sophia_ledger.dialogue",
+  "entries": [
+    {
+      "item": "stardewcraftsve:blue_moon_wine",
+      "price": 3000
+    },
+    {
+      "item": "stardewcraftsve:aged_blue_moon_wine",
+      "price": 28000
+    }
+  ],
+  "accepted_sell_types": []
+}

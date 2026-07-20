@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "stardewcraftsve:item/mushroom/green_mushroom",
+    "particle": "stardewcraftsve:item/mushroom/green_mushroom"
+  },
+  "render_type": "minecraft:cutout"
+}

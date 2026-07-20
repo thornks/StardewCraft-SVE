@@ -1,0 +1,17 @@
+{
+  "output": "stardewcraftsve:stuffed_persimmon",
+  "ingredients": [
+    {
+      "item": "stardewcraftsve:persimmon"
+    },
+    {
+      "item": "stardewcraft:stuffing"
+    },
+    {
+      "item": "stardewcraft:cheese"
+    },
+    {
+      "item": "stardewcraftsve:butter"
+    }
+  ]
+}

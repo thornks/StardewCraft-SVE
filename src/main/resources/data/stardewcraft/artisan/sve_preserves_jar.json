@@ -1,0 +1,54 @@
+{
+  "machine": "preserves_jar",
+  "recipes": [
+    {
+      "input": "stardewcraftsve:joja_berry",
+      "output": "stardewcraft:jelly",
+      "minutes": 4000,
+      "preserveType": "JELLY",
+      "keepInputQuality": true
+    },
+    {
+      "input": "stardewcraftsve:monster_fruit",
+      "output": "stardewcraft:jelly",
+      "minutes": 4000,
+      "preserveType": "JELLY",
+      "keepInputQuality": true
+    },
+    {
+      "input": "stardewcraftsve:cucumber",
+      "output": "stardewcraft:pickles",
+      "minutes": 4000,
+      "preserveType": "PICKLES",
+      "keepInputQuality": true
+    },
+    {
+      "input": "stardewcraftsve:butternut_squash",
+      "output": "stardewcraft:pickles",
+      "minutes": 4000,
+      "preserveType": "PICKLES",
+      "keepInputQuality": true
+    },
+    {
+      "input": "stardewcraftsve:gold_carrot",
+      "output": "stardewcraft:pickles",
+      "minutes": 4000,
+      "preserveType": "PICKLES",
+      "keepInputQuality": true
+    },
+    {
+      "input": "stardewcraftsve:sweet_potato",
+      "output": "stardewcraft:pickles",
+      "minutes": 4000,
+      "preserveType": "PICKLES",
+      "keepInputQuality": true
+    },
+    {
+      "input": "stardewcraftsve:joja_veggie",
+      "output": "stardewcraft:pickles",
+      "minutes": 4000,
+      "preserveType": "PICKLES",
+      "keepInputQuality": true
+    }
+  ]
+}

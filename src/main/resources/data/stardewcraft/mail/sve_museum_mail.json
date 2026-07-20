@@ -1,0 +1,16 @@
+[
+  {
+    "id": "gunther_museum_60",
+    "text": "stardewcraftsve.mail.gunther.museum_60",
+    "background": 0,
+    "money": 40000
+  },
+  {
+    "id": "gunther_museum_complete",
+    "text": "stardewcraftsve.mail.gunther.museum_complete",
+    "background": 0,
+    "attachedItems": [
+      { "id": "stardewcraftsve:galdoran_gem", "count": 1 }
+    ]
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "stardewcraftsve:item/artifact/shark_tooth",
+    "particle": "stardewcraftsve:item/artifact/shark_tooth"
+  },
+  "overrides": [
+    {
+      "predicate": { "custom_model_data": 1 },
+      "model": "stardewcraftsve:item/shark_tooth_silver"
+    },
+    {
+      "predicate": { "custom_model_data": 2 },
+      "model": "stardewcraftsve:item/shark_tooth_gold"
+    },
+    {
+      "predicate": { "custom_model_data": 3 },
+      "model": "stardewcraftsve:item/shark_tooth_iridium"
+    }
+  ]
+}

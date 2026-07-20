@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "stardewcraft:item/artisan/dehydrator/dried_mushrooms_base",
+    "layer1": "stardewcraft:item/artisan/dehydrator/dried_mushrooms_overlay",
+    "particle": "stardewcraft:item/artisan/dehydrator/dried_mushrooms_base"
+  }
+}

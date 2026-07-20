@@ -1,0 +1,7 @@
+{
+  "machine": "loom",
+  "recipes": [
+    { "input": "stardewcraftsve:camel_wool", "output": "stardewcraft:cloth", "minutes": 240 },
+    { "input": "stardewcraftsve:ancient_fiber", "output": "stardewcraft:cloth", "minutes": 240 }
+  ]
+}

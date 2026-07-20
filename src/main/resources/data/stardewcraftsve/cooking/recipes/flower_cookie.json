@@ -1,0 +1,24 @@
+{
+  "output": "stardewcraftsve:flower_cookie",
+  "ingredients": [
+    {
+      "item": "stardewcraftsve:ferngill_primrose"
+    },
+    {
+      "item": "stardewcraftsve:goldenrod"
+    },
+    {
+      "item": "stardewcraftsve:winter_star_rose"
+    },
+    {
+      "item": "stardewcraft:wheat_flour"
+    },
+    {
+      "item": "stardewcraft:sugar"
+    },
+    {
+      "tag": "c:eggs",
+      "display_item": "stardewcraft:egg_white"
+    }
+  ]
+}

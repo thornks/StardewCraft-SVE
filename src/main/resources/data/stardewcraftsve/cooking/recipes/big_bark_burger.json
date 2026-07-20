@@ -1,0 +1,14 @@
+{
+  "output": "stardewcraftsve:big_bark_burger",
+  "ingredients": [
+    {
+      "item": "stardewcraftsve:puppyfish"
+    },
+    {
+      "item": "stardewcraft:bread"
+    },
+    {
+      "item": "stardewcraft:oil"
+    }
+  ]
+}

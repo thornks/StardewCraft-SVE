@@ -1,0 +1,19 @@
+{
+  "output": "stardewcraftsve:glazed_butterfish",
+  "ingredients": [
+    {
+      "item": "stardewcraftsve:butterfish"
+    },
+    {
+      "item": "stardewcraft:wheat_flour",
+      "count": 2
+    },
+    {
+      "item": "stardewcraft:oil",
+      "count": 2
+    },
+    {
+      "item": "stardewcraft:sugar"
+    }
+  ]
+}

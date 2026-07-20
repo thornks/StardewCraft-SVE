@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "stardewcraftsve:item/flower/smelly_rafflesia",
+    "particle": "stardewcraftsve:item/flower/smelly_rafflesia"
+  },
+  "render_type": "minecraft:cutout"
+}

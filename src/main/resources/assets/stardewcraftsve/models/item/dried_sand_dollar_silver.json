@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "stardewcraftsve:item/forage/dried_sand_dollar",
+    "layer1": "stardewcraft:item/quality/silver_star",
+    "particle": "stardewcraftsve:item/forage/dried_sand_dollar"
+  }
+}

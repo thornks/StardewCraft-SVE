@@ -1,0 +1,61 @@
+{
+  "fish": "stardewcraftsve:daggerfish",
+  "max_population": -1,
+  "spawn_time": -1,
+  "base_min_produce_chance": 0.15,
+  "base_max_produce_chance": 0.95,
+  "produced_items": [
+    {
+      "item": "stardewcraft:ancient_sword",
+      "required_population": 8,
+      "chance": 0.2,
+      "min_count": 2,
+      "max_count": 6
+    },
+    {
+      "item": "stardewcraft:ancient_sword",
+      "required_population": 3,
+      "chance": 0.3,
+      "min_count": 1,
+      "max_count": 3
+    },
+    {
+      "item": "stardewcraft:roe",
+      "required_population": 1,
+      "chance": 0.5,
+      "min_count": 1,
+      "max_count": 2
+    }
+  ],
+  "population_gates": {
+    "3": [
+      {
+        "item": "stardewcraft:iron_ore",
+        "min_count": 12,
+        "max_count": 12
+      },
+      {
+        "item": "stardewcraft:iron_ore",
+        "min_count": 10,
+        "max_count": 10
+      },
+      {
+        "item": "stardewcraft:iron_ore",
+        "min_count": 15,
+        "max_count": 15
+      }
+    ],
+    "7": [
+      {
+        "item": "stardewcraft:iron_bar",
+        "min_count": 5,
+        "max_count": 5
+      },
+      {
+        "item": "stardewcraft:iron_bar",
+        "min_count": 6,
+        "max_count": 6
+      }
+    ]
+  }
+}

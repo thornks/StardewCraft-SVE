@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "stardewcraftsve:item/forage/dulse_seaweed",
+    "particle": "stardewcraftsve:item/forage/dulse_seaweed"
+  },
+  "render_type": "minecraft:cutout"
+}

@@ -1,0 +1,15 @@
+[
+  {
+    "id": "gunther_three_hearts",
+    "text": "stardewcraftsve.mail.gunther.baked_potato",
+    "background": 0,
+    "learnedRecipe": "stardewcraftsve:baked_potato",
+    "recipeIsCooking": true
+  },
+  {
+    "id": "gunther_six_hearts",
+    "text": "stardewcraftsve.mail.gunther.six_hearts",
+    "background": 0,
+    "money": 20000
+  }
+]

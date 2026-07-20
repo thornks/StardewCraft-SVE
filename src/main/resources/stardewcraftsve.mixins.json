@@ -1,0 +1,50 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.stardew.craft.sve.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "AnimalAcquireServiceMixin",
+    "AnimalEntitySyncServiceMixin",
+    "AnimalGrowthManagerMixin",
+    "AnimalManagerMenuMixin",
+    "AnimalQueryMenuMixin",
+    "AnimalShopServiceMixin",
+    "AnimalTypeCatalogMixin",
+    "ArtifactDropServiceMixin",
+    "BaseCoopAnimalEntityAccessor",
+    "BaseCoopAnimalEntityMixin",
+    "BundleDataReloadMixin",
+    "BundleDataManagerDifficultyMixin",
+    "BundleMenuDifficultyMixin",
+    "BundleSyncDifficultyMixin",
+    "BundleClaimRewardDifficultyMixin",
+    "BundleItemResolverMixin",
+    "CommunityCenterPlayerProgressAccessor",
+    "CommunityCenterSavedDataMixin",
+    "FairRecipePurchaseMixin",
+    "FarmInstanceInitializerMixin",
+    "FarmInstanceRegistryBundleMixin",
+    "FishingLocationKeysMixin",
+    "FruitTreeRulesMixin",
+    "GrowTreesPayloadMixin",
+    "IncubatorBlockEntityMixin",
+    "TapperBlockMixin",
+    "TapperBlockEntityMixin",
+    "TreeFertilizerItemMixin",
+    "VanillaObjectCatalogMixin",
+    "WildTreesMixin",
+    "MorrisGiftConfirmationMixin",
+    "NpcFriendshipRewardServiceMixin",
+    "NpcSocialRulesMixin",
+    "WeaponRegistryAccessor"
+  ],
+  "client": [
+    "AnimalPurchaseScreenMixin",
+    "FarmSelectionScreenMixin",
+    "FishingInfoCategoryMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

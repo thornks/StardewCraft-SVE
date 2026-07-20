@@ -1,0 +1,19 @@
+{
+  "npc_id": "morris",
+  "entries": {
+    "Introduction": "stardewcraftsve.npc.morris.introduction",
+    "default": "stardewcraftsve.npc.morris.default",
+    "Mon": "stardewcraftsve.npc.morris.mon",
+    "Tue": "stardewcraftsve.npc.morris.tue",
+    "Wed": "stardewcraftsve.npc.morris.wed",
+    "Thu": "stardewcraftsve.npc.morris.thu",
+    "Fri": "stardewcraftsve.npc.morris.fri",
+    "Sat": "stardewcraftsve.npc.morris.sat",
+    "Sun": "stardewcraftsve.npc.morris.sun",
+    "gift_loved": "stardewcraftsve.npc.morris.gift_loved",
+    "gift_liked": "stardewcraftsve.npc.morris.gift_liked",
+    "gift_neutral": "stardewcraftsve.npc.morris.gift_neutral",
+    "gift_disliked": "stardewcraftsve.npc.morris.gift_disliked",
+    "gift_hated": "stardewcraftsve.npc.morris.gift_hated"
+  }
+}

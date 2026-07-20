@@ -1,0 +1,60 @@
+{
+  "fish": "stardewcraftsve:torpedo_trout",
+  "max_population": -1,
+  "spawn_time": -1,
+  "base_min_produce_chance": 0.15,
+  "base_max_produce_chance": 0.95,
+  "produced_items": [
+    {
+      "item": "stardewcraft:mega_bomb",
+      "required_population": 10,
+      "chance": 0.01,
+      "min_count": 25,
+      "max_count": 50
+    },
+    {
+      "item": "stardewcraft:mega_bomb",
+      "required_population": 10,
+      "chance": 0.15,
+      "min_count": 1,
+      "max_count": 5
+    },
+    {
+      "item": "stardewcraft:bomb_item",
+      "required_population": 5,
+      "chance": 0.3,
+      "min_count": 1,
+      "max_count": 5
+    },
+    {
+      "item": "stardewcraft:cherry_bomb",
+      "required_population": 1,
+      "chance": 0.4,
+      "min_count": 1,
+      "max_count": 5
+    },
+    {
+      "item": "stardewcraft:roe",
+      "required_population": 1,
+      "chance": 0.5,
+      "min_count": 1,
+      "max_count": 2
+    }
+  ],
+  "population_gates": {
+    "5": [
+      {
+        "item": "stardewcraft:quartz",
+        "min_count": 10,
+        "max_count": 10
+      }
+    ],
+    "10": [
+      {
+        "item": "stardewcraft:fire_quartz",
+        "min_count": 20,
+        "max_count": 20
+      }
+    ]
+  }
+}

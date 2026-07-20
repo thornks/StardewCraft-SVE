@@ -1,0 +1,36 @@
+# Gradle and build output
+/.gradle/
+/build/
+
+# Development server and generated inspection output
+/runs/
+/.jade_decompiled/
+/temp_classes/
+/_jar_extract/
+/com/
+
+# Local dependencies, extracted dependency inspection, and packaged releases
+/libs/
+/stardewcraftsve-*.jar
+
+# Crash dumps, logs, and temporary task output
+/*.hprof
+/*.log
+/*.pid
+/*.err
+/.crash_output.txt
+/_build_*
+/_birch_server_test.*
+/full_renderer.txt
+
+# Local reverse-engineering helpers
+/decompile_*.py
+/analyze_jei.py
+/_disasm*.py
+
+# IDE and operating-system files
+/.idea/
+/.vscode/
+*.iml
+.DS_Store
+Thumbs.db

@@ -1,0 +1,18 @@
+{
+  "output": "stardewcraftsve:ice_cream_sundae",
+  "ingredients": [
+    {
+      "item": "stardewcraft:hazelnut"
+    },
+    {
+      "tag": "c:milk",
+      "display_item": "stardewcraft:milk"
+    },
+    {
+      "item": "stardewcraft:sugar"
+    },
+    {
+      "item": "stardewcraft:cherry"
+    }
+  ]
+}

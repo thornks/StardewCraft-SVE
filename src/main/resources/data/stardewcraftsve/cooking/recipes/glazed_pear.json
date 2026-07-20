@@ -1,0 +1,17 @@
+{
+  "output": "stardewcraftsve:glazed_pear",
+  "ingredients": [
+    {
+      "item": "stardewcraftsve:pear"
+    },
+    {
+      "item": "stardewcraft:sugar"
+    },
+    {
+      "item": "stardewcraft:wheat_flour"
+    },
+    {
+      "item": "stardewcraftsve:butter"
+    }
+  ]
+}

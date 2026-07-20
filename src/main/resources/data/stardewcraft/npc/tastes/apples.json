@@ -1,0 +1,13 @@
+{
+  "npc_id": "apples",
+  "liked": [
+    "stardewcraftsve:golden_ocean_flower"
+  ],
+  "disliked": [
+    "stardewcraftsve:dulse_seaweed"
+  ],
+  "hated": [
+    "stardewcraftsve:rusty_blade",
+    "stardewcraft:big_bark_burger"
+  ]
+}

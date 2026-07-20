@@ -1,0 +1,51 @@
+{
+  "fish": "stardewcraftsve:swamp_crab",
+  "max_population": -1,
+  "spawn_time": -1,
+  "base_min_produce_chance": 0.15,
+  "base_max_produce_chance": 0.95,
+  "produced_items": [
+    {
+      "item": "stardewcraft:crab_cakes",
+      "required_population": 10,
+      "chance": 0.05,
+      "min_count": 1,
+      "max_count": 2
+    },
+    {
+      "item": "stardewcraft:crab",
+      "required_population": 10,
+      "chance": 0.4,
+      "min_count": 2,
+      "max_count": 6
+    },
+    {
+      "item": "stardewcraft:crab",
+      "required_population": 6,
+      "chance": 0.6,
+      "min_count": 1,
+      "max_count": 3
+    },
+    {
+      "item": "stardewcraft:crab",
+      "required_population": 0,
+      "chance": 0.8,
+      "min_count": 1,
+      "max_count": 1
+    }
+  ],
+  "population_gates": {
+    "5": [
+      {
+        "item": "stardewcraft:snail",
+        "min_count": 6,
+        "max_count": 6
+      },
+      {
+        "item": "stardewcraft:periwinkle",
+        "min_count": 4,
+        "max_count": 4
+      }
+    ]
+  }
+}

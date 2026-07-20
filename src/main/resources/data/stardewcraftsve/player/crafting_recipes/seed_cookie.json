@@ -1,0 +1,21 @@
+{
+  "output": "stardewcraftsve:seed_cookie",
+  "ingredients": [
+    {
+      "item": "stardewcraftsve:fir_cone"
+    },
+    {
+      "item": "stardewcraftsve:birch_seed"
+    },
+    {
+      "item": "stardewcraft:acorn"
+    },
+    {
+      "item": "stardewcraft:maple_seed"
+    },
+    {
+      "item": "stardewcraft:pine_cone"
+    }
+  ],
+  "legacy_unlock_condition": "s Foraging 3"
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "stardewcraftsve:block/crops/butternut_squash_stage1"
+  },
+  "render_type": "minecraft:cutout"
+}

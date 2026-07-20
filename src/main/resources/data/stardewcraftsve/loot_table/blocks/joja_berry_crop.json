@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:block",
+  "functions": [
+    {
+      "function": "minecraft:explosion_decay"
+    }
+  ],
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "stardewcraftsve:joja_berry_crop",
+                  "properties": {
+                    "age": "3"
+                  }
+                }
+              ],
+              "name": "stardewcraftsve:joja_berry"
+            },
+            {
+              "type": "minecraft:item",
+              "name": "stardewcraftsve:joja_berry_starter"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ]
+}

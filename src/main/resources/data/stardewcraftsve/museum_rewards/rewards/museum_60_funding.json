@@ -1,0 +1,12 @@
+{
+  "condition": "total_count",
+  "threshold": 60,
+  "rewards": [
+    {
+      "type": "stardewcraftsve:queue_mail",
+      "data": {
+        "mail": "gunther_museum_60"
+      }
+    }
+  ]
+}

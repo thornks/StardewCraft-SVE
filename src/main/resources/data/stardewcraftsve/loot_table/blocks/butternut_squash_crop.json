@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:block",
+  "functions": [
+    {
+      "function": "minecraft:explosion_decay"
+    }
+  ],
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "stardewcraftsve:butternut_squash_crop",
+                  "properties": {
+                    "age": "3"
+                  }
+                }
+              ],
+              "name": "stardewcraftsve:butternut_squash"
+            },
+            {
+              "type": "minecraft:item",
+              "name": "stardewcraftsve:butternut_squash_seed"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ]
+}

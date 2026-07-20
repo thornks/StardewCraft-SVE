@@ -1,0 +1,61 @@
+{
+  "fish": "stardewcraftsve:king_salmon",
+  "max_population": -1,
+  "spawn_time": -1,
+  "base_min_produce_chance": 0.15,
+  "base_max_produce_chance": 0.95,
+  "produced_items": [
+    {
+      "item": "stardewcraft:omni_geode",
+      "required_population": 10,
+      "chance": 0.04,
+      "min_count": 1,
+      "max_count": 4
+    },
+    {
+      "item": "stardewcraft:omni_geode",
+      "required_population": 6,
+      "chance": 0.02,
+      "min_count": 6,
+      "max_count": 6
+    },
+    {
+      "item": "stardewcraft:roe",
+      "required_population": 0,
+      "chance": 1,
+      "min_count": 1,
+      "max_count": 1
+    }
+  ],
+  "population_gates": {
+    "6": [
+      {
+        "item": "stardewcraft:salmonberry",
+        "min_count": 30,
+        "max_count": 30
+      },
+      {
+        "item": "stardewcraft:green_algae",
+        "min_count": 20,
+        "max_count": 20
+      }
+    ],
+    "10": [
+      {
+        "item": "stardewcraft:blackberry",
+        "min_count": 20,
+        "max_count": 20
+      },
+      {
+        "item": "stardewcraft:salmonberry",
+        "min_count": 20,
+        "max_count": 20
+      },
+      {
+        "item": "stardewcraft:diamond",
+        "min_count": 3,
+        "max_count": 3
+      }
+    ]
+  }
+}

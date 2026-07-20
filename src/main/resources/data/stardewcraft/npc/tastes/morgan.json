@@ -1,0 +1,51 @@
+{
+  "npc_id": "morgan",
+  "loved": [
+    "stardewcraftsve:frog",
+    "stardewcraft:candy",
+    "stardewcraftsve:golden_goose_egg",
+    "stardewcraftsve:prismatic_pop",
+    "stardewcraft:glazed_pear",
+    "stardewcraftsve:void_soul"
+  ],
+  "liked": [
+    "stardewcraftsve:gold_carrot",
+    "stardewcraftsve:void_shard",
+    "stardewcraftsve:void_root",
+    "stardewcraftsve:void_pebble",
+    "stardewcraft:void_delight",
+    "stardewcraftsve:swirl_stone",
+    "stardewcraftsve:slime_berry",
+    "stardewcraftsve:monster_mushroom",
+    "stardewcraftsve:monster_fruit",
+    "stardewcraftsve:meteor_carp",
+    "stardewcraftsve:lightning_elixir",
+    "stardewcraftsve:kittyfish",
+    "stardewcraftsve:hero_elixir",
+    "stardewcraftsve:haste_elixir",
+    "stardewcraftsve:gravity_elixir",
+    "stardewcraftsve:goldenfish",
+    "stardewcraftsve:golden_ocean_flower",
+    "stardewcraftsve:gemfish",
+    "stardewcraftsve:barbarian_elixir",
+    "stardewcraftsve:armor_elixir",
+    "stardewcraftsve:aegis_elixir"
+  ],
+  "neutral": [
+    "stardewcraftsve:smelly_rafflesia",
+    "stardewcraftsve:red_baneberry",
+    "stardewcraftsve:poison_mushroom"
+  ],
+  "disliked": [
+    "stardewcraftsve:stamina_capsule",
+    "stardewcraftsve:sports_drink",
+    "stardewcraft:seaweed_salad",
+    "stardewcraftsve:dulse_seaweed",
+    "stardewcraftsve:blue_moon_wine",
+    "stardewcraftsve:aged_blue_moon_wine"
+  ],
+  "hated": [
+    "stardewcraftsve:king_salmon",
+    "stardewcraft:frog_legs"
+  ]
+}

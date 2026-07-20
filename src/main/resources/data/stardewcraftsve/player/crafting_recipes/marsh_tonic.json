@@ -1,0 +1,21 @@
+{
+  "output": "stardewcraftsve:marsh_tonic",
+  "ingredients": [
+    {
+      "item": "stardewcraft:slime_item",
+      "count": 4
+    },
+    {
+      "item": "stardewcraftsve:swamp_essence",
+      "count": 2
+    },
+    {
+      "item": "stardewcraftsve:swamp_flower",
+      "count": 2
+    },
+    {
+      "item": "stardewcraft:sugar"
+    }
+  ],
+  "legacy_unlock_condition": "s Combat 8"
+}

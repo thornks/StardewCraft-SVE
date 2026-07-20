@@ -1,0 +1,15 @@
+{
+  "output": "stardewcraftsve:void_salmon_sushi",
+  "ingredients": [
+    {
+      "item": "stardewcraft:void_salmon"
+    },
+    {
+      "item": "stardewcraft:void_mayonnaise"
+    },
+    {
+      "item": "stardewcraft:seaweed",
+      "count": 3
+    }
+  ]
+}

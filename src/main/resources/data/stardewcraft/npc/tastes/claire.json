@@ -1,0 +1,30 @@
+{
+  "npc_id": "claire",
+  "loved": [
+    "stardewcraftsve:prismatic_pop",
+    "stardewcraft:nectarine_fruit_bread",
+    "stardewcraftsve:golden_goose_egg",
+    "stardewcraft:mixed_berry_pie",
+    "stardewcraft:glazed_butterfish"
+  ],
+  "liked": [
+    "stardewcraftsve:gold_carrot",
+    "stardewcraftsve:butterfish"
+  ],
+  "disliked": [
+    "stardewcraftsve:super_joja_cola",
+    "stardewcraftsve:blue_moon_wine",
+    "stardewcraftsve:aged_blue_moon_wine"
+  ],
+  "hated": [
+    "stardewcraftsve:void_eel",
+    "stardewcraftsve:starfish",
+    "stardewcraftsve:seahorse",
+    "stardewcraftsve:sea_sponge",
+    "stardewcraftsve:minnow",
+    "stardewcraftsve:king_salmon",
+    "stardewcraftsve:goldenfish",
+    "stardewcraftsve:daggerfish",
+    "stardewcraftsve:clownfish"
+  ]
+}

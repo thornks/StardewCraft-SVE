@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "stardewcraft:item/fish/smoked/razor_trout",
+    "layer1": "stardewcraft:item/quality/silver_star",
+    "particle": "stardewcraft:item/fish/smoked/razor_trout"
+  }
+}

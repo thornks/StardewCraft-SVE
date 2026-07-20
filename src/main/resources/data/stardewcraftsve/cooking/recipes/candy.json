@@ -1,0 +1,14 @@
+{
+  "output": "stardewcraftsve:candy",
+  "ingredients": [
+    {
+      "item": "stardewcraftsve:birch_syrup"
+    },
+    {
+      "item": "stardewcraftsve:birch_water"
+    },
+    {
+      "item": "stardewcraft:sugar"
+    }
+  ]
+}

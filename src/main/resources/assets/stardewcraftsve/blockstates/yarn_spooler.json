@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "stardewcraftsve:block/yarn_spooler_particle"
+    },
+    "facing=east": {
+      "model": "stardewcraftsve:block/yarn_spooler_particle",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "stardewcraftsve:block/yarn_spooler_particle",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "stardewcraftsve:block/yarn_spooler_particle",
+      "y": 270
+    }
+  }
+}

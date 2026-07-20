@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "stardewcraftsve:item/flower/swamp_flower",
+    "particle": "stardewcraftsve:item/flower/swamp_flower"
+  },
+  "render_type": "minecraft:cutout"
+}

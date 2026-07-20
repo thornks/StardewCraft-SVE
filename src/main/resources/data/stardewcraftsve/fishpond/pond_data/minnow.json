@@ -1,0 +1,51 @@
+{
+  "fish": "stardewcraftsve:minnow",
+  "max_population": -1,
+  "spawn_time": -1,
+  "base_min_produce_chance": 0.15,
+  "base_max_produce_chance": 0.95,
+  "produced_items": [
+    {
+      "item": "stardewcraft:wild_bait",
+      "required_population": 10,
+      "chance": 0.4,
+      "min_count": 1,
+      "max_count": 6
+    },
+    {
+      "item": "stardewcraft:wild_bait",
+      "required_population": 3,
+      "chance": 0.3,
+      "min_count": 1,
+      "max_count": 3
+    },
+    {
+      "item": "stardewcraft:roe",
+      "required_population": 0,
+      "chance": 1,
+      "min_count": 1,
+      "max_count": 2
+    }
+  ],
+  "population_gates": {
+    "2": [
+      {
+        "item": "stardewcraft:bait",
+        "min_count": 20,
+        "max_count": 20
+      }
+    ],
+    "8": [
+      {
+        "item": "stardewcraft:bait",
+        "min_count": 70,
+        "max_count": 70
+      },
+      {
+        "item": "stardewcraft:green_algae",
+        "min_count": 5,
+        "max_count": 5
+      }
+    ]
+  }
+}

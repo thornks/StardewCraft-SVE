@@ -1,0 +1,16 @@
+{
+  "output": "stardewcraftsve:sun_totem",
+  "ingredients": [
+    {
+      "item": "stardewcraft:solar_essence",
+      "count": 7
+    },
+    {
+      "item": "stardewcraft:wood_hard"
+    },
+    {
+      "item": "stardewcraftsve:birch_water"
+    }
+  ],
+  "legacy_unlock_condition": "s Foraging 9"
+}

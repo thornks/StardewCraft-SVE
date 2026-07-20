@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:block",
+  "functions": [
+    {
+      "function": "minecraft:explosion_decay"
+    }
+  ],
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "stardewcraftsve:sweet_potato_crop",
+                  "properties": {
+                    "age": "3"
+                  }
+                }
+              ],
+              "name": "stardewcraftsve:sweet_potato"
+            },
+            {
+              "type": "minecraft:item",
+              "name": "stardewcraftsve:sweet_potato_seed"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ]
+}

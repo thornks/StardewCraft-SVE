@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "stardewcraftsve:item/flower/thistle",
+    "particle": "stardewcraftsve:item/flower/thistle"
+  },
+  "render_type": "minecraft:cutout"
+}

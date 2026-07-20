@@ -1,0 +1,8 @@
+{
+  "render_type": "minecraft:cutout",
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "stardewcraftsve:block/tree/fruit/sapling/nectarine_sapling_stage0_bottom",
+    "particle": "stardewcraftsve:block/tree/fruit/sapling/nectarine_sapling_stage0_bottom"
+  }
+}

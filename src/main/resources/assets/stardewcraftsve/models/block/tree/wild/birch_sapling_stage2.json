@@ -1,0 +1,8 @@
+{
+  "render_type": "minecraft:cutout",
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "stardewcraftsve:block/tree/wild/sapling/birch_sapling_stage2",
+    "particle": "stardewcraftsve:block/tree/wild/sapling/birch_sapling_stage2"
+  }
+}

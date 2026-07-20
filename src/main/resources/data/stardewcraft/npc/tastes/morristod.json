@@ -1,0 +1,19 @@
+{
+  "npc_id": "morristod",
+  "loved": [
+    "stardewcraftsve:golden_goose_egg",
+    "stardewcraftsve:prismatic_pop",
+    "stardewcraftsve:money_bag",
+    "stardewcraftsve:aged_blue_moon_wine"
+  ],
+  "liked": [
+    "stardewcraftsve:gold_carrot",
+    "stardewcraftsve:super_joja_cola"
+  ],
+  "neutral": [
+    "stardewcraftsve:green_mushroom"
+  ],
+  "disliked": [
+    "stardewcraftsve:dulse_seaweed"
+  ]
+}

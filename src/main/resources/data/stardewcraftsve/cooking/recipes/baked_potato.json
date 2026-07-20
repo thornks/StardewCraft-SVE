@@ -1,0 +1,11 @@
+{
+  "output": "stardewcraftsve:baked_potato",
+  "ingredients": [
+    {
+      "item": "stardewcraft:potato"
+    },
+    {
+      "item": "stardewcraftsve:butter"
+    }
+  ]
+}

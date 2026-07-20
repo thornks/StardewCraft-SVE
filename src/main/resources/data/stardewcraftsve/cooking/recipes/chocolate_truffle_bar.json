@@ -1,0 +1,18 @@
+{
+  "output": "stardewcraftsve:chocolate_truffle_bar",
+  "ingredients": [
+    {
+      "item": "stardewcraft:hazelnut"
+    },
+    {
+      "item": "stardewcraft:truffle"
+    },
+    {
+      "tag": "c:milk",
+      "display_item": "stardewcraft:milk"
+    },
+    {
+      "item": "stardewcraft:sugar"
+    }
+  ]
+}

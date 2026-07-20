@@ -1,0 +1,27 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "stardewcraft:item/fish/smoked/viper_eel",
+    "particle": "stardewcraft:item/fish/smoked/viper_eel"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 1
+      },
+      "model": "stardewcraft:item/smoked_viper_eel_base_silver"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 2
+      },
+      "model": "stardewcraft:item/smoked_viper_eel_base_gold"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 3
+      },
+      "model": "stardewcraft:item/smoked_viper_eel_base_iridium"
+    }
+  ]
+}

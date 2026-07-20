@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "stardewcraftsve:item/forage/fir_cone",
+    "particle": "stardewcraftsve:item/forage/fir_cone"
+  },
+  "render_type": "minecraft:cutout"
+}

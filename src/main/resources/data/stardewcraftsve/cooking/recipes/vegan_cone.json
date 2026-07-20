@@ -1,0 +1,11 @@
+{
+  "output": "stardewcraftsve:vegan_cone",
+  "ingredients": [
+    {
+      "item": "stardewcraft:coconut"
+    },
+    {
+      "item": "stardewcraft:sugar"
+    }
+  ]
+}

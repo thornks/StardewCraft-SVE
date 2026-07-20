@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "stardewcraftsve:block/crops/ancient_fiber_stage0"
+    },
+    "age=1": {
+      "model": "stardewcraftsve:block/crops/ancient_fiber_stage1"
+    },
+    "age=2": {
+      "model": "stardewcraftsve:block/crops/ancient_fiber_stage2"
+    },
+    "age=3": {
+      "model": "stardewcraftsve:block/crops/ancient_fiber_stage3"
+    }
+  }
+}

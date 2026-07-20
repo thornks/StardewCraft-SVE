@@ -1,0 +1,27 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "stardewcraft:item/fish/smoked/baby_lunaloo",
+    "particle": "stardewcraft:item/fish/smoked/baby_lunaloo"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 1
+      },
+      "model": "stardewcraftsve:item/smoked_baby_lunaloo_base_silver"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 2
+      },
+      "model": "stardewcraftsve:item/smoked_baby_lunaloo_base_gold"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 3
+      },
+      "model": "stardewcraftsve:item/smoked_baby_lunaloo_base_iridium"
+    }
+  ]
+}

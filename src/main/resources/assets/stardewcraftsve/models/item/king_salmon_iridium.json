@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "stardewcraftsve:item/fish/king_salmon",
+    "layer1": "stardewcraft:item/quality/iridium_star",
+    "particle": "stardewcraftsve:item/fish/king_salmon"
+  }
+}

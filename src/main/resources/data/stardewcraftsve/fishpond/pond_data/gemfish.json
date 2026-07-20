@@ -1,0 +1,109 @@
+{
+  "fish": "stardewcraftsve:gemfish",
+  "max_population": -1,
+  "spawn_time": -1,
+  "base_min_produce_chance": 0.15,
+  "base_max_produce_chance": 0.95,
+  "produced_items": [
+    {
+      "item": "stardewcraft:prismatic_shard",
+      "required_population": 10,
+      "chance": 0.01,
+      "min_count": 1,
+      "max_count": 1
+    },
+    {
+      "item": "stardewcraft:diamond",
+      "required_population": 10,
+      "chance": 0.15,
+      "min_count": 1,
+      "max_count": 3
+    },
+    {
+      "item": "stardewcraft:ruby",
+      "required_population": 10,
+      "chance": 0.15,
+      "min_count": 2,
+      "max_count": 6
+    },
+    {
+      "item": "stardewcraft:emerald",
+      "required_population": 10,
+      "chance": 0.15,
+      "min_count": 2,
+      "max_count": 6
+    },
+    {
+      "item": "stardewcraft:ruby",
+      "required_population": 7,
+      "chance": 0.35,
+      "min_count": 1,
+      "max_count": 2
+    },
+    {
+      "item": "stardewcraft:emerald",
+      "required_population": 7,
+      "chance": 0.35,
+      "min_count": 1,
+      "max_count": 2
+    },
+    {
+      "item": "stardewcraft:aquamarine",
+      "required_population": 4,
+      "chance": 0.35,
+      "min_count": 1,
+      "max_count": 2
+    },
+    {
+      "item": "stardewcraft:jade",
+      "required_population": 4,
+      "chance": 0.4,
+      "min_count": 1,
+      "max_count": 2
+    },
+    {
+      "item": "stardewcraft:amethyst",
+      "required_population": 1,
+      "chance": 0.5,
+      "min_count": 1,
+      "max_count": 2
+    },
+    {
+      "item": "stardewcraft:topaz",
+      "required_population": 1,
+      "chance": 0.5,
+      "min_count": 1,
+      "max_count": 2
+    },
+    {
+      "item": "stardewcraft:roe",
+      "required_population": 1,
+      "chance": 0.5,
+      "min_count": 1,
+      "max_count": 2
+    }
+  ],
+  "population_gates": {
+    "4": [
+      {
+        "item": "stardewcraft:frozen_geode",
+        "min_count": 5,
+        "max_count": 5
+      }
+    ],
+    "7": [
+      {
+        "item": "stardewcraft:magma_geode",
+        "min_count": 10,
+        "max_count": 10
+      }
+    ],
+    "10": [
+      {
+        "item": "stardewcraft:omni_geode",
+        "min_count": 15,
+        "max_count": 15
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "legacy_id": "alesia_vendor",
+  "owner_npc": "alesia",
+  "owner_dialogue": "stardewcraftsve.shop.alesia_vendor.dialogue",
+  "entries": [
+    {
+      "item": "stardewcraftsve:tempered_galaxy_dagger",
+      "price": 350000
+    },
+    {
+      "item": "stardewcraftsve:haste_elixir",
+      "price": 8000
+    },
+    {
+      "item": "stardewcraftsve:armor_elixir",
+      "price": 5000
+    },
+    {
+      "item": "stardewcraftsve:undeadfish",
+      "price": 4000
+    }
+  ],
+  "accepted_sell_types": []
+}

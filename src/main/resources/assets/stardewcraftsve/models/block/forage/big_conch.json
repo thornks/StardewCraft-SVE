@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "stardewcraftsve:item/forage/big_conch",
+    "particle": "stardewcraftsve:item/forage/big_conch"
+  },
+  "render_type": "minecraft:cutout"
+}

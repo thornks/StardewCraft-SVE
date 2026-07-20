@@ -1,0 +1,51 @@
+{
+  "fish": "stardewcraftsve:frog",
+  "max_population": -1,
+  "spawn_time": -1,
+  "base_min_produce_chance": 0.15,
+  "base_max_produce_chance": 0.95,
+  "produced_items": [
+    {
+      "item": "stardewcraftsve:green_slime_egg",
+      "required_population": 10,
+      "chance": 0.01,
+      "min_count": 1,
+      "max_count": 1
+    },
+    {
+      "item": "stardewcraft:slime_item",
+      "required_population": 6,
+      "chance": 0.2,
+      "min_count": 10,
+      "max_count": 20
+    },
+    {
+      "item": "stardewcraft:roe",
+      "required_population": 0,
+      "chance": 1,
+      "min_count": 1,
+      "max_count": 1
+    }
+  ],
+  "population_gates": {
+    "6": [
+      {
+        "item": "stardewcraft:bug_meat",
+        "min_count": 10,
+        "max_count": 10
+      }
+    ],
+    "10": [
+      {
+        "item": "stardewcraft:bug_meat",
+        "min_count": 25,
+        "max_count": 25
+      },
+      {
+        "item": "stardewcraft:wild_bait",
+        "min_count": 10,
+        "max_count": 10
+      }
+    ]
+  }
+}

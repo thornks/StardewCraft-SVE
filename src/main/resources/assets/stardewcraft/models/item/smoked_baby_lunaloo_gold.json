@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "stardewcraft:item/fish/smoked/baby_lunaloo",
+    "layer1": "stardewcraft:item/quality/gold_star",
+    "particle": "stardewcraft:item/fish/smoked/baby_lunaloo"
+  }
+}

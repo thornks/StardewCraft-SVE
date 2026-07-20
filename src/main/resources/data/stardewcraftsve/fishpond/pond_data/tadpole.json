@@ -1,0 +1,53 @@
+{
+  "fish": "stardewcraftsve:tadpole",
+  "max_population": -1,
+  "spawn_time": -1,
+  "base_min_produce_chance": 0.15,
+  "base_max_produce_chance": 0.95,
+  "produced_items": [
+    {
+      "item": "stardewcraftsve:frog",
+      "required_population": 10,
+      "chance": 0.12,
+      "min_count": 2,
+      "max_count": 4
+    },
+    {
+      "item": "stardewcraftsve:frog",
+      "required_population": 7,
+      "chance": 0.7,
+      "min_count": 1,
+      "max_count": 1
+    },
+    {
+      "item": "stardewcraftsve:frog",
+      "required_population": 3,
+      "chance": 0.35,
+      "min_count": 1,
+      "max_count": 1
+    },
+    {
+      "item": "stardewcraftsve:frog",
+      "required_population": 0,
+      "chance": 0.15,
+      "min_count": 1,
+      "max_count": 1
+    }
+  ],
+  "population_gates": {
+    "4": [
+      {
+        "item": "stardewcraft:green_algae",
+        "min_count": 3,
+        "max_count": 3
+      }
+    ],
+    "8": [
+      {
+        "item": "stardewcraft:green_algae",
+        "min_count": 7,
+        "max_count": 7
+      }
+    ]
+  }
+}

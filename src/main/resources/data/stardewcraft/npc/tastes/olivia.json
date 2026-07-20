@@ -1,0 +1,28 @@
+{
+  "npc_id": "olivia",
+  "loved": [
+    "stardewcraft:fish_dumpling",
+    "stardewcraftsve:golden_goose_egg",
+    "stardewcraftsve:prismatic_pop",
+    "stardewcraftsve:goldenrod",
+    "stardewcraftsve:blue_moon_wine",
+    "stardewcraftsve:aged_blue_moon_wine"
+  ],
+  "liked": [
+    "stardewcraftsve:amber",
+    "stardewcraftsve:gold_carrot",
+    "stardewcraftsve:monster_mushroom",
+    "stardewcraftsve:king_salmon",
+    "stardewcraftsve:butterfish"
+  ],
+  "disliked": [
+    "stardewcraftsve:stamina_capsule",
+    "stardewcraftsve:sports_drink"
+  ],
+  "hated": [
+    "stardewcraftsve:super_joja_cola",
+    "stardewcraftsve:goldenfish",
+    "stardewcraftsve:frog",
+    "stardewcraftsve:daggerfish"
+  ]
+}

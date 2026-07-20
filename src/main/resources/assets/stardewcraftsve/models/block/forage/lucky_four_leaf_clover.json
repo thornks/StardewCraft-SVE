@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "stardewcraftsve:item/trinket/lucky_four_leaf_clover",
+    "particle": "stardewcraftsve:item/trinket/lucky_four_leaf_clover"
+  },
+  "render_type": "minecraft:cutout"
+}

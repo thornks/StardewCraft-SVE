@@ -1,0 +1,6 @@
+{
+  "machine": "crystalarium",
+  "recipes": [
+    { "input": "stardewcraftsve:galdoran_gem", "minutes": 4000, "outputMode": "copy_input" }
+  ]
+}

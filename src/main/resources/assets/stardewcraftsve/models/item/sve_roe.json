@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "stardewcraft:item/artisan/preserves/roe_base",
+    "layer1": "stardewcraft:item/artisan/preserves/roe_overlay",
+    "particle": "stardewcraft:item/artisan/preserves/roe_base"
+  }
+}

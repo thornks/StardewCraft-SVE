@@ -1,0 +1,19 @@
+{
+  "output": "stardewcraftsve:baked_berry_oatmeal_supreme",
+  "ingredients": [
+    {
+      "item": "stardewcraft:salmonberry",
+      "count": 15
+    },
+    {
+      "item": "stardewcraft:blackberry",
+      "count": 15
+    },
+    {
+      "item": "stardewcraft:sugar"
+    },
+    {
+      "item": "stardewcraft:wheat_flour"
+    }
+  ]
+}

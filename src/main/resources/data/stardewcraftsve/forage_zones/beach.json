@@ -1,0 +1,15 @@
+{
+  "areas": [
+    { "min_x": -4, "min_y": 57, "min_z": 77, "max_x": 239, "max_y": 65, "max_z": 186 }
+  ],
+  "min_daily_spawn": 1,
+  "max_daily_spawn": 3,
+  "max_spawned_at_once": 4,
+  "surface": "sand",
+  "entries": [
+    { "block": "stardewcraftsve:forage_big_conch", "chance": 0.4 },
+    { "block": "stardewcraftsve:forage_dried_sand_dollar", "chance": 0.4 },
+    { "block": "stardewcraftsve:forage_dulse_seaweed", "chance": 0.3 },
+    { "block": "stardewcraftsve:forage_golden_ocean_flower", "chance": 0.15 }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "legacy_id": "camilla_vendor",
+  "owner_npc": "camilla",
+  "owner_dialogue": "stardewcraftsve.shop.camilla_vendor.dialogue",
+  "entries": [
+    {
+      "item": "stardewcraftsve:gravity_elixir",
+      "price": 4000
+    },
+    {
+      "item": "stardewcraftsve:lightning_elixir",
+      "price": 8000
+    },
+    {
+      "item": "stardewcraftsve:barbarian_elixir",
+      "price": 20000
+    },
+    {
+      "item": "stardewcraftsve:aegis_elixir",
+      "price": 28000
+    }
+  ],
+  "accepted_sell_types": []
+}

@@ -1,0 +1,245 @@
+{
+  "machine": "fish_smoker",
+  "recipes": [
+    {
+      "input": "stardewcraftsve:alligator",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:arrowhead_shark",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:baby_lunaloo",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:barred_knifejaw",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:blue_tang",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:bonefish",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:bull_trout",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:butterfish",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:clownfish",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:daggerfish",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:diamond_carp",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:fiber_goby",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:frog",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:gar",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:gemfish",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:goldenfish",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:goldfish",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:grass_carp",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:highlands_bass",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:king_salmon",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:kittyfish",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:lunaloo",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:meteor_carp",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:minnow",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:ocean_sunfish",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:puppyfish",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:radioactive_bass",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:razor_trout",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:seahorse",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:shark",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:shiny_lunaloo",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:snatcher_worm",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:tadpole",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:torpedo_trout",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:turretfish",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:undeadfish",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:viper_eel",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:void_eel",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:water_grub",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:wolf_snapper",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    }
+  ]
+}

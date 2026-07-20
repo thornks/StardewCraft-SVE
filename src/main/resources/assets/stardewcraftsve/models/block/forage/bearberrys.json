@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "stardewcraftsve:item/fruit/bearberrys",
+    "particle": "stardewcraftsve:item/fruit/bearberrys"
+  },
+  "render_type": "minecraft:cutout"
+}

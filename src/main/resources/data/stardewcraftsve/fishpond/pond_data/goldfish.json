@@ -1,0 +1,49 @@
+{
+  "fish": "stardewcraftsve:goldfish",
+  "max_population": -1,
+  "spawn_time": -1,
+  "base_min_produce_chance": 0.15,
+  "base_max_produce_chance": 0.95,
+  "produced_items": [
+    {
+      "item": "stardewcraft:roe",
+      "required_population": 10,
+      "chance": 0.99,
+      "min_count": 1,
+      "max_count": 2
+    },
+    {
+      "item": "stardewcraft:roe",
+      "required_population": 6,
+      "chance": 0.87,
+      "min_count": 1,
+      "max_count": 2
+    },
+    {
+      "item": "stardewcraft:roe",
+      "required_population": 0,
+      "chance": 0.75,
+      "min_count": 1,
+      "max_count": 1
+    }
+  ],
+  "population_gates": {
+    "5": [
+      {
+        "item": "stardewcraft:green_algae",
+        "min_count": 3,
+        "max_count": 3
+      },
+      {
+        "item": "stardewcraftsve:birch_seed",
+        "min_count": 3,
+        "max_count": 3
+      },
+      {
+        "item": "stardewcraft:bug_meat",
+        "min_count": 8,
+        "max_count": 8
+      }
+    ]
+  }
+}

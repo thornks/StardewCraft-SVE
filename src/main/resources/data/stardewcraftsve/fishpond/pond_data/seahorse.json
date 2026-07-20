@@ -1,0 +1,46 @@
+{
+  "fish": "stardewcraftsve:seahorse",
+  "max_population": -1,
+  "spawn_time": -1,
+  "base_min_produce_chance": 0.15,
+  "base_max_produce_chance": 0.95,
+  "produced_items": [
+    {
+      "item": "stardewcraft:wild_horseradish",
+      "required_population": 10,
+      "chance": 0.5,
+      "min_count": 2,
+      "max_count": 6
+    },
+    {
+      "item": "stardewcraft:roe",
+      "required_population": 1,
+      "chance": 1,
+      "min_count": 1,
+      "max_count": 2
+    },
+    {
+      "item": "stardewcraft:roe",
+      "required_population": 1,
+      "chance": 1,
+      "min_count": 1,
+      "max_count": 1
+    }
+  ],
+  "population_gates": {
+    "5": [
+      {
+        "item": "stardewcraft:coral",
+        "min_count": 3,
+        "max_count": 3
+      }
+    ],
+    "10": [
+      {
+        "item": "stardewcraft:coral",
+        "min_count": 8,
+        "max_count": 8
+      }
+    ]
+  }
+}

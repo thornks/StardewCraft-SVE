@@ -1,0 +1,19 @@
+{
+  "output": "stardewcraftsve:yarn_spooler",
+  "ingredients": [
+    {
+      "item": "stardewcraft:wood_hard",
+      "count": 25
+    },
+    {
+      "item": "stardewcraft:battery_pack"
+    },
+    {
+      "item": "stardewcraftsve:fir_wax"
+    },
+    {
+      "item": "stardewcraft:pine_tar"
+    }
+  ],
+  "legacy_unlock_condition": "s Farming 9"
+}

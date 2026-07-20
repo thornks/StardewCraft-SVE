@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "stardewcraftsve:item/fish/snatcher_worm",
+    "layer1": "stardewcraft:item/quality/silver_star",
+    "particle": "stardewcraftsve:item/fish/snatcher_worm"
+  }
+}

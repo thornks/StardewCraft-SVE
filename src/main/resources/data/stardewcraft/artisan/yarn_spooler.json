@@ -1,0 +1,11 @@
+{
+  "machine": "yarn_spooler",
+  "recipes": [
+    {
+      "input": "stardewcraftsve:camel_wool",
+      "output": "stardewcraftsve:yarn",
+      "minutes": 120,
+      "quality": "keep"
+    }
+  ]
+}

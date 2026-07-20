@@ -1,0 +1,17 @@
+{
+  "output": "stardewcraftsve:cheese_charcuterie",
+  "ingredients": [
+    {
+      "item": "stardewcraft:cheese"
+    },
+    {
+      "item": "stardewcraft:goat_cheese"
+    },
+    {
+      "item": "stardewcraft:wheat_flour"
+    },
+    {
+      "item": "stardewcraftsve:butter"
+    }
+  ]
+}

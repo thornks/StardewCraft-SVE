@@ -1,0 +1,35 @@
+{
+  "replace": false,
+  "values": {
+    "stardewcraftsve:pear_tree": {
+      "kind": "stardewcraftsve:pear",
+      "days_to_mature": 28,
+      "product": "stardewcraftsve:pear",
+      "product_count": 1,
+      "max_stored_product": 3,
+      "fruit_seasons": [
+        "spring"
+      ]
+    },
+    "stardewcraftsve:nectarine_tree": {
+      "kind": "stardewcraftsve:nectarine",
+      "days_to_mature": 28,
+      "product": "stardewcraftsve:nectarine",
+      "product_count": 1,
+      "max_stored_product": 3,
+      "fruit_seasons": [
+        "summer"
+      ]
+    },
+    "stardewcraftsve:persimmon_tree": {
+      "kind": "stardewcraftsve:persimmon",
+      "days_to_mature": 28,
+      "product": "stardewcraftsve:persimmon",
+      "product_count": 1,
+      "max_stored_product": 3,
+      "fruit_seasons": [
+        "fall"
+      ]
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "output": "stardewcraftsve:armor_elixir",
+  "ingredients": [
+    {
+      "item": "stardewcraft:solar_essence",
+      "count": 4
+    },
+    {
+      "item": "stardewcraft:bone_fragment",
+      "count": 3
+    },
+    {
+      "item": "stardewcraftsve:void_soul"
+    },
+    {
+      "item": "stardewcraft:vinegar"
+    }
+  ],
+  "legacy_unlock_condition": "s Combat 7"
+}

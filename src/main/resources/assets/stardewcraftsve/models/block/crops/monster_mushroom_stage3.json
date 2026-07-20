@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "stardewcraftsve:block/crops/monster_mushroom_stage3"
+  },
+  "render_type": "minecraft:cutout"
+}

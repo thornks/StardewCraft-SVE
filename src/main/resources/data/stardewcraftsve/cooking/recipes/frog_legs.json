@@ -1,0 +1,14 @@
+{
+  "output": "stardewcraftsve:frog_legs",
+  "ingredients": [
+    {
+      "item": "stardewcraftsve:frog"
+    },
+    {
+      "item": "stardewcraft:oil"
+    },
+    {
+      "item": "stardewcraft:wheat_flour"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "output": "stardewcraftsve:prismatic_pop",
+  "ingredients": [
+    {
+      "item": "stardewcraft:prismatic_shard"
+    },
+    {
+      "tag": "c:milk",
+      "display_item": "stardewcraft:milk"
+    },
+    {
+      "item": "stardewcraft:sugar"
+    }
+  ]
+}

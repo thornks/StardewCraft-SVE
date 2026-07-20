@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:block",
+  "functions": [
+    {
+      "function": "minecraft:explosion_decay"
+    }
+  ],
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "stardewcraftsve:salal_berry_crop",
+                  "properties": {
+                    "age": "3"
+                  }
+                }
+              ],
+              "name": "stardewcraftsve:salal_berry"
+            },
+            {
+              "type": "minecraft:item",
+              "name": "stardewcraftsve:salal_berry_seed"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ]
+}

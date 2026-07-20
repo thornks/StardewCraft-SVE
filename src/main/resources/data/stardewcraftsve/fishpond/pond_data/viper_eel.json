@@ -1,0 +1,77 @@
+{
+  "fish": "stardewcraftsve:viper_eel",
+  "max_population": -1,
+  "spawn_time": -1,
+  "base_min_produce_chance": 0.15,
+  "base_max_produce_chance": 0.95,
+  "produced_items": [
+    {
+      "item": "stardewcraftsve:red_slime_egg",
+      "required_population": 10,
+      "chance": 0.1,
+      "min_count": 1,
+      "max_count": 2
+    },
+    {
+      "item": "stardewcraftsve:fireworks_red",
+      "required_population": 10,
+      "chance": 0.03,
+      "min_count": 1,
+      "max_count": 2
+    },
+    {
+      "item": "stardewcraftsve:fireworks_purple",
+      "required_population": 10,
+      "chance": 0.03,
+      "min_count": 1,
+      "max_count": 2
+    },
+    {
+      "item": "stardewcraftsve:fireworks_green",
+      "required_population": 10,
+      "chance": 0.03,
+      "min_count": 1,
+      "max_count": 2
+    },
+    {
+      "item": "stardewcraft:fried_eel",
+      "required_population": 7,
+      "chance": 0.15,
+      "min_count": 1,
+      "max_count": 3
+    },
+    {
+      "item": "stardewcraft:roe",
+      "required_population": 0,
+      "chance": 1,
+      "min_count": 1,
+      "max_count": 1
+    }
+  ],
+  "population_gates": {
+    "3": [
+      {
+        "item": "stardewcraft:red_mullet",
+        "min_count": 2,
+        "max_count": 2
+      },
+      {
+        "item": "stardewcraft:red_snapper",
+        "min_count": 2,
+        "max_count": 2
+      }
+    ],
+    "6": [
+      {
+        "item": "stardewcraft:red_mushroom",
+        "min_count": 8,
+        "max_count": 8
+      },
+      {
+        "item": "stardewcraft:red_plate",
+        "min_count": 1,
+        "max_count": 1
+      }
+    ]
+  }
+}

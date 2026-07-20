@@ -1,0 +1,20 @@
+{
+  "output": "stardewcraftsve:butter_churner",
+  "ingredients": [
+    {
+      "item": "stardewcraft:wood_normal",
+      "count": 25
+    },
+    {
+      "item": "stardewcraft:stone",
+      "count": 25
+    },
+    {
+      "item": "stardewcraft:frozen_tear"
+    },
+    {
+      "item": "stardewcraft:iron_bar"
+    }
+  ],
+  "legacy_unlock_condition": "s Foraging 3"
+}

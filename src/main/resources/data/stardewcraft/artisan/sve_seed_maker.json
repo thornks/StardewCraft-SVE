@@ -1,0 +1,35 @@
+{
+  "machine": "seed_maker",
+  "recipes": [
+    {
+      "input": "stardewcraftsve:cucumber",
+      "minutes": 20,
+      "outputMode": "seedmaker"
+    },
+    {
+      "input": "stardewcraftsve:butternut_squash",
+      "minutes": 20,
+      "outputMode": "seedmaker"
+    },
+    {
+      "input": "stardewcraftsve:sweet_potato",
+      "minutes": 20,
+      "outputMode": "seedmaker"
+    },
+    {
+      "input": "stardewcraftsve:joja_veggie",
+      "minutes": 20,
+      "outputMode": "seedmaker"
+    },
+    {
+      "input": "stardewcraftsve:joja_berry",
+      "minutes": 20,
+      "outputMode": "seedmaker"
+    },
+    {
+      "input": "stardewcraftsve:monster_fruit",
+      "minutes": 20,
+      "outputMode": "seedmaker"
+    }
+  ]
+}

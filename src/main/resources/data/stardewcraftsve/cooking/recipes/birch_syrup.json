@@ -1,0 +1,13 @@
+{
+  "output": "stardewcraftsve:birch_syrup",
+  "ingredients": [
+    {
+      "item": "stardewcraftsve:birch_water",
+      "count": 3
+    },
+    {
+      "item": "stardewcraft:sap",
+      "count": 25
+    }
+  ]
+}

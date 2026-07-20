@@ -1,0 +1,42 @@
+modLoader = "javafml"
+loaderVersion = "[4,)"
+license = "MIT"
+
+[[mods]]
+modId = "stardewcraftsve"
+version = "0.1.0"
+displayName = "Stardewcraft: SVE Items"
+credits = "Textures from Stardew Valley Expanded by FlashShifter"
+authors = "stardewcraft addon"
+description = "Adds 188 items and supporting gameplay from Stardew Valley Expanded as a Stardewcraft addon."
+
+[[dependencies.stardewcraftsve]]
+    modId = "neoforge"
+    type = "required"
+    versionRange = "[21.1,)"
+    ordering = "NONE"
+    side = "BOTH"
+
+[[dependencies.stardewcraftsve]]
+    modId = "minecraft"
+    type = "required"
+    versionRange = "[1.21.1,1.22)"
+    ordering = "NONE"
+    side = "BOTH"
+
+[[dependencies.stardewcraftsve]]
+    modId = "stardewcraft"
+    type = "required"
+    versionRange = "[0.5.1fix4]"
+    ordering = "AFTER"
+    side = "BOTH"
+
+[[dependencies.stardewcraftsve]]
+    modId = "fishingassist"
+    type = "optional"
+    versionRange = "[1.0,)"
+    ordering = "NONE"
+    side = "CLIENT"
+
+[[mixins]]
+config = "stardewcraftsve.mixins.json"
