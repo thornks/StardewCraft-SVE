@@ -35,9 +35,23 @@ public final class SveWildTreeGrowthManager extends SavedData {
     private int lastNaturalFarmSpawnDay = Integer.MIN_VALUE;
 
     public void addSapling(ServerLevel level, BlockPos pos, SveWildTreeType type) {
-        saplings.putIfAbsent(GlobalPos.of(level.dimension(), pos.immutable()),
-                new Entry(type, 0, false, absoluteDay()));
-        setDirty();
+        GlobalPos globalPos = GlobalPos.of(level.dimension(), pos.immutable());
+        BlockState state = level.getBlockState(pos);
+        int visualStage = state.getBlock() instanceof SveWildTreeSaplingBlock
+                ? state.getValue(SveWildTreeSaplingBlock.STAGE) : 0;
+        Entry existing = saplings.get(globalPos);
+        if (existing == null) {
+            saplings.put(globalPos, new Entry(type, visualStage, false, absoluteDay()));
+            setDirty();
+            return;
+        }
+        boolean changed = existing.type != type;
+        existing.type = type;
+        if (existing.stage < visualStage) {
+            existing.stage = visualStage;
+            changed = true;
+        }
+        if (changed) setDirty();
     }
 
     public void removeSapling(ServerLevel level, BlockPos pos) {
@@ -92,14 +106,14 @@ public final class SveWildTreeGrowthManager extends SavedData {
             GlobalPos globalPos = mapEntry.getKey();
             Entry entry = mapEntry.getValue();
             if (!globalPos.dimension().equals(level.dimension()) || entry.lastProcessedDay >= today) continue;
-            int firstDay = entry.lastProcessedDay + 1;
             int elapsed = Math.min(1120, today - entry.lastProcessedDay);
-            entry.lastProcessedDay = today;
-            changed = true;
             if (!level.isLoaded(globalPos.pos())) continue;
+            int firstDay = entry.lastProcessedDay + 1;
             for (int offset = 0; offset < elapsed && saplings.containsKey(globalPos); offset++) {
                 processDay(level, globalPos.pos(), entry, seasonOfAbsoluteDay(firstDay + offset));
             }
+            entry.lastProcessedDay = today;
+            changed = true;
         }
         if (changed) setDirty();
     }

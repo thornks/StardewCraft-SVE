@@ -94,21 +94,24 @@ public class SveFruitTreeBlockEntity extends BlockEntity implements GeoBlockEnti
         }
 
         int elapsedDays = Math.min(1120, today - tree.lastProcessedDay);
+        int firstDay = tree.lastProcessedDay + 1;
+        tree.dailyUpdate(level, pos, elapsedDays, firstDay);
         tree.lastProcessedDay = today;
-        tree.dailyUpdate(level, pos, elapsedDays);
         if (level instanceof net.minecraft.server.level.ServerLevel serverLevel) {
             SveFruitTreeBlock.ensureExtensions(serverLevel, pos, tree.getFruitTreeType());
         }
     }
 
-    private void dailyUpdate(Level level, BlockPos pos, int elapsedDays) {
-        daysSinceMature += elapsedDays;
+    private void dailyUpdate(Level level, BlockPos pos, int elapsedDays, int firstDay) {
         StardewTreeData data = resolvePublicData();
         int dailyProduct = data == null ? 1 : data.productCount();
         int maxStored = data == null ? SveFruitTreeType.MAX_FRUIT : data.maxStoredProduct();
-        if (SveFruitTreeRules.canFruitToday(level, pos, getFruitTreeType(), data)
-                && fruitCount < maxStored) {
-            fruitCount = Math.min(maxStored, fruitCount + dailyProduct * elapsedDays);
+        for (int offset = 0; offset < elapsedDays; offset++) {
+            daysSinceMature++;
+            if (SveFruitTreeRules.canFruitOnSeason(level, pos, getFruitTreeType(), data,
+                    SveFruitTreeRules.seasonOfAbsoluteDay(firstDay + offset)) && fruitCount < maxStored) {
+                fruitCount = Math.min(maxStored, fruitCount + dailyProduct);
+            }
         }
         syncChanged();
     }
@@ -117,7 +120,7 @@ public class SveFruitTreeBlockEntity extends BlockEntity implements GeoBlockEnti
         if (level.isClientSide()) {
             return;
         }
-        dailyUpdate(level, pos, 1);
+        dailyUpdate(level, pos, 1, absoluteDay());
         if (level instanceof net.minecraft.server.level.ServerLevel serverLevel) {
             SveFruitTreeBlock.ensureExtensions(serverLevel, pos, getFruitTreeType());
         }

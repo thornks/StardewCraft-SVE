@@ -12,6 +12,10 @@ public final class SveFruitTreeRules {
     private SveFruitTreeRules() {
     }
 
+    public static int seasonOfAbsoluteDay(int day) {
+        return Math.floorMod((day - 1) / 28, 4);
+    }
+
     public static boolean canPlantSapling(LevelReader level, BlockPos lowerPos) {
         return FruitTreeRules.canPlantSapling(level, lowerPos)
                 && !isTooCloseToSveTree(level, lowerPos);
@@ -27,6 +31,11 @@ public final class SveFruitTreeRules {
 
     public static boolean canFruitToday(Level level, BlockPos pos, SveFruitTreeType type,
                                         StardewTreeData data) {
+        return canFruitOnSeason(level, pos, type, data, StardewTimeManager.get().getCurrentSeason());
+    }
+
+    public static boolean canFruitOnSeason(Level level, BlockPos pos, SveFruitTreeType type,
+                                           StardewTreeData data, int season) {
         if (level.isClientSide()) {
             return true;
         }
@@ -34,9 +43,9 @@ public final class SveFruitTreeRules {
             return true;
         }
         if (data == null || data.fruitSeasons().isEmpty()) {
-            return StardewTimeManager.get().getCurrentSeason() == type.fruitSeason();
+            return season == type.fruitSeason();
         }
-        String currentSeason = switch (StardewTimeManager.get().getCurrentSeason()) {
+        String currentSeason = switch (season) {
             case 0 -> "spring";
             case 1 -> "summer";
             case 2 -> "fall";

@@ -60,7 +60,16 @@ tasks.register('bundleRegressionTest', JavaExec) {
     mainClass = 'com.stardew.craft.sve.SveBundleRegressionTest'
 }
 
+tasks.register('treeRegressionTest', JavaExec) {
+    group = 'verification'
+    description = 'Runs the SVE tree rule regression suite.'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.stardew.craft.sve.tree.SveTreeRulesTest'
+}
+
 tasks.named('check') {
     dependsOn animalRegressionTest
     dependsOn bundleRegressionTest
+    dependsOn treeRegressionTest
 }

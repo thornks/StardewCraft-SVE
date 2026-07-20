@@ -28,9 +28,24 @@ public final class SveFruitTreeGrowthManager extends SavedData {
 
     public void addSapling(ServerLevel level, BlockPos pos, SveFruitTreeType type) {
         GlobalPos globalPos = toGlobalPos(level, pos);
-        saplings.putIfAbsent(globalPos,
-                new SaplingEntry(type, SveFruitTreeType.DAYS_TO_MATURE, absoluteDay()));
-        setDirty();
+        BlockState state = level.getBlockState(pos);
+        int visualStage = state.getBlock() instanceof SveFruitTreeSaplingBlock
+                ? state.getValue(SveFruitTreeSaplingBlock.AGE) : 0;
+        int stageDays = Math.min(SveFruitTreeType.DAYS_TO_MATURE, visualStage * 7);
+        SaplingEntry existing = saplings.get(globalPos);
+        if (existing == null) {
+            saplings.put(globalPos,
+                    new SaplingEntry(type, SveFruitTreeType.DAYS_TO_MATURE - stageDays, absoluteDay()));
+            setDirty();
+            return;
+        }
+        boolean changed = existing.type != type;
+        existing.type = type;
+        if (existing.daysRemaining == SveFruitTreeType.DAYS_TO_MATURE && stageDays > 0) {
+            existing.daysRemaining = SveFruitTreeType.DAYS_TO_MATURE - stageDays;
+            changed = true;
+        }
+        if (changed) setDirty();
     }
 
     public void removeSapling(ServerLevel level, BlockPos pos) {
@@ -97,17 +112,16 @@ public final class SveFruitTreeGrowthManager extends SavedData {
                 continue;
             }
 
-            int elapsedDays = Math.min(1120, today - entry.lastProcessedDay);
-            entry.lastProcessedDay = today;
-            changed = true;
-
             BlockPos pos = globalPos.pos();
             if (!level.isLoaded(pos)) {
                 continue;
             }
+            int elapsedDays = Math.min(1120, today - entry.lastProcessedDay);
             for (int day = 0; day < elapsedDays && saplings.containsKey(globalPos); day++) {
                 processSaplingDay(level, pos, entry);
             }
+            entry.lastProcessedDay = today;
+            changed = true;
         }
         if (changed) {
             setDirty();
@@ -252,7 +266,7 @@ public final class SveFruitTreeGrowthManager extends SavedData {
     }
 
     private static final class SaplingEntry {
-        private final SveFruitTreeType type;
+        private SveFruitTreeType type;
         private int daysRemaining;
         private int lastProcessedDay;
 
