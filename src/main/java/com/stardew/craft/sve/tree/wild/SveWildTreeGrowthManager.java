@@ -23,6 +23,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public final class SveWildTreeGrowthManager extends SavedData {
@@ -56,6 +57,14 @@ public final class SveWildTreeGrowthManager extends SavedData {
 
     public void removeSapling(ServerLevel level, BlockPos pos) {
         if (saplings.remove(GlobalPos.of(level.dimension(), pos.immutable())) != null) setDirty();
+    }
+
+    public List<SaplingSnapshot> snapshots() {
+        return saplings.entrySet().stream()
+                .map(entry -> new SaplingSnapshot(entry.getKey(), entry.getValue().type,
+                        entry.getValue().stage, entry.getValue().fertilized,
+                        entry.getValue().lastProcessedDay))
+                .toList();
     }
 
     public boolean fertilize(ServerLevel level, BlockPos pos) {
@@ -315,5 +324,9 @@ public final class SveWildTreeGrowthManager extends SavedData {
             this.fertilized = fertilized;
             this.lastProcessedDay = lastProcessedDay;
         }
+    }
+
+    public record SaplingSnapshot(GlobalPos pos, SveWildTreeType type, int stage,
+                                  boolean fertilized, int lastProcessedDay) {
     }
 }

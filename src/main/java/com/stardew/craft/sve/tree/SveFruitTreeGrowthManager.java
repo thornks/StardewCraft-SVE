@@ -17,6 +17,7 @@ import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.saveddata.SavedData;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import javax.annotation.Nullable;
@@ -52,6 +53,13 @@ public final class SveFruitTreeGrowthManager extends SavedData {
         if (saplings.remove(toGlobalPos(level, pos)) != null) {
             setDirty();
         }
+    }
+
+    public List<SaplingSnapshot> snapshots() {
+        return saplings.entrySet().stream()
+                .map(entry -> new SaplingSnapshot(entry.getKey(), entry.getValue().type,
+                        entry.getValue().daysRemaining, entry.getValue().lastProcessedDay))
+                .toList();
     }
 
     public int getDaysGrown(ServerLevel level, BlockPos pos) {
@@ -275,5 +283,9 @@ public final class SveFruitTreeGrowthManager extends SavedData {
             this.daysRemaining = daysRemaining;
             this.lastProcessedDay = lastProcessedDay;
         }
+    }
+
+    public record SaplingSnapshot(GlobalPos pos, SveFruitTreeType type,
+                                  int daysRemaining, int lastProcessedDay) {
     }
 }
