@@ -769,19 +769,19 @@ public final class ModItems {
 
     // ===== weapon =====
     public static final DeferredHolder<Item, StardewWeaponItem> DIAMOND_WAND = ITEMS.register("diamond_wand",
-        () -> new StardewWeaponItem("diamond_wand", unstackableProperties()));
+        () -> new SveSwordItem("diamond_wand", unstackableProperties()));
     public static final DeferredHolder<Item, StardewWeaponItem> HEAVY_SHIELD = ITEMS.register("heavy_shield",
-        () -> new StardewWeaponItem("heavy_shield", unstackableProperties()));
+        () -> new SveSwordItem("heavy_shield", unstackableProperties()));
     public static final DeferredHolder<Item, StardewClubItem> MONSTER_SPLITTER = ITEMS.register("monster_splitter",
-        () -> new StardewClubItem("monster_splitter", unstackableProperties()));
+        () -> new SveClubItem("monster_splitter", unstackableProperties()));
     public static final DeferredHolder<Item, SimpleStardewItem> RUSTY_BLADE = ITEMS.register("rusty_blade",
         () -> new SimpleStardewItem("stardewcraft.type.monster_loot", 200, stackableProperties()));
     public static final DeferredHolder<Item, StardewDaggerItem> TEMPERED_GALAXY_DAGGER = ITEMS.register("tempered_galaxy_dagger",
-        () -> new StardewDaggerItem("tempered_galaxy_dagger", unstackableProperties()));
+        () -> new SveDaggerItem("tempered_galaxy_dagger", unstackableProperties()));
     public static final DeferredHolder<Item, StardewClubItem> TEMPERED_GALAXY_HAMMER = ITEMS.register("tempered_galaxy_hammer",
-        () -> new StardewClubItem("tempered_galaxy_hammer", unstackableProperties()));
+        () -> new SveClubItem("tempered_galaxy_hammer", unstackableProperties()));
     public static final DeferredHolder<Item, StardewWeaponItem> TEMPERED_GALAXY_SWORD = ITEMS.register("tempered_galaxy_sword",
-        () -> new StardewWeaponItem("tempered_galaxy_sword", unstackableProperties()));
+        () -> new SveSwordItem("tempered_galaxy_sword", unstackableProperties()));
 
     // ===== Recipe-only intermediates =====
 

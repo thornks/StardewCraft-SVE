@@ -156,6 +156,14 @@ tasks.register('consumableRegressionTest', JavaExec) {
     mainClass = 'com.stardew.craft.sve.SveConsumableRegressionTest'
 }
 
+tasks.register('weaponRegressionTest', JavaExec) {
+    group = 'verification'
+    description = 'Runs the SVE weapon stat, type, and skill-inheritance regression suite.'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.stardew.craft.sve.SveWeaponRegressionTest'
+}
+
 tasks.named('check') {
     dependsOn animalRegressionTest
     dependsOn bundleRegressionTest
@@ -171,4 +179,5 @@ tasks.named('check') {
     dependsOn craftingRegressionTest
     dependsOn shopRegressionTest
     dependsOn consumableRegressionTest
+    dependsOn weaponRegressionTest
 }
