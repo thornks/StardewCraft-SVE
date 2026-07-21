@@ -600,11 +600,9 @@ public final class ModItems {
             List.of(),
             stackableProperties(),
             false));
-    public static final DeferredHolder<Item, CookingDishItem> GOOSE_MAYONNAISE = ITEMS.register("goose_mayonnaise",
-        () -> new CookingDishItem(700, 45,
-            List.of(),
-            stackableProperties(),
-            false));
+    public static final DeferredHolder<Item, StardewQualityItem> GOOSE_MAYONNAISE = ITEMS.register("goose_mayonnaise",
+        () -> new StardewQualityItem(
+            "stardewcraft.type.artisan_goods", 700, 45, false, stackableProperties()));
     public static final DeferredHolder<Item, CookingDishItem> HONEY_JAR = ITEMS.register("honey_jar",
         () -> new CookingDishItem(1000, 50,
             List.of(),

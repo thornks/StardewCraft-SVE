@@ -1,7 +1,6 @@
 {
   "machine": "mayonnaise_machine",
   "recipes": [
-    { "input": "stardewcraftsve:goose_egg", "output": "stardewcraftsve:goose_mayonnaise", "minutes": 180 },
-    { "input": "stardewcraftsve:golden_goose_egg", "output": "stardewcraftsve:goose_mayonnaise", "minutes": 180, "quality": "gold" }
+    { "input": "stardewcraftsve:goose_egg", "output": "stardewcraftsve:goose_mayonnaise", "minutes": 180 }
   ]
 }
