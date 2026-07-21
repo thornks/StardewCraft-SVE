@@ -7,7 +7,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -15,6 +14,7 @@ import net.minecraft.world.level.block.state.BlockState;
 public class ButterChurnerBlockEntity extends TimedProductionBlockEntity {
 
     private static final String MACHINE_KEY = "butter_churner";
+    private static final int FALLBACK_PROCESSING_MINUTES = 60;
 
     public ButterChurnerBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.BUTTER_CHURNER.get(), pos, state);
@@ -29,39 +29,44 @@ public class ButterChurnerBlockEntity extends TimedProductionBlockEntity {
      *
      * @return the number of items consumed (0 if insertion failed)
      */
-    public int tryInsert(ItemStack stack, Player player) {
-        if (stack.isEmpty()) return 0;
-        if (!product.isEmpty()) return 0;
-        if (readyAtAbsMinute >= 0) return 0;
+    public int tryInsert(ItemStack stack) {
+        if (!canStart(stack)) return 0;
+        var recipe = ArtisanRecipeDataManager.getRecipe(MACHINE_KEY, stack);
+        if (recipe.isEmpty()) return 0;
+        return startRecipe(stack, recipe.get()) ? consumedCount(recipe.get()) : 0;
+    }
 
-        var opt = ArtisanRecipeDataManager.getRecipe(MACHINE_KEY, stack);
-        if (opt.isEmpty()) return 0;
+    private boolean canStart(ItemStack stack) {
+        return !stack.isEmpty() && product.isEmpty() && readyAtAbsMinute < 0;
+    }
 
-        var recipe = opt.get();
-
-        // Build output stack
+    private boolean startRecipe(ItemStack source, ArtisanRecipeDataManager.Recipe recipe) {
         ItemStack output = new ItemStack(
             BuiltInRegistries.ITEM.get(recipe.outputId()),
             recipe.outputCount() > 0 ? recipe.outputCount() : 1
         );
-        if (output.isEmpty()) return 0;
+        if (output.isEmpty()) return false;
 
-        // Apply quality rules
         if (recipe.keepInputQuality()) {
-            QualityHelper.setQuality(output, QualityHelper.getQuality(stack));
-        } else if (recipe.outputQuality() > 0) {
+            QualityHelper.setQuality(output, QualityHelper.getQuality(source));
+        } else if (recipe.outputQuality() >= 0) {
             QualityHelper.setQuality(output, recipe.outputQuality());
         }
 
-        int consume = recipe.consumeCount() > 0 ? recipe.consumeCount() : 1;
-        this.input = stack.copyWithCount(consume);
+        int consume = consumedCount(recipe);
+        this.input = source.copyWithCount(consume);
         this.product = output;
-        this.readyAtAbsMinute = getCurrentAbsMinute() + 60;
+        this.readyAtAbsMinute = getCurrentAbsMinute()
+                + (recipe.minutes() > 0 ? recipe.minutes() : FALLBACK_PROCESSING_MINUTES);
         this.ready = false;
 
         setChanged();
         syncToClient();
-        return consume;
+        return true;
+    }
+
+    private static int consumedCount(ArtisanRecipeDataManager.Recipe recipe) {
+        return recipe.consumeCount() > 0 ? recipe.consumeCount() : 1;
     }
 
     /**
@@ -72,7 +77,7 @@ public class ButterChurnerBlockEntity extends TimedProductionBlockEntity {
         ItemStack result = product.copy();
         product = ItemStack.EMPTY;
         input = ItemStack.EMPTY;
-        readyAtAbsMinute = -1;
+        readyAtAbsMinute = -1L;
         ready = false;
         setChanged();
         syncToClient();
@@ -130,53 +135,31 @@ public class ButterChurnerBlockEntity extends TimedProductionBlockEntity {
 
     // ===== Automation =====
 
+    @Override
     public ItemStack getAutomationInput() {
         return input;
     }
 
+    @Override
     public ItemStack getAutomationOutput() {
         return ready ? product : ItemStack.EMPTY;
     }
 
+    @Override
     public ItemStack insertAutomation(ItemStack stack, boolean simulate) {
-        if (stack.isEmpty()) return stack;
-        if (!product.isEmpty()) return stack;
-        if (readyAtAbsMinute >= 0) return stack;
-
-        var opt = ArtisanRecipeDataManager.getRecipe(MACHINE_KEY, stack);
-        if (opt.isEmpty()) return stack;
-
-        var recipe = opt.get();
-        int consume = recipe.consumeCount() > 0 ? recipe.consumeCount() : 1;
+        if (!canStart(stack)) return stack;
+        var recipe = ArtisanRecipeDataManager.getRecipe(MACHINE_KEY, stack);
+        if (recipe.isEmpty()) return stack;
+        int consume = consumedCount(recipe.get());
 
         if (simulate) {
             return com.stardew.craft.blockentity.AutomationStackHelper.remainderAfterInsert(stack, consume);
         }
-
-        ItemStack output = new ItemStack(
-            BuiltInRegistries.ITEM.get(recipe.outputId()),
-            recipe.outputCount() > 0 ? recipe.outputCount() : 1
-        );
-        if (output.isEmpty()) return stack;
-
-        // Apply quality rules
-        if (recipe.keepInputQuality()) {
-            QualityHelper.setQuality(output, QualityHelper.getQuality(stack));
-        } else if (recipe.outputQuality() > 0) {
-            QualityHelper.setQuality(output, recipe.outputQuality());
-        }
-
-        this.input = stack.copyWithCount(consume);
-        this.product = output;
-        this.readyAtAbsMinute = getCurrentAbsMinute() + 60;
-        this.ready = false;
-
-        setChanged();
-        syncToClient();
-
+        if (!startRecipe(stack, recipe.get())) return stack;
         return com.stardew.craft.blockentity.AutomationStackHelper.remainderAfterInsert(stack, consume);
     }
 
+    @Override
     public ItemStack extractAutomation(int maxCount, boolean simulate) {
         if (!ready || product.isEmpty()) return ItemStack.EMPTY;
 
@@ -217,7 +200,7 @@ public class ButterChurnerBlockEntity extends TimedProductionBlockEntity {
         product = tag.contains("product")
                 ? ItemStack.parse(registries, tag.getCompound("product")).orElse(ItemStack.EMPTY)
                 : ItemStack.EMPTY;
-        readyAtAbsMinute = tag.getLong("readyAtAbsMinute");
+        readyAtAbsMinute = tag.contains("readyAtAbsMinute") ? tag.getLong("readyAtAbsMinute") : -1L;
         ready = tag.getBoolean("ready");
     }
 

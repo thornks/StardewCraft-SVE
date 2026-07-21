@@ -1,9 +1,9 @@
 {
   "machine": "butter_churner",
   "recipes": [
-    { "input": "stardewcraft:milk", "output": "stardewcraftsve:butter", "minutes": 180 },
-    { "input": "stardewcraft:large_milk", "output": "stardewcraftsve:butter", "minutes": 180, "quality": "gold" },
-    { "input": "stardewcraft:goat_milk", "output": "stardewcraftsve:butter", "minutes": 180 },
-    { "input": "stardewcraft:large_goat_milk", "output": "stardewcraftsve:butter", "minutes": 180, "quality": "gold" }
+    { "input": "stardewcraft:milk", "output": "stardewcraftsve:butter", "minutes": 60, "quality": "keep" },
+    { "input": "stardewcraft:large_milk", "output": "stardewcraftsve:butter", "minutes": 60, "quality": "keep" },
+    { "input": "stardewcraft:goat_milk", "output": "stardewcraftsve:butter", "minutes": 60, "quality": "keep" },
+    { "input": "stardewcraft:large_goat_milk", "output": "stardewcraftsve:butter", "minutes": 60, "quality": "keep" }
   ]
 }

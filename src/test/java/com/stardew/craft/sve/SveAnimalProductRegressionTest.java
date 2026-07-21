@@ -19,6 +19,8 @@ public final class SveAnimalProductRegressionTest {
             "src/main/java/com/stardew/craft/sve/ModItems.java");
     private static final Path YARN_SPOOLER_SOURCE = Path.of(
             "src/main/java/com/stardew/craft/sve/YarnSpoolerBlockEntity.java");
+    private static final Path BUTTER_CHURNER_SOURCE = Path.of(
+            "src/main/java/com/stardew/craft/sve/ButterChurnerBlockEntity.java");
     private static final Path ITEM_MODELS = RESOURCES.resolve(
             "assets/stardewcraftsve/models/item");
 
@@ -26,13 +28,45 @@ public final class SveAnimalProductRegressionTest {
     }
 
     public static void main(String[] args) throws IOException {
+        validateButterChurner();
         validateYarnSpooler();
         validateGooseMayonnaise();
         validateIncubation();
         validateNoInventedLoomRoutes();
         validateItemMetadataAndCollections();
         System.out.println("SVE animal-product regression suite passed: "
-                + "goose mayonnaise, incubation, and quality yarn");
+                + "quality butter and yarn, goose mayonnaise, and incubation");
+    }
+
+    private static void validateButterChurner() throws IOException {
+        JsonObject root = readJson(ARTISAN.resolve("butter_churner.json"));
+        expectEquals("butter_churner", root.get("machine").getAsString(),
+                "butter churner machine id");
+
+        Set<String> expectedInputs = Set.of(
+                "stardewcraft:milk", "stardewcraft:large_milk",
+                "stardewcraft:goat_milk", "stardewcraft:large_goat_milk");
+        JsonArray recipes = root.getAsJsonArray("recipes");
+        expectEquals(expectedInputs.size(), recipes.size(), "butter recipe count");
+        Set<String> actualInputs = new java.util.LinkedHashSet<>();
+        for (var element : recipes) {
+            JsonObject recipe = element.getAsJsonObject();
+            String input = recipe.get("input").getAsString();
+            expect(actualInputs.add(input), "duplicate butter input " + input);
+            expectEquals("stardewcraftsve:butter", recipe.get("output").getAsString(),
+                    input + " butter output");
+            expectEquals(60, recipe.get("minutes").getAsInt(), input + " processing time");
+            expectEquals("keep", recipe.get("quality").getAsString(),
+                    input + " quality inheritance");
+        }
+        expectEquals(expectedInputs, actualInputs, "butter input set");
+
+        String source = Files.readString(BUTTER_CHURNER_SOURCE);
+        expect(source.contains("recipe.minutes() > 0 ? recipe.minutes() : FALLBACK_PROCESSING_MINUTES"),
+                "butter churner runtime must use recipe processing time");
+        expectEquals(1, countOccurrences(source,
+                        "readyAtAbsMinute = getCurrentAbsMinute()"),
+                "butter churner must have one shared recipe-start path");
     }
 
     private static void validateYarnSpooler() throws IOException {
@@ -94,6 +128,7 @@ public final class SveAnimalProductRegressionTest {
     private static void validateItemMetadataAndCollections() throws IOException {
         String source = Files.readString(ITEM_SOURCE);
         Map<String, String> registrations = Map.of(
+                "butter", "\"stardewcraft.type.artisan_goods\", 215, 31, true",
                 "camel_wool", "\"stardewcraft.type.animal_product\", 450, -300, true",
                 "yarn", "\"stardewcraft.type.artisan_goods\", 900, -300, true",
                 "goose_egg", "\"stardewcraft.type.animal_product\", 300, 15, true",
@@ -106,7 +141,8 @@ public final class SveAnimalProductRegressionTest {
 
         Set<String> shipping = Set.copyOf(SveCollectionCatalog.configuredItemIdsForTab(0));
         for (String path : Set.of(
-                "camel_wool", "yarn", "goose_egg", "golden_goose_egg", "goose_mayonnaise")) {
+                "butter", "camel_wool", "yarn", "goose_egg",
+                "golden_goose_egg", "goose_mayonnaise")) {
             expect(shipping.contains("stardewcraftsve:" + path),
                     path + " must appear in the shipping collection");
         }
@@ -131,6 +167,16 @@ public final class SveAnimalProductRegressionTest {
     private static JsonObject readJson(Path path) throws IOException {
         expect(Files.isRegularFile(path), "missing JSON " + path);
         return JsonParser.parseString(Files.readString(path)).getAsJsonObject();
+    }
+
+    private static int countOccurrences(String source, String needle) {
+        int count = 0;
+        int index = 0;
+        while ((index = source.indexOf(needle, index)) >= 0) {
+            count++;
+            index += needle.length();
+        }
+        return count;
     }
 
     private static void expect(boolean condition, String label) {

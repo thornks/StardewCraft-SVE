@@ -277,10 +277,10 @@ public final class StardewcraftsveJeiPlugin implements IModPlugin {
     private static List<ArtisanJeiRecipe> fallbackRecipes(MachineJeiRegistry.Machine machine) {
         if (machine == BUTTER_CHURNER) {
             return List.of(
-                    fixedRecipe(machine, "milk", ModItems.BUTTER.get(), 180, QualityHelper.NORMAL),
-                    fixedRecipe(machine, "goat_milk", ModItems.BUTTER.get(), 180, QualityHelper.NORMAL),
-                    fixedRecipe(machine, "large_milk", ModItems.BUTTER.get(), 180, QualityHelper.GOLD),
-                    fixedRecipe(machine, "large_goat_milk", ModItems.BUTTER.get(), 180, QualityHelper.GOLD)
+                    qualityRecipe(machine, "milk", ModItems.BUTTER.get(), 60),
+                    qualityRecipe(machine, "goat_milk", ModItems.BUTTER.get(), 60),
+                    qualityRecipe(machine, "large_milk", ModItems.BUTTER.get(), 60),
+                    qualityRecipe(machine, "large_goat_milk", ModItems.BUTTER.get(), 60)
             );
         }
         if (machine == YARN_SPOOLER) {
@@ -300,25 +300,23 @@ public final class StardewcraftsveJeiPlugin implements IModPlugin {
         return List.of();
     }
 
-    private static ArtisanJeiRecipe fixedRecipe(
+    private static ArtisanJeiRecipe qualityRecipe(
             MachineJeiRegistry.Machine machine,
             String inputPath,
             Item outputItem,
-            int minutes,
-            int outputQuality
+            int minutes
     ) {
-        ItemStack output = new ItemStack(outputItem);
-        QualityHelper.setQuality(output, outputQuality);
+        Item inputItem = item("stardewcraft", inputPath);
         return new ArtisanJeiRecipe(
                 ResourceLocation.fromNamespaceAndPath(
                         StardewcraftsveMod.MODID, "jei/butter_churner/" + inputPath),
                 machine,
                 List.of(new ArtisanJeiRecipe.Input(
-                        List.of(new ItemStack(item("stardewcraft", inputPath))), 1, false)),
-                List.of(new ArtisanJeiRecipe.Output(List.of(output), 1, 1, 1.0D)),
+                        qualityStacks(inputItem), 1, false)),
+                List.of(new ArtisanJeiRecipe.Output(qualityStacks(outputItem), 1, 1, 1.0D)),
                 minutes,
-                false,
-                outputQuality
+                true,
+                -1
         );
     }
 

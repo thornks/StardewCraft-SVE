@@ -595,11 +595,9 @@ public final class ModItems {
         () -> cooking("birch_syrup"));
     public static final DeferredHolder<Item, CookingDishItem> BLUE_MOON_WINE = ITEMS.register("blue_moon_wine",
         () -> consumable("blue_moon_wine"));
-    public static final DeferredHolder<Item, CookingDishItem> BUTTER = ITEMS.register("butter",
-        () -> new CookingDishItem("stardewcraft.type.artisan_goods", 215, 31,
-            List.of(),
-            stackableProperties(),
-            false));
+    public static final DeferredHolder<Item, StardewQualityItem> BUTTER = ITEMS.register("butter",
+        () -> new StardewQualityItem(
+            "stardewcraft.type.artisan_goods", 215, 31, true, stackableProperties()));
     public static final DeferredHolder<Item, StardewQualityItem> GOOSE_MAYONNAISE = ITEMS.register("goose_mayonnaise",
         () -> new StardewQualityItem(
             "stardewcraft.type.artisan_goods", 700, 45, false, stackableProperties()));

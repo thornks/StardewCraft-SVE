@@ -101,7 +101,7 @@ public class ButterChurnerBlock extends Block implements EntityBlock {
         }
 
         // Try to insert item
-        int consumed = churner.tryInsert(stack, player);
+        int consumed = churner.tryInsert(stack);
         if (consumed > 0) {
             if (!player.isCreative()) {
                 stack.shrink(consumed);

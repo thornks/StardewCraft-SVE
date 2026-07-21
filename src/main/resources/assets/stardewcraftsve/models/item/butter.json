@@ -1,6 +1,21 @@
 {
-  "parent": "item/generated",
+  "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "stardewcraftsve:item/artisan/butter"
-  }
+    "layer0": "stardewcraftsve:item/artisan/butter",
+    "particle": "stardewcraftsve:item/artisan/butter"
+  },
+  "overrides": [
+    {
+      "predicate": { "custom_model_data": 1 },
+      "model": "stardewcraftsve:item/butter_silver"
+    },
+    {
+      "predicate": { "custom_model_data": 2 },
+      "model": "stardewcraftsve:item/butter_gold"
+    },
+    {
+      "predicate": { "custom_model_data": 3 },
+      "model": "stardewcraftsve:item/butter_iridium"
+    }
+  ]
 }
