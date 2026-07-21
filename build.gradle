@@ -108,6 +108,14 @@ tasks.register('kegRegressionTest', JavaExec) {
     mainClass = 'com.stardew.craft.sve.SveKegRegressionTest'
 }
 
+tasks.register('preservesRegressionTest', JavaExec) {
+    group = 'verification'
+    description = 'Runs the SVE preserves-jar and dehydrator crop regression suite.'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.stardew.craft.sve.SvePreservesRegressionTest'
+}
+
 tasks.named('check') {
     dependsOn animalRegressionTest
     dependsOn bundleRegressionTest
@@ -117,4 +125,5 @@ tasks.named('check') {
     dependsOn cropForageRegressionTest
     dependsOn mixinConfigRegressionTest
     dependsOn kegRegressionTest
+    dependsOn preservesRegressionTest
 }

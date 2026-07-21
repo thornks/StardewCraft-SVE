@@ -103,10 +103,12 @@ public final class SveContentAcquisitionCatalog {
         exclude(exclusions, ExclusionType.CREATIVE_ONLY, "Development or creative-mode item",
                 "goose_spawn_egg", "camel_spawn_egg", "debug_wand");
         exclude(exclusions, ExclusionType.DISPLAY_ONLY, "JEI flavored-product display stack",
-                "joja_berry_jelly", "monster_fruit_jelly",
+                "joja_berry_jelly", "monster_fruit_jelly", "salal_berry_jelly", "slime_berry_jelly",
                 "cucumber_pickles", "butternut_squash_pickles", "gold_carrot_pickles",
-                "sweet_potato_pickles", "joja_veggie_pickles",
+                "sweet_potato_pickles", "joja_veggie_pickles", "ancient_fiber_pickles",
+                "monster_mushroom_pickles", "void_root_pickles",
                 "joja_berry_dried_fruit", "monster_fruit_dried_fruit",
+                "salal_berry_dried_fruit", "slime_berry_dried_fruit",
                 "green_mushroom_dried_mushrooms", "mega_purple_mushroom_dried_mushrooms",
                 "monster_mushroom_dried_mushrooms", "mushroom_colony_dried_mushrooms",
                 "poison_mushroom_dried_mushrooms", "sve_roe", "sve_aged_roe");

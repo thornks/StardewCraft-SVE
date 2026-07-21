@@ -1016,6 +1016,11 @@ public final class ModItems {
         return ARTISAN_ITEMS.register(id, () -> new PreservesItem(type, stackableProperties()));
     }
 
+    private static DeferredHolder<Item, Item> cropArtisan(String inputPath, PreserveType type) {
+        SvePreservesData.Product product = SvePreservesData.displayProduct(inputPath, type);
+        return artisan(product.displayOutputPath(), type);
+    }
+
     private static DeferredHolder<Item, ArtisanDrinkItem> kegProduct(String inputPath) {
         SveKegData.Product product = SveKegData.byInputPath(inputPath);
         return ARTISAN_ITEMS.register(product.outputPath(), () -> new ArtisanDrinkItem(
@@ -1026,24 +1031,31 @@ public final class ModItems {
     // ===== flavored artisan display items (registered under stardewcraftsve for JEI mod tag) =====
 
     // Jelly flavors
-    public static final DeferredHolder<Item, Item> JOJA_BERRY_JELLY = artisan("joja_berry_jelly", PreserveType.JELLY);
-    public static final DeferredHolder<Item, Item> MONSTER_FRUIT_JELLY = artisan("monster_fruit_jelly", PreserveType.JELLY);
+    public static final DeferredHolder<Item, Item> JOJA_BERRY_JELLY = cropArtisan("joja_berry", PreserveType.JELLY);
+    public static final DeferredHolder<Item, Item> MONSTER_FRUIT_JELLY = cropArtisan("monster_fruit", PreserveType.JELLY);
+    public static final DeferredHolder<Item, Item> SALAL_BERRY_JELLY = cropArtisan("salal_berry", PreserveType.JELLY);
+    public static final DeferredHolder<Item, Item> SLIME_BERRY_JELLY = cropArtisan("slime_berry", PreserveType.JELLY);
 
     // Pickles flavors
-    public static final DeferredHolder<Item, Item> CUCUMBER_PICKLES = artisan("cucumber_pickles", PreserveType.PICKLES);
-    public static final DeferredHolder<Item, Item> BUTTERNUT_SQUASH_PICKLES = artisan("butternut_squash_pickles", PreserveType.PICKLES);
-    public static final DeferredHolder<Item, Item> GOLD_CARROT_PICKLES = artisan("gold_carrot_pickles", PreserveType.PICKLES);
-    public static final DeferredHolder<Item, Item> SWEET_POTATO_PICKLES = artisan("sweet_potato_pickles", PreserveType.PICKLES);
-    public static final DeferredHolder<Item, Item> JOJA_VEGGIE_PICKLES = artisan("joja_veggie_pickles", PreserveType.PICKLES);
+    public static final DeferredHolder<Item, Item> CUCUMBER_PICKLES = cropArtisan("cucumber", PreserveType.PICKLES);
+    public static final DeferredHolder<Item, Item> BUTTERNUT_SQUASH_PICKLES = cropArtisan("butternut_squash", PreserveType.PICKLES);
+    public static final DeferredHolder<Item, Item> GOLD_CARROT_PICKLES = cropArtisan("gold_carrot", PreserveType.PICKLES);
+    public static final DeferredHolder<Item, Item> SWEET_POTATO_PICKLES = cropArtisan("sweet_potato", PreserveType.PICKLES);
+    public static final DeferredHolder<Item, Item> JOJA_VEGGIE_PICKLES = cropArtisan("joja_veggie", PreserveType.PICKLES);
+    public static final DeferredHolder<Item, Item> ANCIENT_FIBER_PICKLES = cropArtisan("ancient_fiber", PreserveType.PICKLES);
+    public static final DeferredHolder<Item, Item> MONSTER_MUSHROOM_PICKLES = cropArtisan("monster_mushroom", PreserveType.PICKLES);
+    public static final DeferredHolder<Item, Item> VOID_ROOT_PICKLES = cropArtisan("void_root", PreserveType.PICKLES);
 
     // Dried fruit flavors
-    public static final DeferredHolder<Item, Item> JOJA_BERRY_DRIED_FRUIT = artisan("joja_berry_dried_fruit", PreserveType.DRIED_FRUIT);
-    public static final DeferredHolder<Item, Item> MONSTER_FRUIT_DRIED_FRUIT = artisan("monster_fruit_dried_fruit", PreserveType.DRIED_FRUIT);
+    public static final DeferredHolder<Item, Item> JOJA_BERRY_DRIED_FRUIT = cropArtisan("joja_berry", PreserveType.DRIED_FRUIT);
+    public static final DeferredHolder<Item, Item> MONSTER_FRUIT_DRIED_FRUIT = cropArtisan("monster_fruit", PreserveType.DRIED_FRUIT);
+    public static final DeferredHolder<Item, Item> SALAL_BERRY_DRIED_FRUIT = cropArtisan("salal_berry", PreserveType.DRIED_FRUIT);
+    public static final DeferredHolder<Item, Item> SLIME_BERRY_DRIED_FRUIT = cropArtisan("slime_berry", PreserveType.DRIED_FRUIT);
 
     // Dried mushroom flavors
     public static final DeferredHolder<Item, Item> GREEN_MUSHROOM_DRIED_MUSHROOMS = artisan("green_mushroom_dried_mushrooms", PreserveType.DRIED_MUSHROOMS);
     public static final DeferredHolder<Item, Item> MEGA_PURPLE_MUSHROOM_DRIED_MUSHROOMS = artisan("mega_purple_mushroom_dried_mushrooms", PreserveType.DRIED_MUSHROOMS);
-    public static final DeferredHolder<Item, Item> MONSTER_MUSHROOM_DRIED_MUSHROOMS = artisan("monster_mushroom_dried_mushrooms", PreserveType.DRIED_MUSHROOMS);
+    public static final DeferredHolder<Item, Item> MONSTER_MUSHROOM_DRIED_MUSHROOMS = cropArtisan("monster_mushroom", PreserveType.DRIED_MUSHROOMS);
     public static final DeferredHolder<Item, Item> MUSHROOM_COLONY_DRIED_MUSHROOMS = artisan("mushroom_colony_dried_mushrooms", PreserveType.DRIED_MUSHROOMS);
     public static final DeferredHolder<Item, Item> POISON_MUSHROOM_DRIED_MUSHROOMS = artisan("poison_mushroom_dried_mushrooms", PreserveType.DRIED_MUSHROOMS);
 

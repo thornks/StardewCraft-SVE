@@ -9,6 +9,16 @@
     "edibility": 85,
     "color": "#8E24AA"
   },
+  "salal_berry": {
+    "price": 75,
+    "edibility": 28,
+    "color": "#6F37A5"
+  },
+  "slime_berry": {
+    "price": 65,
+    "edibility": -10,
+    "color": "#8FAE35"
+  },
   "cucumber": {
     "price": 35,
     "edibility": 18,
@@ -34,6 +44,11 @@
     "edibility": 200,
     "color": "#00E676"
   },
+  "ancient_fiber": {
+    "price": 145,
+    "edibility": 35,
+    "color": "#708B50"
+  },
   "green_mushroom": {
     "price": 1250,
     "edibility": 500,
@@ -48,6 +63,11 @@
     "price": 850,
     "edibility": 75,
     "color": "#FF6F00"
+  },
+  "void_root": {
+    "price": 235,
+    "edibility": -35,
+    "color": "#56357F"
   },
   "mushroom_colony": {
     "price": 105,

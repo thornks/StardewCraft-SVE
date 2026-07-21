@@ -16,6 +16,20 @@
       "keepInputQuality": true
     },
     {
+      "input": "stardewcraftsve:salal_berry",
+      "output": "stardewcraft:jelly",
+      "minutes": 4000,
+      "preserveType": "JELLY",
+      "keepInputQuality": true
+    },
+    {
+      "input": "stardewcraftsve:slime_berry",
+      "output": "stardewcraft:jelly",
+      "minutes": 4000,
+      "preserveType": "JELLY",
+      "keepInputQuality": true
+    },
+    {
       "input": "stardewcraftsve:cucumber",
       "output": "stardewcraft:pickles",
       "minutes": 4000,
@@ -45,6 +59,27 @@
     },
     {
       "input": "stardewcraftsve:joja_veggie",
+      "output": "stardewcraft:pickles",
+      "minutes": 4000,
+      "preserveType": "PICKLES",
+      "keepInputQuality": true
+    },
+    {
+      "input": "stardewcraftsve:ancient_fiber",
+      "output": "stardewcraft:pickles",
+      "minutes": 4000,
+      "preserveType": "PICKLES",
+      "keepInputQuality": true
+    },
+    {
+      "input": "stardewcraftsve:monster_mushroom",
+      "output": "stardewcraft:pickles",
+      "minutes": 4000,
+      "preserveType": "PICKLES",
+      "keepInputQuality": true
+    },
+    {
+      "input": "stardewcraftsve:void_root",
       "output": "stardewcraft:pickles",
       "minutes": 4000,
       "preserveType": "PICKLES",

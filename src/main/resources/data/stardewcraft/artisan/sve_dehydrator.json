@@ -18,6 +18,22 @@
       "keepInputQuality": true
     },
     {
+      "input": "stardewcraftsve:salal_berry",
+      "output": "stardewcraft:dried_fruit",
+      "minutes": 1260,
+      "consume": 5,
+      "preserveType": "DRIED_FRUIT",
+      "keepInputQuality": true
+    },
+    {
+      "input": "stardewcraftsve:slime_berry",
+      "output": "stardewcraft:dried_fruit",
+      "minutes": 1260,
+      "consume": 5,
+      "preserveType": "DRIED_FRUIT",
+      "keepInputQuality": true
+    },
+    {
       "input": "stardewcraftsve:green_mushroom",
       "output": "stardewcraft:dried_mushrooms",
       "minutes": 1260,

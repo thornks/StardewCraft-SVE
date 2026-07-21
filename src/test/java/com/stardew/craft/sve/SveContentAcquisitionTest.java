@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
 /** Offline acquisition-closure checks; no server or game world is required. */
 public final class SveContentAcquisitionTest {
@@ -45,7 +46,7 @@ public final class SveContentAcquisitionTest {
                     .forEach(issue -> message.append(" - ").append(issue.message()).append('\n'));
             throw new AssertionError(message);
         }
-        if (registered.size() != 271) {
+        if (registered.size() != 278) {
             throw new AssertionError("Unexpected SVE item registry size: " + registered.size());
         }
         validateCollections(registered, evaluation);
@@ -124,6 +125,9 @@ public final class SveContentAcquisitionTest {
         }
         SveKegData.all().stream()
                 .map(product -> StardewcraftsveMod.MODID + ":" + product.outputPath())
+                .forEach(items::add);
+        Stream.concat(SvePreservesData.preservesJar().stream(), SvePreservesData.dehydratorCrops().stream())
+                .map(product -> StardewcraftsveMod.MODID + ":" + product.displayOutputPath())
                 .forEach(items::add);
         return Set.copyOf(items);
     }

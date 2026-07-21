@@ -145,10 +145,13 @@ public final class ModCreativeTabs {
             // Artisan display items
             for (var holder : List.of(
                 ModItems.JOJA_BERRY_JELLY, ModItems.MONSTER_FRUIT_JELLY,
+                ModItems.SALAL_BERRY_JELLY, ModItems.SLIME_BERRY_JELLY,
                 ModItems.CUCUMBER_PICKLES, ModItems.BUTTERNUT_SQUASH_PICKLES,
                 ModItems.GOLD_CARROT_PICKLES, ModItems.SWEET_POTATO_PICKLES,
-                ModItems.JOJA_VEGGIE_PICKLES,
+                ModItems.JOJA_VEGGIE_PICKLES, ModItems.ANCIENT_FIBER_PICKLES,
+                ModItems.MONSTER_MUSHROOM_PICKLES, ModItems.VOID_ROOT_PICKLES,
                 ModItems.JOJA_BERRY_DRIED_FRUIT, ModItems.MONSTER_FRUIT_DRIED_FRUIT,
+                ModItems.SALAL_BERRY_DRIED_FRUIT, ModItems.SLIME_BERRY_DRIED_FRUIT,
                 ModItems.GREEN_MUSHROOM_DRIED_MUSHROOMS,
                 ModItems.MEGA_PURPLE_MUSHROOM_DRIED_MUSHROOMS,
                 ModItems.MONSTER_MUSHROOM_DRIED_MUSHROOMS,
