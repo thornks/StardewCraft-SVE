@@ -3,14 +3,15 @@
   "ingredients": [
     {
       "item": "stardewcraft:solar_essence",
-      "count": 4
+      "count": 50
+    },
+    {
+      "item": "stardewcraftsve:void_soul",
+      "count": 5
     },
     {
       "item": "stardewcraft:bone_fragment",
-      "count": 3
-    },
-    {
-      "item": "stardewcraftsve:void_soul"
+      "count": 30
     },
     {
       "item": "stardewcraft:vinegar"

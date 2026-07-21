@@ -16,5 +16,6 @@
       "item": "stardewcraft:iron_bar"
     }
   ],
-  "legacy_unlock_condition": "s Foraging 3"
+  "legacy_unlock_condition": "s Farming 3",
+  "big_craftable": true
 }

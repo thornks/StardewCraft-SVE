@@ -15,5 +15,6 @@
       "item": "stardewcraft:pine_tar"
     }
   ],
-  "legacy_unlock_condition": "s Farming 9"
+  "legacy_unlock_condition": "s Farming 9",
+  "big_craftable": true
 }

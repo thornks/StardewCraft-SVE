@@ -2,11 +2,11 @@
   "output": "stardewcraftsve:sun_totem",
   "ingredients": [
     {
-      "item": "stardewcraft:solar_essence",
-      "count": 7
+      "item": "stardewcraft:wood_hard"
     },
     {
-      "item": "stardewcraft:wood_hard"
+      "item": "stardewcraft:solar_essence",
+      "count": 10
     },
     {
       "item": "stardewcraftsve:birch_water"

@@ -2,11 +2,11 @@
   "output": "stardewcraftsve:wind_totem",
   "ingredients": [
     {
-      "item": "stardewcraft:bat_wing",
-      "count": 7
+      "item": "stardewcraft:wood_hard"
     },
     {
-      "item": "stardewcraft:wood_hard"
+      "item": "stardewcraft:bat_wing",
+      "count": 10
     },
     {
       "item": "stardewcraftsve:fir_wax"

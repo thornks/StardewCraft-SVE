@@ -3,13 +3,15 @@
   "ingredients": [
     {
       "item": "stardewcraft:slime_item",
-      "count": 6
+      "count": 50
     },
     {
-      "item": "stardewcraftsve:void_soul"
+      "item": "stardewcraftsve:void_soul",
+      "count": 5
     },
     {
-      "item": "stardewcraftsve:void_pebble"
+      "item": "stardewcraftsve:void_pebble",
+      "count": 10
     },
     {
       "item": "stardewcraft:oil"

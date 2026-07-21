@@ -3,13 +3,15 @@
   "ingredients": [
     {
       "item": "stardewcraft:void_essence",
-      "count": 6
+      "count": 50
     },
     {
-      "item": "stardewcraftsve:void_soul"
+      "item": "stardewcraftsve:void_soul",
+      "count": 5
     },
     {
-      "item": "stardewcraft:spicy_eel"
+      "item": "stardewcraft:spicy_eel",
+      "count": 3
     },
     {
       "item": "stardewcraft:sugar"

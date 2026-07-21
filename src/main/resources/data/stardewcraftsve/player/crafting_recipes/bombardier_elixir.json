@@ -3,21 +3,23 @@
   "ingredients": [
     {
       "item": "stardewcraft:solar_essence",
-      "count": 2
+      "count": 30
     },
     {
       "item": "stardewcraft:void_essence",
-      "count": 3
+      "count": 30
+    },
+    {
+      "item": "stardewcraftsve:void_soul",
+      "count": 10
     },
     {
       "item": "stardewcraftsve:void_pebble",
-      "count": 2
+      "count": 20
     },
     {
-      "item": "stardewcraftsve:void_soul"
-    },
-    {
-      "item": "stardewcraft:cherry_bomb"
+      "item": "stardewcraft:cherry_bomb",
+      "count": 5
     }
   ],
   "legacy_unlock_condition": "s Combat 9"
