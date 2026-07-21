@@ -3,8 +3,6 @@ package com.stardew.craft.sve;
 import com.stardew.craft.combat.WeaponType;
 import com.stardew.craft.item.StardewBlockItem;
 import com.stardew.craft.item.cooking.CookingDishItem;
-import com.stardew.craft.item.cooking.CookingDishItem.BuffType;
-import com.stardew.craft.item.cooking.CookingDishItem.DishBuff;
 import com.stardew.craft.item.SimpleStardewItem;
 import com.stardew.craft.item.EdibleSimpleStardewItem;
 import com.stardew.craft.item.StardewQualityItem;
@@ -82,6 +80,10 @@ public final class ModItems {
 
     private static CookingDishItem cooking(String path) {
         return SveCookingData.byPath(path).createItem(stackableProperties());
+    }
+
+    private static CookingDishItem consumable(String path) {
+        return SveConsumableData.byPath(path).createItem(stackableProperties());
     }
 
     private static StardewQualityItem cropItem(SveCropData.Definition definition) {
@@ -433,10 +435,7 @@ public final class ModItems {
     public static final DeferredHolder<Item, StardewQualityItem> BEARBERRYS = ITEMS.register("bearberrys",
         () -> new StardewQualityItem("stardewcraft.type.fruit", 55, 15, true, stackableProperties()));
     public static final DeferredHolder<Item, CookingDishItem> DEWDROP_BERRY = ITEMS.register("dewdrop_berry",
-        () -> new CookingDishItem(45, 90,
-            List.of(new DishBuff(BuffType.LUCK, 2, 308580), new DishBuff(BuffType.MAX_ENERGY, 50, 308580), new DishBuff(BuffType.MAGNETIC_RADIUS, 75, 308580), new DishBuff(BuffType.SPEED, 2, 308580)),
-            stackableProperties(),
-            false));
+        () -> consumable("dewdrop_berry"));
     public static final DeferredHolder<Item, StardewQualityItem> NECTARINE = ITEMS.register("nectarine",
         () -> new StardewQualityItem("stardewcraft.type.fruit", 150, 28, true, stackableProperties()));
     public static final DeferredHolder<Item, StardewQualityItem> PEAR = ITEMS.register("pear",
@@ -448,7 +447,8 @@ public final class ModItems {
 
     // ===== mushroom =====
     public static final DeferredHolder<Item, StardewQualityItem> GREEN_MUSHROOM = ITEMS.register("green_mushroom",
-        () -> new StardewQualityItem("stardewcraft.type.forage", 1250, 500, true, stackableProperties()));
+        () -> SveConsumableData.byPath("green_mushroom")
+            .createQualityItem("stardewcraft.type.forage", true, stackableProperties()));
     public static final DeferredHolder<Item, StardewQualityItem> MEGA_PURPLE_MUSHROOM = ITEMS.register("mega_purple_mushroom",
         () -> new StardewQualityItem("stardewcraft.type.forage", 8000, 999, true, stackableProperties()));
     public static final DeferredHolder<Item, StardewQualityItem> MONSTER_MUSHROOM = ITEMS.register("monster_mushroom",
@@ -590,17 +590,11 @@ public final class ModItems {
 
     // ===== artisan =====
     public static final DeferredHolder<Item, CookingDishItem> AGED_BLUE_MOON_WINE = ITEMS.register("aged_blue_moon_wine",
-        () -> new CookingDishItem(10000, 100,
-            List.of(new DishBuff(BuffType.LUCK, 7, 36000)),
-            stackableProperties(),
-            true));
+        () -> consumable("aged_blue_moon_wine"));
     public static final DeferredHolder<Item, CookingDishItem> BIRCH_SYRUP = STARDEWCRAFT_ITEMS.register("birch_syrup",
         () -> cooking("birch_syrup"));
     public static final DeferredHolder<Item, CookingDishItem> BLUE_MOON_WINE = ITEMS.register("blue_moon_wine",
-        () -> new CookingDishItem(700, 10,
-            List.of(new DishBuff(BuffType.LUCK, 2, 10800)),
-            stackableProperties(),
-            true));
+        () -> consumable("blue_moon_wine"));
     public static final DeferredHolder<Item, CookingDishItem> BUTTER = ITEMS.register("butter",
         () -> new CookingDishItem("stardewcraft.type.artisan_goods", 215, 31,
             List.of(),
@@ -664,10 +658,7 @@ public final class ModItems {
     public static final DeferredHolder<Item, CookingDishItem> GLAZED_PEAR = STARDEWCRAFT_ITEMS.register("glazed_pear",
         () -> cooking("glazed_pear"));
     public static final DeferredHolder<Item, CookingDishItem> GRAMPLETON_ORANGE_CHICKEN = STARDEWCRAFT_ITEMS.register("grampleton_orange_chicken",
-        () -> new CookingDishItem(400, 65,
-            List.of(new DishBuff(BuffType.FARMING, 3, 43200)),
-            stackableProperties(),
-            false));
+        () -> consumable("grampleton_orange_chicken"));
     public static final DeferredHolder<Item, CookingDishItem> GRILLED_CHEESE_SANDWICH = STARDEWCRAFT_ITEMS.register("grilled_cheese_sandwich",
         () -> cooking("grilled_cheese_sandwich"));
     public static final DeferredHolder<Item, CookingDishItem> ICE_CREAM_SUNDAE = STARDEWCRAFT_ITEMS.register("ice_cream_sundae",
@@ -685,10 +676,7 @@ public final class ModItems {
     public static final DeferredHolder<Item, CookingDishItem> SEAWEED_SALAD = STARDEWCRAFT_ITEMS.register("seaweed_salad",
         () -> cooking("seaweed_salad"));
     public static final DeferredHolder<Item, CookingDishItem> SEED_COOKIE = STARDEWCRAFT_ITEMS.register("seed_cookie",
-        () -> new CookingDishItem(35, 30,
-            List.of(new DishBuff(BuffType.MAX_ENERGY, 30, 36000)),
-            stackableProperties(),
-            false));
+        () -> consumable("seed_cookie"));
     public static final DeferredHolder<Item, CookingDishItem> STUFFED_PERSIMMON = STARDEWCRAFT_ITEMS.register("stuffed_persimmon",
         () -> cooking("stuffed_persimmon"));
     public static final DeferredHolder<Item, CookingDishItem> VEGAN_CONE = STARDEWCRAFT_ITEMS.register("vegan_cone",
@@ -702,65 +690,29 @@ public final class ModItems {
 
     // ===== elixir =====
     public static final DeferredHolder<Item, CookingDishItem> AEGIS_ELIXIR = ITEMS.register("aegis_elixir",
-        () -> new CookingDishItem(12000, 1,
-            List.of(new DishBuff(BuffType.DEFENSE, 255, 1500)),
-            stackableProperties(),
-            false));
+        () -> consumable("aegis_elixir"));
     public static final DeferredHolder<Item, CookingDishItem> ARMOR_ELIXIR = ITEMS.register("armor_elixir",
-        () -> new CookingDishItem(2000, 2,
-            List.of(new DishBuff(BuffType.DEFENSE, 15, 24000)),
-            stackableProperties(),
-            false));
+        () -> consumable("armor_elixir"));
     public static final DeferredHolder<Item, CookingDishItem> BARBARIAN_ELIXIR = ITEMS.register("barbarian_elixir",
-        () -> new CookingDishItem(10000, 1,
-            List.of(new DishBuff(BuffType.ATTACK, 99, 6000)),
-            stackableProperties(),
-            false));
+        () -> consumable("barbarian_elixir"));
     public static final DeferredHolder<Item, CookingDishItem> BOMBARDIER_ELIXIR = ITEMS.register("bombardier_elixir",
-        () -> new CookingDishItem(5000, 50,
-            List.of(new DishBuff(BuffType.ATTACK, 50, 15000)),
-            stackableProperties(),
-            true));
+        () -> consumable("bombardier_elixir"));
     public static final DeferredHolder<Item, CookingDishItem> GRAVITY_ELIXIR = ITEMS.register("gravity_elixir",
-        () -> new CookingDishItem(1500, 1,
-            List.of(new DishBuff(BuffType.MAGNETIC_RADIUS, 999, 308580)),
-            stackableProperties(),
-            true));
+        () -> consumable("gravity_elixir"));
     public static final DeferredHolder<Item, CookingDishItem> HASTE_ELIXIR = ITEMS.register("haste_elixir",
-        () -> new CookingDishItem(2000, 2,
-            List.of(new DishBuff(BuffType.SPEED, 3, 24000)),
-            stackableProperties(),
-            true));
+        () -> consumable("haste_elixir"));
     public static final DeferredHolder<Item, CookingDishItem> HERO_ELIXIR = ITEMS.register("hero_elixir",
-        () -> new CookingDishItem(2650, 2,
-            List.of(new DishBuff(BuffType.ATTACK, 20, 24000)),
-            stackableProperties(),
-            false));
+        () -> consumable("hero_elixir"));
     public static final DeferredHolder<Item, CookingDishItem> LIGHTNING_ELIXIR = ITEMS.register("lightning_elixir",
-        () -> new CookingDishItem(5000, 1,
-            List.of(new DishBuff(BuffType.SPEED, 8, 5280)),
-            stackableProperties(),
-            true));
+        () -> consumable("lightning_elixir"));
     public static final DeferredHolder<Item, CookingDishItem> MARSH_TONIC = ITEMS.register("marsh_tonic",
-        () -> new CookingDishItem(750, 50,
-            List.of(new DishBuff(BuffType.SPEED, 1, 33000), new DishBuff(BuffType.DEFENSE, 5, 33000), new DishBuff(BuffType.ATTACK, 10, 33000)),
-            stackableProperties(),
-            true));
+        () -> consumable("marsh_tonic"));
     public static final DeferredHolder<Item, CookingDishItem> SPORTS_DRINK = ITEMS.register("sports_drink",
-        () -> new CookingDishItem(300, 60,
-            List.of(new DishBuff(BuffType.MAX_ENERGY, 50, 60000)),
-            stackableProperties(),
-            true));
+        () -> consumable("sports_drink"));
     public static final DeferredHolder<Item, CookingDishItem> STAMINA_CAPSULE = ITEMS.register("stamina_capsule",
-        () -> new CookingDishItem(1000, 4,
-            List.of(new DishBuff(BuffType.MAX_ENERGY, 150, 96000), new DishBuff(BuffType.SPEED, 1, 96000)),
-            stackableProperties(),
-            false));
+        () -> consumable("stamina_capsule"));
     public static final DeferredHolder<Item, CookingDishItem> SUPER_JOJA_COLA = ITEMS.register("super_joja_cola",
-        () -> new CookingDishItem(350, 150,
-            List.of(new DishBuff(BuffType.LUCK, 2, 96000), new DishBuff(BuffType.MAGNETIC_RADIUS, 50, 96000), new DishBuff(BuffType.SPEED, 2, 96000)),
-            stackableProperties(),
-            true));
+        () -> consumable("super_joja_cola"));
     public static final DeferredHolder<Item, CookingDishItem> SUPER_STARFRUIT = ITEMS.register("super_starfruit",
         () -> new CookingDishItem(4500, -300,
             List.of(),
