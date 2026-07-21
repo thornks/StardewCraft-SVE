@@ -19,10 +19,15 @@ public abstract class FishingLocationKeysMixin {
     private static final String SVE_FISHING_POOL = "stardewcraftsve:sve_fish";
     private static final Set<String> SUPPORTED_WATER_TAGS = Set.of(
             "stardewcraft:is_witch_swamp",
-            "stardewcraft:is_ocean",
+            "stardewcraft:is_beach",
+            "stardewcraft:is_forest_river",
+            "stardewcraft:is_freshwater",
+            "stardewcraft:is_ginger_island_ocean",
             "stardewcraft:is_mountain_lake",
+            "stardewcraft:is_mutant_bug_lair",
             "stardewcraft:is_secret_woods",
-            "stardewcraft:is_river"
+            "stardewcraft:is_sewers",
+            "stardewcraft:is_town_river"
     );
 
     @Inject(

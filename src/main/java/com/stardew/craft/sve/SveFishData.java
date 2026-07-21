@@ -10,8 +10,9 @@ public final class SveFishData {
         "frog", "gar", "gemfish", "goldenfish", "goldfish",
         "grass_carp", "highlands_bass", "king_salmon", "kittyfish",
         "lunaloo", "meteor_carp", "minnow", "ocean_sunfish",
-        "puppyfish", "radioactive_bass", "razor_trout", "seahorse",
-        "shark", "shiny_lunaloo", "snatcher_worm", "tadpole",
+        "puppyfish", "radioactive_bass", "razor_trout", "sea_sponge",
+        "seahorse", "shark", "shiny_lunaloo", "snatcher_worm",
+        "starfish", "swamp_crab", "tadpole",
         "torpedo_trout", "turretfish", "undeadfish", "viper_eel",
         "void_eel", "water_grub", "wolf_snapper"
     );

@@ -20,7 +20,7 @@ public final class SveCollectionCatalog {
             "dried_sand_dollar", "ferngill_primrose", "fir_wax", "gold_carrot",
             "gold_slime_egg", "golden_goose_egg", "golden_ocean_flower", "goldenrod",
             "goose_egg", "goose_mayonnaise", "green_mushroom", "honey_jar",
-            "lucky_four_leaf_clover", "mega_purple_mushroom", "monster_fruit",
+            "lucky_four_leaf_clover", "magic_lamp", "mega_purple_mushroom", "monster_fruit",
             "monster_mushroom", "mushroom_colony", "nectarine", "pear", "persimmon",
             "poison_mushroom", "red_baneberry", "rusty_blade", "salal_berry",
             "shark_tooth", "slime_berry", "sludge", "smelly_rafflesia",
@@ -42,9 +42,8 @@ public final class SveCollectionCatalog {
     );
 
     private static final List<String> ARTIFACTS = List.of(
-            "amber", "boomerang", "faded_button", "fossilized_apple", "magic_lamp",
-            "money_bag", "old_coin", "ornate_treasure_chest", "rusty_shield",
-            "stone_of_yoba"
+            "amber", "boomerang", "faded_button", "fossilized_apple", "old_coin",
+            "rusty_shield", "stone_of_yoba"
     );
 
     private static final List<String> MINERALS = List.of("galdoran_gem");

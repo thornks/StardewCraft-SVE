@@ -46,7 +46,7 @@ public final class SveContentAcquisitionTest {
                     .forEach(issue -> message.append(" - ").append(issue.message()).append('\n'));
             throw new AssertionError(message);
         }
-        if (registered.size() != 278) {
+        if (registered.size() != 281) {
             throw new AssertionError("Unexpected SVE item registry size: " + registered.size());
         }
         validateCollections(registered, evaluation);

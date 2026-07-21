@@ -170,6 +170,12 @@
       "quality": "keep"
     },
     {
+      "input": "stardewcraftsve:sea_sponge",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
       "input": "stardewcraftsve:seahorse",
       "minutes": 50,
       "outputMode": "smoked",
@@ -189,6 +195,18 @@
     },
     {
       "input": "stardewcraftsve:snatcher_worm",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:starfish",
+      "minutes": 50,
+      "outputMode": "smoked",
+      "quality": "keep"
+    },
+    {
+      "input": "stardewcraftsve:swamp_crab",
       "minutes": 50,
       "outputMode": "smoked",
       "quality": "keep"

@@ -12,10 +12,36 @@ import java.util.Map;
 /** Renders unavailable SVE fishing biomes with their original location names. */
 @Mixin(value = FishingInfoCategory.class, remap = false)
 public abstract class FishingInfoCategoryMixin {
-    private static final Map<String, String> LOCATION_KEYS = Map.of(
-            "stardewcraftsve:crimson_badlands", "stardewcraftsve.jei.location.crimson_badlands",
-            "stardewcraftsve:highlands_cavern", "stardewcraftsve.jei.location.highlands_cavern"
+    private static final Map<String, String> LOCATION_KEYS = Map.ofEntries(
+            location("adventurer_summit"),
+            location("blue_moon_vineyard"),
+            location("crimson_badlands"),
+            location("diamond_cavern"),
+            location("fable_reef"),
+            location("forbidden_maze"),
+            location("forest_west"),
+            location("highlands"),
+            location("highlands_cavern"),
+            location("joja_town_after_event"),
+            location("junimo_woods"),
+            location("morris_property"),
+            location("shearwater_bridge"),
+            location("sprite_spring"),
+            tag("is_forest_river", "forest"),
+            tag("is_freshwater", "freshwater"),
+            tag("is_ginger_island_ocean", "ginger_island"),
+            tag("is_mutant_bug_lair", "mutant_bug_lair"),
+            tag("is_town_river", "town")
     );
+
+    private static Map.Entry<String, String> location(String path) {
+        return Map.entry("stardewcraftsve:" + path, "stardewcraftsve.jei.location." + path);
+    }
+
+    private static Map.Entry<String, String> tag(String path, String translationPath) {
+        return Map.entry("#stardewcraft:" + path,
+                "stardewcraftsve.jei.location." + translationPath);
+    }
 
     @Inject(
             method = "location(Ljava/lang/String;)Lnet/minecraft/network/chat/Component;",

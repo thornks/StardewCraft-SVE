@@ -84,6 +84,22 @@ tasks.register('fishPondRegressionTest', JavaExec) {
     mainClass = 'com.stardew.craft.sve.SveFishPondDataTest'
 }
 
+tasks.register('fishingRegressionTest', JavaExec) {
+    group = 'verification'
+    description = 'Runs the SVE fish metadata, catch-rule, and location-boundary regression suite.'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.stardew.craft.sve.SveFishingRegressionTest'
+}
+
+tasks.register('objectMetadataRegressionTest', JavaExec) {
+    group = 'verification'
+    description = 'Runs the SVE object type, collection, and smoked-fish metadata regression suite.'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.stardew.craft.sve.SveObjectMetadataRegressionTest'
+}
+
 tasks.register('contentAcquisitionRegressionTest', JavaExec) {
     group = 'verification'
     description = 'Runs the SVE content acquisition closure regression suite.'
@@ -178,6 +194,8 @@ tasks.named('check') {
     dependsOn bundleRegressionTest
     dependsOn treeRegressionTest
     dependsOn fishPondRegressionTest
+    dependsOn fishingRegressionTest
+    dependsOn objectMetadataRegressionTest
     dependsOn contentAcquisitionRegressionTest
     dependsOn cropForageRegressionTest
     dependsOn mixinConfigRegressionTest

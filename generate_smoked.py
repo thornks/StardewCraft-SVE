@@ -1,20 +1,21 @@
 """Generate smoked fish textures + model JSONs for SVE smoked fish."""
 import os
 import json
+import sys
 from PIL import Image, ImageEnhance, ImageFilter
 
 PROJECT = r"C:\Users\mfx\Desktop\blockbench-mcp\stardewcraftsve"
 SRC = os.path.join(PROJECT, "src", "main", "resources")
 
-# All 40 SVE fish, with their source texture path relative to assets namespace
+# All SVE objects that are both category -4 fish and valid smoker inputs.
 FISH = [
     "alligator", "arrowhead_shark", "baby_lunaloo", "barred_knifejaw",
     "blue_tang", "bonefish", "bull_trout", "butterfish", "clownfish",
     "daggerfish", "diamond_carp", "fiber_goby", "frog", "gar", "gemfish",
     "goldenfish", "goldfish", "grass_carp", "highlands_bass", "king_salmon",
     "kittyfish", "lunaloo", "meteor_carp", "minnow", "ocean_sunfish",
-    "puppyfish", "radioactive_bass", "razor_trout", "seahorse", "shark",
-    "shiny_lunaloo", "snatcher_worm", "tadpole", "torpedo_trout",
+    "puppyfish", "radioactive_bass", "razor_trout", "sea_sponge", "seahorse", "shark",
+    "shiny_lunaloo", "snatcher_worm", "starfish", "swamp_crab", "tadpole", "torpedo_trout",
     "turretfish", "undeadfish", "viper_eel", "void_eel", "water_grub",
     "wolf_snapper",
 ]
@@ -24,6 +25,9 @@ SPECIAL_TEXTURE_DIRS = {
     "baby_lunaloo": "animal_product",
     "lunaloo": "animal_product",
     "shiny_lunaloo": "animal_product",
+    "sea_sponge": "forage",
+    "starfish": "forage",
+    "swamp_crab": "forage",
 }
 
 def source_path(name):
@@ -77,8 +81,12 @@ def make_smoked_texture(src, dst):
 
 # ── 2. Generate model JSONs ───────────────────────────────────────────
 
-MODELS_DIR = os.path.join(SRC, "assets", "stardewcraft", "models", "item")
-os.makedirs(MODELS_DIR, exist_ok=True)
+MODELS_DIRS = [
+    os.path.join(SRC, "assets", "stardewcraft", "models", "item"),
+    os.path.join(SRC, "assets", "stardewcraftsve", "models", "item"),
+]
+for models_dir in MODELS_DIRS:
+    os.makedirs(models_dir, exist_ok=True)
 
 def gen_models(name):
     """Generate the 8 model JSON files for one smoked fish."""
@@ -153,18 +161,23 @@ def gen_models(name):
         f"smoked_{name}_iridium.json": quality_model("iridium"),
     }
 
-    for fname, content in files.items():
-        path = os.path.join(MODELS_DIR, fname)
-        with open(path, "w", encoding="utf-8") as f:
-            json.dump(content, f, indent=2)
-    print(f"  Generated 8 models for: {name}")
+    for models_dir in MODELS_DIRS:
+        for fname, content in files.items():
+            path = os.path.join(models_dir, fname)
+            with open(path, "w", encoding="utf-8") as f:
+                json.dump(content, f, indent=2)
+    print(f"  Generated 8 models in both namespaces for: {name}")
 
 
 # ── Main ──────────────────────────────────────────────────────────────
 
 print("=== Generating smoked textures ===")
+selected_fish = sys.argv[1:] or FISH
+unknown = sorted(set(selected_fish) - set(FISH))
+if unknown:
+    raise SystemExit(f"Unknown fish IDs: {', '.join(unknown)}")
 missing = []
-for name in FISH:
+for name in selected_fish:
     src = source_path(name)
     if not os.path.exists(src):
         missing.append((name, src))
@@ -179,9 +192,9 @@ if missing:
         print(f"  {n}: {p}")
 
 print("\n=== Generating model JSONs ===")
-for name in FISH:
+for name in selected_fish:
     gen_models(name)
 
-print(f"\nDone! Generated textures + models for {len(FISH)} fish.")
+print(f"\nDone! Generated textures + models for {len(selected_fish)} fish.")
 print(f"Texture location: assets/stardewcraft/textures/item/fish/smoked/")
-print(f"Model location: assets/stardewcraft/models/item/")
+print("Model locations: assets/stardewcraft/models/item/ and assets/stardewcraftsve/models/item/")

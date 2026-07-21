@@ -1,0 +1,1032 @@
+{
+  "alligator": {
+    "difficulty": 75,
+    "behavior": "mixed",
+    "minFishSize": 130,
+    "maxFishSize": 160,
+    "minFishingLevel": 0,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        600,
+        2600
+      ]
+    ],
+    "maxDepth": 2,
+    "spawnRate": 0.25,
+    "depthMultiplier": 0.2,
+    "isTutorialFish": false
+  },
+  "arrowhead_shark": {
+    "difficulty": 95,
+    "behavior": "sinker",
+    "minFishSize": 180,
+    "maxFishSize": 220,
+    "minFishingLevel": 0,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        600,
+        2600
+      ]
+    ],
+    "maxDepth": 4,
+    "spawnRate": 0.07,
+    "depthMultiplier": 0.1,
+    "isTutorialFish": false
+  },
+  "baby_lunaloo": {
+    "difficulty": 15,
+    "behavior": "floater",
+    "minFishSize": 4,
+    "maxFishSize": 8,
+    "minFishingLevel": 0,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        1700,
+        2600
+      ]
+    ],
+    "maxDepth": 4,
+    "spawnRate": 0.05,
+    "depthMultiplier": 0.3,
+    "isTutorialFish": false
+  },
+  "barred_knifejaw": {
+    "difficulty": 65,
+    "behavior": "dart",
+    "minFishSize": 20,
+    "maxFishSize": 27,
+    "minFishingLevel": 0,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        600,
+        2000
+      ]
+    ],
+    "maxDepth": 3,
+    "spawnRate": 0.15,
+    "depthMultiplier": 0.2,
+    "isTutorialFish": false
+  },
+  "blue_tang": {
+    "difficulty": 30,
+    "behavior": "mixed",
+    "minFishSize": 9,
+    "maxFishSize": 13,
+    "minFishingLevel": 0,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "weather": "sunny",
+    "timeRanges": [
+      [
+        600,
+        2000
+      ]
+    ],
+    "maxDepth": 3,
+    "spawnRate": 0.15,
+    "depthMultiplier": 0.1,
+    "isTutorialFish": false
+  },
+  "bonefish": {
+    "difficulty": 70,
+    "behavior": "sinker",
+    "minFishSize": 2,
+    "maxFishSize": 6,
+    "minFishingLevel": 5,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        600,
+        2600
+      ]
+    ],
+    "maxDepth": 3,
+    "spawnRate": 0.8,
+    "depthMultiplier": 0.5,
+    "isTutorialFish": false
+  },
+  "bull_trout": {
+    "difficulty": 45,
+    "behavior": "mixed",
+    "minFishSize": 12,
+    "maxFishSize": 25,
+    "minFishingLevel": 0,
+    "seasons": [
+      "fall",
+      "winter"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        600,
+        2600
+      ]
+    ],
+    "maxDepth": 3,
+    "spawnRate": 0.22,
+    "depthMultiplier": 0.5,
+    "isTutorialFish": false
+  },
+  "butterfish": {
+    "difficulty": 80,
+    "behavior": "dart",
+    "minFishSize": 8,
+    "maxFishSize": 16,
+    "minFishingLevel": 0,
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "weather": "sunny",
+    "timeRanges": [
+      [
+        600,
+        2600
+      ]
+    ],
+    "maxDepth": 2,
+    "spawnRate": 0.12,
+    "depthMultiplier": 0.1,
+    "isTutorialFish": false
+  },
+  "clownfish": {
+    "difficulty": 45,
+    "behavior": "dart",
+    "minFishSize": 2,
+    "maxFishSize": 5,
+    "minFishingLevel": 3,
+    "seasons": [
+      "summer"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        1000,
+        1700
+      ]
+    ],
+    "maxDepth": 3,
+    "spawnRate": 0.25,
+    "depthMultiplier": 0.6,
+    "isTutorialFish": false
+  },
+  "daggerfish": {
+    "difficulty": 50,
+    "behavior": "dart",
+    "minFishSize": 3,
+    "maxFishSize": 7,
+    "minFishingLevel": 0,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        600,
+        2600
+      ]
+    ],
+    "maxDepth": 3,
+    "spawnRate": 0.5,
+    "depthMultiplier": 0.5,
+    "isTutorialFish": false
+  },
+  "diamond_carp": {
+    "difficulty": 70,
+    "behavior": "sinker",
+    "minFishSize": 16,
+    "maxFishSize": 30,
+    "minFishingLevel": 0,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        600,
+        2600
+      ]
+    ],
+    "maxDepth": 2,
+    "spawnRate": 0.25,
+    "depthMultiplier": 0.2,
+    "isTutorialFish": false
+  },
+  "dulse_seaweed": {
+    "difficulty": null,
+    "behavior": "sinker",
+    "minFishSize": 5,
+    "maxFishSize": 30,
+    "minFishingLevel": 0,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        600,
+        2600
+      ]
+    ],
+    "maxDepth": 0,
+    "spawnRate": 0.1,
+    "depthMultiplier": 0,
+    "isTutorialFish": false
+  },
+  "fiber_goby": {
+    "difficulty": 60,
+    "behavior": "sinker",
+    "minFishSize": 13,
+    "maxFishSize": 22,
+    "minFishingLevel": 0,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        600,
+        2600
+      ]
+    ],
+    "maxDepth": 4,
+    "spawnRate": 0.5,
+    "depthMultiplier": 0.2,
+    "isTutorialFish": false
+  },
+  "frog": {
+    "difficulty": 70,
+    "behavior": "sinker",
+    "minFishSize": 2,
+    "maxFishSize": 5,
+    "minFishingLevel": 5,
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "weather": "rainy",
+    "timeRanges": [
+      [
+        1800,
+        2600
+      ]
+    ],
+    "maxDepth": 3,
+    "spawnRate": 0.9,
+    "depthMultiplier": 0.5,
+    "isTutorialFish": false
+  },
+  "gar": {
+    "difficulty": 85,
+    "behavior": "mixed",
+    "minFishSize": 55,
+    "maxFishSize": 75,
+    "minFishingLevel": 5,
+    "seasons": [
+      "summer",
+      "fall"
+    ],
+    "weather": "rainy",
+    "timeRanges": [
+      [
+        600,
+        2000
+      ]
+    ],
+    "maxDepth": 1,
+    "spawnRate": 0.07,
+    "depthMultiplier": 0.2,
+    "isTutorialFish": false
+  },
+  "gemfish": {
+    "difficulty": 100,
+    "behavior": "sinker",
+    "minFishSize": 32,
+    "maxFishSize": 46,
+    "minFishingLevel": 0,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        600,
+        2600
+      ]
+    ],
+    "maxDepth": 3,
+    "spawnRate": 0.2,
+    "depthMultiplier": 0.5,
+    "isTutorialFish": false
+  },
+  "goldenfish": {
+    "difficulty": 60,
+    "behavior": "mixed",
+    "minFishSize": 4,
+    "maxFishSize": 9,
+    "minFishingLevel": 0,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        600,
+        2600
+      ]
+    ],
+    "maxDepth": 3,
+    "spawnRate": 0.99,
+    "depthMultiplier": 0.5,
+    "isTutorialFish": false
+  },
+  "goldfish": {
+    "difficulty": 25,
+    "behavior": "dart",
+    "minFishSize": 1,
+    "maxFishSize": 4,
+    "minFishingLevel": 0,
+    "seasons": [
+      "spring"
+    ],
+    "weather": "sunny",
+    "timeRanges": [
+      [
+        1000,
+        1700
+      ]
+    ],
+    "maxDepth": 1,
+    "spawnRate": 0.08,
+    "depthMultiplier": 0.25,
+    "isTutorialFish": false
+  },
+  "grass_carp": {
+    "difficulty": 85,
+    "behavior": "mixed",
+    "minFishSize": 24,
+    "maxFishSize": 42,
+    "minFishingLevel": 0,
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        600,
+        2600
+      ]
+    ],
+    "maxDepth": 3,
+    "spawnRate": 0.1,
+    "depthMultiplier": 0.5,
+    "isTutorialFish": false
+  },
+  "highlands_bass": {
+    "difficulty": 45,
+    "behavior": "mixed",
+    "minFishSize": 28,
+    "maxFishSize": 33,
+    "minFishingLevel": 0,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        600,
+        2600
+      ]
+    ],
+    "maxDepth": 2,
+    "spawnRate": 0.4,
+    "depthMultiplier": 0.15,
+    "isTutorialFish": false
+  },
+  "king_salmon": {
+    "difficulty": 80,
+    "behavior": "dart",
+    "minFishSize": 42,
+    "maxFishSize": 58,
+    "minFishingLevel": 8,
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        600,
+        2000
+      ]
+    ],
+    "maxDepth": 3,
+    "spawnRate": 0.22,
+    "depthMultiplier": 0.5,
+    "isTutorialFish": false
+  },
+  "kittyfish": {
+    "difficulty": 85,
+    "behavior": "mixed",
+    "minFishSize": 5,
+    "maxFishSize": 9,
+    "minFishingLevel": 8,
+    "seasons": [
+      "fall",
+      "winter"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        600,
+        2600
+      ]
+    ],
+    "maxDepth": 3,
+    "spawnRate": 0.25,
+    "depthMultiplier": 0.3,
+    "isTutorialFish": false
+  },
+  "lunaloo": {
+    "difficulty": 70,
+    "behavior": "floater",
+    "minFishSize": 4,
+    "maxFishSize": 8,
+    "minFishingLevel": 5,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        1700,
+        2600
+      ]
+    ],
+    "maxDepth": 5,
+    "spawnRate": 0.15,
+    "depthMultiplier": 0.5,
+    "isTutorialFish": false
+  },
+  "meteor_carp": {
+    "difficulty": 80,
+    "behavior": "sinker",
+    "minFishSize": 24,
+    "maxFishSize": 36,
+    "minFishingLevel": 0,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        600,
+        2600
+      ]
+    ],
+    "maxDepth": 3,
+    "spawnRate": 0.2,
+    "depthMultiplier": 0.5,
+    "isTutorialFish": false
+  },
+  "minnow": {
+    "difficulty": 1,
+    "behavior": "sinker",
+    "minFishSize": 1,
+    "maxFishSize": 2,
+    "minFishingLevel": 0,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "weather": "sunny",
+    "timeRanges": [
+      [
+        600,
+        1800
+      ]
+    ],
+    "maxDepth": 1,
+    "spawnRate": 0.03,
+    "depthMultiplier": 0.2,
+    "isTutorialFish": false
+  },
+  "ocean_sunfish": {
+    "difficulty": 90,
+    "behavior": "floater",
+    "minFishSize": 64,
+    "maxFishSize": 80,
+    "minFishingLevel": 0,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "weather": "sunny",
+    "timeRanges": [
+      [
+        600,
+        2600
+      ]
+    ],
+    "maxDepth": 5,
+    "spawnRate": 0.1,
+    "depthMultiplier": 0.12,
+    "isTutorialFish": false
+  },
+  "puppyfish": {
+    "difficulty": 90,
+    "behavior": "mixed",
+    "minFishSize": 5,
+    "maxFishSize": 9,
+    "minFishingLevel": 0,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        600,
+        2600
+      ]
+    ],
+    "maxDepth": 3,
+    "spawnRate": 0.08,
+    "depthMultiplier": 0.3,
+    "isTutorialFish": false
+  },
+  "radioactive_bass": {
+    "difficulty": 90,
+    "behavior": "floater",
+    "minFishSize": 18,
+    "maxFishSize": 30,
+    "minFishingLevel": 10,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        600,
+        2600
+      ]
+    ],
+    "maxDepth": 3,
+    "spawnRate": 0.06,
+    "depthMultiplier": 0.8,
+    "isTutorialFish": false
+  },
+  "razor_trout": {
+    "difficulty": 85,
+    "behavior": "dart",
+    "minFishSize": 8,
+    "maxFishSize": 14,
+    "minFishingLevel": 10,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        600,
+        2600
+      ]
+    ],
+    "maxDepth": 2,
+    "spawnRate": 0.99,
+    "depthMultiplier": 0.5,
+    "isTutorialFish": false
+  },
+  "sea_sponge": {
+    "difficulty": 40,
+    "behavior": "sinker",
+    "minFishSize": 3,
+    "maxFishSize": 9,
+    "minFishingLevel": 0,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        600,
+        2600
+      ]
+    ],
+    "maxDepth": 4,
+    "spawnRate": 0.08,
+    "depthMultiplier": 0.25,
+    "isTutorialFish": false
+  },
+  "seahorse": {
+    "difficulty": 25,
+    "behavior": "mixed",
+    "minFishSize": 1,
+    "maxFishSize": 3,
+    "minFishingLevel": 0,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        800,
+        1700
+      ]
+    ],
+    "maxDepth": 4,
+    "spawnRate": 0.3,
+    "depthMultiplier": 0.2,
+    "isTutorialFish": false
+  },
+  "shark": {
+    "difficulty": 110,
+    "behavior": "dart",
+    "minFishSize": 200,
+    "maxFishSize": 250,
+    "minFishingLevel": 0,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        600,
+        2600
+      ]
+    ],
+    "maxDepth": 5,
+    "spawnRate": 0.1,
+    "depthMultiplier": 0.1,
+    "isTutorialFish": false
+  },
+  "shiny_lunaloo": {
+    "difficulty": 110,
+    "behavior": "floater",
+    "minFishSize": 8,
+    "maxFishSize": 12,
+    "minFishingLevel": 8,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        1700,
+        2600
+      ]
+    ],
+    "maxDepth": 5,
+    "spawnRate": 0.05,
+    "depthMultiplier": 0.5,
+    "isTutorialFish": false
+  },
+  "snatcher_worm": {
+    "difficulty": 75,
+    "behavior": "dart",
+    "minFishSize": 18,
+    "maxFishSize": 42,
+    "minFishingLevel": 0,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        600,
+        2600
+      ]
+    ],
+    "maxDepth": 3,
+    "spawnRate": 0.12,
+    "depthMultiplier": 0.5,
+    "isTutorialFish": false
+  },
+  "starfish": {
+    "difficulty": 75,
+    "behavior": "sinker",
+    "minFishSize": 5,
+    "maxFishSize": 10,
+    "minFishingLevel": 5,
+    "seasons": [
+      "spring",
+      "summer",
+      "winter"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        600,
+        2200
+      ]
+    ],
+    "maxDepth": 4,
+    "spawnRate": 0.07,
+    "depthMultiplier": 0.4,
+    "isTutorialFish": false
+  },
+  "swamp_crab": {
+    "difficulty": 35,
+    "behavior": "sinker",
+    "minFishSize": 3,
+    "maxFishSize": 7,
+    "minFishingLevel": 0,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        600,
+        2600
+      ]
+    ],
+    "maxDepth": 1,
+    "spawnRate": 0.4,
+    "depthMultiplier": 0.17,
+    "isTutorialFish": false
+  },
+  "tadpole": {
+    "difficulty": 3,
+    "behavior": "floater",
+    "minFishSize": 1,
+    "maxFishSize": 2,
+    "minFishingLevel": 0,
+    "seasons": [
+      "spring"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        600,
+        2600
+      ]
+    ],
+    "maxDepth": 1,
+    "spawnRate": 0.08,
+    "depthMultiplier": 0.1,
+    "isTutorialFish": false
+  },
+  "torpedo_trout": {
+    "difficulty": 70,
+    "behavior": "dart",
+    "minFishSize": 50,
+    "maxFishSize": 50,
+    "minFishingLevel": 0,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        600,
+        2600
+      ]
+    ],
+    "maxDepth": 3,
+    "spawnRate": 0.7,
+    "depthMultiplier": 0.5,
+    "isTutorialFish": false
+  },
+  "turretfish": {
+    "difficulty": 150,
+    "behavior": "dart",
+    "minFishSize": 50,
+    "maxFishSize": 50,
+    "minFishingLevel": 10,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        600,
+        2600
+      ]
+    ],
+    "maxDepth": 1,
+    "spawnRate": 0.06,
+    "depthMultiplier": 0.25,
+    "isTutorialFish": false
+  },
+  "undeadfish": {
+    "difficulty": 80,
+    "behavior": "mixed",
+    "minFishSize": 3,
+    "maxFishSize": 7,
+    "minFishingLevel": 5,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        600,
+        2600
+      ]
+    ],
+    "maxDepth": 3,
+    "spawnRate": 0.8,
+    "depthMultiplier": 0.5,
+    "isTutorialFish": false
+  },
+  "viper_eel": {
+    "difficulty": 80,
+    "behavior": "mixed",
+    "minFishSize": 24,
+    "maxFishSize": 36,
+    "minFishingLevel": 0,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        600,
+        2600
+      ]
+    ],
+    "maxDepth": 4,
+    "spawnRate": 0.1,
+    "depthMultiplier": 0.2,
+    "isTutorialFish": false
+  },
+  "void_eel": {
+    "difficulty": 100,
+    "behavior": "mixed",
+    "minFishSize": 12,
+    "maxFishSize": 20,
+    "minFishingLevel": 8,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        600,
+        2600
+      ]
+    ],
+    "maxDepth": 2,
+    "spawnRate": 0.17,
+    "depthMultiplier": 0.17,
+    "isTutorialFish": false
+  },
+  "water_grub": {
+    "difficulty": 60,
+    "behavior": "sinker",
+    "minFishSize": 10,
+    "maxFishSize": 21,
+    "minFishingLevel": 0,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        600,
+        2600
+      ]
+    ],
+    "maxDepth": 3,
+    "spawnRate": 0.4,
+    "depthMultiplier": 0.5,
+    "isTutorialFish": false
+  },
+  "wolf_snapper": {
+    "difficulty": 110,
+    "behavior": "dart",
+    "minFishSize": 7,
+    "maxFishSize": 11,
+    "minFishingLevel": 10,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall"
+    ],
+    "weather": "any",
+    "timeRanges": [
+      [
+        600,
+        2600
+      ]
+    ],
+    "maxDepth": 2,
+    "spawnRate": 0.06,
+    "depthMultiplier": 0.1,
+    "isTutorialFish": false
+  }
+}

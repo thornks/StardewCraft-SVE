@@ -5,10 +5,18 @@
       "id": "alligator",
       "precedence": 100,
       "item": "stardewcraftsve:alligator",
-      "chance": 0.1,
-      "difficulty": 85,
+      "biomeTags": [],
+      "canBeInherited": true,
+      "biomes": [
+        "stardewcraftsve:forbidden_maze"
+      ],
+      "displayOnly": true,
+      "chance": 1,
+      "difficulty": 75,
       "motionType": 0,
-      "minFishingLevel": 5,
+      "minFishSize": 130,
+      "maxFishSize": 160,
+      "minFishingLevel": 0,
       "seasons": [
         "spring",
         "summer",
@@ -22,20 +30,26 @@
           2600
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_witch_swamp"
-      ],
+      "maxDepth": 2,
       "spawnRate": 0.25,
-      "canBeInherited": true
+      "depthMultiplier": 0.2
     },
     {
       "id": "arrowhead_shark",
       "precedence": 100,
       "item": "stardewcraftsve:arrowhead_shark",
-      "chance": 0.08,
-      "difficulty": 90,
-      "motionType": 2,
-      "minFishingLevel": 8,
+      "biomeTags": [],
+      "canBeInherited": true,
+      "biomes": [
+        "stardewcraftsve:fable_reef"
+      ],
+      "displayOnly": true,
+      "chance": 1,
+      "difficulty": 95,
+      "motionType": 3,
+      "minFishSize": 180,
+      "maxFishSize": 220,
+      "minFishingLevel": 0,
       "seasons": [
         "spring",
         "summer",
@@ -49,19 +63,26 @@
           2600
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_ocean"
-      ],
-      "spawnRate": 0.2,
-      "canBeInherited": true
+      "maxDepth": 4,
+      "spawnRate": 0.07,
+      "depthMultiplier": 0.1
     },
     {
       "id": "baby_lunaloo",
       "precedence": 100,
       "item": "stardewcraftsve:baby_lunaloo",
-      "chance": 0.2,
-      "difficulty": 25,
-      "motionType": 1,
+      "biomeTags": [
+        "#stardewcraft:is_ginger_island_ocean"
+      ],
+      "canBeInherited": true,
+      "biomes": [
+        "stardewcraftsve:fable_reef"
+      ],
+      "chance": 1,
+      "difficulty": 15,
+      "motionType": 4,
+      "minFishSize": 4,
+      "maxFishSize": 8,
       "minFishingLevel": 0,
       "seasons": [
         "spring",
@@ -76,47 +97,26 @@
           2600
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_mountain_lake",
-        "#stardewcraft:is_secret_woods"
-      ],
-      "spawnRate": 0.35,
-      "canBeInherited": true
+      "maxDepth": 4,
+      "spawnRate": 0.05,
+      "depthMultiplier": 0.3
     },
     {
       "id": "barred_knifejaw",
       "precedence": 100,
       "item": "stardewcraftsve:barred_knifejaw",
-      "chance": 0.15,
-      "difficulty": 60,
-      "motionType": 0,
-      "minFishingLevel": 3,
-      "seasons": [
-        "spring",
-        "summer",
-        "fall",
-        "winter"
-      ],
-      "weather": "any",
-      "timeRanges": [
-        [
-          600,
-          2600
-        ]
-      ],
       "biomeTags": [
-        "#stardewcraft:is_ocean"
+        "#stardewcraft:is_ginger_island_ocean"
       ],
-      "spawnRate": 0.3,
-      "canBeInherited": true
-    },
-    {
-      "id": "blue_tang",
-      "precedence": 100,
-      "item": "stardewcraftsve:blue_tang",
-      "chance": 0.2,
-      "difficulty": 35,
+      "canBeInherited": true,
+      "biomes": [
+        "stardewcraftsve:fable_reef"
+      ],
+      "chance": 1,
+      "difficulty": 65,
       "motionType": 1,
+      "minFishSize": 20,
+      "maxFishSize": 27,
       "minFishingLevel": 0,
       "seasons": [
         "spring",
@@ -128,22 +128,62 @@
       "timeRanges": [
         [
           600,
-          2600
+          2000
         ]
       ],
+      "maxDepth": 3,
+      "spawnRate": 0.15,
+      "depthMultiplier": 0.2
+    },
+    {
+      "id": "blue_tang",
+      "precedence": 100,
+      "item": "stardewcraftsve:blue_tang",
       "biomeTags": [
-        "#stardewcraft:is_ocean"
+        "#stardewcraft:is_ginger_island_ocean"
       ],
-      "spawnRate": 0.35,
-      "canBeInherited": true
+      "canBeInherited": true,
+      "biomes": [
+        "stardewcraftsve:fable_reef"
+      ],
+      "chance": 1,
+      "difficulty": 30,
+      "motionType": 0,
+      "minFishSize": 9,
+      "maxFishSize": 13,
+      "minFishingLevel": 0,
+      "seasons": [
+        "spring",
+        "summer",
+        "fall",
+        "winter"
+      ],
+      "weather": "sunny",
+      "timeRanges": [
+        [
+          600,
+          2000
+        ]
+      ],
+      "maxDepth": 3,
+      "spawnRate": 0.15,
+      "depthMultiplier": 0.1
     },
     {
       "id": "bonefish",
       "precedence": 100,
       "item": "stardewcraftsve:bonefish",
-      "chance": 0.15,
+      "biomes": [
+        "stardewcraftsve:crimson_badlands"
+      ],
+      "biomeTags": [],
+      "canBeInherited": true,
+      "displayOnly": true,
+      "chance": 1,
       "difficulty": 70,
       "motionType": 3,
+      "minFishSize": 2,
+      "maxFishSize": 6,
       "minFishingLevel": 5,
       "seasons": [
         "spring",
@@ -158,23 +198,31 @@
           2600
         ]
       ],
-      "biomes": [
-        "stardewcraftsve:crimson_badlands"
-      ],
-      "biomeTags": [],
-      "spawnRate": 0.3,
-      "canBeInherited": true
+      "maxDepth": 3,
+      "spawnRate": 0.8,
+      "depthMultiplier": 0.5
     },
     {
       "id": "bull_trout",
       "precedence": 100,
       "item": "stardewcraftsve:bull_trout",
-      "chance": 0.2,
-      "difficulty": 40,
+      "biomeTags": [
+        "#stardewcraft:is_forest_river",
+        "#stardewcraft:is_mountain_lake"
+      ],
+      "canBeInherited": true,
+      "biomes": [
+        "stardewcraftsve:adventurer_summit",
+        "stardewcraftsve:forest_west",
+        "stardewcraftsve:highlands"
+      ],
+      "chance": 1,
+      "difficulty": 45,
       "motionType": 0,
+      "minFishSize": 12,
+      "maxFishSize": 25,
       "minFishingLevel": 0,
       "seasons": [
-        "summer",
         "fall",
         "winter"
       ],
@@ -185,51 +233,60 @@
           2600
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_mountain_lake"
-      ],
-      "spawnRate": 0.35,
-      "canBeInherited": true
+      "maxDepth": 3,
+      "spawnRate": 0.22,
+      "depthMultiplier": 0.5
     },
     {
       "id": "butterfish",
       "precedence": 100,
       "item": "stardewcraftsve:butterfish",
-      "chance": 0.15,
-      "difficulty": 50,
-      "motionType": 4,
-      "minFishingLevel": 8,
+      "biomeTags": [],
+      "canBeInherited": true,
+      "biomes": [
+        "stardewcraftsve:forest_west",
+        "stardewcraftsve:morris_property",
+        "stardewcraftsve:shearwater_bridge"
+      ],
+      "displayOnly": true,
+      "chance": 1,
+      "difficulty": 80,
+      "motionType": 1,
+      "minFishSize": 8,
+      "maxFishSize": 16,
+      "minFishingLevel": 0,
       "seasons": [
         "spring",
-        "summer",
-        "fall"
+        "summer"
       ],
       "weather": "sunny",
       "timeRanges": [
         [
           600,
-          1400
+          2600
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_mountain_lake"
-      ],
-      "spawnRate": 0.3,
-      "canBeInherited": true
+      "maxDepth": 2,
+      "spawnRate": 0.12,
+      "depthMultiplier": 0.1
     },
     {
       "id": "clownfish",
       "precedence": 100,
       "item": "stardewcraftsve:clownfish",
-      "chance": 0.2,
-      "difficulty": 25,
+      "biomeTags": [
+        "#stardewcraft:is_ginger_island_ocean"
+      ],
+      "canBeInherited": true,
+      "biomes": [],
+      "chance": 1,
+      "difficulty": 45,
       "motionType": 1,
+      "minFishSize": 2,
+      "maxFishSize": 5,
       "minFishingLevel": 3,
       "seasons": [
-        "spring",
-        "summer",
-        "fall",
-        "winter"
+        "summer"
       ],
       "weather": "any",
       "timeRanges": [
@@ -238,20 +295,25 @@
           1700
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_mountain_lake",
-        "#stardewcraft:is_secret_woods"
-      ],
-      "spawnRate": 0.35,
-      "canBeInherited": true
+      "maxDepth": 3,
+      "spawnRate": 0.25,
+      "depthMultiplier": 0.6
     },
     {
       "id": "daggerfish",
       "precedence": 100,
       "item": "stardewcraftsve:daggerfish",
-      "chance": 0.15,
-      "difficulty": 55,
-      "motionType": 2,
+      "biomeTags": [],
+      "canBeInherited": true,
+      "biomes": [
+        "stardewcraftsve:fable_reef"
+      ],
+      "displayOnly": true,
+      "chance": 1,
+      "difficulty": 50,
+      "motionType": 1,
+      "minFishSize": 3,
+      "maxFishSize": 7,
       "minFishingLevel": 0,
       "seasons": [
         "spring",
@@ -266,46 +328,25 @@
           2600
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_mountain_lake"
-      ],
-      "spawnRate": 0.3,
-      "canBeInherited": true
+      "maxDepth": 3,
+      "spawnRate": 0.5,
+      "depthMultiplier": 0.5
     },
     {
       "id": "diamond_carp",
       "precedence": 100,
       "item": "stardewcraftsve:diamond_carp",
-      "chance": 0.1,
-      "difficulty": 60,
-      "motionType": 0,
-      "minFishingLevel": 5,
-      "seasons": [
-        "spring",
-        "summer",
-        "fall",
-        "winter"
+      "biomeTags": [],
+      "canBeInherited": true,
+      "biomes": [
+        "stardewcraftsve:diamond_cavern"
       ],
-      "weather": "any",
-      "timeRanges": [
-        [
-          600,
-          2600
-        ]
-      ],
-      "biomeTags": [
-        "#stardewcraft:is_mountain_lake"
-      ],
-      "spawnRate": 0.2,
-      "canBeInherited": true
-    },
-    {
-      "id": "fiber_goby",
-      "precedence": 100,
-      "item": "stardewcraftsve:fiber_goby",
-      "chance": 0.2,
-      "difficulty": 50,
+      "displayOnly": true,
+      "chance": 1,
+      "difficulty": 70,
       "motionType": 3,
+      "minFishSize": 16,
+      "maxFishSize": 30,
       "minFishingLevel": 0,
       "seasons": [
         "spring",
@@ -320,19 +361,57 @@
           2600
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_mountain_lake"
+      "maxDepth": 2,
+      "spawnRate": 0.25,
+      "depthMultiplier": 0.2
+    },
+    {
+      "id": "fiber_goby",
+      "precedence": 100,
+      "item": "stardewcraftsve:fiber_goby",
+      "biomeTags": [],
+      "canBeInherited": true,
+      "biomes": [
+        "stardewcraftsve:highlands"
       ],
-      "spawnRate": 0.35,
-      "canBeInherited": true
+      "displayOnly": true,
+      "chance": 1,
+      "difficulty": 60,
+      "motionType": 3,
+      "minFishSize": 13,
+      "maxFishSize": 22,
+      "minFishingLevel": 0,
+      "seasons": [
+        "spring",
+        "summer",
+        "fall",
+        "winter"
+      ],
+      "weather": "any",
+      "timeRanges": [
+        [
+          600,
+          2600
+        ]
+      ],
+      "maxDepth": 4,
+      "spawnRate": 0.5,
+      "depthMultiplier": 0.2
     },
     {
       "id": "frog",
       "precedence": 100,
       "item": "stardewcraftsve:frog",
-      "chance": 0.12,
-      "difficulty": 65,
-      "motionType": 2,
+      "biomeTags": [
+        "#stardewcraft:is_mountain_lake"
+      ],
+      "canBeInherited": true,
+      "biomes": [],
+      "chance": 1,
+      "difficulty": 70,
+      "motionType": 3,
+      "minFishSize": 2,
+      "maxFishSize": 5,
       "minFishingLevel": 5,
       "seasons": [
         "spring",
@@ -345,74 +424,57 @@
           2600
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_river"
-      ],
-      "spawnRate": 0.25,
-      "canBeInherited": true
+      "maxDepth": 3,
+      "spawnRate": 0.9,
+      "depthMultiplier": 0.5
     },
     {
       "id": "gar",
       "precedence": 100,
       "item": "stardewcraftsve:gar",
-      "chance": 0.15,
-      "difficulty": 60,
-      "motionType": 0,
-      "minFishingLevel": 3,
-      "seasons": [
-        "spring",
-        "summer",
-        "fall",
-        "winter"
+      "biomeTags": [
+        "#stardewcraft:is_forest_river"
       ],
-      "weather": "any",
+      "canBeInherited": true,
+      "biomes": [
+        "stardewcraftsve:forest_west"
+      ],
+      "chance": 1,
+      "difficulty": 85,
+      "motionType": 0,
+      "minFishSize": 55,
+      "maxFishSize": 75,
+      "minFishingLevel": 5,
+      "seasons": [
+        "summer",
+        "fall"
+      ],
+      "weather": "rainy",
       "timeRanges": [
         [
           600,
-          2600
+          2000
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_river"
-      ],
-      "spawnRate": 0.3,
-      "canBeInherited": true
+      "maxDepth": 1,
+      "spawnRate": 0.07,
+      "depthMultiplier": 0.2
     },
     {
       "id": "gemfish",
       "precedence": 100,
       "item": "stardewcraftsve:gemfish",
-      "chance": 0.08,
-      "difficulty": 75,
-      "motionType": 0,
-      "minFishingLevel": 5,
-      "seasons": [
-        "spring",
-        "summer",
-        "fall",
-        "winter"
-      ],
-      "weather": "any",
-      "timeRanges": [
-        [
-          600,
-          2600
-        ]
-      ],
       "biomes": [
         "stardewcraftsve:highlands_cavern"
       ],
       "biomeTags": [],
-      "spawnRate": 0.2,
-      "canBeInherited": true
-    },
-    {
-      "id": "goldenfish",
-      "precedence": 100,
-      "item": "stardewcraftsve:goldenfish",
-      "chance": 0.15,
-      "difficulty": 60,
-      "motionType": 1,
+      "canBeInherited": true,
+      "displayOnly": true,
+      "chance": 1,
+      "difficulty": 100,
+      "motionType": 3,
+      "minFishSize": 32,
+      "maxFishSize": 46,
       "minFishingLevel": 0,
       "seasons": [
         "spring",
@@ -427,19 +489,60 @@
           2600
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_secret_woods"
+      "maxDepth": 3,
+      "spawnRate": 0.2,
+      "depthMultiplier": 0.5
+    },
+    {
+      "id": "goldenfish",
+      "precedence": 100,
+      "item": "stardewcraftsve:goldenfish",
+      "biomeTags": [],
+      "canBeInherited": true,
+      "biomes": [
+        "stardewcraftsve:junimo_woods",
+        "stardewcraftsve:sprite_spring"
       ],
-      "spawnRate": 0.3,
-      "canBeInherited": true
+      "displayOnly": true,
+      "chance": 1,
+      "difficulty": 60,
+      "motionType": 0,
+      "minFishSize": 4,
+      "maxFishSize": 9,
+      "minFishingLevel": 0,
+      "seasons": [
+        "spring",
+        "summer",
+        "fall",
+        "winter"
+      ],
+      "weather": "any",
+      "timeRanges": [
+        [
+          600,
+          2600
+        ]
+      ],
+      "maxDepth": 3,
+      "spawnRate": 0.99,
+      "depthMultiplier": 0.5
     },
     {
       "id": "goldfish",
       "precedence": 100,
       "item": "stardewcraftsve:goldfish",
-      "chance": 0.2,
+      "biomeTags": [
+        "#stardewcraft:is_town_river"
+      ],
+      "canBeInherited": true,
+      "biomes": [
+        "stardewcraftsve:blue_moon_vineyard"
+      ],
+      "chance": 1,
       "difficulty": 25,
       "motionType": 1,
+      "minFishSize": 1,
+      "maxFishSize": 4,
       "minFishingLevel": 0,
       "seasons": [
         "spring"
@@ -447,23 +550,28 @@
       "weather": "sunny",
       "timeRanges": [
         [
-          600,
-          2600
+          1000,
+          1700
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_river"
-      ],
-      "spawnRate": 0.35,
-      "canBeInherited": true
+      "maxDepth": 1,
+      "spawnRate": 0.08,
+      "depthMultiplier": 0.25
     },
     {
       "id": "grass_carp",
       "precedence": 100,
       "item": "stardewcraftsve:grass_carp",
-      "chance": 0.2,
-      "difficulty": 35,
-      "motionType": 3,
+      "biomeTags": [
+        "#stardewcraft:is_secret_woods"
+      ],
+      "canBeInherited": true,
+      "biomes": [],
+      "chance": 1,
+      "difficulty": 85,
+      "motionType": 0,
+      "minFishSize": 24,
+      "maxFishSize": 42,
       "minFishingLevel": 0,
       "seasons": [
         "spring",
@@ -476,19 +584,25 @@
           2600
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_mountain_lake"
-      ],
-      "spawnRate": 0.35,
-      "canBeInherited": true
+      "maxDepth": 3,
+      "spawnRate": 0.1,
+      "depthMultiplier": 0.5
     },
     {
       "id": "highlands_bass",
       "precedence": 100,
       "item": "stardewcraftsve:highlands_bass",
-      "chance": 0.2,
-      "difficulty": 60,
+      "biomeTags": [],
+      "canBeInherited": true,
+      "biomes": [
+        "stardewcraftsve:highlands"
+      ],
+      "displayOnly": true,
+      "chance": 1,
+      "difficulty": 45,
       "motionType": 0,
+      "minFishSize": 28,
+      "maxFishSize": 33,
       "minFishingLevel": 0,
       "seasons": [
         "spring",
@@ -503,19 +617,25 @@
           2600
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_river"
-      ],
-      "spawnRate": 0.35,
-      "canBeInherited": true
+      "maxDepth": 2,
+      "spawnRate": 0.4,
+      "depthMultiplier": 0.15
     },
     {
       "id": "king_salmon",
       "precedence": 100,
       "item": "stardewcraftsve:king_salmon",
-      "chance": 0.1,
-      "difficulty": 70,
-      "motionType": 2,
+      "biomeTags": [],
+      "canBeInherited": true,
+      "biomes": [
+        "stardewcraftsve:forest_west"
+      ],
+      "displayOnly": true,
+      "chance": 1,
+      "difficulty": 80,
+      "motionType": 1,
+      "minFishSize": 42,
+      "maxFishSize": 58,
       "minFishingLevel": 8,
       "seasons": [
         "spring",
@@ -528,19 +648,25 @@
           2000
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_river"
-      ],
-      "spawnRate": 0.25,
-      "canBeInherited": true
+      "maxDepth": 3,
+      "spawnRate": 0.22,
+      "depthMultiplier": 0.5
     },
     {
       "id": "kittyfish",
       "precedence": 100,
       "item": "stardewcraftsve:kittyfish",
-      "chance": 0.12,
-      "difficulty": 55,
-      "motionType": 1,
+      "biomeTags": [],
+      "canBeInherited": true,
+      "biomes": [
+        "stardewcraftsve:shearwater_bridge"
+      ],
+      "displayOnly": true,
+      "chance": 1,
+      "difficulty": 85,
+      "motionType": 0,
+      "minFishSize": 5,
+      "maxFishSize": 9,
       "minFishingLevel": 8,
       "seasons": [
         "fall",
@@ -550,23 +676,29 @@
       "timeRanges": [
         [
           600,
-          1400
+          2600
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_mountain_lake",
-        "#stardewcraft:is_secret_woods"
-      ],
+      "maxDepth": 3,
       "spawnRate": 0.25,
-      "canBeInherited": true
+      "depthMultiplier": 0.3
     },
     {
       "id": "lunaloo",
       "precedence": 100,
       "item": "stardewcraftsve:lunaloo",
-      "chance": 0.12,
-      "difficulty": 40,
+      "biomeTags": [
+        "#stardewcraft:is_ginger_island_ocean"
+      ],
+      "canBeInherited": true,
+      "biomes": [
+        "stardewcraftsve:fable_reef"
+      ],
+      "chance": 1,
+      "difficulty": 70,
       "motionType": 4,
+      "minFishSize": 4,
+      "maxFishSize": 8,
       "minFishingLevel": 5,
       "seasons": [
         "spring",
@@ -581,20 +713,26 @@
           2600
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_mountain_lake",
-        "#stardewcraft:is_secret_woods"
-      ],
-      "spawnRate": 0.25,
-      "canBeInherited": true
+      "maxDepth": 5,
+      "spawnRate": 0.15,
+      "depthMultiplier": 0.5
     },
     {
       "id": "meteor_carp",
       "precedence": 100,
       "item": "stardewcraftsve:meteor_carp",
-      "chance": 0.12,
-      "difficulty": 75,
-      "motionType": 0,
+      "biomeTags": [],
+      "canBeInherited": true,
+      "biomes": [
+        "stardewcraftsve:junimo_woods",
+        "stardewcraftsve:sprite_spring"
+      ],
+      "displayOnly": true,
+      "chance": 1,
+      "difficulty": 80,
+      "motionType": 3,
+      "minFishSize": 24,
+      "maxFishSize": 36,
       "minFishingLevel": 0,
       "seasons": [
         "spring",
@@ -609,24 +747,38 @@
           2600
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_secret_woods"
-      ],
-      "spawnRate": 0.25,
-      "canBeInherited": true
+      "maxDepth": 3,
+      "spawnRate": 0.2,
+      "depthMultiplier": 0.5
     },
     {
       "id": "minnow",
       "precedence": 100,
       "item": "stardewcraftsve:minnow",
-      "chance": 0.3,
-      "difficulty": 15,
-      "motionType": 1,
+      "biomeTags": [
+        "#stardewcraft:is_freshwater",
+        "#stardewcraft:is_forest_river",
+        "#stardewcraft:is_mountain_lake",
+        "#stardewcraft:is_town_river"
+      ],
+      "canBeInherited": true,
+      "biomes": [
+        "stardewcraftsve:adventurer_summit",
+        "stardewcraftsve:blue_moon_vineyard",
+        "stardewcraftsve:morris_property",
+        "stardewcraftsve:shearwater_bridge"
+      ],
+      "chance": 1,
+      "difficulty": 1,
+      "motionType": 3,
+      "minFishSize": 1,
+      "maxFishSize": 2,
       "minFishingLevel": 0,
       "seasons": [
         "spring",
         "summer",
-        "fall"
+        "fall",
+        "winter"
       ],
       "weather": "sunny",
       "timeRanges": [
@@ -635,20 +787,27 @@
           1800
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_river"
-      ],
-      "spawnRate": 0.45,
-      "canBeInherited": true
+      "maxDepth": 1,
+      "spawnRate": 0.03,
+      "depthMultiplier": 0.2
     },
     {
       "id": "ocean_sunfish",
       "precedence": 100,
       "item": "stardewcraftsve:ocean_sunfish",
-      "chance": 0.1,
-      "difficulty": 65,
+      "biomeTags": [
+        "#stardewcraft:is_ginger_island_ocean"
+      ],
+      "canBeInherited": true,
+      "biomes": [
+        "stardewcraftsve:fable_reef"
+      ],
+      "chance": 1,
+      "difficulty": 90,
       "motionType": 4,
-      "minFishingLevel": 5,
+      "minFishSize": 64,
+      "maxFishSize": 80,
+      "minFishingLevel": 0,
       "seasons": [
         "spring",
         "summer",
@@ -662,19 +821,26 @@
           2600
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_ocean"
-      ],
-      "spawnRate": 0.2,
-      "canBeInherited": true
+      "maxDepth": 5,
+      "spawnRate": 0.1,
+      "depthMultiplier": 0.12
     },
     {
       "id": "puppyfish",
       "precedence": 100,
       "item": "stardewcraftsve:puppyfish",
-      "chance": 0.15,
-      "difficulty": 50,
-      "motionType": 1,
+      "biomeTags": [],
+      "canBeInherited": true,
+      "biomes": [
+        "stardewcraftsve:forest_west",
+        "stardewcraftsve:shearwater_bridge"
+      ],
+      "displayOnly": true,
+      "chance": 1,
+      "difficulty": 90,
+      "motionType": 0,
+      "minFishSize": 5,
+      "maxFishSize": 9,
       "minFishingLevel": 0,
       "seasons": [
         "spring",
@@ -688,20 +854,24 @@
           2600
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_mountain_lake",
-        "#stardewcraft:is_secret_woods"
-      ],
-      "spawnRate": 0.3,
-      "canBeInherited": true
+      "maxDepth": 3,
+      "spawnRate": 0.08,
+      "depthMultiplier": 0.3
     },
     {
       "id": "radioactive_bass",
       "precedence": 100,
       "item": "stardewcraftsve:radioactive_bass",
-      "chance": 0.08,
-      "difficulty": 80,
-      "motionType": 0,
+      "biomeTags": [
+        "#stardewcraft:is_sewers"
+      ],
+      "canBeInherited": true,
+      "biomes": [],
+      "chance": 1,
+      "difficulty": 90,
+      "motionType": 4,
+      "minFishSize": 18,
+      "maxFishSize": 30,
       "minFishingLevel": 10,
       "seasons": [
         "spring",
@@ -716,19 +886,26 @@
           2600
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_mountain_lake"
-      ],
-      "spawnRate": 0.2,
-      "canBeInherited": true
+      "maxDepth": 3,
+      "spawnRate": 0.06,
+      "depthMultiplier": 0.8
     },
     {
       "id": "razor_trout",
       "precedence": 100,
       "item": "stardewcraftsve:razor_trout",
-      "chance": 0.08,
-      "difficulty": 70,
-      "motionType": 2,
+      "biomeTags": [],
+      "canBeInherited": true,
+      "biomes": [
+        "stardewcraftsve:blue_moon_vineyard",
+        "stardewcraftsve:joja_town_after_event"
+      ],
+      "displayOnly": true,
+      "chance": 1,
+      "difficulty": 85,
+      "motionType": 1,
+      "minFishSize": 8,
+      "maxFishSize": 14,
       "minFishingLevel": 10,
       "seasons": [
         "spring",
@@ -743,19 +920,26 @@
           2600
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_river"
-      ],
-      "spawnRate": 0.2,
-      "canBeInherited": true
+      "maxDepth": 2,
+      "spawnRate": 0.99,
+      "depthMultiplier": 0.5
     },
     {
       "id": "seahorse",
       "precedence": 100,
       "item": "stardewcraftsve:seahorse",
-      "chance": 0.2,
-      "difficulty": 30,
-      "motionType": 1,
+      "biomeTags": [
+        "#stardewcraft:is_ginger_island_ocean"
+      ],
+      "canBeInherited": true,
+      "biomes": [
+        "stardewcraftsve:fable_reef"
+      ],
+      "chance": 1,
+      "difficulty": 25,
+      "motionType": 0,
+      "minFishSize": 1,
+      "maxFishSize": 3,
       "minFishingLevel": 0,
       "seasons": [
         "spring",
@@ -770,21 +954,27 @@
           1700
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_mountain_lake",
-        "#stardewcraft:is_secret_woods"
-      ],
-      "spawnRate": 0.35,
-      "canBeInherited": true
+      "maxDepth": 4,
+      "spawnRate": 0.3,
+      "depthMultiplier": 0.2
     },
     {
       "id": "shark",
       "precedence": 100,
       "item": "stardewcraftsve:shark",
-      "chance": 0.05,
-      "difficulty": 90,
-      "motionType": 2,
-      "minFishingLevel": 8,
+      "biomeTags": [
+        "#stardewcraft:is_ginger_island_ocean"
+      ],
+      "canBeInherited": true,
+      "biomes": [
+        "stardewcraftsve:fable_reef"
+      ],
+      "chance": 1,
+      "difficulty": 110,
+      "motionType": 1,
+      "minFishSize": 200,
+      "maxFishSize": 250,
+      "minFishingLevel": 0,
       "seasons": [
         "spring",
         "summer",
@@ -798,19 +988,26 @@
           2600
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_ocean"
-      ],
-      "spawnRate": 0.15,
-      "canBeInherited": true
+      "maxDepth": 5,
+      "spawnRate": 0.1,
+      "depthMultiplier": 0.1
     },
     {
       "id": "shiny_lunaloo",
       "precedence": 100,
       "item": "stardewcraftsve:shiny_lunaloo",
-      "chance": 0.05,
-      "difficulty": 60,
+      "biomeTags": [
+        "#stardewcraft:is_ginger_island_ocean"
+      ],
+      "canBeInherited": true,
+      "biomes": [
+        "stardewcraftsve:fable_reef"
+      ],
+      "chance": 1,
+      "difficulty": 110,
       "motionType": 4,
+      "minFishSize": 8,
+      "maxFishSize": 12,
       "minFishingLevel": 8,
       "seasons": [
         "spring",
@@ -825,20 +1022,24 @@
           2600
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_mountain_lake",
-        "#stardewcraft:is_secret_woods"
-      ],
-      "spawnRate": 0.15,
-      "canBeInherited": true
+      "maxDepth": 5,
+      "spawnRate": 0.05,
+      "depthMultiplier": 0.5
     },
     {
       "id": "snatcher_worm",
       "precedence": 100,
       "item": "stardewcraftsve:snatcher_worm",
-      "chance": 0.15,
-      "difficulty": 55,
-      "motionType": 3,
+      "biomeTags": [
+        "#stardewcraft:is_mutant_bug_lair"
+      ],
+      "canBeInherited": true,
+      "biomes": [],
+      "chance": 1,
+      "difficulty": 75,
+      "motionType": 1,
+      "minFishSize": 18,
+      "maxFishSize": 42,
       "minFishingLevel": 0,
       "seasons": [
         "spring",
@@ -853,20 +1054,28 @@
           2600
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_mountain_lake"
-      ],
-      "spawnRate": 0.3,
-      "canBeInherited": true
+      "maxDepth": 3,
+      "spawnRate": 0.12,
+      "depthMultiplier": 0.5
     },
     {
       "id": "starfish",
       "precedence": 100,
       "item": "stardewcraftsve:starfish",
-      "chance": 0.07,
+      "biomeTags": [
+        "#stardewcraft:is_beach",
+        "#stardewcraft:is_ginger_island_ocean"
+      ],
+      "canBeInherited": true,
+      "biomes": [
+        "stardewcraftsve:blue_moon_vineyard"
+      ],
+      "chance": 1,
       "difficulty": 75,
-      "motionType": 2,
-      "minFishingLevel": 4,
+      "motionType": 3,
+      "minFishSize": 5,
+      "maxFishSize": 10,
+      "minFishingLevel": 5,
       "seasons": [
         "spring",
         "summer",
@@ -879,23 +1088,27 @@
           2200
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_ocean"
-      ],
-      "spawnRate": 0.4,
-      "canBeInherited": true
+      "maxDepth": 4,
+      "spawnRate": 0.07,
+      "depthMultiplier": 0.4
     },
     {
       "id": "tadpole",
       "precedence": 100,
       "item": "stardewcraftsve:tadpole",
-      "chance": 0.25,
-      "difficulty": 10,
-      "motionType": 1,
+      "biomeTags": [
+        "#stardewcraft:is_mountain_lake"
+      ],
+      "canBeInherited": true,
+      "biomes": [],
+      "chance": 1,
+      "difficulty": 3,
+      "motionType": 4,
+      "minFishSize": 1,
+      "maxFishSize": 2,
       "minFishingLevel": 0,
       "seasons": [
-        "spring",
-        "summer"
+        "spring"
       ],
       "weather": "any",
       "timeRanges": [
@@ -904,19 +1117,25 @@
           2600
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_river"
-      ],
-      "spawnRate": 0.4,
-      "canBeInherited": true
+      "maxDepth": 1,
+      "spawnRate": 0.08,
+      "depthMultiplier": 0.1
     },
     {
       "id": "torpedo_trout",
       "precedence": 100,
       "item": "stardewcraftsve:torpedo_trout",
-      "chance": 0.12,
+      "biomeTags": [],
+      "canBeInherited": true,
+      "biomes": [
+        "stardewcraftsve:fable_reef"
+      ],
+      "displayOnly": true,
+      "chance": 1,
       "difficulty": 70,
-      "motionType": 2,
+      "motionType": 1,
+      "minFishSize": 50,
+      "maxFishSize": 50,
       "minFishingLevel": 0,
       "seasons": [
         "spring",
@@ -928,22 +1147,28 @@
       "timeRanges": [
         [
           600,
-          1400
+          2600
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_mountain_lake"
-      ],
-      "spawnRate": 0.25,
-      "canBeInherited": true
+      "maxDepth": 3,
+      "spawnRate": 0.7,
+      "depthMultiplier": 0.5
     },
     {
       "id": "turretfish",
       "precedence": 100,
       "item": "stardewcraftsve:turretfish",
-      "chance": 0.03,
-      "difficulty": 95,
-      "motionType": 0,
+      "biomeTags": [],
+      "canBeInherited": true,
+      "biomes": [
+        "stardewcraftsve:fable_reef"
+      ],
+      "displayOnly": true,
+      "chance": 1,
+      "difficulty": 150,
+      "motionType": 1,
+      "minFishSize": 50,
+      "maxFishSize": 50,
       "minFishingLevel": 10,
       "seasons": [
         "spring",
@@ -958,19 +1183,25 @@
           2600
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_river"
-      ],
-      "spawnRate": 0.1,
-      "canBeInherited": true
+      "maxDepth": 1,
+      "spawnRate": 0.06,
+      "depthMultiplier": 0.25
     },
     {
       "id": "undeadfish",
       "precedence": 100,
       "item": "stardewcraftsve:undeadfish",
-      "chance": 0.1,
-      "difficulty": 75,
-      "motionType": 3,
+      "biomes": [
+        "stardewcraftsve:crimson_badlands"
+      ],
+      "biomeTags": [],
+      "canBeInherited": true,
+      "displayOnly": true,
+      "chance": 1,
+      "difficulty": 80,
+      "motionType": 0,
+      "minFishSize": 3,
+      "maxFishSize": 7,
       "minFishingLevel": 5,
       "seasons": [
         "spring",
@@ -985,21 +1216,27 @@
           2600
         ]
       ],
-      "biomes": [
-        "stardewcraftsve:crimson_badlands"
-      ],
-      "biomeTags": [],
-      "spawnRate": 0.25,
-      "canBeInherited": true
+      "maxDepth": 3,
+      "spawnRate": 0.8,
+      "depthMultiplier": 0.5
     },
     {
       "id": "viper_eel",
       "precedence": 100,
       "item": "stardewcraftsve:viper_eel",
-      "chance": 0.08,
+      "biomeTags": [
+        "#stardewcraft:is_ginger_island_ocean"
+      ],
+      "canBeInherited": true,
+      "biomes": [
+        "stardewcraftsve:fable_reef"
+      ],
+      "chance": 1,
       "difficulty": 80,
-      "motionType": 2,
-      "minFishingLevel": 8,
+      "motionType": 0,
+      "minFishSize": 24,
+      "maxFishSize": 36,
+      "minFishingLevel": 0,
       "seasons": [
         "spring",
         "summer",
@@ -1013,19 +1250,24 @@
           2600
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_ocean"
-      ],
-      "spawnRate": 0.2,
-      "canBeInherited": true
+      "maxDepth": 4,
+      "spawnRate": 0.1,
+      "depthMultiplier": 0.2
     },
     {
       "id": "void_eel",
       "precedence": 100,
       "item": "stardewcraftsve:void_eel",
-      "chance": 0.08,
-      "difficulty": 75,
-      "motionType": 2,
+      "biomeTags": [
+        "#stardewcraft:is_witch_swamp"
+      ],
+      "canBeInherited": true,
+      "biomes": [],
+      "chance": 1,
+      "difficulty": 100,
+      "motionType": 0,
+      "minFishSize": 12,
+      "maxFishSize": 20,
       "minFishingLevel": 8,
       "seasons": [
         "spring",
@@ -1040,20 +1282,58 @@
           2600
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_river"
-      ],
-      "spawnRate": 0.2,
-      "canBeInherited": true
+      "maxDepth": 2,
+      "spawnRate": 0.17,
+      "depthMultiplier": 0.17
     },
     {
       "id": "water_grub",
       "precedence": 100,
       "item": "stardewcraftsve:water_grub",
-      "chance": 0.2,
-      "difficulty": 35,
+      "biomeTags": [
+        "#stardewcraft:is_mutant_bug_lair"
+      ],
+      "canBeInherited": true,
+      "biomes": [],
+      "chance": 1,
+      "difficulty": 60,
       "motionType": 3,
+      "minFishSize": 10,
+      "maxFishSize": 21,
       "minFishingLevel": 0,
+      "seasons": [
+        "spring",
+        "summer",
+        "fall",
+        "winter"
+      ],
+      "weather": "any",
+      "timeRanges": [
+        [
+          600,
+          2600
+        ]
+      ],
+      "maxDepth": 3,
+      "spawnRate": 0.4,
+      "depthMultiplier": 0.5
+    },
+    {
+      "id": "wolf_snapper",
+      "precedence": 100,
+      "item": "stardewcraftsve:wolf_snapper",
+      "biomeTags": [],
+      "canBeInherited": true,
+      "biomes": [
+        "stardewcraftsve:shearwater_bridge"
+      ],
+      "displayOnly": true,
+      "chance": 1,
+      "difficulty": 110,
+      "motionType": 1,
+      "minFishSize": 7,
+      "maxFishSize": 11,
+      "minFishingLevel": 10,
       "seasons": [
         "spring",
         "summer",
@@ -1066,38 +1346,9 @@
           2600
         ]
       ],
-      "biomeTags": [
-        "#stardewcraft:is_mountain_lake"
-      ],
-      "spawnRate": 0.35,
-      "canBeInherited": true
-    },
-    {
-      "id": "wolf_snapper",
-      "precedence": 100,
-      "item": "stardewcraftsve:wolf_snapper",
-      "chance": 0.04,
-      "difficulty": 95,
-      "motionType": 2,
-      "minFishingLevel": 10,
-      "seasons": [
-        "spring",
-        "summer",
-        "fall",
-        "winter"
-      ],
-      "weather": "any",
-      "timeRanges": [
-        [
-          600,
-          2600
-        ]
-      ],
-      "biomeTags": [
-        "#stardewcraft:is_river"
-      ],
-      "spawnRate": 0.1,
-      "canBeInherited": true
+      "maxDepth": 2,
+      "spawnRate": 0.06,
+      "depthMultiplier": 0.1
     }
   ]
 }

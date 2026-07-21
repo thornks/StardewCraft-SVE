@@ -117,9 +117,25 @@ public final class SveContentAcquisitionCatalog {
                 "Requires an SVE map, monster, or resource zone that is not ported",
                 "green_mushroom", "mega_purple_mushroom", "sea_sponge",
                 "sludge", "supernatural_goo", "swamp_crab", "swamp_essence", "swamp_flower",
+                "smoked_sea_sponge", "smoked_swamp_crab",
                 "void_shard", "void_soul", "rusty_blade", "gold_slime_egg",
                 "bombardier_elixir", "marsh_tonic",
                 "diamond_wand", "heavy_shield", "monster_splitter");
+        String[] mapLockedFish = {
+                "alligator", "arrowhead_shark", "butterfish", "daggerfish", "diamond_carp",
+                "fiber_goby", "gemfish", "goldenfish", "highlands_bass", "king_salmon",
+                "kittyfish", "meteor_carp", "puppyfish", "razor_trout", "torpedo_trout"
+        };
+        exclude(exclusions, ExclusionType.PLANNED_CONTENT,
+                "Original fishing location or required story event is not ported", mapLockedFish);
+        exclude(exclusions, ExclusionType.PLANNED_CONTENT,
+                "Source fish requires an unported location or story event",
+                java.util.Arrays.stream(mapLockedFish)
+                        .map(path -> "smoked_" + path)
+                        .toArray(String[]::new));
+        exclude(exclusions, ExclusionType.PLANNED_CONTENT,
+                "Recipe depends on a fish from an unported location",
+                "big_bark_burger", "glazed_butterfish");
         exclude(exclusions, ExclusionType.PLANNED_CONTENT,
                 "Requires an unported SVE quest, event, or special interaction",
                 "dewdrop_berry", "honey_jar", "golden_key", "mermaid_bracelet", "tree_coin",

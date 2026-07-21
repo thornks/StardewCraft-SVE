@@ -120,28 +120,28 @@ public final class ModItems {
             new int[]{400, 500, 600, 800},
             new int[]{63, 88, 113, 163},
             new int[]{28, 39, 50, 72},
-            85, "mixed",
+            75, "mixed",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> ARROWHEAD_SHARK = ITEMS.register("arrowhead_shark",
         () -> new FishItem(
             new int[]{700, 875, 1050, 1400},
             new int[]{70, 98, 126, 182},
             new int[]{31, 43, 55, 80},
-            90, "dart",
+            95, "sinker",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> BARRED_KNIFEJAW = ITEMS.register("barred_knifejaw",
         () -> new FishItem(
             new int[]{250, 312, 375, 500},
             new int[]{33, 46, 59, 85},
             new int[]{14, 19, 25, 36},
-            60, "mixed",
+            65, "dart",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> BLUE_TANG = ITEMS.register("blue_tang",
         () -> new FishItem(
             new int[]{130, 162, 195, 260},
             new int[]{25, 35, 45, 65},
             new int[]{11, 15, 19, 28},
-            35, "smooth",
+            30, "mixed",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> BONEFISH = ITEMS.register("bonefish",
         () -> new FishItem(
@@ -155,175 +155,175 @@ public final class ModItems {
             new int[]{185, 231, 277, 370},
             new int[]{25, 35, 45, 65},
             new int[]{11, 15, 19, 28},
-            40, "mixed",
+            45, "mixed",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> BUTTERFISH = ITEMS.register("butterfish",
         () -> new FishItem(
             new int[]{200, 250, 300, 400},
             new int[]{50, 70, 90, 130},
             new int[]{22, 30, 39, 57},
-            50, "floater",
+            80, "dart",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> CLOWNFISH = ITEMS.register("clownfish",
         () -> new FishItem(
             new int[]{70, 87, 105, 140},
             new int[]{50, 70, 90, 130},
             new int[]{22, 30, 39, 57},
-            25, "smooth",
+            45, "dart",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> DAGGERFISH = ITEMS.register("daggerfish",
         () -> new FishItem(
             new int[]{200, 250, 300, 400},
             new int[]{-150, -150, -150, -150},
             new int[]{-27, -27, -27, -27},
-            55, "dart",
+            50, "dart",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> DIAMOND_CARP = ITEMS.register("diamond_carp",
         () -> new FishItem(
             new int[]{575, 718, 862, 1150},
             new int[]{-25, -25, -25, -25},
             new int[]{-5, -5, -5, -5},
-            60, "mixed",
+            70, "sinker",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> FIBER_GOBY = ITEMS.register("fiber_goby",
         () -> new FishItem(
             new int[]{250, 312, 375, 500},
             new int[]{55, 77, 99, 143},
             new int[]{24, 33, 43, 62},
-            50, "sinker",
+            60, "sinker",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> FROG = ITEMS.register("frog",
         () -> new FishItem(
             new int[]{100, 125, 150, 200},
             new int[]{-75, -75, -75, -75},
             new int[]{-14, -14, -14, -14},
-            65, "dart",
+            70, "sinker",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> GAR = ITEMS.register("gar",
         () -> new FishItem(
             new int[]{175, 218, 262, 350},
             new int[]{50, 70, 90, 130},
             new int[]{22, 30, 39, 57},
-            60, "mixed",
+            85, "mixed",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> GEMFISH = ITEMS.register("gemfish",
         () -> new FishItem(
             new int[]{800, 1000, 1200, 1600},
             new int[]{-30, -30, -30, -30},
             new int[]{-6, -6, -6, -6},
-            75, "mixed",
+            100, "sinker",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> GOLDFISH = ITEMS.register("goldfish",
         () -> new FishItem(
             new int[]{80, 100, 120, 160},
             new int[]{23, 32, 41, 59},
             new int[]{10, 14, 18, 26},
-            25, "smooth",
+            25, "dart",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> GOLDENFISH = ITEMS.register("goldenfish",
         () -> new FishItem(
             new int[]{150, 187, 225, 300},
             new int[]{13, 18, 23, 33},
             new int[]{5, 7, 9, 13},
-            60, "smooth",
+            60, "mixed",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> GRASS_CARP = ITEMS.register("grass_carp",
         () -> new FishItem(
             new int[]{150, 187, 225, 300},
             new int[]{38, 53, 68, 98},
             new int[]{17, 23, 30, 44},
-            35, "sinker",
+            85, "mixed",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> HIGHLANDS_BASS = ITEMS.register("highlands_bass",
         () -> new FishItem(
             new int[]{200, 250, 300, 400},
             new int[]{38, 53, 68, 98},
             new int[]{17, 23, 30, 44},
-            60, "mixed",
+            45, "mixed",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> KING_SALMON = ITEMS.register("king_salmon",
         () -> new FishItem(
             new int[]{320, 400, 480, 640},
             new int[]{130, 182, 234, 338},
             new int[]{58, 81, 104, 150},
-            70, "dart",
+            80, "dart",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> KITTYFISH = ITEMS.register("kittyfish",
         () -> new FishItem(
             new int[]{250, 312, 375, 500},
             new int[]{100, 140, 180, 260},
             new int[]{45, 62, 81, 117},
-            55, "smooth",
+            85, "mixed",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> METEOR_CARP = ITEMS.register("meteor_carp",
         () -> new FishItem(
             new int[]{175, 218, 262, 350},
             new int[]{-50, -50, -50, -50},
             new int[]{-9, -9, -9, -9},
-            75, "mixed",
+            80, "sinker",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> MINNOW = ITEMS.register("minnow",
         () -> new FishItem(
             new int[]{20, 25, 30, 40},
             new int[]{3, 4, 5, 7},
             new int[]{1, 1, 1, 2},
-            15, "smooth",
+            1, "sinker",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> OCEAN_SUNFISH = ITEMS.register("ocean_sunfish",
         () -> new FishItem(
             new int[]{650, 812, 975, 1300},
             new int[]{50, 70, 90, 130},
             new int[]{22, 30, 39, 57},
-            65, "floater",
+            90, "floater",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> PUPPYFISH = ITEMS.register("puppyfish",
         () -> new FishItem(
             new int[]{250, 312, 375, 500},
             new int[]{100, 140, 180, 260},
             new int[]{45, 62, 81, 117},
-            50, "smooth",
+            90, "mixed",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> RADIOACTIVE_BASS = ITEMS.register("radioactive_bass",
         () -> new FishItem(
             new int[]{500, 625, 750, 1000},
             new int[]{-125, -125, -125, -125},
             new int[]{-23, -23, -23, -23},
-            80, "mixed",
+            90, "floater",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> RAZOR_TROUT = ITEMS.register("razor_trout",
         () -> new FishItem(
             new int[]{400, 500, 600, 800},
             new int[]{-87, -87, -87, -87},
             new int[]{-16, -16, -16, -16},
-            70, "dart",
+            85, "dart",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> SEAHORSE = ITEMS.register("seahorse",
         () -> new FishItem(
             new int[]{60, 75, 90, 120},
             new int[]{13, 18, 23, 33},
             new int[]{5, 7, 9, 13},
-            30, "smooth",
+            25, "mixed",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> SHARK = ITEMS.register("shark",
         () -> new FishItem(
             new int[]{800, 1000, 1200, 1600},
             new int[]{88, 123, 158, 228},
             new int[]{39, 54, 70, 101},
-            90, "dart",
+            110, "dart",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> SNATCHER_WORM = ITEMS.register("snatcher_worm",
         () -> new FishItem(
             new int[]{280, 350, 420, 560},
             new int[]{33, 46, 59, 85},
             new int[]{14, 19, 25, 36},
-            55, "sinker",
+            75, "dart",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> TADPOLE = ITEMS.register("tadpole",
         () -> new FishItem(
             new int[]{15, 18, 22, 30},
             new int[]{5, 7, 9, 13},
             new int[]{2, 2, 3, 5},
-            10, "smooth",
+            3, "floater",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> TORPEDO_TROUT = ITEMS.register("torpedo_trout",
         () -> new FishItem(
@@ -337,42 +337,42 @@ public final class ModItems {
             new int[]{10000, 12500, 15000, 20000},
             new int[]{-125, -125, -125, -125},
             new int[]{-23, -23, -23, -23},
-            95, "mixed",
+            150, "dart",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> UNDEADFISH = ITEMS.register("undeadfish",
         () -> new FishItem(
             new int[]{600, 750, 900, 1200},
             new int[]{-150, -150, -150, -150},
             new int[]{-27, -27, -27, -27},
-            75, "sinker",
+            80, "mixed",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> VIPER_EEL = ITEMS.register("viper_eel",
         () -> new FishItem(
             new int[]{600, 750, 900, 1200},
             new int[]{-325, -325, -325, -325},
             new int[]{-59, -59, -59, -59},
-            80, "dart",
+            80, "mixed",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> VOID_EEL = ITEMS.register("void_eel",
         () -> new FishItem(
             new int[]{450, 562, 675, 900},
             new int[]{-500, -500, -500, -500},
             new int[]{-90, -90, -90, -90},
-            75, "dart",
+            100, "mixed",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> WATER_GRUB = ITEMS.register("water_grub",
         () -> new FishItem(
             new int[]{170, 212, 255, 340},
             new int[]{100, 140, 180, 260},
             new int[]{45, 62, 81, 117},
-            35, "sinker",
+            60, "sinker",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> WOLF_SNAPPER = ITEMS.register("wolf_snapper",
         () -> new FishItem(
             new int[]{4000, 5000, 6000, 8000},
             new int[]{125, 175, 225, 325},
             new int[]{56, 78, 100, 145},
-            95, "dart",
+            110, "dart",
             stackableProperties()));
 
     // ===== crops =====
@@ -491,21 +491,31 @@ public final class ModItems {
         () -> new FirConeItem(stackableProperties()));
     public static final DeferredHolder<Item, SimpleStardewItem> OLD_COIN = ITEMS.register("old_coin",
         () -> new SimpleStardewItem("stardewcraft.type.artifact", 100, stackableProperties()));
-    public static final DeferredHolder<Item, StardewQualityItem> SEA_SPONGE = ITEMS.register("sea_sponge",
-        () -> new StardewQualityItem("stardewcraft.type.forage", 75, -25, true, stackableProperties()));
+    public static final DeferredHolder<Item, FishItem> SEA_SPONGE = ITEMS.register("sea_sponge",
+        () -> new FishItem(
+            new int[]{75, 93, 112, 150},
+            new int[]{-62, -62, -62, -62},
+            new int[]{-11, -11, -11, -11},
+            40, "sinker",
+            stackableProperties()));
     public static final DeferredHolder<Item, StardewQualityItem> SLUDGE = ITEMS.register("sludge",
         () -> new StardewQualityItem("stardewcraft.type.forage", 60, -300, true, stackableProperties()));
     public static final DeferredHolder<Item, FishItem> STARFISH = ITEMS.register("starfish",
         () -> new FishItem(
             new int[]{150, 187, 225, 300},
-            new int[]{-20, -20, -20, -20},
-            new int[]{-4, -4, -4, -4},
+            new int[]{-50, -50, -50, -50},
+            new int[]{-9, -9, -9, -9},
             75, "sinker",
             stackableProperties()));
     public static final DeferredHolder<Item, StardewQualityItem> SUPERNATURAL_GOO = ITEMS.register("supernatural_goo",
         () -> new StardewQualityItem("stardewcraft.type.forage", 200, -300, true, stackableProperties()));
-    public static final DeferredHolder<Item, StardewQualityItem> SWAMP_CRAB = ITEMS.register("swamp_crab",
-        () -> new StardewQualityItem("stardewcraft.type.forage", 150, 20, true, stackableProperties()));
+    public static final DeferredHolder<Item, FishItem> SWAMP_CRAB = ITEMS.register("swamp_crab",
+        () -> new FishItem(
+            new int[]{150, 187, 225, 300},
+            new int[]{50, 70, 90, 130},
+            new int[]{22, 30, 39, 57},
+            35, "sinker",
+            stackableProperties()));
     public static final DeferredHolder<Item, StardewQualityItem> SWAMP_ESSENCE = ITEMS.register("swamp_essence",
         () -> new StardewQualityItem("stardewcraft.type.forage", 80, -300, true, stackableProperties()));
     public static final DeferredHolder<Item, StardewQualityItem> VOID_PEBBLE = ITEMS.register("void_pebble",
@@ -527,11 +537,11 @@ public final class ModItems {
     public static final DeferredHolder<Item, SimpleStardewItem> GALDORAN_GEM = ITEMS.register("galdoran_gem",
         () -> new SimpleStardewItem("stardewcraft.type.gem", 600, stackableProperties()));
     public static final DeferredHolder<Item, SimpleStardewItem> MAGIC_LAMP = ITEMS.register("magic_lamp",
-        () -> new SimpleStardewItem("stardewcraft.type.artifact", 15000, stackableProperties()));
+        () -> new SimpleStardewItem("stardewcraft.type.monster_loot", 15000, stackableProperties()));
     public static final DeferredHolder<Item, SimpleStardewItem> MONEY_BAG = ITEMS.register("money_bag",
-        () -> new SimpleStardewItem("stardewcraft.type.artifact", 1000, stackableProperties()));
+        () -> new SimpleStardewItem("stardewcraft.type.misc", 1000, stackableProperties()));
     public static final DeferredHolder<Item, SimpleStardewItem> ORNATE_TREASURE_CHEST = ITEMS.register("ornate_treasure_chest",
-        () -> new SimpleStardewItem("stardewcraft.type.artifact", 10000, stackableProperties()));
+        () -> new SimpleStardewItem("stardewcraft.type.misc", 10000, stackableProperties()));
     public static final DeferredHolder<Item, SimpleStardewItem> RUSTY_SHIELD = ITEMS.register("rusty_shield",
         () -> new SimpleStardewItem("stardewcraft.type.artifact", 250, stackableProperties()));
     public static final DeferredHolder<Item, StardewQualityItem> SHARK_TOOTH = ITEMS.register("shark_tooth",
@@ -547,7 +557,7 @@ public final class ModItems {
             new int[]{35, 43, 52, 70},
             new int[]{-25, -25, -25, -25},
             new int[]{-5, -5, -5, -5},
-            25, "smooth",
+            15, "floater",
             stackableProperties()));
     public static final DeferredHolder<Item, StardewQualityItem> CAMEL_WOOL = ITEMS.register("camel_wool",
         () -> new StardewQualityItem("stardewcraft.type.animal_product", 450, -300, true, stackableProperties()));
@@ -578,14 +588,14 @@ public final class ModItems {
             new int[]{100, 125, 150, 200},
             new int[]{-62, -62, -62, -62},
             new int[]{-12, -12, -12, -12},
-            40, "floater",
+            70, "floater",
             stackableProperties()));
     public static final DeferredHolder<Item, FishItem> SHINY_LUNALOO = ITEMS.register("shiny_lunaloo",
         () -> new FishItem(
             new int[]{400, 500, 600, 800},
             new int[]{-125, -125, -125, -125},
             new int[]{-23, -23, -23, -23},
-            60, "floater",
+            110, "floater",
             stackableProperties()));
 
     // ===== artisan =====
@@ -844,6 +854,8 @@ public final class ModItems {
         () -> new SmokedFishItem(() -> ModItems.RADIOACTIVE_BASS.get(), stackableProperties()));
     public static final DeferredHolder<Item, Item> SMOKED_RAZOR_TROUT = SMOKED_FISH_ITEMS.register("smoked_razor_trout",
         () -> new SmokedFishItem(() -> ModItems.RAZOR_TROUT.get(), stackableProperties()));
+    public static final DeferredHolder<Item, Item> SMOKED_SEA_SPONGE = SMOKED_FISH_ITEMS.register("smoked_sea_sponge",
+        () -> new SmokedFishItem(() -> ModItems.SEA_SPONGE.get(), stackableProperties()));
     public static final DeferredHolder<Item, Item> SMOKED_SEAHORSE = SMOKED_FISH_ITEMS.register("smoked_seahorse",
         () -> new SmokedFishItem(() -> ModItems.SEAHORSE.get(), stackableProperties()));
     public static final DeferredHolder<Item, Item> SMOKED_SHARK = SMOKED_FISH_ITEMS.register("smoked_shark",
@@ -852,6 +864,10 @@ public final class ModItems {
         () -> new SmokedFishItem(() -> ModItems.SHINY_LUNALOO.get(), stackableProperties()));
     public static final DeferredHolder<Item, Item> SMOKED_SNATCHER_WORM = SMOKED_FISH_ITEMS.register("smoked_snatcher_worm",
         () -> new SmokedFishItem(() -> ModItems.SNATCHER_WORM.get(), stackableProperties()));
+    public static final DeferredHolder<Item, Item> SMOKED_STARFISH = SMOKED_FISH_ITEMS.register("smoked_starfish",
+        () -> new SmokedFishItem(() -> ModItems.STARFISH.get(), stackableProperties()));
+    public static final DeferredHolder<Item, Item> SMOKED_SWAMP_CRAB = SMOKED_FISH_ITEMS.register("smoked_swamp_crab",
+        () -> new SmokedFishItem(() -> ModItems.SWAMP_CRAB.get(), stackableProperties()));
     public static final DeferredHolder<Item, Item> SMOKED_TADPOLE = SMOKED_FISH_ITEMS.register("smoked_tadpole",
         () -> new SmokedFishItem(() -> ModItems.TADPOLE.get(), stackableProperties()));
     public static final DeferredHolder<Item, Item> SMOKED_TORPEDO_TROUT = SMOKED_FISH_ITEMS.register("smoked_torpedo_trout",
@@ -877,8 +893,9 @@ public final class ModItems {
         SMOKED_FROG, SMOKED_GAR, SMOKED_GEMFISH, SMOKED_GOLDENFISH, SMOKED_GOLDFISH,
         SMOKED_GRASS_CARP, SMOKED_HIGHLANDS_BASS, SMOKED_KING_SALMON, SMOKED_KITTYFISH,
         SMOKED_LUNALOO, SMOKED_METEOR_CARP, SMOKED_MINNOW, SMOKED_OCEAN_SUNFISH,
-        SMOKED_PUPPYFISH, SMOKED_RADIOACTIVE_BASS, SMOKED_RAZOR_TROUT, SMOKED_SEAHORSE,
-        SMOKED_SHARK, SMOKED_SHINY_LUNALOO, SMOKED_SNATCHER_WORM, SMOKED_TADPOLE,
+        SMOKED_PUPPYFISH, SMOKED_RADIOACTIVE_BASS, SMOKED_RAZOR_TROUT, SMOKED_SEA_SPONGE,
+        SMOKED_SEAHORSE, SMOKED_SHARK, SMOKED_SHINY_LUNALOO, SMOKED_SNATCHER_WORM,
+        SMOKED_STARFISH, SMOKED_SWAMP_CRAB, SMOKED_TADPOLE,
         SMOKED_TORPEDO_TROUT, SMOKED_TURRETFISH, SMOKED_UNDEADFISH, SMOKED_VIPER_EEL,
         SMOKED_VOID_EEL, SMOKED_WATER_GRUB, SMOKED_WOLF_SNAPPER
     );

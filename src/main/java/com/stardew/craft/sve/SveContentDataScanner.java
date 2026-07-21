@@ -150,7 +150,9 @@ public final class SveContentDataScanner {
         if (fish == null) return;
         for (JsonElement element : fish) {
             if (!element.isJsonObject()) continue;
-            String item = string(element.getAsJsonObject(), "item");
+            JsonObject rule = element.getAsJsonObject();
+            if (rule.has("displayOnly") && rule.get("displayOnly").getAsBoolean()) continue;
+            String item = string(rule, "item");
             if (item != null) graph.addSource(item, "fishing", resourceId);
         }
     }
