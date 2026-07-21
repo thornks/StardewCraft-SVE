@@ -20,6 +20,8 @@ public final class SveCookingRegressionTest {
     private static final Path DATA = RESOURCES.resolve("data");
     private static final Path RECIPES = DATA.resolve("stardewcraftsve/cooking/recipes");
     private static final Path ITEM_SOURCE = Path.of("src/main/java/com/stardew/craft/sve/ModItems.java");
+    private static final Path VOID_MAYO_SOURCE =
+            Path.of("src/main/java/com/stardew/craft/sve/VoidMayoSandwichItem.java");
     private static final Set<String> NON_COOKING_OUTPUTS = Set.of(
             "grampleton_orange_chicken", "seed_cookie", "void_mayo_sandwich");
 
@@ -44,6 +46,7 @@ public final class SveCookingRegressionTest {
         validateGoldenProperties(definitions);
         validateRecipes(definitions);
         validateRegistrationWiring(definitions.keySet());
+        validateVoidMayoSandwich();
         validateUnlocks(definitions);
         validateCropUse(definitions.values());
         System.out.println("SVE cooking regression suite passed: 26 recipes and 26 unlock routes");
@@ -162,6 +165,19 @@ public final class SveCookingRegressionTest {
             expect(!source.contains("() -> cooking(\"" + excluded + "\")"),
                     excluded + " must stay outside the cooking catalog");
         }
+    }
+
+    private static void validateVoidMayoSandwich() throws IOException {
+        String registration = Files.readString(ITEM_SOURCE);
+        String implementation = Files.readString(VOID_MAYO_SOURCE);
+        expect(registration.contains("new VoidMayoSandwichItem(stackableProperties())"),
+                "void mayo sandwich must use its dedicated item behavior");
+        expect(implementation.contains("NAUSEA_DURATION_TICKS = 10 * 20"),
+                "void mayo sandwich nausea must last 10 seconds");
+        expect(implementation.contains("new MobEffectInstance(MobEffects.CONFUSION, NAUSEA_DURATION_TICKS)"),
+                "void mayo sandwich must apply nausea after consumption");
+        expect(implementation.contains("super(100, 1, List.of(), properties, false)"),
+                "void mayo sandwich nausea must stay out of the displayed food buff list");
     }
 
     private static void validateUnlocks(Map<String, SveCookingData.Definition> definitions) throws IOException {

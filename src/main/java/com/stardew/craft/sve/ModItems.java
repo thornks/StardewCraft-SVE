@@ -698,10 +698,7 @@ public final class ModItems {
     public static final DeferredHolder<Item, CookingDishItem> VOID_SALMON_SUSHI = STARDEWCRAFT_ITEMS.register("void_salmon_sushi",
         () -> cooking("void_salmon_sushi"));
     public static final DeferredHolder<Item, CookingDishItem> VOID_MAYO_SANDWICH = STARDEWCRAFT_ITEMS.register("void_mayo_sandwich",
-        () -> new CookingDishItem(100, 1,
-            List.of(),
-            stackableProperties(),
-            false));
+        () -> new VoidMayoSandwichItem(stackableProperties()));
 
     // ===== elixir =====
     public static final DeferredHolder<Item, CookingDishItem> AEGIS_ELIXIR = ITEMS.register("aegis_elixir",
