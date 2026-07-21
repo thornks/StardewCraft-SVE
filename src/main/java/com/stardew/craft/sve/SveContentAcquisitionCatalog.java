@@ -9,17 +9,12 @@ public final class SveContentAcquisitionCatalog {
     private static final String PREFIX = StardewcraftsveMod.MODID + ":";
 
     private static final Map<String, Exclusion> EXCLUSIONS = createExclusions();
-    private static final Map<String, String> FRIENDSHIP_RECIPE_UNLOCKS = Map.ofEntries(
-            Map.entry("stardewcraftsve:gingerbread_man", "Susan friendship 3 hearts"),
-            Map.entry("stardewcraftsve:cheese_charcuterie", "Scarlett friendship 3 hearts"),
-            Map.entry("stardewcraftsve:fish_dumpling", "Olivia friendship 3 hearts"),
-            Map.entry("stardewcraftsve:stuffed_persimmon", "Andy friendship 3 hearts"),
-            Map.entry("stardewcraftsve:ramen", "Victor friendship 3 hearts"),
-            Map.entry("stardewcraftsve:nectarine_fruit_bread", "Claire friendship 3 hearts"),
-            Map.entry("stardewcraftsve:pineapple_custard_crepe", "Lance friendship 3 hearts"),
-            Map.entry("stardewcraftsve:glazed_pear", "Morgan friendship 3 hearts"),
-            Map.entry("stardewcraftsve:grilled_cheese_sandwich", "Martin friendship 3 hearts")
-    );
+    private static final Map<String, String> FRIENDSHIP_RECIPE_UNLOCKS = SveCookingData.all().stream()
+            .filter(definition -> definition.unlock().type() == SveCookingData.UnlockType.FRIENDSHIP)
+            .collect(java.util.stream.Collectors.toUnmodifiableMap(
+                    definition -> PREFIX + definition.path(),
+                    definition -> definition.unlock().source() + " friendship "
+                            + (definition.unlock().friendshipPoints() / 250) + " hearts"));
 
     private SveContentAcquisitionCatalog() {
     }

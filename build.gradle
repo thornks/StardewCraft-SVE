@@ -124,6 +124,14 @@ tasks.register('seedMakerRegressionTest', JavaExec) {
     mainClass = 'com.stardew.craft.sve.SveSeedMakerRegressionTest'
 }
 
+tasks.register('cookingRegressionTest', JavaExec) {
+    group = 'verification'
+    description = 'Runs the SVE cooking recipe, item property, and unlock regression suite.'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.stardew.craft.sve.SveCookingRegressionTest'
+}
+
 tasks.named('check') {
     dependsOn animalRegressionTest
     dependsOn bundleRegressionTest
@@ -135,4 +143,5 @@ tasks.named('check') {
     dependsOn kegRegressionTest
     dependsOn preservesRegressionTest
     dependsOn seedMakerRegressionTest
+    dependsOn cookingRegressionTest
 }

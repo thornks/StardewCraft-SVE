@@ -12,11 +12,14 @@ import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /** Event-driven SVE friendship flags, mail, and recipe unlocks. */
 public final class SveFriendshipRewards {
     private static final Logger LOGGER = LoggerFactory.getLogger("stardewcraftsve/friendship-rewards");
-    private static final List<Rule> RULES = List.of(
+    private static final List<Rule> RULES = Stream.concat(List.of(
             Rule.flag("morris", 2500, "morris_10_hearts"),
             Rule.flag("krobus", 2500, "krobus_10_hearts"),
             Rule.flag("sophia", 1500, "sophia_6_hearts"),
@@ -26,19 +29,23 @@ public final class SveFriendshipRewards {
             Rule.mail("marlon", 1000, "marlon_four_hearts"),
             Rule.mail("marlon", 1500, "marlon_six_hearts"),
             Rule.mail("marlon", 2000, "marlon_eight_hearts"),
-            Rule.mail("marlon", 2500, "marlon_ten_hearts"),
-            Rule.recipe("susan", 750, "gingerbread_man"),
-            Rule.recipe("scarlett", 750, "cheese_charcuterie"),
-            Rule.recipe("olivia", 750, "fish_dumpling"),
-            Rule.recipe("andy", 750, "stuffed_persimmon"),
-            Rule.recipe("victor", 750, "ramen"),
-            Rule.recipe("claire", 750, "nectarine_fruit_bread"),
-            Rule.recipe("lance", 750, "pineapple_custard_crepe"),
-            Rule.recipe("morgan", 750, "glazed_pear"),
-            Rule.recipe("martin", 750, "grilled_cheese_sandwich")
-    );
+            Rule.mail("marlon", 2500, "marlon_ten_hearts")
+    ).stream(), SveCookingData.all().stream()
+            .filter(definition -> definition.unlock().type() == SveCookingData.UnlockType.FRIENDSHIP)
+            .map(definition -> Rule.recipe(
+                    definition.unlock().source(),
+                    definition.unlock().friendshipPoints(),
+                    definition.path()))).toList();
 
     private SveFriendshipRewards() {}
+
+    public static Map<String, RecipeUnlock> recipeUnlocks() {
+        return RULES.stream()
+                .filter(rule -> rule.recipe() != null)
+                .collect(Collectors.toUnmodifiableMap(
+                        rule -> StardewcraftsveMod.MODID + ":" + rule.recipe(),
+                        rule -> new RecipeUnlock(rule.npcId(), rule.points())));
+    }
 
     public static boolean applyEligible(ServerPlayer player, String npcId, int points) {
         if (player == null || npcId == null || npcId.isBlank()) return false;
@@ -104,5 +111,8 @@ public final class SveFriendshipRewards {
         private static Rule recipe(String npcId, int points, String recipeId) {
             return new Rule(npcId, points, null, null, recipeId);
         }
+    }
+
+    public record RecipeUnlock(String npcId, int points) {
     }
 }

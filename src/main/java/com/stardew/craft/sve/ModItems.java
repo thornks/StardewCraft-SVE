@@ -80,6 +80,10 @@ public final class ModItems {
         return new Item.Properties().stacksTo(1);
     }
 
+    private static CookingDishItem cooking(String path) {
+        return SveCookingData.byPath(path).createItem(stackableProperties());
+    }
+
     private static StardewQualityItem cropItem(SveCropData.Definition definition) {
         return new StardewQualityItem(
                 "stardewcraft.type.crop",
@@ -591,10 +595,7 @@ public final class ModItems {
             stackableProperties(),
             true));
     public static final DeferredHolder<Item, CookingDishItem> BIRCH_SYRUP = STARDEWCRAFT_ITEMS.register("birch_syrup",
-        () -> new CookingDishItem(500, 35,
-            List.of(),
-            stackableProperties(),
-            true));
+        () -> cooking("birch_syrup"));
     public static final DeferredHolder<Item, CookingDishItem> BLUE_MOON_WINE = ITEMS.register("blue_moon_wine",
         () -> new CookingDishItem(700, 10,
             List.of(new DishBuff(BuffType.LUCK, 2, 10800)),
@@ -639,135 +640,63 @@ public final class ModItems {
 
     // ===== cooking =====
     public static final DeferredHolder<Item, CookingDishItem> BAKED_BERRY_OATMEAL_SUPREME = STARDEWCRAFT_ITEMS.register("baked_berry_oatmeal_supreme",
-        () -> new CookingDishItem(400, 80,
-            List.of(new DishBuff(BuffType.FARMING, 4, 96000), new DishBuff(BuffType.FORAGING, 4, 96000), new DishBuff(BuffType.SPEED, 2, 96000)),
-            stackableProperties(),
-            false));
+        () -> cooking("baked_berry_oatmeal_supreme"));
     public static final DeferredHolder<Item, CookingDishItem> BAKED_POTATO = STARDEWCRAFT_ITEMS.register("baked_potato",
-        () -> new CookingDishItem(225, 70,
-            List.of(),
-            stackableProperties(),
-            false));
+        () -> cooking("baked_potato"));
     public static final DeferredHolder<Item, CookingDishItem> BIG_BARK_BURGER = STARDEWCRAFT_ITEMS.register("big_bark_burger",
-        () -> new CookingDishItem(400, 85,
-            List.of(new DishBuff(BuffType.SPEED, 1, 28800), new DishBuff(BuffType.ATTACK, 3, 28800)),
-            stackableProperties(),
-            false));
+        () -> cooking("big_bark_burger"));
     public static final DeferredHolder<Item, CookingDishItem> CANDY = STARDEWCRAFT_ITEMS.register("candy",
-        () -> new CookingDishItem(2000, 50,
-            List.of(new DishBuff(BuffType.LUCK, 1, 30000), new DishBuff(BuffType.MAX_ENERGY, 70, 30000), new DishBuff(BuffType.SPEED, 1, 30000)),
-            stackableProperties(),
-            false));
+        () -> cooking("candy"));
     public static final DeferredHolder<Item, CookingDishItem> CHEESE_CHARCUTERIE = STARDEWCRAFT_ITEMS.register("cheese_charcuterie",
-        () -> new CookingDishItem(750, 120,
-            List.of(new DishBuff(BuffType.FARMING, 4, 24000)),
-            stackableProperties(),
-            false));
+        () -> cooking("cheese_charcuterie"));
     public static final DeferredHolder<Item, CookingDishItem> CHOCOLATE_TRUFFLE_BAR = STARDEWCRAFT_ITEMS.register("chocolate_truffle_bar",
-        () -> new CookingDishItem(4500, 75,
-            List.of(),
-            stackableProperties(),
-            false));
+        () -> cooking("chocolate_truffle_bar"));
     public static final DeferredHolder<Item, CookingDishItem> FISH_DUMPLING = STARDEWCRAFT_ITEMS.register("fish_dumpling",
-        () -> new CookingDishItem(100, 45,
-            List.of(new DishBuff(BuffType.FISHING, 1, 24000)),
-            stackableProperties(),
-            false));
+        () -> cooking("fish_dumpling"));
     public static final DeferredHolder<Item, CookingDishItem> FLOWER_COOKIE = STARDEWCRAFT_ITEMS.register("flower_cookie",
-        () -> new CookingDishItem(185, 75,
-            List.of(new DishBuff(BuffType.LUCK, 2, 48000), new DishBuff(BuffType.FORAGING, 2, 48000), new DishBuff(BuffType.SPEED, 2, 48000)),
-            stackableProperties(),
-            false));
+        () -> cooking("flower_cookie"));
     public static final DeferredHolder<Item, CookingDishItem> FROG_LEGS = STARDEWCRAFT_ITEMS.register("frog_legs",
-        () -> new CookingDishItem(400, 30,
-            List.of(new DishBuff(BuffType.SPEED, 2, 28800), new DishBuff(BuffType.DEFENSE, 2, 28800)),
-            stackableProperties(),
-            false));
+        () -> cooking("frog_legs"));
     public static final DeferredHolder<Item, CookingDishItem> GINGERBREAD_MAN = STARDEWCRAFT_ITEMS.register("gingerbread_man",
-        () -> new CookingDishItem(125, 50,
-            List.of(),
-            stackableProperties(),
-            false));
+        () -> cooking("gingerbread_man"));
     public static final DeferredHolder<Item, CookingDishItem> GLAZED_BUTTERFISH = STARDEWCRAFT_ITEMS.register("glazed_butterfish",
-        () -> new CookingDishItem(800, 80,
-            List.of(new DishBuff(BuffType.FISHING, 2, 28800), new DishBuff(BuffType.LUCK, 2, 28800)),
-            stackableProperties(),
-            false));
+        () -> cooking("glazed_butterfish"));
     public static final DeferredHolder<Item, CookingDishItem> GLAZED_PEAR = STARDEWCRAFT_ITEMS.register("glazed_pear",
-        () -> new CookingDishItem(400, 100,
-            List.of(new DishBuff(BuffType.MINING, 2, 42000), new DishBuff(BuffType.MAGNETIC_RADIUS, 32, 42000), new DishBuff(BuffType.SPEED, 1, 42000), new DishBuff(BuffType.DEFENSE, 6, 42000)),
-            stackableProperties(),
-            false));
+        () -> cooking("glazed_pear"));
     public static final DeferredHolder<Item, CookingDishItem> GRAMPLETON_ORANGE_CHICKEN = STARDEWCRAFT_ITEMS.register("grampleton_orange_chicken",
         () -> new CookingDishItem(400, 65,
             List.of(new DishBuff(BuffType.FARMING, 3, 43200)),
             stackableProperties(),
             false));
     public static final DeferredHolder<Item, CookingDishItem> GRILLED_CHEESE_SANDWICH = STARDEWCRAFT_ITEMS.register("grilled_cheese_sandwich",
-        () -> new CookingDishItem(100, 85,
-            List.of(),
-            stackableProperties(),
-            false));
+        () -> cooking("grilled_cheese_sandwich"));
     public static final DeferredHolder<Item, CookingDishItem> ICE_CREAM_SUNDAE = STARDEWCRAFT_ITEMS.register("ice_cream_sundae",
-        () -> new CookingDishItem(400, 80,
-            List.of(new DishBuff(BuffType.MAX_ENERGY, 75, 36000), new DishBuff(BuffType.SPEED, 1, 36000)),
-            stackableProperties(),
-            false));
+        () -> cooking("ice_cream_sundae"));
     public static final DeferredHolder<Item, CookingDishItem> MIXED_BERRY_PIE = STARDEWCRAFT_ITEMS.register("mixed_berry_pie",
-        () -> new CookingDishItem(250, 75,
-            List.of(new DishBuff(BuffType.FARMING, 3, 96000), new DishBuff(BuffType.MAX_ENERGY, 50, 96000)),
-            stackableProperties(),
-            false));
+        () -> cooking("mixed_berry_pie"));
     public static final DeferredHolder<Item, CookingDishItem> MUSHROOM_BERRY_RICE = STARDEWCRAFT_ITEMS.register("mushroom_berry_rice",
-        () -> new CookingDishItem(115, 1,
-            List.of(new DishBuff(BuffType.MINING, 3, 48000), new DishBuff(BuffType.MAX_ENERGY, -50, 48000), new DishBuff(BuffType.MAGNETIC_RADIUS, 32, 48000), new DishBuff(BuffType.DEFENSE, 3, 48000), new DishBuff(BuffType.ATTACK, 3, 48000)),
-            stackableProperties(),
-            false));
+        () -> cooking("mushroom_berry_rice"));
     public static final DeferredHolder<Item, CookingDishItem> NECTARINE_FRUIT_BREAD = STARDEWCRAFT_ITEMS.register("nectarine_fruit_bread",
-        () -> new CookingDishItem(150, 60,
-            List.of(),
-            stackableProperties(),
-            false));
+        () -> cooking("nectarine_fruit_bread"));
     public static final DeferredHolder<Item, CookingDishItem> PINEAPPLE_CUSTARD_CREPE = STARDEWCRAFT_ITEMS.register("pineapple_custard_crepe",
-        () -> new CookingDishItem(300, 90,
-            List.of(new DishBuff(BuffType.LUCK, 3, 30000), new DishBuff(BuffType.SPEED, 1, 30000)),
-            stackableProperties(),
-            false));
+        () -> cooking("pineapple_custard_crepe"));
     public static final DeferredHolder<Item, CookingDishItem> RAMEN = STARDEWCRAFT_ITEMS.register("ramen",
-        () -> new CookingDishItem(250, 75,
-            List.of(),
-            stackableProperties(),
-            false));
+        () -> cooking("ramen"));
     public static final DeferredHolder<Item, CookingDishItem> SEAWEED_SALAD = STARDEWCRAFT_ITEMS.register("seaweed_salad",
-        () -> new CookingDishItem(200, 70,
-            List.of(new DishBuff(BuffType.FISHING, 1, 54000), new DishBuff(BuffType.MAX_ENERGY, 30, 54000)),
-            stackableProperties(),
-            false));
+        () -> cooking("seaweed_salad"));
     public static final DeferredHolder<Item, CookingDishItem> SEED_COOKIE = STARDEWCRAFT_ITEMS.register("seed_cookie",
         () -> new CookingDishItem(35, 30,
             List.of(new DishBuff(BuffType.MAX_ENERGY, 30, 36000)),
             stackableProperties(),
             false));
     public static final DeferredHolder<Item, CookingDishItem> STUFFED_PERSIMMON = STARDEWCRAFT_ITEMS.register("stuffed_persimmon",
-        () -> new CookingDishItem(500, 110,
-            List.of(new DishBuff(BuffType.FORAGING, 5, 36000)),
-            stackableProperties(),
-            false));
+        () -> cooking("stuffed_persimmon"));
     public static final DeferredHolder<Item, CookingDishItem> VEGAN_CONE = STARDEWCRAFT_ITEMS.register("vegan_cone",
-        () -> new CookingDishItem(350, 50,
-            List.of(),
-            stackableProperties(),
-            false));
+        () -> cooking("vegan_cone"));
     public static final DeferredHolder<Item, CookingDishItem> VOID_DELIGHT = STARDEWCRAFT_ITEMS.register("void_delight",
-        () -> new CookingDishItem(800, 1,
-            List.of(new DishBuff(BuffType.MINING, 2, 36000), new DishBuff(BuffType.LUCK, 2, 36000), new DishBuff(BuffType.MAX_ENERGY, 20, 36000), new DishBuff(BuffType.MAGNETIC_RADIUS, 2, 36000), new DishBuff(BuffType.SPEED, 2, 36000), new DishBuff(BuffType.ATTACK, 3, 36000)),
-            stackableProperties(),
-            false));
+        () -> cooking("void_delight"));
     public static final DeferredHolder<Item, CookingDishItem> VOID_SALMON_SUSHI = STARDEWCRAFT_ITEMS.register("void_salmon_sushi",
-        () -> new CookingDishItem(800, 1,
-            List.of(new DishBuff(BuffType.FISHING, 3, 72000), new DishBuff(BuffType.LUCK, 3, 72000), new DishBuff(BuffType.MAX_ENERGY, 80, 72000), new DishBuff(BuffType.DEFENSE, 5, 72000)),
-            stackableProperties(),
-            false));
+        () -> cooking("void_salmon_sushi"));
     public static final DeferredHolder<Item, CookingDishItem> VOID_MAYO_SANDWICH = STARDEWCRAFT_ITEMS.register("void_mayo_sandwich",
         () -> new CookingDishItem(100, 1,
             List.of(),
@@ -849,10 +778,7 @@ public final class ModItems {
     public static final DeferredHolder<Item, SimpleStardewItem> MERMAID_BRACELET = ITEMS.register("mermaid_bracelet",
         () -> new SimpleStardewItem("stardewcraft.type.trinket", 0, stackableProperties()));
     public static final DeferredHolder<Item, CookingDishItem> PRISMATIC_POP = STARDEWCRAFT_ITEMS.register("prismatic_pop",
-        () -> new CookingDishItem(2500, 100,
-            List.of(new DishBuff(BuffType.MINING, 1, 43200), new DishBuff(BuffType.LUCK, 3, 43200), new DishBuff(BuffType.SPEED, 1, 43200), new DishBuff(BuffType.DEFENSE, 3, 43200), new DishBuff(BuffType.ATTACK, 3, 43200)),
-            stackableProperties(),
-            false));
+        () -> cooking("prismatic_pop"));
     public static final DeferredHolder<Item, SunTotemItem> SUN_TOTEM = ITEMS.register("sun_totem",
         () -> new SunTotemItem(30, stackableProperties()));
     public static final DeferredHolder<Item, SimpleStardewItem> TREE_COIN = ITEMS.register("tree_coin",
