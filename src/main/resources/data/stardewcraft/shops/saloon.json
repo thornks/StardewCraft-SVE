@@ -79,18 +79,17 @@
     },
     {
       "item": "stardewcraftsve:grampleton_orange_chicken",
-      "price": 400,
-      "stock": 1,
+      "price": 650,
       "mail_flag": "sophia_6_hearts"
     },
     {
       "item": "recipe:stardewcraftsve:mixed_berry_pie",
-      "price": 3500,
+      "price": 5000,
       "stock": 1
     },
     {
       "item": "recipe:stardewcraftsve:big_bark_burger",
-      "price": 5500,
+      "price": 3000,
       "stock": 1
     },
     {

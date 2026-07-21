@@ -4,12 +4,84 @@
   "owner_dialogue": "stardewcraftsve.shop.axel_vendor.dialogue",
   "entries": [
     {
-      "item": "stardewcraftsve:wolf_snapper",
-      "price": 40000
+      "item": "stardewcraft:golden_egg",
+      "price": 1000000,
+      "stock": 1
+    },
+    {
+      "item": "stardewcraft:galaxy_soul",
+      "price": 140000,
+      "stock": 1
+    },
+    {
+      "item": "stardewcraft:pearl",
+      "price": 20000,
+      "stock": 1
+    },
+    {
+      "item": "stardewcraft:radioactive_bar",
+      "price": 12000,
+      "stock": 1
+    },
+    {
+      "item": "stardewcraft:magic_bait",
+      "price": 1000,
+      "stock": 20
     },
     {
       "item": "stardewcraftsve:turretfish",
-      "price": 60000
+      "price": 60000,
+      "stock": 1
+    },
+    {
+      "item": "stardewcraft:legend",
+      "price": 50000,
+      "stock": 1
+    },
+    {
+      "item": "stardewcraftsve:wolf_snapper",
+      "price": 40000,
+      "stock": 1
+    },
+    {
+      "item": "stardewcraft:crimsonfish",
+      "price": 35000,
+      "stock": 1
+    },
+    {
+      "item": "stardewcraft:glacierfish",
+      "price": 30000,
+      "stock": 1
+    },
+    {
+      "item": "stardewcraft:mutant_carp",
+      "price": 20000,
+      "stock": 1
+    },
+    {
+      "item": "stardewcraft:angler",
+      "price": 15000,
+      "stock": 1
+    },
+    {
+      "item": "stardewcraft:slimejack",
+      "price": 10000,
+      "stock": 1
+    },
+    {
+      "item": "stardewcraft:lava_eel",
+      "price": 12000,
+      "stock": 1
+    },
+    {
+      "item": "stardewcraft:ice_pip",
+      "price": 6000,
+      "stock": 1
+    },
+    {
+      "item": "stardewcraft:stonefish",
+      "price": 5000,
+      "stock": 1
     }
   ],
   "accepted_sell_types": []

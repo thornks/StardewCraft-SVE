@@ -4,12 +4,49 @@
   "owner_dialogue": "stardewcraftsve.shop.bear_vendor.dialogue",
   "entries": [
     {
+      "item": "stardewcraft:honey",
+      "price": 1000,
+      "stock": 10
+    },
+    {
+      "item": "stardewcraft:maple_syrup",
+      "price": 1500,
+      "stock": 8
+    },
+    {
+      "item": "stardewcraft:pine_tar",
+      "price": 2500,
+      "stock": 5
+    },
+    {
+      "item": "stardewcraft:oak_resin",
+      "price": 3500,
+      "stock": 5
+    },
+    {
       "item": "stardewcraftsve:fir_wax",
-      "price": 2000
+      "price": 2000,
+      "stock": 3
     },
     {
       "item": "stardewcraftsve:birch_water",
-      "price": 1000
+      "price": 1000,
+      "stock": 3
+    },
+    {
+      "item": "stardewcraft:mahogany_seed",
+      "price": 3000,
+      "stock": 3
+    },
+    {
+      "item": "stardewcraft:cave_carrot",
+      "price": 400,
+      "stock": 20
+    },
+    {
+      "item": "stardewcraft:salmon",
+      "price": 600,
+      "stock": 10
     },
     {
       "item": "recipe:stardewcraftsve:baked_berry_oatmeal_supreme",

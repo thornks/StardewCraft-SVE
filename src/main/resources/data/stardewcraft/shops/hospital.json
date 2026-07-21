@@ -18,7 +18,8 @@
     },
     {
       "item": "stardewcraftsve:stamina_capsule",
-      "price": 4000
+      "price": 4000,
+      "stock": 1
     }
   ],
   "accepted_sell_types": []

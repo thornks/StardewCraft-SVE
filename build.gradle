@@ -140,6 +140,14 @@ tasks.register('craftingRegressionTest', JavaExec) {
     mainClass = 'com.stardew.craft.sve.SveCraftingRegressionTest'
 }
 
+tasks.register('shopRegressionTest', JavaExec) {
+    group = 'verification'
+    description = 'Runs the SVE shop inventory, price, stock, trade, and condition regression suite.'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.stardew.craft.sve.SveShopRegressionTest'
+}
+
 tasks.named('check') {
     dependsOn animalRegressionTest
     dependsOn bundleRegressionTest
@@ -153,4 +161,5 @@ tasks.named('check') {
     dependsOn seedMakerRegressionTest
     dependsOn cookingRegressionTest
     dependsOn craftingRegressionTest
+    dependsOn shopRegressionTest
 }

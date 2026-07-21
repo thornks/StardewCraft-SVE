@@ -5,7 +5,28 @@
   "entries": [
     {
       "item": "stardewcraftsve:void_delight",
-      "price": 35000
+      "price": 35000,
+      "stock": 1
+    },
+    {
+      "item": "stardewcraft:salmon_dinner",
+      "price": 1400,
+      "stock": 3
+    },
+    {
+      "item": "stardewcraft:crispy_bass",
+      "price": 800,
+      "stock": 5
+    },
+    {
+      "item": "stardewcraft:sashimi",
+      "price": 700,
+      "stock": 5
+    },
+    {
+      "item": "stardewcraft:maki_roll",
+      "price": 500,
+      "stock": 10
     }
   ],
   "accepted_sell_types": []

@@ -4,12 +4,61 @@
   "owner_dialogue": "stardewcraftsve.shop.zoey_vendor.dialogue",
   "entries": [
     {
+      "item": "stardewcraft:blue_grass_starter",
+      "price": 1000
+    },
+    {
+      "item": "stardewcraft:iridium_sprinkler",
+      "price": 12000,
+      "stock": 3
+    },
+    {
       "item": "stardewcraftsve:joja_veggie_seeds",
       "price": 600
     },
     {
       "item": "stardewcraftsve:joja_berry_starter",
       "price": 6500
+    },
+    {
+      "item": "stardewcraft:rare_seed",
+      "price": 1500,
+      "stock": 15
+    },
+    {
+      "item": "stardewcraft:spring_seeds",
+      "price": 65,
+      "stock": 50
+    },
+    {
+      "item": "stardewcraft:summer_seeds",
+      "price": 90,
+      "stock": 50
+    },
+    {
+      "item": "stardewcraft:fall_seeds",
+      "price": 100,
+      "stock": 50
+    },
+    {
+      "item": "stardewcraft:winter_seeds",
+      "price": 120,
+      "stock": 50
+    },
+    {
+      "item": "stardewcraft:deluxe_fertilizer",
+      "price": 4000,
+      "stock": 20
+    },
+    {
+      "item": "stardewcraft:hyper_speed_gro",
+      "price": 2500,
+      "stock": 15
+    },
+    {
+      "item": "stardewcraft:deluxe_retaining_soil",
+      "price": 2500,
+      "stock": 15
     }
   ],
   "accepted_sell_types": []

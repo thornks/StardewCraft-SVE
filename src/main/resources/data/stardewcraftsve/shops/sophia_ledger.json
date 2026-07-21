@@ -5,11 +5,29 @@
   "entries": [
     {
       "item": "stardewcraftsve:blue_moon_wine",
-      "price": 3000
+      "price": 3000,
+      "stock": 10
     },
     {
       "item": "stardewcraftsve:aged_blue_moon_wine",
-      "price": 28000
+      "price": 28000,
+      "stock": 1
+    },
+    {
+      "item": "stardewcraft:sprinkler",
+      "price": 600,
+      "stock": 5
+    },
+    {
+      "item": "stardewcraft:quality_sprinkler",
+      "price": 3500,
+      "stock": 5
+    },
+    {
+      "item": "stardewcraft:iridium_sprinkler",
+      "price": 15000,
+      "stock": 3,
+      "mail_flag": "SophiaFairyGarden"
     }
   ],
   "accepted_sell_types": []

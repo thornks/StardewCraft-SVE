@@ -103,12 +103,7 @@
       "item": "stardewcraftsve:gold_carrot_seed",
       "stock": 2,
       "trade_item": "stardewcraft:gold_bar",
-      "trade_item_count": 3,
-      "seasons": [
-        0,
-        1,
-        2
-      ]
+      "trade_item_count": 3
     }
   ],
   "accepted_sell_types": []

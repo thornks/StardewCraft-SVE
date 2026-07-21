@@ -5,19 +5,23 @@
   "entries": [
     {
       "item": "stardewcraftsve:tempered_galaxy_dagger",
-      "price": 350000
+      "price": 350000,
+      "stock": 1
     },
     {
       "item": "stardewcraftsve:haste_elixir",
-      "price": 8000
+      "price": 8000,
+      "stock": 3
     },
     {
       "item": "stardewcraftsve:armor_elixir",
-      "price": 5000
+      "price": 5000,
+      "stock": 3
     },
     {
       "item": "stardewcraftsve:undeadfish",
-      "price": 4000
+      "price": 4000,
+      "stock": 1
     }
   ],
   "accepted_sell_types": []

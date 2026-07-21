@@ -5,19 +5,23 @@
   "entries": [
     {
       "item": "stardewcraftsve:gravity_elixir",
-      "price": 4000
+      "price": 4000,
+      "stock": 5
     },
     {
       "item": "stardewcraftsve:lightning_elixir",
-      "price": 8000
+      "price": 8000,
+      "stock": 3
     },
     {
       "item": "stardewcraftsve:barbarian_elixir",
-      "price": 20000
+      "price": 20000,
+      "stock": 1
     },
     {
       "item": "stardewcraftsve:aegis_elixir",
-      "price": 28000
+      "price": 28000,
+      "stock": 1
     }
   ],
   "accepted_sell_types": []
