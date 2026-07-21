@@ -4,6 +4,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import javax.imageio.ImageIO;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -81,6 +82,11 @@ public final class SveKegRegressionTest {
         Path texture = TEXTURES.resolve(suffix).resolve(product.inputPath() + ".png");
         expect(Files.isRegularFile(texture) && Files.size(texture) > 0,
                 "missing texture " + texture);
+        var image = ImageIO.read(texture.toFile());
+        expect(image != null, "invalid texture " + texture);
+        expect(image.getWidth() % 16 == 0 && image.getHeight() % 16 == 0,
+                "texture dimensions must support mip level 4: " + texture
+                        + " (" + image.getWidth() + "x" + image.getHeight() + ")");
 
         Path model = MODELS.resolve(product.outputPath() + ".json");
         expect(Files.isRegularFile(model), "missing model " + model);

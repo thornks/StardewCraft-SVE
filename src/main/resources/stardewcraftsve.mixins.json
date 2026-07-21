@@ -37,12 +37,15 @@
     "MorrisGiftConfirmationMixin",
     "NpcFriendshipRewardServiceMixin",
     "NpcSocialRulesMixin",
+    "SeedMakerOutputResolverMixin",
     "WeaponRegistryAccessor"
   ],
   "client": [
     "AnimalPurchaseScreenMixin",
+    "ArtisanJeiRecipeFactoryMixin",
     "FarmSelectionScreenMixin",
-    "FishingInfoCategoryMixin"
+    "FishingInfoCategoryMixin",
+    "StardewGameMenuBigCraftableMixin"
   ],
   "injectors": {
     "defaultRequire": 1

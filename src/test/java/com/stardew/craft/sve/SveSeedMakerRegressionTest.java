@@ -29,6 +29,17 @@ public final class SveSeedMakerRegressionTest {
         expectEquals(Set.of("gold_carrot"), banned, "banned crop set");
         expect(!allowed.contains("gold_carrot"), "gold carrot must not be seed-maker eligible");
 
+        for (SveCropData.Definition crop : SveSeedMakerData.allowed()) {
+            expectEquals(crop.seedPath(), SveSeedMakerData.seedPathForProduce(crop.producePath()),
+                    crop.producePath() + " resolver mapping");
+            expect(!SveSeedMakerData.isBannedProduce(crop.producePath()),
+                    crop.producePath() + " must not be resolver-banned");
+        }
+        expect(SveSeedMakerData.seedPathForProduce("gold_carrot") == null,
+                "gold carrot resolver must not produce seeds");
+        expect(SveSeedMakerData.isBannedProduce("gold_carrot"),
+                "gold carrot must remain resolver-banned");
+
         validateRecipes(allowed);
         validateBannedTag(banned);
         System.out.println("SVE seed-maker regression suite passed: 11 allowed crops, 1 banned crop");

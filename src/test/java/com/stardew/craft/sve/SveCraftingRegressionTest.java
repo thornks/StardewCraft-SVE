@@ -5,9 +5,11 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import java.io.IOException;
+import javax.imageio.ImageIO;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -16,6 +18,8 @@ import java.util.stream.Collectors;
 public final class SveCraftingRegressionTest {
     private static final Path RECIPES = Path.of(
             "src/main/resources/data/stardewcraftsve/player/crafting_recipes");
+    private static final Path BIG_CRAFTABLE_TEXTURES = Path.of(
+            "src/main/resources/assets/stardewcraftsve/textures/gui/crafting");
 
     private SveCraftingRegressionTest() {
     }
@@ -28,7 +32,19 @@ public final class SveCraftingRegressionTest {
                 .map(SveCraftingData.Definition::path)
                 .collect(Collectors.toSet()), "big craftable recipe set");
         validateRecipes(definitions);
+        validateBigCraftableTextures();
         System.out.println("SVE crafting regression suite passed: 12 recipes, 2 big craftables");
+    }
+
+    private static void validateBigCraftableTextures() throws IOException {
+        for (String path : List.of("butter_churner", "yarn_spooler")) {
+            Path texture = BIG_CRAFTABLE_TEXTURES.resolve(path + ".png");
+            expect(Files.isRegularFile(texture), path + " big craftable texture exists");
+            var image = ImageIO.read(texture.toFile());
+            expect(image != null, path + " big craftable texture decodes");
+            expectEquals(16, image.getWidth(), path + " big craftable texture width");
+            expectEquals(32, image.getHeight(), path + " big craftable texture height");
+        }
     }
 
     private static Map<String, SveCraftingData.Definition> definitions() {
