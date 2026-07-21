@@ -30,6 +30,31 @@
       "input": "stardewcraftsve:monster_fruit",
       "minutes": 20,
       "outputMode": "seedmaker"
+    },
+    {
+      "input": "stardewcraftsve:salal_berry",
+      "minutes": 20,
+      "outputMode": "seedmaker"
+    },
+    {
+      "input": "stardewcraftsve:slime_berry",
+      "minutes": 20,
+      "outputMode": "seedmaker"
+    },
+    {
+      "input": "stardewcraftsve:ancient_fiber",
+      "minutes": 20,
+      "outputMode": "seedmaker"
+    },
+    {
+      "input": "stardewcraftsve:monster_mushroom",
+      "minutes": 20,
+      "outputMode": "seedmaker"
+    },
+    {
+      "input": "stardewcraftsve:void_root",
+      "minutes": 20,
+      "outputMode": "seedmaker"
     }
   ]
 }
