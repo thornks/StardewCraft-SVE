@@ -79,6 +79,11 @@ public final class SveFishPondAudit {
                 audit.error("No fish pond definition resolved for " + fishKey);
                 continue;
             }
+            if (!data.requiredTags().contains("item_id:" + fishKey)) {
+                audit.error("No SVE-specific fish pond definition resolved for " + fishKey
+                        + "; matched host fallback " + data.id());
+                continue;
+            }
             audit.definitions++;
             validatePopulation(fishId, fish, data, service, audit);
             validateProductions(fishId, fish, data, service, audit);

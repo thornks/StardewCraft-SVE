@@ -1,9 +1,6 @@
 package com.stardew.craft.sve.tree.wild;
 
 import com.stardew.craft.time.StardewTimeManager;
-import com.stardew.craft.block.ModBlocks;
-import com.stardew.craft.farm.FarmInstance;
-import com.stardew.craft.farm.FarmInstanceRegistry;
 import com.stardew.craft.tree.WildTrees;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;
@@ -16,7 +13,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.saveddata.SavedData;
 import org.jetbrains.annotations.Nullable;
@@ -30,10 +26,7 @@ public final class SveWildTreeGrowthManager extends SavedData {
     public static final int MATURE_STAGE = 4;
     // Keep the original name so worlds created with the fir implementation migrate in place.
     private static final String DATA_NAME = "stardewcraftsve_fir_trees";
-    private static final int NATURAL_SPAWN_ATTEMPTS = 8;
-    private static final float NATURAL_SPAWN_CHANCE = 0.15F;
     private final Map<GlobalPos, Entry> saplings = new HashMap<>();
-    private int lastNaturalFarmSpawnDay = Integer.MIN_VALUE;
 
     public void addSapling(ServerLevel level, BlockPos pos, SveWildTreeType type) {
         GlobalPos globalPos = GlobalPos.of(level.dimension(), pos.immutable());
@@ -106,11 +99,6 @@ public final class SveWildTreeGrowthManager extends SavedData {
     public void tick(ServerLevel level) {
         int today = absoluteDay();
         boolean changed = false;
-        if (lastNaturalFarmSpawnDay != today) {
-            lastNaturalFarmSpawnDay = today;
-            changed = true;
-            changed |= spawnNaturalFarmSaplings(level);
-        }
         for (Map.Entry<GlobalPos, Entry> mapEntry : new ArrayList<>(saplings.entrySet())) {
             GlobalPos globalPos = mapEntry.getKey();
             Entry entry = mapEntry.getValue();
@@ -125,66 +113,6 @@ public final class SveWildTreeGrowthManager extends SavedData {
             changed = true;
         }
         if (changed) setDirty();
-    }
-
-    /**
-     * Gives existing farms the same ongoing tree regrowth behavior as newly initialized farms.
-     * It samples a few positions instead of scanning or rewriting the whole farm, so player
-     * buildings and landscaping are never touched.
-     */
-    private boolean spawnNaturalFarmSaplings(ServerLevel level) {
-        boolean changed = false;
-        for (FarmInstance farm : FarmInstanceRegistry.get().getAllFarms()) {
-            if (!farm.isInitialized() || level.random.nextFloat() >= NATURAL_SPAWN_CHANCE) continue;
-            for (int attempt = 0; attempt < NATURAL_SPAWN_ATTEMPTS; attempt++) {
-                if (tryPlaceNaturalSapling(level, farm)) {
-                    changed = true;
-                    break;
-                }
-            }
-        }
-        return changed;
-    }
-
-    private static boolean tryPlaceNaturalSapling(ServerLevel level, FarmInstance farm) {
-        BlockPos min = farm.getFarmBoundsMin();
-        BlockPos max = farm.getFarmBoundsMax();
-        int x = Mth.nextInt(level.random, min.getX(), max.getX());
-        int z = Mth.nextInt(level.random, min.getZ(), max.getZ());
-        BlockPos groundPos = null;
-        for (int y = 100; y >= -64; y--) {
-            BlockPos candidate = new BlockPos(x, y, z);
-            BlockState ground = level.getBlockState(candidate);
-            if (ground.isAir()) continue;
-            if ((ground.is(ModBlocks.YELLOW_DIRT.get()) || ground.is(Blocks.GRASS_BLOCK))
-                    && level.getBlockState(candidate.above()).isAir()
-                    && level.canSeeSky(candidate.above())) {
-                groundPos = candidate;
-            }
-            break;
-        }
-        if (groundPos == null) return false;
-
-        BlockPos saplingPos = groundPos.above();
-        if (hasNearbyTree(level, saplingPos)) return false;
-        SveWildTreeType type = level.random.nextBoolean() ? SveWildTreeType.FIR : SveWildTreeType.BIRCH;
-        BlockState sapling = type.saplingBlock().defaultBlockState();
-        if (!sapling.canSurvive(level, saplingPos)) return false;
-        level.setBlock(saplingPos, sapling, Block.UPDATE_ALL);
-        return true;
-    }
-
-    private static boolean hasNearbyTree(ServerLevel level, BlockPos center) {
-        for (int dx = -4; dx <= 4; dx++) {
-            for (int dz = -4; dz <= 4; dz++) {
-                if (dx * dx + dz * dz > 16) continue;
-                BlockState nearby = level.getBlockState(center.offset(dx, 0, dz));
-                if (nearby.getBlock() instanceof SveWildTreeBlock
-                        || nearby.getBlock() instanceof SveWildTreeSaplingBlock
-                        || WildTrees.findByAnyPart(nearby) != null) return true;
-            }
-        }
-        return false;
     }
 
     private void processDay(ServerLevel level, BlockPos pos, Entry entry, int season) {
@@ -259,16 +187,12 @@ public final class SveWildTreeGrowthManager extends SavedData {
             list.add(entryTag);
         }
         tag.put("Saplings", list);
-        tag.putInt("LastNaturalFarmSpawnDay", lastNaturalFarmSpawnDay);
         return tag;
     }
 
     public static SveWildTreeGrowthManager load(CompoundTag tag,
                                                 net.minecraft.core.HolderLookup.Provider registries) {
         SveWildTreeGrowthManager manager = new SveWildTreeGrowthManager();
-        if (tag.contains("LastNaturalFarmSpawnDay", Tag.TAG_INT)) {
-            manager.lastNaturalFarmSpawnDay = tag.getInt("LastNaturalFarmSpawnDay");
-        }
         ListTag list = tag.getList("Saplings", Tag.TAG_COMPOUND);
         for (int index = 0; index < list.size(); index++) {
             CompoundTag entryTag = list.getCompound(index);

@@ -25,6 +25,7 @@ public abstract class FishingInfoCategoryMixin {
             location("joja_town_after_event"),
             location("junimo_woods"),
             location("morris_property"),
+            location("moonlight_jellies_festival"),
             location("shearwater_bridge"),
             location("sprite_spring"),
             tag("is_forest_river", "forest"),

@@ -63,7 +63,7 @@ public class StardewcraftsveMod {
         SveNpcGiftInteractionProvider.register();
         MorrisDialogueInterceptor.register();
 
-        // The 0.5.1 public world data API covers loot, but not custom artifact-spot zones.
+        // The 0.5 public world data API covers loot, but not custom artifact-spot zones.
         NeoForge.EVENT_BUS.addListener(ServerTickEvent.Post.class, event -> {
             if (event.getServer().getTickCount() % 20 != 0) return;
             ServerLevel svLevel = event.getServer().getLevel(ModDimensions.STARDEW_VALLEY);
@@ -83,7 +83,7 @@ public class StardewcraftsveMod {
         String actual = SaloonService.extractRecipeId("recipe:" + expected);
         if (!expected.equals(actual)) {
             throw new IllegalStateException(
-                    "Stardewcraft 0.5.1 recipe shops discarded addon namespace: " + actual);
+                    "StardewCraft recipe shops discarded the addon namespace: " + actual);
         }
     }
 

@@ -47,6 +47,16 @@ public final class SveFriendshipRewards {
                         rule -> new RecipeUnlock(rule.npcId(), rule.points())));
     }
 
+    static Map<String, String> mailTriggers() {
+        return RULES.stream()
+                .filter(rule -> rule.mailForTomorrow() != null)
+                .collect(Collectors.toUnmodifiableMap(
+                        rule -> "stardewcraft:"
+                                + rule.mailForTomorrow().toLowerCase(Locale.ROOT),
+                        rule -> rule.npcId() + " friendship "
+                                + (rule.points() / 250) + " hearts"));
+    }
+
     public static boolean applyEligible(ServerPlayer player, String npcId, int points) {
         if (player == null || npcId == null || npcId.isBlank()) return false;
 

@@ -19,6 +19,8 @@ import java.util.UUID;
 /** Builds the standard and hard SVE community-center catalogs from StardewCraft's reload snapshot. */
 public final class SveCommunityBundles {
     private static final Logger LOGGER = LogUtils.getLogger();
+    static final int FIRST_IMPLEMENTED_AREA_ID = 0;
+    static final int LAST_IMPLEMENTED_AREA_ID = 5;
 
     private static final Map<Integer, Integer> REQUIRED_BASE_SLOTS = Map.ofEntries(
             Map.entry(0, 4), Map.entry(1, 4), Map.entry(2, 4), Map.entry(3, 4),
@@ -30,7 +32,7 @@ public final class SveCommunityBundles {
             Map.entry(20, 3), Map.entry(21, 4), Map.entry(22, 4),
             Map.entry(23, 1), Map.entry(24, 1), Map.entry(25, 1), Map.entry(26, 1),
             Map.entry(31, 3), Map.entry(32, 4), Map.entry(33, 4), Map.entry(34, 6),
-            Map.entry(35, 3), Map.entry(36, 6));
+            Map.entry(35, 3));
 
     private static volatile Map<Integer, BundleDefinition> standardBundles = Map.of();
     private static volatile Map<Integer, BundleDefinition> hardBundles = Map.of();
@@ -54,7 +56,12 @@ public final class SveCommunityBundles {
 
         Map<Integer, String> areaNames = new LinkedHashMap<>();
         Map<Integer, String> areaDisplayKeys = new LinkedHashMap<>();
-        for (int areaId = 0; areaId <= 6; areaId++) {
+        List<Integer> areaIds = base.stream()
+                .map(BundleDefinition::areaId)
+                .distinct()
+                .sorted()
+                .toList();
+        for (int areaId : areaIds) {
             String name = BundleDataManager.getAreaName(areaId);
             String displayKey = BundleDataManager.getAreaDisplayNameKey(areaId);
             if (name != null) areaNames.put(areaId, name);
@@ -116,6 +123,10 @@ public final class SveCommunityBundles {
         return Set.copyOf(result);
     }
 
+    static boolean isImplementedBundleArea(int areaId) {
+        return areaId >= FIRST_IMPLEMENTED_AREA_ID && areaId <= LAST_IMPLEMENTED_AREA_ID;
+    }
+
     public static boolean isReady() {
         return !standardBundles.isEmpty();
     }
@@ -144,10 +155,9 @@ public final class SveCommunityBundles {
                 problems.add(label + " bundle key " + entry.getKey() + " contains ID "
                         + definition.bundleId());
             }
-            if (definition.areaId() < 0 || definition.areaId() > 6) {
-                problems.add(label + " bundle " + definition.bundleId() + " has invalid area "
-                        + definition.areaId());
-            }
+            // Host-owned future areas pass through unchanged. SVE validates only the
+            // Community Center areas that StardewCraft currently exposes to players.
+            if (!isImplementedBundleArea(definition.areaId())) continue;
             if (definition.internalName() == null || definition.internalName().isBlank()) {
                 problems.add(label + " bundle " + definition.bundleId() + " has no internal name");
             }
@@ -218,7 +228,6 @@ public final class SveCommunityBundles {
         append(bundles, 32, 5, item("stardewcraftsve:amber"));
         append(bundles, 33, 5, item("stardewcraftsve:lucky_four_leaf_clover"));
         append(bundles, 34, 7, item("stardewcraftsve:persimmon"));
-        append(bundles, 36, 6, item("stardewcraftsve:shark"));
         return bundles;
     }
 
@@ -298,11 +307,6 @@ public final class SveCommunityBundles {
                 new int[]{50, 99, 5}, new int[]{0, 0, 0});
         fodder.add(item("stardewcraft:fiber", 30, 0));
         replace(bundles, 35, 4, "BO 104 3", fodder);
-
-        List<BundleIngredient> missing = resize(base.get(36).ingredients(),
-                new int[]{2, 2, 2, 10, 2, 2}, new int[]{1, 0, 0, 2, 2, 0});
-        missing.add(item("stardewcraftsve:shiny_lunaloo"));
-        replace(bundles, 36, 6, "", missing);
         return bundles;
     }
 
@@ -412,6 +416,7 @@ public final class SveCommunityBundles {
             Set<String> result
     ) {
         for (BundleDefinition definition : bundles.values()) {
+            if (!isImplementedBundleArea(definition.areaId())) continue;
             for (BundleIngredient ingredient : definition.ingredients()) {
                 if (ingredient.itemId() != null
                         && ingredient.itemId().startsWith(StardewcraftsveMod.MODID + ":")) {

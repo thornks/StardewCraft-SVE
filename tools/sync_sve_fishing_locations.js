@@ -20,10 +20,10 @@ const targets = {
     ["stardewcraftsve:adventurer_summit", "stardewcraftsve:forest_west", "stardewcraftsve:highlands"],
     "#stardewcraft:is_forest_river", "#stardewcraft:is_mountain_lake"
   ),
-  butterfish: custom([
+  butterfish: mixed([
     "stardewcraftsve:forest_west", "stardewcraftsve:morris_property",
     "stardewcraftsve:shearwater_bridge"
-  ]),
+  ], "#stardewcraft:is_forest_river"),
   clownfish: vanilla("#stardewcraft:is_ginger_island_ocean"),
   daggerfish: custom(["stardewcraftsve:fable_reef"]),
   diamond_carp: custom(["stardewcraftsve:diamond_cavern"]),
@@ -35,7 +35,7 @@ const targets = {
   goldfish: mixed(["stardewcraftsve:blue_moon_vineyard"], "#stardewcraft:is_town_river"),
   grass_carp: vanilla("#stardewcraft:is_secret_woods"),
   highlands_bass: custom(["stardewcraftsve:highlands"]),
-  king_salmon: custom(["stardewcraftsve:forest_west"]),
+  king_salmon: mixed(["stardewcraftsve:forest_west"], "#stardewcraft:is_forest_river"),
   kittyfish: custom(["stardewcraftsve:shearwater_bridge"]),
   lunaloo: mixed(["stardewcraftsve:fable_reef"], "#stardewcraft:is_ginger_island_ocean"),
   meteor_carp: custom(["stardewcraftsve:junimo_woods", "stardewcraftsve:sprite_spring"]),
@@ -46,12 +46,18 @@ const targets = {
     "#stardewcraft:is_mountain_lake", "#stardewcraft:is_town_river"
   ),
   ocean_sunfish: mixed(["stardewcraftsve:fable_reef"], "#stardewcraft:is_ginger_island_ocean"),
-  puppyfish: custom(["stardewcraftsve:forest_west", "stardewcraftsve:shearwater_bridge"]),
+  puppyfish: mixed(
+    ["stardewcraftsve:forest_west", "stardewcraftsve:shearwater_bridge"],
+    "#stardewcraft:is_forest_river"
+  ),
   radioactive_bass: vanilla("#stardewcraft:is_sewers"),
   // Both original Razor Trout locations require Joja event 1056732, which is not ported.
   razor_trout: custom([
     "stardewcraftsve:blue_moon_vineyard", "stardewcraftsve:joja_town_after_event"
   ]),
+  sea_sponge: mixed(
+    ["stardewcraftsve:fable_reef"], "#stardewcraft:is_ginger_island_ocean"
+  ),
   seahorse: mixed(["stardewcraftsve:fable_reef"], "#stardewcraft:is_ginger_island_ocean"),
   shark: mixed(["stardewcraftsve:fable_reef"], "#stardewcraft:is_ginger_island_ocean"),
   shiny_lunaloo: mixed(["stardewcraftsve:fable_reef"], "#stardewcraft:is_ginger_island_ocean"),
@@ -60,6 +66,7 @@ const targets = {
     ["stardewcraftsve:blue_moon_vineyard"],
     "#stardewcraft:is_beach", "#stardewcraft:is_ginger_island_ocean"
   ),
+  swamp_crab: custom(["stardewcraftsve:forbidden_maze"]),
   tadpole: vanilla("#stardewcraft:is_mountain_lake"),
   torpedo_trout: custom(["stardewcraftsve:fable_reef"]),
   turretfish: custom(["stardewcraftsve:fable_reef"]),
@@ -80,6 +87,9 @@ if (missing.length || extra.length) {
 
 for (const rule of data.fish) {
   if (!rule.id) continue;
+  // StardewCraft tries larger precedence values first. SVE fish are regular
+  // location fish, so they must share precedence 0 with the base location pool.
+  rule.precedence = 0;
   rule.biomes = targets[rule.id].biomes;
   rule.biomeTags = targets[rule.id].biomeTags;
   if (rule.biomeTags.length === 0) rule.displayOnly = true;
@@ -87,36 +97,4 @@ for (const rule of data.fish) {
 }
 
 fs.writeFileSync(path, `${JSON.stringify(data, null, 2)}\n`);
-
-const treasurePath = "src/main/resources/data/stardewcraft/fishing/fishing_treasure.json";
-const treasure = JSON.parse(fs.readFileSync(treasurePath, "utf8"));
-const fishItems = new Set([...actualIds, "sea_sponge", "swamp_crab"]
-  .map(id => `stardewcraftsve:${id}`));
-let removed = 0;
-for (const pool of ["commonLoot", "rareLoot", "goldenLoot"]) {
-  const before = treasure[pool].length;
-  treasure[pool] = treasure[pool].filter(entry => !fishItems.has(entry.item));
-  removed += before - treasure[pool].length;
-}
-const compactEntry = entry => JSON.stringify(entry)
-  .replace(/":/g, '": ')
-  .replace(/,/g, ", ");
-const treasureLines = [
-  "{",
-  `  "comment": ${JSON.stringify(treasure.comment)},`,
-  `  "rollChanceStart": ${treasure.rollChanceStart.toFixed(1)},`,
-  `  "rollChanceDecayNormal": ${treasure.rollChanceDecayNormal},`,
-  `  "rollChanceDecayGolden": ${treasure.rollChanceDecayGolden},`,
-  `  "rareChance": ${treasure.rareChance},`,
-  `  "goldenPoolChance": ${treasure.goldenPoolChance},`
-];
-for (const [index, pool] of ["commonLoot", "rareLoot", "goldenLoot", "fallbackLoot"].entries()) {
-  treasureLines.push(`  "${pool}": [`);
-  treasure[pool].forEach((entry, entryIndex) => {
-    treasureLines.push(`    ${compactEntry(entry)}${entryIndex + 1 < treasure[pool].length ? "," : ""}`);
-  });
-  treasureLines.push(`  ]${index < 3 ? "," : ""}`);
-}
-treasureLines.push("}");
-fs.writeFileSync(treasurePath, `${treasureLines.join("\n")}\n`);
-console.log(`Synchronized ${actualIds.size} location mappings and removed ${removed} non-original fish treasure entries.`);
+console.log(`Synchronized ${actualIds.size} location mappings.`);

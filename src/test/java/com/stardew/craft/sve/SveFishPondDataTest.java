@@ -4,6 +4,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.mojang.serialization.JsonOps;
+import com.stardew.craft.api.v1.fishpond.StardewFishPondDefinition;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -28,7 +30,12 @@ public final class SveFishPondDataTest {
             for (Path path : paths.filter(file -> file.toString().endsWith(".json")).toList()) {
                 String fishId = path.getFileName().toString().replaceFirst("\\.json$", "");
                 files.add(fishId);
-                validateDefinition(fishId, JsonParser.parseString(Files.readString(path)).getAsJsonObject());
+                JsonObject definition = JsonParser.parseString(
+                        Files.readString(path)).getAsJsonObject();
+                expect(StardewFishPondDefinition.CODEC
+                                .parse(JsonOps.INSTANCE, definition).result().isPresent(),
+                        fishId + " must pass the StardewCraft fish pond Codec");
+                validateDefinition(fishId, definition);
             }
         }
 

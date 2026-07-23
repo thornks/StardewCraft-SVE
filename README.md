@@ -18,7 +18,7 @@ It does not currently recreate the SVE world map or the complete SVE NPC, dialog
 - Java 21
 - Addon version: 0.1.0
 - Mod id: `stardewcraftsve`
-- Required StardewCraft version: 0.5.1fix4
+- Required StardewCraft version: 0.5.2
 
 ## Implemented or In-Progress Systems
 
@@ -33,7 +33,7 @@ It does not currently recreate the SVE world map or the complete SVE NPC, dialog
 
 ## Requirements
 
-- [StarfieldPastoral (StardewCraft)](https://github.com/ChangQingElysium/Starfield-Pastoral) 0.5.1fix4
+- [StarfieldPastoral (StardewCraft)](https://github.com/ChangQingElysium/Starfield-Pastoral) 0.5.2
 - GeckoLib 4.7.7
 - JEI 19.27.0.340 for JEI integration
 - Jade 15.10.5 for Jade integration
@@ -53,7 +53,7 @@ Third-party dependency JARs, extracted reference material, decompiled sources, s
 Before building, provide the local dependencies expected by `build.gradle`:
 
 ```text
-../stardewcraft-0.5.1fix4.jar
+../stardewcraft-0.5.2.jar
 libs/geckolib-neoforge-1.21.1-4.7.7.jar
 libs/jade-1.21.1-NeoForge-15.10.5.jar
 libs/jei-1.21.1-neoforge-19.27.0.340.jar

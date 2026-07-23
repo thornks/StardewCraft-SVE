@@ -5,7 +5,7 @@ import com.stardew.craft.item.weapon.WeaponRegistry;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Invoker;
 
-/** Typed bridge for the 0.5.1 weapon constructor, which still reads WeaponRegistry. */
+/** Typed bridge for the 0.5 host weapon constructor, which still reads WeaponRegistry. */
 @Mixin(value = WeaponRegistry.class, remap = false)
 public interface WeaponRegistryAccessor {
     @Invoker("register")

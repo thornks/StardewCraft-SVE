@@ -1,0 +1,40 @@
+{
+  "chest": "any",
+  "chance": 0.0015,
+  "rolls": 1,
+  "entries": [
+    {
+      "query": {
+        "type": "stardewcraft:item",
+        "data": {
+          "item": "stardewcraftsve:ornate_treasure_chest",
+          "count": 1
+        }
+      },
+      "weight": 2,
+      "min_fishing_level": 2
+    },
+    {
+      "query": {
+        "type": "stardewcraft:item",
+        "data": {
+          "item": "stardewcraftsve:money_bag",
+          "count": 1
+        }
+      },
+      "weight": 2,
+      "min_fishing_level": 2
+    },
+    {
+      "query": {
+        "type": "stardewcraft:item",
+        "data": {
+          "item": "stardewcraftsve:magic_lamp",
+          "count": 1
+        }
+      },
+      "weight": 2,
+      "min_fishing_level": 2
+    }
+  ]
+}

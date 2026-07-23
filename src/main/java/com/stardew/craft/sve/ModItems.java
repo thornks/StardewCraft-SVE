@@ -38,7 +38,7 @@ public final class ModItems {
         DeferredRegister.createItems(StardewcraftsveMod.MODID);
 
     // Cooking-pot dishes use the SVE namespace so JEI attributes them to this
-    // addon. Stardewcraft 0.5.1 resolves namespaced cooking definitions directly.
+    // addon. The StardewCraft 0.5 API resolves namespaced cooking definitions directly.
     public static final DeferredRegister.Items STARDEWCRAFT_ITEMS =
         DeferredRegister.createItems("stardewcraftsve");
 
@@ -498,8 +498,8 @@ public final class ModItems {
             new int[]{-11, -11, -11, -11},
             40, "sinker",
             stackableProperties()));
-    public static final DeferredHolder<Item, StardewQualityItem> SLUDGE = ITEMS.register("sludge",
-        () -> new StardewQualityItem("stardewcraft.type.forage", 60, -300, true, stackableProperties()));
+    public static final DeferredHolder<Item, SimpleStardewItem> SLUDGE = ITEMS.register("sludge",
+        () -> new SimpleStardewItem("stardewcraft.type.monster_loot", 60, stackableProperties()));
     public static final DeferredHolder<Item, FishItem> STARFISH = ITEMS.register("starfish",
         () -> new FishItem(
             new int[]{150, 187, 225, 300},
@@ -507,8 +507,8 @@ public final class ModItems {
             new int[]{-9, -9, -9, -9},
             75, "sinker",
             stackableProperties()));
-    public static final DeferredHolder<Item, StardewQualityItem> SUPERNATURAL_GOO = ITEMS.register("supernatural_goo",
-        () -> new StardewQualityItem("stardewcraft.type.forage", 200, -300, true, stackableProperties()));
+    public static final DeferredHolder<Item, SimpleStardewItem> SUPERNATURAL_GOO = ITEMS.register("supernatural_goo",
+        () -> new SimpleStardewItem("stardewcraft.type.monster_loot", 200, stackableProperties()));
     public static final DeferredHolder<Item, FishItem> SWAMP_CRAB = ITEMS.register("swamp_crab",
         () -> new FishItem(
             new int[]{150, 187, 225, 300},
@@ -516,14 +516,14 @@ public final class ModItems {
             new int[]{22, 30, 39, 57},
             35, "sinker",
             stackableProperties()));
-    public static final DeferredHolder<Item, StardewQualityItem> SWAMP_ESSENCE = ITEMS.register("swamp_essence",
-        () -> new StardewQualityItem("stardewcraft.type.forage", 80, -300, true, stackableProperties()));
-    public static final DeferredHolder<Item, StardewQualityItem> VOID_PEBBLE = ITEMS.register("void_pebble",
-        () -> new StardewQualityItem("stardewcraft.type.forage", 300, -300, true, stackableProperties()));
-    public static final DeferredHolder<Item, StardewQualityItem> VOID_SHARD = ITEMS.register("void_shard",
-        () -> new StardewQualityItem("stardewcraft.type.forage", 10000, -300, true, stackableProperties()));
-    public static final DeferredHolder<Item, StardewQualityItem> VOID_SOUL = ITEMS.register("void_soul",
-        () -> new StardewQualityItem("stardewcraft.type.forage", 150, -300, true, stackableProperties()));
+    public static final DeferredHolder<Item, SimpleStardewItem> SWAMP_ESSENCE = ITEMS.register("swamp_essence",
+        () -> new SimpleStardewItem("stardewcraft.type.monster_loot", 80, stackableProperties()));
+    public static final DeferredHolder<Item, SimpleStardewItem> VOID_PEBBLE = ITEMS.register("void_pebble",
+        () -> new SimpleStardewItem("stardewcraft.type.monster_loot", 300, stackableProperties()));
+    public static final DeferredHolder<Item, SimpleStardewItem> VOID_SHARD = ITEMS.register("void_shard",
+        () -> new SimpleStardewItem("stardewcraft.type.monster_loot", 10000, stackableProperties()));
+    public static final DeferredHolder<Item, SimpleStardewItem> VOID_SOUL = ITEMS.register("void_soul",
+        () -> new SimpleStardewItem("stardewcraft.type.monster_loot", 150, stackableProperties()));
     public static final DeferredHolder<Item, StardewQualityItem> YARN = ITEMS.register("yarn",
         () -> new StardewQualityItem("stardewcraft.type.artisan_goods", 900, -300, true, stackableProperties()));
 
@@ -548,8 +548,8 @@ public final class ModItems {
         () -> new StardewQualityItem("stardewcraft.type.forage", 175, -300, true, stackableProperties()));
     public static final DeferredHolder<Item, SimpleStardewItem> STONE_OF_YOBA = ITEMS.register("stone_of_yoba",
         () -> new SimpleStardewItem("stardewcraft.type.artifact", 1500, stackableProperties()));
-    public static final DeferredHolder<Item, StardewQualityItem> SWIRL_STONE = ITEMS.register("swirl_stone",
-        () -> new StardewQualityItem("stardewcraft.type.forage", 8500, -300, true, stackableProperties()));
+    public static final DeferredHolder<Item, SimpleStardewItem> SWIRL_STONE = ITEMS.register("swirl_stone",
+        () -> new SimpleStardewItem("stardewcraft.type.monster_loot", 8500, stackableProperties()));
 
     // ===== animal_product =====
     public static final DeferredHolder<Item, FishItem> BABY_LUNALOO = ITEMS.register("baby_lunaloo",

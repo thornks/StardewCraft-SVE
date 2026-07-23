@@ -63,10 +63,7 @@ public final class ModCreativeTabs {
                 ModItems.GOLDEN_OCEAN_FLOWER, ModItems.SMELLY_RAFFLESIA, ModItems.SWAMP_FLOWER,
                 ModItems.THISTLE, ModItems.WINTER_STAR_ROSE,
                 ModItems.BIG_CONCH, ModItems.DRIED_SAND_DOLLAR, ModItems.DULSE_SEAWEED,
-                ModItems.SEA_SPONGE, ModItems.SLUDGE, ModItems.STARFISH,
-                ModItems.SUPERNATURAL_GOO, ModItems.SWAMP_CRAB, ModItems.SWAMP_ESSENCE,
-                ModItems.VOID_PEBBLE, ModItems.VOID_SHARD, ModItems.VOID_SOUL,
-                ModItems.SHARK_TOOTH, ModItems.SWIRL_STONE,
+                ModItems.SHARK_TOOTH,
                 ModItems.RED_BANEBERRY);
             // Non-quality forage
             output.accept(ModItems.LUCKY_FOUR_LEAF_CLOVER.get());
@@ -81,7 +78,8 @@ public final class ModCreativeTabs {
                 ModItems.GRASS_CARP, ModItems.HIGHLANDS_BASS, ModItems.KING_SALMON, ModItems.KITTYFISH,
                 ModItems.METEOR_CARP, ModItems.MINNOW, ModItems.OCEAN_SUNFISH, ModItems.PUPPYFISH,
                 ModItems.RADIOACTIVE_BASS, ModItems.RAZOR_TROUT, ModItems.SEAHORSE, ModItems.SHARK,
-                ModItems.SNATCHER_WORM, ModItems.TADPOLE, ModItems.TORPEDO_TROUT, ModItems.TURRETFISH,
+                ModItems.SEA_SPONGE, ModItems.SNATCHER_WORM, ModItems.STARFISH, ModItems.SWAMP_CRAB,
+                ModItems.TADPOLE, ModItems.TORPEDO_TROUT, ModItems.TURRETFISH,
                 ModItems.UNDEADFISH, ModItems.VIPER_EEL, ModItems.VOID_EEL, ModItems.WATER_GRUB,
                 ModItems.WOLF_SNAPPER, ModItems.BABY_LUNALOO, ModItems.LUNALOO, ModItems.SHINY_LUNALOO);
             // Smoked fish (4 quality variants each)
@@ -177,6 +175,13 @@ public final class ModCreativeTabs {
             output.accept(ModItems.OLD_COIN.get());
             output.accept(ModItems.RUSTY_SHIELD.get());
             output.accept(ModItems.STONE_OF_YOBA.get());
+            output.accept(ModItems.SLUDGE.get());
+            output.accept(ModItems.SUPERNATURAL_GOO.get());
+            output.accept(ModItems.SWAMP_ESSENCE.get());
+            output.accept(ModItems.VOID_PEBBLE.get());
+            output.accept(ModItems.VOID_SHARD.get());
+            output.accept(ModItems.VOID_SOUL.get());
+            output.accept(ModItems.SWIRL_STONE.get());
             output.accept(ModItems.GOLD_SLIME_EGG.get());
             output.accept(ModItems.BLUE_SLIME_EGG.get());
             output.accept(ModItems.GREEN_SLIME_EGG.get());

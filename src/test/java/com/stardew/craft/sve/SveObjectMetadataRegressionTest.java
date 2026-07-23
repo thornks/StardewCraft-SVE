@@ -4,9 +4,13 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.stardew.craft.blockentity.FishSmokerBlockEntity;
 import com.stardew.craft.sve.collection.SveCollectionCatalog;
+import net.minecraft.world.item.ItemStack;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.LinkedHashSet;
@@ -17,12 +21,21 @@ import java.util.regex.Pattern;
 /** Locks object metadata that is easy to confuse with acquisition or collection grouping. */
 public final class SveObjectMetadataRegressionTest {
     private static final Path SOURCE = Path.of("src/main/java/com/stardew/craft/sve/ModItems.java");
+    private static final Path FISH_SMOKER_MIXIN = Path.of(
+            "src/main/java/com/stardew/craft/sve/mixin/FishSmokerBlockEntityMixin.java");
+    private static final Path FORAGE_MENU = Path.of(
+            "src/main/java/com/stardew/craft/sve/ForageSelectionMenu.java");
+    private static final Path CREATIVE_TABS = Path.of(
+            "src/main/java/com/stardew/craft/sve/ModCreativeTabs.java");
     private static final Path ASSETS = Path.of("src/main/resources/assets");
     private static final Path DATA = Path.of("src/main/resources/data");
 
     private static final Set<String> ARTIFACTS = Set.of(
             "amber", "boomerang", "faded_button", "fossilized_apple",
             "old_coin", "rusty_shield", "stone_of_yoba");
+    private static final Set<String> MONSTER_LOOT = Set.of(
+            "sludge", "supernatural_goo", "swamp_essence", "void_pebble",
+            "void_shard", "void_soul", "swirl_stone");
 
     private SveObjectMetadataRegressionTest() {
     }
@@ -31,7 +44,10 @@ public final class SveObjectMetadataRegressionTest {
         String source = Files.readString(SOURCE);
         validateCollections();
         validateItemTypesAndFishStats(source);
+        validateFishCreativePlacement();
+        validateMonsterLoot(source);
         validateSmokedFish(source);
+        validateFishSmokerCompatibility();
         validateMuseumData();
         System.out.println("SVE object metadata regression suite passed: artifacts="
                 + ARTIFACTS.size() + ", fishCollection=43, smokerInputs="
@@ -65,6 +81,53 @@ public final class SveObjectMetadataRegressionTest {
         expectFish(source, "sea_sponge", 75, -62, -11, 40, "sinker");
         expectFish(source, "starfish", 150, -50, -9, 75, "sinker");
         expectFish(source, "swamp_crab", 150, 50, 22, 35, "sinker");
+    }
+
+    private static void validateFishCreativePlacement() throws IOException {
+        String creativeTabs = Files.readString(CREATIVE_TABS);
+        int forageStart = creativeTabs.indexOf("CreativeModeTab> FORAGE");
+        int fishStart = creativeTabs.indexOf("CreativeModeTab> FISH");
+        int fishEnd = creativeTabs.indexOf("CreativeModeTab> FOOD_ARTISAN");
+        expect(forageStart >= 0 && fishStart > forageStart && fishEnd > fishStart,
+                "Could not identify SVE forage and fish creative tabs");
+
+        String forageSection = creativeTabs.substring(forageStart, fishStart);
+        String fishSection = creativeTabs.substring(fishStart, fishEnd);
+        String forageMenu = Files.readString(FORAGE_MENU);
+        for (String id : Set.of("SEA_SPONGE", "STARFISH", "SWAMP_CRAB")) {
+            expect(!forageSection.contains("ModItems." + id),
+                    id + " must not be displayed in the forage creative tab");
+            expect(fishSection.contains("ModItems." + id),
+                    id + " must be displayed in the fish creative tab");
+            expect(!forageMenu.contains("FORAGE_" + id + ".get()"),
+                    id + " must not be exposed by the forage debug selector");
+        }
+    }
+
+    private static void validateMonsterLoot(String source) throws IOException {
+        for (String id : MONSTER_LOOT) {
+            Pattern registration = Pattern.compile(
+                    "DeferredHolder<Item, SimpleStardewItem>\\s+"
+                            + Pattern.quote(id.toUpperCase())
+                            + "\\s*=\\s*ITEMS\\.register\\(\\\""
+                            + Pattern.quote(id)
+                            + "\\\",\\s*\\(\\) -> new SimpleStardewItem\\("
+                            + "\\\"stardewcraft\\.type\\.monster_loot\\\"",
+                    Pattern.DOTALL);
+            expect(registration.matcher(source).find(),
+                    id + " must be non-quality monster loot");
+        }
+
+        Set<String> monsterDropTag = readNamespacedValues(
+                DATA.resolve("stardewcraft/tags/item/monster_drops.json"));
+        expect(monsterDropTag.equals(MONSTER_LOOT),
+                "Monster-drop tag differs: " + monsterDropTag);
+
+        String forageMenu = Files.readString(FORAGE_MENU);
+        for (String id : MONSTER_LOOT) {
+            expect(!forageMenu.contains("FORAGE_" + id.toUpperCase() + ".get()"),
+                    id + " must not be exposed by the forage debug selector");
+        }
     }
 
     private static void expectFish(
@@ -129,6 +192,31 @@ public final class SveObjectMetadataRegressionTest {
         }
     }
 
+    private static void validateFishSmokerCompatibility() throws IOException {
+        Method hostMethod;
+        try {
+            hostMethod = FishSmokerBlockEntity.class.getDeclaredMethod(
+                    "createSmokedOutput", ItemStack.class);
+        } catch (ReflectiveOperationException exception) {
+            throw new AssertionError(
+                    "StardewCraft fish smoker output hook changed; update the SVE compatibility Mixin",
+                    exception);
+        }
+        expect(Modifier.isPrivate(hostMethod.getModifiers())
+                        && Modifier.isStatic(hostMethod.getModifiers())
+                        && hostMethod.getReturnType() == ItemStack.class,
+                "Unexpected StardewCraft createSmokedOutput signature");
+
+        String mixin = Files.readString(FISH_SMOKER_MIXIN);
+        expect(mixin.contains("@Inject(method = \"createSmokedOutput\"")
+                        && mixin.contains("require = 1"),
+                "Fish smoker compatibility hook must fail loudly when the host method changes");
+        expect(mixin.contains("StardewcraftsveMod.MODID")
+                        && mixin.contains("\"smoked_\" + inputId.getPath()")
+                        && mixin.contains("output instanceof SmokedFishItem"),
+                "Fish smoker compatibility hook no longer resolves validated SVE smoked items");
+    }
+
     private static void validateMuseumData() throws IOException {
         Set<String> artifactTag = readNamespacedValues(
                 DATA.resolve("stardewcraft/tags/item/artifacts.json"));
@@ -143,6 +231,23 @@ public final class SveObjectMetadataRegressionTest {
         }
         expect(sveRequirements.equals(ARTIFACTS),
                 "Galdoran reward must require exactly the seven SVE artifacts: " + sveRequirements);
+        expectQueuedMail(reward, "gunther_museum_complete");
+
+        JsonObject funding = JsonParser.parseString(Files.readString(DATA.resolve(
+                "stardewcraftsve/museum_rewards/rewards/museum_60_funding.json"))).getAsJsonObject();
+        expectQueuedMail(funding, "gunther_museum_60");
+    }
+
+    private static void expectQueuedMail(JsonObject reward, String mailId) {
+        JsonArray actions = reward.getAsJsonArray("rewards");
+        expect(actions != null && actions.size() == 1,
+                "Museum reward must contain exactly one queue-mail action for " + mailId);
+        JsonObject action = actions.get(0).getAsJsonObject();
+        expect("stardewcraftsve:queue_mail".equals(action.get("type").getAsString())
+                        && action.getAsJsonObject("data") != null
+                        && mailId.equals(action.getAsJsonObject("data")
+                        .get("mail").getAsString()),
+                "Museum reward no longer queues expected mail " + mailId);
     }
 
     private static Set<String> pathsForTab(int tab) {

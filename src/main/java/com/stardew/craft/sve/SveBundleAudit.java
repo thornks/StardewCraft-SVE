@@ -12,10 +12,12 @@ import net.minecraft.server.level.ServerLevel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 /** Read-only validation of SVE community-center catalogs and saved progress. */
@@ -75,12 +77,7 @@ public final class SveBundleAudit {
             audit.error("standard and hard bundle ID sets differ");
         }
 
-        for (String itemId : SveCommunityBundles.sveIngredientIds(
-                new SveCommunityBundles.Catalog(standard, hard))) {
-            if (SveBundleAcquisitionCatalog.routeFor(itemId) == null) {
-                audit.error("Missing acquisition route for bundle ingredient " + itemId);
-            }
-        }
+        validateAcquisitionRoutes(level, standard, hard, audit);
 
         CommunityCenterSavedData savedData = CommunityCenterSavedData.get(level);
         FarmInstanceRegistry farms = FarmInstanceRegistry.get();
@@ -106,6 +103,59 @@ public final class SveBundleAudit {
         return audit;
     }
 
+    private static void validateAcquisitionRoutes(
+            ServerLevel level,
+            Map<Integer, BundleDefinition> standard,
+            Map<Integer, BundleDefinition> hard,
+            Audit audit
+    ) {
+        SveContentAcquisitionService.Snapshot snapshot;
+        try {
+            snapshot = SveContentAcquisitionService.inspect(level.getServer());
+        } catch (IOException | RuntimeException exception) {
+            audit.error("Failed to build effective acquisition graph: " + exception.getMessage());
+            return;
+        }
+        addProblems(audit, acquisitionProblems(
+                new SveCommunityBundles.Catalog(standard, hard), snapshot));
+    }
+
+    static List<String> acquisitionProblems(
+            SveCommunityBundles.Catalog catalog,
+            SveContentAcquisitionService.Snapshot snapshot
+    ) {
+        List<String> problems = new ArrayList<>();
+        Set<String> ingredients = SveCommunityBundles.sveIngredientIds(catalog);
+        SveContentAcquisitionGraph.Evaluation evaluation = snapshot.evaluation();
+        for (String itemId : ingredients) {
+            if (!snapshot.registeredItems().contains(itemId)) {
+                problems.add("Bundle ingredient is not registered: " + itemId);
+                continue;
+            }
+
+            SveContentAcquisitionCatalog.Exclusion exclusion =
+                    SveContentAcquisitionCatalog.exclusions().get(itemId);
+            if (exclusion != null) {
+                problems.add("Bundle ingredient is not survival-obtainable: " + itemId
+                        + " (" + exclusion.reason() + ")");
+                continue;
+            }
+            if (evaluation.reachable().contains(itemId)) continue;
+
+            Set<String> missing = evaluation.blocked().get(itemId);
+            if (missing != null && !missing.isEmpty()) {
+                problems.add("Blocked acquisition route for bundle ingredient " + itemId
+                        + "; unresolved SVE candidates " + missing);
+            } else if (missing != null) {
+                problems.add("Blocked acquisition route for bundle ingredient " + itemId
+                        + "; an item selector has no live candidates");
+            } else {
+                problems.add("No declared acquisition route for bundle ingredient " + itemId);
+            }
+        }
+        return List.copyOf(problems);
+    }
+
     private static void validateProgress(
             Object rawProgress,
             UUID player,
@@ -122,6 +172,7 @@ public final class SveBundleAudit {
         Map<Integer, Boolean> rewards = progress.stardewcraftsve$getBundleRewards();
         String label = "Player " + player + (hardMode ? " (hard)" : " (standard)");
         for (BundleDefinition definition : catalog.values()) {
+            if (!SveCommunityBundles.isImplementedBundleArea(definition.areaId())) continue;
             boolean[] slots = slotsByBundle.get(definition.bundleId());
             if (slots == null) {
                 continue;

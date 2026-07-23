@@ -1,26 +1,15 @@
 package com.stardew.craft.sve;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
 import com.mojang.brigadier.context.CommandContext;
 import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
-import java.io.Reader;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /** Read-only audit of effective acquisition routes for every registered SVE item. */
 public final class SveContentAudit {
@@ -33,14 +22,14 @@ public final class SveContentAudit {
     public static int run(CommandContext<CommandSourceStack> context) {
         CommandSourceStack source = context.getSource();
         try {
-            Set<String> registered = registeredItems();
-            SveContentAcquisitionGraph graph = new SveContentAcquisitionGraph();
-            SveContentDataScanner.scan(loadResources(source.getServer().getResourceManager()), graph);
-            SveContentAcquisitionCatalog.addProgrammaticRoutes(graph);
+            SveContentAcquisitionService.Snapshot snapshot = SveContentAcquisitionService.inspect(
+                    source.getServer());
             Map<String, SveContentAcquisitionCatalog.Exclusion> exclusions =
                     SveContentAcquisitionCatalog.exclusions();
-            SveContentAcquisitionGraph.Evaluation evaluation = graph.evaluate(registered, exclusions);
-            List<Issue> issues = buildIssues(evaluation, exclusions);
+            SveContentAcquisitionGraph.Evaluation evaluation = snapshot.evaluation();
+            List<Issue> issues = new ArrayList<>(buildIssues(evaluation, exclusions));
+            snapshot.validationProblems().forEach(problem ->
+                    issues.add(Issue.error(problem)));
             long errors = issues.stream().filter(Issue::error).count();
             long warnings = issues.size() - errors;
             int creative = countExclusions(exclusions,
@@ -51,7 +40,7 @@ public final class SveContentAudit {
                     SveContentAcquisitionCatalog.ExclusionType.PLANNED_CONTENT);
 
             source.sendSuccess(() -> Component.literal(
-                    "SVE content audit: registered=" + registered.size()
+                    "SVE content audit: registered=" + snapshot.registeredItems().size()
                             + ", reachable=" + evaluation.reachable().size()
                             + ", creative=" + creative
                             + ", display=" + display
@@ -77,7 +66,8 @@ public final class SveContentAudit {
                 .forEach(item -> issues.add(Issue.error("No acquisition route for " + item)));
         evaluation.blocked().entrySet().stream().sorted(Map.Entry.comparingByKey())
                 .forEach(entry -> issues.add(Issue.error(
-                        "Blocked acquisition route for " + entry.getKey() + "; missing " + entry.getValue())));
+                        "Blocked acquisition route for " + entry.getKey() + "; "
+                                + blockedDetail(entry.getValue()))));
         evaluation.unknownOutputs().stream().sorted()
                 .forEach(item -> issues.add(Issue.error("Acquisition data outputs unregistered item " + item)));
         evaluation.missingDependencies().stream().sorted()
@@ -97,48 +87,10 @@ public final class SveContentAudit {
         return List.copyOf(issues);
     }
 
-    private static Map<String, JsonElement> loadResources(ResourceManager manager) throws IOException {
-        Map<ResourceLocation, Resource> selected = new LinkedHashMap<>();
-        for (String root : List.of(
-                "shops", "mail", "cooking/recipes", "player/crafting_recipes",
-                "fishing", "forage_zones", "fishpond/pond_data", "artisan")) {
-            selected.putAll(manager.listResources(root, id ->
-                    isRelevantNamespace(id.getNamespace())
-                            && id.getPath().endsWith(".json")
-                            && isRelevantPath(id.getPath())));
-        }
-        Map<String, JsonElement> resources = new LinkedHashMap<>();
-        for (Map.Entry<ResourceLocation, Resource> entry : selected.entrySet()) {
-            try (Reader reader = entry.getValue().openAsReader()) {
-                resources.put(entry.getKey().toString(), JsonParser.parseReader(reader));
-            }
-        }
-        return Map.copyOf(resources);
-    }
-
-    private static boolean isRelevantNamespace(String namespace) {
-        return StardewcraftsveMod.MODID.equals(namespace) || "stardewcraft".equals(namespace);
-    }
-
-    private static boolean isRelevantPath(String path) {
-        return path.startsWith("shops/")
-                || path.startsWith("mail/")
-                || path.startsWith("cooking/recipes/")
-                || path.startsWith("player/crafting_recipes/")
-                || path.startsWith("fishing/")
-                || path.startsWith("forage_zones/")
-                || path.startsWith("fishpond/pond_data/")
-                || path.startsWith("artisan/");
-    }
-
-    private static Set<String> registeredItems() {
-        Set<String> items = new LinkedHashSet<>();
-        BuiltInRegistries.ITEM.keySet().stream()
-                .filter(id -> StardewcraftsveMod.MODID.equals(id.getNamespace()))
-                .map(ResourceLocation::toString)
-                .sorted()
-                .forEach(items::add);
-        return Set.copyOf(items);
+    private static String blockedDetail(java.util.Set<String> candidates) {
+        return candidates.isEmpty()
+                ? "an item selector has no live candidates"
+                : "unresolved SVE candidates " + candidates;
     }
 
     private static int countExclusions(

@@ -9,10 +9,14 @@ public final class SveContentAcquisitionCatalog {
     private static final String PREFIX = StardewcraftsveMod.MODID + ":";
 
     private static final Map<String, Exclusion> EXCLUSIONS = createExclusions();
-    private static final Map<String, String> FRIENDSHIP_RECIPE_UNLOCKS = SveCookingData.all().stream()
+    private static final Map<String, MailTrigger> MAIL_TRIGGERS = createMailTriggers();
+    private static final Map<SveAcquisitionEntrypoints.RecipeKey, String> FRIENDSHIP_RECIPE_UNLOCKS =
+            SveCookingData.all().stream()
             .filter(definition -> definition.unlock().type() == SveCookingData.UnlockType.FRIENDSHIP)
             .collect(java.util.stream.Collectors.toUnmodifiableMap(
-                    definition -> PREFIX + definition.path(),
+                    definition -> new SveAcquisitionEntrypoints.RecipeKey(
+                            SveAcquisitionEntrypoints.RecipeKind.COOKING,
+                            PREFIX + definition.path()),
                     definition -> definition.unlock().source() + " friendship "
                             + (definition.unlock().friendshipPoints() / 250) + " hearts"));
 
@@ -23,8 +27,12 @@ public final class SveContentAcquisitionCatalog {
         return EXCLUSIONS;
     }
 
-    public static Map<String, String> friendshipRecipeUnlocks() {
+    static Map<SveAcquisitionEntrypoints.RecipeKey, String> friendshipRecipeUnlocks() {
         return FRIENDSHIP_RECIPE_UNLOCKS;
+    }
+
+    static Map<String, MailTrigger> mailTriggers() {
+        return MAIL_TRIGGERS;
     }
 
     public static void addProgrammaticRoutes(SveContentAcquisitionGraph graph) {
@@ -122,9 +130,9 @@ public final class SveContentAcquisitionCatalog {
                 "bombardier_elixir", "marsh_tonic",
                 "diamond_wand", "heavy_shield", "monster_splitter");
         String[] mapLockedFish = {
-                "alligator", "arrowhead_shark", "butterfish", "daggerfish", "diamond_carp",
-                "fiber_goby", "gemfish", "goldenfish", "highlands_bass", "king_salmon",
-                "kittyfish", "meteor_carp", "puppyfish", "razor_trout", "torpedo_trout"
+                "alligator", "arrowhead_shark", "daggerfish", "diamond_carp",
+                "fiber_goby", "gemfish", "goldenfish", "highlands_bass",
+                "kittyfish", "meteor_carp", "razor_trout", "torpedo_trout"
         };
         exclude(exclusions, ExclusionType.PLANNED_CONTENT,
                 "Original fishing location or required story event is not ported", mapLockedFish);
@@ -133,9 +141,21 @@ public final class SveContentAcquisitionCatalog {
                 java.util.Arrays.stream(mapLockedFish)
                         .map(path -> "smoked_" + path)
                         .toArray(String[]::new));
+        String[] gingerIslandLockedFish = {
+                "baby_lunaloo", "barred_knifejaw", "blue_tang", "clownfish",
+                "ocean_sunfish", "seahorse", "shark", "viper_eel"
+        };
         exclude(exclusions, ExclusionType.PLANNED_CONTENT,
-                "Recipe depends on a fish from an unported location",
-                "big_bark_burger", "glazed_butterfish");
+                "Only available in a registered but currently inaccessible Ginger Island area",
+                gingerIslandLockedFish);
+        exclude(exclusions, ExclusionType.PLANNED_CONTENT,
+                "Source fish is only available in an inaccessible Ginger Island area",
+                java.util.Arrays.stream(gingerIslandLockedFish)
+                        .map(path -> "smoked_" + path)
+                        .toArray(String[]::new));
+        exclude(exclusions, ExclusionType.PLANNED_CONTENT,
+                "Only produced by a fish pond whose source fish is Ginger Island-locked",
+                "shark_tooth", "fireworks_red", "fireworks_purple", "fireworks_green");
         exclude(exclusions, ExclusionType.PLANNED_CONTENT,
                 "Requires an unported SVE quest, event, or special interaction",
                 "dewdrop_berry", "honey_jar", "golden_key", "mermaid_bracelet", "tree_coin",
@@ -143,6 +163,20 @@ public final class SveContentAcquisitionCatalog {
                 "animal_mastery", "brewing_mastery", "cheese_mastery", "crafting_mastery",
                 "grape_mastery", "starfruit_mastery", "strawberry_mastery", "warp_magic");
         return Map.copyOf(exclusions);
+    }
+
+    private static Map<String, MailTrigger> createMailTriggers() {
+        Map<String, MailTrigger> triggers = new LinkedHashMap<>();
+        SveFriendshipRewards.mailTriggers().forEach((mailId, detail) ->
+                triggers.put(mailId, new MailTrigger(detail, List.of())));
+        triggers.put("stardewcraft:gunther_museum_60",
+                new MailTrigger("museum reward at 60 donations", List.of()));
+        triggers.put("stardewcraft:gunther_museum_complete",
+                new MailTrigger("museum reward for the complete SVE artifact set", List.of(
+                        id("amber"), id("boomerang"), id("faded_button"),
+                        id("fossilized_apple"), id("old_coin"),
+                        id("rusty_shield"), id("stone_of_yoba"))));
+        return Map.copyOf(triggers);
     }
 
     private static void exclude(
@@ -165,5 +199,12 @@ public final class SveContentAcquisitionCatalog {
     }
 
     public record Exclusion(ExclusionType type, String reason) {
+    }
+
+    record MailTrigger(String detail, List<String> prerequisites) {
+        MailTrigger {
+            detail = detail == null || detail.isBlank() ? "unknown trigger" : detail.trim();
+            prerequisites = List.copyOf(prerequisites);
+        }
     }
 }

@@ -19,7 +19,7 @@ public final class SveMixinConfigTest {
             "src/main/resources/stardewcraftsve.mixins.json");
     private static final Path SOURCE_ROOT = Path.of(
             "src/main/java/com/stardew/craft/sve/mixin");
-    private static final int EXPECTED_COMMON_MIXINS = 35;
+    private static final int EXPECTED_COMMON_MIXINS = 38;
     private static final int EXPECTED_CLIENT_MIXINS = 5;
 
     private SveMixinConfigTest() {

@@ -1,0 +1,71 @@
+{
+  "location": "stardewcraftsve:moonlight_jellies_festival",
+  "fish": [
+    {
+      "id": "lunaloo_moonlight_jellies",
+      "precedence": 0,
+      "item": "stardewcraftsve:lunaloo",
+      "biomeTags": [
+        "#stardewcraft:is_beach",
+        "#stardewcraft:is_ocean"
+      ],
+      "biomes": [
+        "stardewcraftsve:moonlight_jellies_festival"
+      ],
+      "canBeInherited": true,
+      "chance": 1,
+      "difficulty": 70,
+      "motionType": 4,
+      "minFishSize": 4,
+      "maxFishSize": 8,
+      "minFishingLevel": 5,
+      "seasons": [
+        "summer"
+      ],
+      "weather": "any",
+      "timeRanges": [
+        [
+          2200,
+          2400
+        ]
+      ],
+      "condition": "SEASON_DAY summer 28",
+      "maxDepth": 5,
+      "spawnRate": 0.15,
+      "depthMultiplier": 0.5
+    },
+    {
+      "id": "shiny_lunaloo_moonlight_jellies",
+      "precedence": 0,
+      "item": "stardewcraftsve:shiny_lunaloo",
+      "biomeTags": [
+        "#stardewcraft:is_beach",
+        "#stardewcraft:is_ocean"
+      ],
+      "biomes": [
+        "stardewcraftsve:moonlight_jellies_festival"
+      ],
+      "canBeInherited": true,
+      "chance": 1,
+      "difficulty": 110,
+      "motionType": 4,
+      "minFishSize": 8,
+      "maxFishSize": 12,
+      "minFishingLevel": 8,
+      "seasons": [
+        "summer"
+      ],
+      "weather": "any",
+      "timeRanges": [
+        [
+          2200,
+          2400
+        ]
+      ],
+      "condition": "SEASON_DAY summer 28",
+      "maxDepth": 5,
+      "spawnRate": 0.05,
+      "depthMultiplier": 0.5
+    }
+  ]
+}
