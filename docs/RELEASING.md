@@ -11,7 +11,7 @@ The authoritative versions are stored in `gradle.properties`:
 - NeoForge, JEI, GeckoLib, and Jade use fixed versions;
 - Gradle dependency verification records SHA-256 values for resolved Maven artifacts;
 - the Gradle wrapper pins both Gradle 8.9 and its distribution SHA-256;
-- CI and release jobs use Temurin Java `21.0.8+9` on `ubuntu-24.04`.
+- CI and release jobs use Temurin Java `21.0.8+9.0.LTS` on `ubuntu-24.04`.
 - GitHub Actions are pinned to immutable commit SHAs rather than moving major-version tags.
 
 Archive entry order, file timestamps, and file permissions are normalized by `build.gradle`. Repository text files are checked out with LF line endings on every operating system through `.gitattributes`.
