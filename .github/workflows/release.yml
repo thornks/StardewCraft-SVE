@@ -1,0 +1,96 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+  id-token: write
+  attestations: write
+
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - name: Check out tagged source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Set up Java
+        uses: actions/setup-java@c5195efecf7bdfc987ee8bae7a71cb8b11521c00 # v4.7.1
+        with:
+          distribution: temurin
+          java-version: 21.0.8+9
+          cache: gradle
+
+      - name: Validate tag version
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="$(sed -n 's/^mod_version=//p' gradle.properties | tr -d '\r')"
+          test "${GITHUB_REF_NAME}" = "v${version}" || {
+            echo "Tag ${GITHUB_REF_NAME} does not match mod_version=${version}" >&2
+            exit 1
+          }
+
+      - name: Restore pinned StardewCraft dependency
+        id: stardewcraft-cache
+        uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809 # v4.2.4
+        with:
+          path: ${{ runner.temp }}/deps/stardewcraft.jar
+          key: stardewcraft-${{ runner.os }}-${{ hashFiles('gradle.properties', 'tools/prepare_stardewcraft.sh') }}
+
+      - name: Build pinned StardewCraft dependency
+        if: steps.stardewcraft-cache.outputs.cache-hit != 'true'
+        run: bash tools/prepare_stardewcraft.sh "$RUNNER_TEMP/stardewcraft" "$RUNNER_TEMP/deps/stardewcraft.jar"
+
+      - name: Build verified release bundle
+        env:
+          STARDEWCRAFT_JAR: ${{ runner.temp }}/deps/stardewcraft.jar
+        run: ./gradlew clean releaseBundle --no-daemon --console=plain
+
+      - name: Preserve first build
+        shell: bash
+        run: cp -R build/release "$RUNNER_TEMP/release"
+
+      - name: Rebuild and prove byte-for-byte reproducibility
+        env:
+          STARDEWCRAFT_JAR: ${{ runner.temp }}/deps/stardewcraft.jar
+        shell: bash
+        run: |
+          set -euo pipefail
+          ./gradlew clean jar --no-daemon --console=plain
+          artifact="$(find build/libs -maxdepth 1 -name 'stardewcraftsve-*.jar' -print -quit)"
+          expected="$RUNNER_TEMP/release/$(basename "$artifact")"
+          cmp --silent "$expected" "$artifact" || {
+            echo "The second build differs from the release candidate" >&2
+            sha256sum "$expected" "$artifact" >&2
+            exit 1
+          }
+          (cd "$RUNNER_TEMP/release" && sha256sum --check SHA256SUMS)
+
+      - name: Upload workflow artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: stardewcraftsve-${{ github.ref_name }}
+          path: ${{ runner.temp }}/release/*
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Attest release JAR provenance
+        uses: actions/attest-build-provenance@e8998f949152b193b063cb0ec769d69d929409be # v2.4.0
+        with:
+          subject-path: ${{ runner.temp }}/release/stardewcraftsve-*.jar
+
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          gh release create "$GITHUB_REF_NAME" "$RUNNER_TEMP"/release/* \
+            --repo "$GITHUB_REPOSITORY" \
+            --verify-tag \
+            --generate-notes \
+            --title "StardewCraftSVE $GITHUB_REF_NAME"

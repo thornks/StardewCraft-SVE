@@ -778,7 +778,7 @@ public final class ModItems {
     public static final DeferredHolder<Item, StardewWeaponItem> DIAMOND_WAND = ITEMS.register("diamond_wand",
         () -> new SveSwordItem("diamond_wand", unstackableProperties()));
     public static final DeferredHolder<Item, StardewWeaponItem> HEAVY_SHIELD = ITEMS.register("heavy_shield",
-        () -> new SveSwordItem("heavy_shield", unstackableProperties()));
+        () -> new SveShieldItem("heavy_shield", unstackableProperties()));
     public static final DeferredHolder<Item, StardewClubItem> MONSTER_SPLITTER = ITEMS.register("monster_splitter",
         () -> new SveClubItem("monster_splitter", unstackableProperties()));
     public static final DeferredHolder<Item, SimpleStardewItem> RUSTY_BLADE = ITEMS.register("rusty_blade",

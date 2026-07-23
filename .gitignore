@@ -8,6 +8,7 @@
 /temp_classes/
 /_jar_extract/
 /com/
+/data/
 
 # Local dependencies, extracted dependency inspection, and packaged releases
 /libs/

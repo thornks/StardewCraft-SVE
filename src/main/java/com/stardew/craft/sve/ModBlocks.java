@@ -102,6 +102,11 @@ public final class ModBlocks {
     public static final DeferredBlock<Block> PERSIMMON_TREE_EXTENSION = BLOCKS.register("persimmon_tree_extension",
             () -> new SveFruitTreeExtensionBlock(SveFruitTreeType.PERSIMMON, fruitTreeProps()));
 
+    // Fruit-bat cave pickups use forage blocks so quality, Gatherer and Foraging XP match the host cave fruits.
+    public static final DeferredBlock<Block> FORAGE_PEAR = forage("pear");
+    public static final DeferredBlock<Block> FORAGE_NECTARINE = forage("nectarine");
+    public static final DeferredBlock<Block> FORAGE_PERSIMMON = forage("persimmon");
+
     // ===== Wild trees =====
     public static final DeferredBlock<Block> FIR_SAPLING = BLOCKS.register("fir_sapling",
             () -> new SveWildTreeSaplingBlock(SveWildTreeType.FIR, fruitSaplingProps()));

@@ -23,6 +23,8 @@
     "CommunityCenterPlayerProgressAccessor",
     "CommunityCenterSavedDataMixin",
     "FairRecipePurchaseMixin",
+    "FarmCaveAPIMixin",
+    "FarmCaveDailyServiceMixin",
     "FarmDebrisDailyServiceMixin",
     "FarmInstanceInitializerMixin",
     "FarmInstanceRegistryBundleMixin",

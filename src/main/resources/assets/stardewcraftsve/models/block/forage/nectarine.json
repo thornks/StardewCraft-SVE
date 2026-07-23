@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "stardewcraftsve:item/fruit/nectarine",
+    "particle": "stardewcraftsve:item/fruit/nectarine"
+  },
+  "render_type": "minecraft:cutout"
+}

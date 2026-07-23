@@ -1,5 +1,6 @@
 package com.stardew.craft.sve;
 
+import com.stardew.craft.StardewCraft;
 import com.stardew.craft.api.v1.equipment.StardewEquipmentData;
 import com.stardew.craft.api.v1.equipment.StardewEquipmentDataApi;
 import com.stardew.craft.combat.WeaponStats;
@@ -14,6 +15,10 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -22,6 +27,7 @@ import java.util.Optional;
 
 /** Single source of truth for the six weapons defined by SVE 1.15.11. */
 public final class SveWeaponData {
+    private static final float MIN_RUNTIME_ATTACKS_PER_SECOND = 0.5F;
     private static final Map<String, Definition> DEFINITIONS = createDefinitions();
     private static final Map<String, WeaponData> WEAPONS = createWeaponData();
 
@@ -81,6 +87,33 @@ public final class SveWeaponData {
                 .precision(definition.precision())
                 .knockback(definition.knockback())
                 .build();
+    }
+
+    /**
+     * Stardew's extreme negative speed values can become zero APS under StardewCraft's linear conversion.
+     * Keep the source stat intact for tooltips and stack data while ensuring Minecraft can finish its
+     * attack cooldown and first-person equip animation.
+     */
+    static ItemAttributeModifiers runtimeAttributes(String path, ItemAttributeModifiers inherited) {
+        Definition definition = byPath(path);
+        float convertedAttacksPerSecond = convertedAttacksPerSecond(definition);
+        if (convertedAttacksPerSecond >= MIN_RUNTIME_ATTACKS_PER_SECOND) return inherited;
+
+        ResourceLocation modifierId = ResourceLocation.fromNamespaceAndPath(
+                StardewCraft.MODID, "weapon." + path + ".attack_speed");
+        return inherited.withModifierAdded(
+                Attributes.ATTACK_SPEED,
+                new AttributeModifier(modifierId, MIN_RUNTIME_ATTACKS_PER_SECOND - 4.0F,
+                        AttributeModifier.Operation.ADD_VALUE),
+                EquipmentSlotGroup.MAINHAND);
+    }
+
+    static float runtimeAttacksPerSecond(Definition definition) {
+        return Math.max(MIN_RUNTIME_ATTACKS_PER_SECOND, convertedAttacksPerSecond(definition));
+    }
+
+    private static float convertedAttacksPerSecond(Definition definition) {
+        return definition.type().getAttackSpeed() + definition.speed() * 0.1F;
     }
 
     static boolean patchExistingStackStats(CompoundTag root, Definition definition) {
@@ -150,17 +183,23 @@ public final class SveWeaponData {
 
     private static Map<String, Definition> createDefinitions() {
         Map<String, Definition> definitions = new LinkedHashMap<>();
-        add(definitions, new Definition("diamond_wand", WeaponType.SWORD, 6,
+        add(definitions, new Definition("diamond_wand", WeaponType.SWORD,
+                "stardewcraft.type.weapon.wand", 6,
                 1, 2, 31.0F, 6, 800.0F, 0, 1.0F, 1.0F, null));
-        add(definitions, new Definition("heavy_shield", WeaponType.SWORD, 12,
+        add(definitions, new Definition("heavy_shield", WeaponType.SWORD,
+                "stardewcraft.type.weapon.shield", 12,
                 24, 48, 1.0F, -80, 100.0F, 35, 0.0F, 0.0F, null));
-        add(definitions, new Definition("monster_splitter", WeaponType.CLUB, 20,
+        add(definitions, new Definition("monster_splitter", WeaponType.CLUB,
+                "stardewcraft.type.weapon.great_sword", 20,
                 850, 1000, 2.0F, -28, 100.0F, 0, 0.0F, 1.5F, null));
-        add(definitions, new Definition("tempered_galaxy_dagger", WeaponType.DAGGER, 17,
+        add(definitions, new Definition("tempered_galaxy_dagger", WeaponType.DAGGER,
+                "stardewcraft.type.weapon.dagger", 17,
                 50, 70, 1.0F, 10, 100.0F, 15, 0.3F, 3.0F, "galaxy_dagger"));
-        add(definitions, new Definition("tempered_galaxy_hammer", WeaponType.CLUB, 18,
+        add(definitions, new Definition("tempered_galaxy_hammer", WeaponType.CLUB,
+                "stardewcraft.type.weapon.club", 18,
                 90, 110, 1.0F, 1, 100.0F, 20, 0.0F, 3.0F, "galaxy_hammer"));
-        add(definitions, new Definition("tempered_galaxy_sword", WeaponType.SWORD, 18,
+        add(definitions, new Definition("tempered_galaxy_sword", WeaponType.SWORD,
+                "stardewcraft.type.weapon.sword", 18,
                 80, 120, 1.0F, 5, 100.0F, 10, 0.15F, 3.0F, "galaxy_sword"));
         return Map.copyOf(definitions);
     }
@@ -206,6 +245,7 @@ public final class SveWeaponData {
     record Definition(
             String path,
             WeaponType type,
+            String displayTypeKey,
             int level,
             int minDamage,
             int maxDamage,

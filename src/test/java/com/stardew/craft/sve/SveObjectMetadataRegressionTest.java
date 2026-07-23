@@ -54,7 +54,7 @@ public final class SveObjectMetadataRegressionTest {
                 + SveFishData.SVE_FISH.size());
     }
 
-    private static void validateCollections() {
+    private static void validateCollections() throws IOException {
         Set<String> artifacts = pathsForTab(2);
         expect(artifacts.equals(ARTIFACTS), "Unexpected artifact collection: " + artifacts);
 
@@ -68,6 +68,10 @@ public final class SveObjectMetadataRegressionTest {
 
         expect(pathsForTab(0).contains("magic_lamp"),
                 "Magic Lamp must remain in the shipping collection");
+
+        String creativeTabs = Files.readString(CREATIVE_TABS);
+        expect(creativeTabs.contains("output.accept(ModItems.DEBUG_WAND.get())"),
+                "Debug Wand must remain available from an SVE creative tab");
     }
 
     private static void validateItemTypesAndFishStats(String source) {

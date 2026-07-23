@@ -151,6 +151,8 @@ public final class ModCreativeTabs {
             output.accept(ModItems.PROPERTY_DEED.get());
             output.accept(ModItems.HEDGE_FENCE.get());
             output.accept(ModItems.SMALL_HARDWOOD_FENCE.get());
+            // Creative-only development tools
+            output.accept(ModItems.DEBUG_WAND.get());
         });
 
     // ===== Helpers =====

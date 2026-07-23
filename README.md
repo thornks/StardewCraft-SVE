@@ -16,7 +16,7 @@ It does not currently recreate the SVE world map or the complete SVE NPC, dialog
 - Minecraft 1.21.1
 - NeoForge 21.1.226 or later
 - Java 21
-- Addon version: 0.1.0
+- Addon version: 0.2.0
 - Mod id: `stardewcraftsve`
 - Required StardewCraft version: 0.5.2
 
@@ -50,23 +50,18 @@ Third-party dependency JARs, extracted reference material, decompiled sources, s
 
 ## Development
 
-Before building, provide the local dependencies expected by `build.gradle`:
-
-```text
-../stardewcraft-0.5.2.jar
-libs/geckolib-neoforge-1.21.1-4.7.7.jar
-libs/jade-1.21.1-NeoForge-15.10.5.jar
-libs/jei-1.21.1-neoforge-19.27.0.340.jar
-```
+JEI, GeckoLib, and Jade are resolved at their pinned public Maven versions. For local development, place the official `stardewcraft-0.5.2.jar` in the parent directory. Its SHA-256 is verified before compilation. A StardewCraft JAR built from the pinned source commit can be selected with `-Pstardewcraft_jar=<path>` or the `STARDEWCRAFT_JAR` environment variable.
 
 Common validation commands:
 
 ```powershell
 .\gradlew.bat check --no-daemon
 .\gradlew.bat build --no-daemon
+.\gradlew.bat clean releaseBundle --no-daemon
 ```
 
-The built addon is written to `build/libs/stardewcraftsve-0.1.0.jar`.
+The built addon is written to `build/libs/stardewcraftsve-0.2.0.jar`.
+The verified release bundle and checksums are written to `build/release`. See [docs/RELEASING.md](docs/RELEASING.md) for the tag-driven GitHub release process and reproducibility guarantees.
 
 ## Credits and Asset Notice
 

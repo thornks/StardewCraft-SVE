@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "stardewcraftsve:item/fruit/persimmon",
+    "particle": "stardewcraftsve:item/fruit/persimmon"
+  },
+  "render_type": "minecraft:cutout"
+}

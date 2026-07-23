@@ -19,6 +19,7 @@ import java.util.Set;
 public final class SveCropAndForageRegressionTest {
     private static final Path ITEM_TAG_DIRECTORY = Path.of("src/main/resources/data/stardewcraft/tags/item");
     private static final Path FORAGE_DIRECTORY = Path.of("src/main/resources/data/stardewcraftsve/forage_zones");
+    private static final Path ASSET_ROOT = Path.of("src/main/resources/assets/stardewcraftsve");
 
     private SveCropAndForageRegressionTest() {
     }
@@ -27,6 +28,7 @@ public final class SveCropAndForageRegressionTest {
         validateCrops();
         validateCropTags();
         validateForageZones();
+        validateFarmCaveFruits();
         System.out.println("SVE crop and forage regression suite passed");
     }
 
@@ -129,6 +131,23 @@ public final class SveCropAndForageRegressionTest {
             }
         }
         expectEquals(expected, actual, "forage zone seasons");
+    }
+
+    private static void validateFarmCaveFruits() {
+        int[] expectedSlots = {-1, -1, -1, -1, -1, 0, 1, 2};
+        for (int roll = 0; roll < expectedSlots.length; roll++) {
+            expectEquals(expectedSlots[roll], SveFarmCaveFruits.extensionSlot(roll),
+                    "fruit-cave orchard roll " + roll);
+        }
+
+        for (String fruit : List.of("pear", "nectarine", "persimmon")) {
+            expect(Files.isRegularFile(ASSET_ROOT.resolve("blockstates/forage_" + fruit + ".json")),
+                    fruit + " cave blockstate");
+            expect(Files.isRegularFile(ASSET_ROOT.resolve("models/block/forage/" + fruit + ".json")),
+                    fruit + " cave model");
+            expect(Files.isRegularFile(ASSET_ROOT.resolve("textures/item/fruit/" + fruit + ".png")),
+                    fruit + " cave texture source");
+        }
     }
 
     private static Map<String, ExpectedCrop> expectedCrops() {

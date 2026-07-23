@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'com.stardew.craft.sve'
-version = '0.1.0'
+version = mod_version
 
 base {
     archivesName = "stardewcraftsve"
@@ -14,22 +14,38 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
 repositories {
     mavenCentral()
-    flatDir {
-        dirs 'libs'
+    maven {
+        name = 'BlameJared'
+        url = 'https://maven.blamejared.com/'
+    }
+    maven {
+        name = 'GeckoLib'
+        url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+    }
+    maven {
+        name = 'Modrinth'
+        url = 'https://api.modrinth.com/maven'
     }
 }
 
+def configuredStardewCraftJar = providers.gradleProperty('stardewcraft_jar')
+        .orElse(providers.environmentVariable('STARDEWCRAFT_JAR'))
+def defaultStardewCraftJar = layout.projectDirectory
+        .file("../stardewcraft-${stardewcraft_version}.jar").asFile.absolutePath
+def stardewCraftJar = file(configuredStardewCraftJar.getOrElse(defaultStardewCraftJar))
+
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
-    compileOnly files('../stardewcraft-0.5.2.jar')
-    runtimeOnly files('../stardewcraft-0.5.2.jar')
-    compileOnly files('libs/jei-1.21.1-neoforge-19.27.0.340.jar')
-    compileOnly files('libs/geckolib-neoforge-1.21.1-4.7.7.jar')
-    runtimeOnly files('libs/geckolib-neoforge-1.21.1-4.7.7.jar')
-    compileOnly files('libs/jade-1.21.1-NeoForge-15.10.5.jar')
-    runtimeOnly files('libs/jade-1.21.1-NeoForge-15.10.5.jar')
-    testCompileOnly files('../stardewcraft-0.5.2.jar')
-    testRuntimeOnly files('../stardewcraft-0.5.2.jar')
+    compileOnly files(stardewCraftJar)
+    runtimeOnly files(stardewCraftJar)
+    testCompileOnly files(stardewCraftJar)
+    testRuntimeOnly files(stardewCraftJar)
+
+    compileOnly "mezz.jei:jei-1.21.1-neoforge:${jei_version}"
+    compileOnly "software.bernie.geckolib:geckolib-neoforge-1.21.1:${geckolib_version}"
+    runtimeOnly "software.bernie.geckolib:geckolib-neoforge-1.21.1:${geckolib_version}"
+    compileOnly "maven.modrinth:jade:${jade_version}+neoforge"
+    runtimeOnly "maven.modrinth:jade:${jade_version}+neoforge"
 }
 
 runs {
@@ -42,6 +58,104 @@ runs {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
+    options.release = 21
+    dependsOn 'verifyStardewCraftDependency'
+}
+
+tasks.withType(AbstractArchiveTask).configureEach {
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
+    dirPermissions { unix('0755') }
+    filePermissions { unix('0644') }
+}
+
+tasks.named('processResources', ProcessResources) {
+    inputs.property 'mod_version', project.version
+    filesMatching('META-INF/neoforge.mods.toml') {
+        expand mod_version: project.version
+    }
+}
+
+tasks.register('verifyStardewCraftDependency') {
+    group = 'verification'
+    description = 'Checks the configured StardewCraft dependency before compilation.'
+    inputs.file(stardewCraftJar)
+    doLast {
+        if (!stardewCraftJar.isFile()) {
+            throw new GradleException(
+                    "Missing StardewCraft dependency: ${stardewCraftJar}. " +
+                    'Set -Pstardewcraft_jar=<path> or STARDEWCRAFT_JAR.')
+        }
+        if (!configuredStardewCraftJar.isPresent()) {
+            def digest = java.security.MessageDigest.getInstance('SHA-256')
+            stardewCraftJar.withInputStream { input ->
+                byte[] buffer = new byte[8192]
+                int read
+                while ((read = input.read(buffer)) >= 0) {
+                    if (read > 0) digest.update(buffer, 0, read)
+                }
+            }
+            def actual = digest.digest().encodeHex().toString()
+            if (!actual.equalsIgnoreCase(stardewcraft_prebuilt_sha256)) {
+                throw new GradleException(
+                        "Unexpected StardewCraft ${stardewcraft_version} JAR hash: ${actual}; " +
+                        "expected ${stardewcraft_prebuilt_sha256}. " +
+                        'Use -Pstardewcraft_jar only for a dependency built from the pinned source commit.')
+            }
+        }
+    }
+}
+
+tasks.register('releaseBundle') {
+    group = 'build'
+    description = 'Builds the verified JAR and deterministic release checksum/manifest.'
+    dependsOn 'check', 'jar'
+    doLast {
+        def jarFile = tasks.named('jar', Jar).get().archiveFile.get().asFile
+        def releaseDirectory = layout.buildDirectory.dir('release').get().asFile
+        releaseDirectory.mkdirs()
+        copy {
+            from jarFile
+            into releaseDirectory
+        }
+
+        def digest = java.security.MessageDigest.getInstance('SHA-256')
+        jarFile.withInputStream { input ->
+            byte[] buffer = new byte[8192]
+            int read
+            while ((read = input.read(buffer)) >= 0) {
+                if (read > 0) digest.update(buffer, 0, read)
+            }
+        }
+        def hash = digest.digest().encodeHex().toString()
+        def stardewDigest = java.security.MessageDigest.getInstance('SHA-256')
+        stardewCraftJar.withInputStream { input ->
+            byte[] buffer = new byte[8192]
+            int read
+            while ((read = input.read(buffer)) >= 0) {
+                if (read > 0) stardewDigest.update(buffer, 0, read)
+            }
+        }
+        def stardewHash = stardewDigest.digest().encodeHex().toString()
+        new File(releaseDirectory, 'SHA256SUMS').setText(
+                "${hash}  ${jarFile.name}\n", 'UTF-8')
+        new File(releaseDirectory, 'BUILD-INFO.properties').setText(
+                [
+                        "artifact=${jarFile.name}",
+                        "sha256=${hash}",
+                        "mod_version=${project.version}",
+                        "minecraft_version=${minecraft_version}",
+                        "neoforge_version=${neo_version}",
+                        "stardewcraft_version=${stardewcraft_version}",
+                        "stardewcraft_source_commit=${stardewcraft_source_commit}",
+                        "stardewcraft_dependency_sha256=${stardewHash}",
+                        "jei_version=${jei_version}",
+                        "geckolib_version=${geckolib_version}",
+                        "jade_version=${jade_version}",
+                        'java_version=21',
+                        "gradle_version=${gradle.gradleVersion}"
+                ].join('\n') + '\n', 'UTF-8')
+    }
 }
 
 tasks.register('animalRegressionTest', JavaExec) {

@@ -14,16 +14,50 @@ import java.util.Map;
 /** Regression checks for the six SVE 1.15.11 weapon definitions and legacy stack bridge. */
 public final class SveWeaponRegressionTest {
     private static final Path ITEM_SOURCE = Path.of("src/main/java/com/stardew/craft/sve/ModItems.java");
+    private static final Path MOD_SOURCE = Path.of("src/main/java/com/stardew/craft/sve/StardewcraftsveMod.java");
+    private static final Path WEAPON_ITEM_SOURCE = Path.of("src/main/java/com/stardew/craft/sve/SveWeaponItems.java");
+    private static final Path SHIELD_HANDLER_SOURCE = Path.of("src/main/java/com/stardew/craft/sve/SveHeavyShieldHandler.java");
 
     private SveWeaponRegressionTest() {}
 
     public static void main(String[] args) throws IOException {
         Map<String, SveWeaponData.Definition> definitions = definitions();
         validateGoldenStats(definitions);
+        validateDisplayTypes(definitions);
+        validateRuntimeAttackSpeeds(definitions);
         validateSkillInheritance(definitions);
         validateStackBridge(definitions);
         validateItemTypes();
         System.out.println("SVE weapon regression suite passed: 6 weapons, original stats and stack bridge");
+    }
+
+    private static void validateDisplayTypes(Map<String, SveWeaponData.Definition> definitions) {
+        Map<String, String> expected = Map.of(
+                "diamond_wand", "stardewcraft.type.weapon.wand",
+                "heavy_shield", "stardewcraft.type.weapon.shield",
+                "monster_splitter", "stardewcraft.type.weapon.great_sword",
+                "tempered_galaxy_dagger", "stardewcraft.type.weapon.dagger",
+                "tempered_galaxy_hammer", "stardewcraft.type.weapon.club",
+                "tempered_galaxy_sword", "stardewcraft.type.weapon.sword");
+        for (SveWeaponData.Definition definition : definitions.values()) {
+            expectEquals(expected.get(definition.path()), definition.displayTypeKey(),
+                    definition.path() + " display type");
+        }
+    }
+
+    private static void validateRuntimeAttackSpeeds(Map<String, SveWeaponData.Definition> definitions) {
+        expectFloat(0.5F, SveWeaponData.runtimeAttacksPerSecond(definitions.get("heavy_shield")),
+                "heavy shield runtime attack speed floor");
+        expectFloat(0.5F, SveWeaponData.runtimeAttacksPerSecond(definitions.get("monster_splitter")),
+                "monster splitter runtime attack speed floor");
+        expectFloat(2.2F, SveWeaponData.runtimeAttacksPerSecond(definitions.get("diamond_wand")),
+                "positive sword speed remains unchanged");
+        expectFloat(3.5F, SveWeaponData.runtimeAttacksPerSecond(definitions.get("tempered_galaxy_dagger")),
+                "positive dagger speed remains unchanged");
+        expectFloat(0.85F, SveWeaponData.runtimeAttacksPerSecond(definitions.get("tempered_galaxy_hammer")),
+                "positive club speed remains unchanged");
+        expectFloat(2.1F, SveWeaponData.runtimeAttacksPerSecond(definitions.get("tempered_galaxy_sword")),
+                "positive sword speed remains unchanged");
     }
 
     private static void validateSkillInheritance(Map<String, SveWeaponData.Definition> definitions) {
@@ -111,11 +145,26 @@ public final class SveWeaponRegressionTest {
     private static void validateItemTypes() throws IOException {
         String source = Files.readString(ITEM_SOURCE);
         expect(source.contains("new SveSwordItem(\"diamond_wand\""), "diamond wand sword behavior");
-        expect(source.contains("new SveSwordItem(\"heavy_shield\""), "heavy shield sword behavior");
+        expect(source.contains("new SveShieldItem(\"heavy_shield\""), "heavy shield hybrid behavior");
         expect(source.contains("new SveClubItem(\"monster_splitter\""), "monster splitter club behavior");
         expect(source.contains("new SveDaggerItem(\"tempered_galaxy_dagger\""), "tempered dagger behavior");
         expect(source.contains("new SveClubItem(\"tempered_galaxy_hammer\""), "tempered hammer behavior");
         expect(source.contains("new SveSwordItem(\"tempered_galaxy_sword\""), "tempered sword behavior");
+
+        String weaponItems = Files.readString(WEAPON_ITEM_SOURCE);
+        expect(weaponItems.contains("return UseAnim.BLOCK;"), "heavy shield block animation");
+        expect(weaponItems.contains("player.startUsingItem(hand);"), "heavy shield starts active use");
+        expect(weaponItems.contains("DEFAULT_SHIELD_ACTIONS.contains(ability)"), "heavy shield native item ability");
+
+        String shieldHandler = Files.readString(SHIELD_HANDLER_SOURCE);
+        expect(shieldHandler.contains("player.isDamageSourceBlocked(event.getSource())"),
+                "heavy shield native direction and damage-tag rules");
+        expect(shieldHandler.contains("event.setAmount(0.0F);"),
+                "heavy shield blocks before StardewCraft health conversion");
+        expect(shieldHandler.contains("attacker.canDisableShield()"), "heavy shield can be disabled natively");
+
+        String modSource = Files.readString(MOD_SOURCE);
+        expect(modSource.contains("SveHeavyShieldHandler.register();"), "heavy shield compatibility is registered");
     }
 
     private static Map.Entry<String, String> stat(String path, String value) {
