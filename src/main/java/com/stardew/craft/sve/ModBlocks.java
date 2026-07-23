@@ -237,24 +237,7 @@ public final class ModBlocks {
     public static final DeferredBlock<Block> FORAGE_BIG_CONCH = forage("big_conch");
     public static final DeferredBlock<Block> FORAGE_DRIED_SAND_DOLLAR = forage("dried_sand_dollar");
     public static final DeferredBlock<Block> FORAGE_DULSE_SEAWEED = forage("dulse_seaweed");
-    public static final DeferredBlock<Block> FORAGE_SEA_SPONGE = forage("sea_sponge");
-    public static final DeferredBlock<Block> FORAGE_STARFISH = forage("starfish");
-
-    // ===== Forage: Swamp =====
-    public static final DeferredBlock<Block> FORAGE_SLUDGE = forage("sludge");
-    public static final DeferredBlock<Block> FORAGE_SUPERNATURAL_GOO = forage("supernatural_goo");
-    public static final DeferredBlock<Block> FORAGE_SWAMP_CRAB = forage("swamp_crab");
-    public static final DeferredBlock<Block> FORAGE_SWAMP_ESSENCE = forage("swamp_essence");
-
-    // ===== Forage: General =====
-    public static final DeferredBlock<Block> FORAGE_FIR_CONE = forage("fir_cone");
-    public static final DeferredBlock<Block> FORAGE_VOID_PEBBLE = forage("void_pebble");
-    public static final DeferredBlock<Block> FORAGE_VOID_ROOT = forage("void_root");
-    public static final DeferredBlock<Block> FORAGE_VOID_SHARD = forage("void_shard");
-    public static final DeferredBlock<Block> FORAGE_VOID_SOUL = forage("void_soul");
-    public static final DeferredBlock<Block> FORAGE_YARN = forage("yarn");
     public static final DeferredBlock<Block> FORAGE_SHARK_TOOTH = forage("shark_tooth");
-    public static final DeferredBlock<Block> FORAGE_SWIRL_STONE = forage("swirl_stone");
 
     // ===== Forage: Special (biome-based spawning) =====
     public static final DeferredBlock<Block> FORAGE_BEARBERRYS = forage("bearberrys", 3);

@@ -61,7 +61,7 @@ public final class SveFishPondAudit {
     public static Audit audit() {
         Audit audit = new Audit();
         FishPondDataService service = FishPondDataService.get();
-        for (String fishId : SveFishData.FISH_POND_ITEMS) {
+        for (String fishId : SveFishData.SVE_FISH) {
             ResourceLocation fishKey = ResourceLocation.fromNamespaceAndPath(StardewcraftsveMod.MODID, fishId);
             if (!BuiltInRegistries.ITEM.containsKey(fishKey)) {
                 audit.error("Missing fish pond item " + fishKey);

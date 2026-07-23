@@ -18,6 +18,7 @@ import com.stardew.craft.sve.tree.SveFruitTreeSaplingItem;
 import com.stardew.craft.sve.tree.SveFruitTreeType;
 import com.stardew.craft.sve.tree.wild.FirConeItem;
 import com.stardew.craft.sve.tree.wild.BirchSeedItem;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -796,109 +797,24 @@ public final class ModItems {
             () -> new EdibleSimpleStardewItem(
                     "stardewcraft.type.artisan_goods", 50, 38, 17, true, stackableProperties()));
 
-    // ===== smoked fish (registered under stardewcraftsve namespace so JEI shows @SVE tag) =====
+    // ===== smoked fish (derived from the canonical SVE fish catalog) =====
 
-    public static final DeferredHolder<Item, Item> SMOKED_ALLIGATOR = SMOKED_FISH_ITEMS.register("smoked_alligator",
-        () -> new SmokedFishItem(() -> ModItems.ALLIGATOR.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_ARROWHEAD_SHARK = SMOKED_FISH_ITEMS.register("smoked_arrowhead_shark",
-        () -> new SmokedFishItem(() -> ModItems.ARROWHEAD_SHARK.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_BABY_LUNALOO = SMOKED_FISH_ITEMS.register("smoked_baby_lunaloo",
-        () -> new SmokedFishItem(() -> ModItems.BABY_LUNALOO.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_BARRED_KNIFEJAW = SMOKED_FISH_ITEMS.register("smoked_barred_knifejaw",
-        () -> new SmokedFishItem(() -> ModItems.BARRED_KNIFEJAW.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_BLUE_TANG = SMOKED_FISH_ITEMS.register("smoked_blue_tang",
-        () -> new SmokedFishItem(() -> ModItems.BLUE_TANG.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_BONEFISH = SMOKED_FISH_ITEMS.register("smoked_bonefish",
-        () -> new SmokedFishItem(() -> ModItems.BONEFISH.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_BULL_TROUT = SMOKED_FISH_ITEMS.register("smoked_bull_trout",
-        () -> new SmokedFishItem(() -> ModItems.BULL_TROUT.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_BUTTERFISH = SMOKED_FISH_ITEMS.register("smoked_butterfish",
-        () -> new SmokedFishItem(() -> ModItems.BUTTERFISH.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_CLOWNFISH = SMOKED_FISH_ITEMS.register("smoked_clownfish",
-        () -> new SmokedFishItem(() -> ModItems.CLOWNFISH.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_DAGGERFISH = SMOKED_FISH_ITEMS.register("smoked_daggerfish",
-        () -> new SmokedFishItem(() -> ModItems.DAGGERFISH.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_DIAMOND_CARP = SMOKED_FISH_ITEMS.register("smoked_diamond_carp",
-        () -> new SmokedFishItem(() -> ModItems.DIAMOND_CARP.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_FIBER_GOBY = SMOKED_FISH_ITEMS.register("smoked_fiber_goby",
-        () -> new SmokedFishItem(() -> ModItems.FIBER_GOBY.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_FROG = SMOKED_FISH_ITEMS.register("smoked_frog",
-        () -> new SmokedFishItem(() -> ModItems.FROG.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_GAR = SMOKED_FISH_ITEMS.register("smoked_gar",
-        () -> new SmokedFishItem(() -> ModItems.GAR.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_GEMFISH = SMOKED_FISH_ITEMS.register("smoked_gemfish",
-        () -> new SmokedFishItem(() -> ModItems.GEMFISH.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_GOLDENFISH = SMOKED_FISH_ITEMS.register("smoked_goldenfish",
-        () -> new SmokedFishItem(() -> ModItems.GOLDENFISH.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_GOLDFISH = SMOKED_FISH_ITEMS.register("smoked_goldfish",
-        () -> new SmokedFishItem(() -> ModItems.GOLDFISH.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_GRASS_CARP = SMOKED_FISH_ITEMS.register("smoked_grass_carp",
-        () -> new SmokedFishItem(() -> ModItems.GRASS_CARP.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_HIGHLANDS_BASS = SMOKED_FISH_ITEMS.register("smoked_highlands_bass",
-        () -> new SmokedFishItem(() -> ModItems.HIGHLANDS_BASS.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_KING_SALMON = SMOKED_FISH_ITEMS.register("smoked_king_salmon",
-        () -> new SmokedFishItem(() -> ModItems.KING_SALMON.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_KITTYFISH = SMOKED_FISH_ITEMS.register("smoked_kittyfish",
-        () -> new SmokedFishItem(() -> ModItems.KITTYFISH.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_LUNALOO = SMOKED_FISH_ITEMS.register("smoked_lunaloo",
-        () -> new SmokedFishItem(() -> ModItems.LUNALOO.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_METEOR_CARP = SMOKED_FISH_ITEMS.register("smoked_meteor_carp",
-        () -> new SmokedFishItem(() -> ModItems.METEOR_CARP.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_MINNOW = SMOKED_FISH_ITEMS.register("smoked_minnow",
-        () -> new SmokedFishItem(() -> ModItems.MINNOW.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_OCEAN_SUNFISH = SMOKED_FISH_ITEMS.register("smoked_ocean_sunfish",
-        () -> new SmokedFishItem(() -> ModItems.OCEAN_SUNFISH.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_PUPPYFISH = SMOKED_FISH_ITEMS.register("smoked_puppyfish",
-        () -> new SmokedFishItem(() -> ModItems.PUPPYFISH.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_RADIOACTIVE_BASS = SMOKED_FISH_ITEMS.register("smoked_radioactive_bass",
-        () -> new SmokedFishItem(() -> ModItems.RADIOACTIVE_BASS.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_RAZOR_TROUT = SMOKED_FISH_ITEMS.register("smoked_razor_trout",
-        () -> new SmokedFishItem(() -> ModItems.RAZOR_TROUT.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_SEA_SPONGE = SMOKED_FISH_ITEMS.register("smoked_sea_sponge",
-        () -> new SmokedFishItem(() -> ModItems.SEA_SPONGE.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_SEAHORSE = SMOKED_FISH_ITEMS.register("smoked_seahorse",
-        () -> new SmokedFishItem(() -> ModItems.SEAHORSE.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_SHARK = SMOKED_FISH_ITEMS.register("smoked_shark",
-        () -> new SmokedFishItem(() -> ModItems.SHARK.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_SHINY_LUNALOO = SMOKED_FISH_ITEMS.register("smoked_shiny_lunaloo",
-        () -> new SmokedFishItem(() -> ModItems.SHINY_LUNALOO.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_SNATCHER_WORM = SMOKED_FISH_ITEMS.register("smoked_snatcher_worm",
-        () -> new SmokedFishItem(() -> ModItems.SNATCHER_WORM.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_STARFISH = SMOKED_FISH_ITEMS.register("smoked_starfish",
-        () -> new SmokedFishItem(() -> ModItems.STARFISH.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_SWAMP_CRAB = SMOKED_FISH_ITEMS.register("smoked_swamp_crab",
-        () -> new SmokedFishItem(() -> ModItems.SWAMP_CRAB.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_TADPOLE = SMOKED_FISH_ITEMS.register("smoked_tadpole",
-        () -> new SmokedFishItem(() -> ModItems.TADPOLE.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_TORPEDO_TROUT = SMOKED_FISH_ITEMS.register("smoked_torpedo_trout",
-        () -> new SmokedFishItem(() -> ModItems.TORPEDO_TROUT.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_TURRETFISH = SMOKED_FISH_ITEMS.register("smoked_turretfish",
-        () -> new SmokedFishItem(() -> ModItems.TURRETFISH.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_UNDEADFISH = SMOKED_FISH_ITEMS.register("smoked_undeadfish",
-        () -> new SmokedFishItem(() -> ModItems.UNDEADFISH.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_VIPER_EEL = SMOKED_FISH_ITEMS.register("smoked_viper_eel",
-        () -> new SmokedFishItem(() -> ModItems.VIPER_EEL.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_VOID_EEL = SMOKED_FISH_ITEMS.register("smoked_void_eel",
-        () -> new SmokedFishItem(() -> ModItems.VOID_EEL.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_WATER_GRUB = SMOKED_FISH_ITEMS.register("smoked_water_grub",
-        () -> new SmokedFishItem(() -> ModItems.WATER_GRUB.get(), stackableProperties()));
-    public static final DeferredHolder<Item, Item> SMOKED_WOLF_SNAPPER = SMOKED_FISH_ITEMS.register("smoked_wolf_snapper",
-        () -> new SmokedFishItem(() -> ModItems.WOLF_SNAPPER.get(), stackableProperties()));
+    public static final List<DeferredHolder<Item, Item>> SMOKED_FISH =
+            SveFishData.SVE_FISH.stream().map(ModItems::registerSmokedFish).toList();
 
-    // Convenience list for iteration (creative tab, etc.)
-    public static final List<DeferredHolder<Item, ? extends Item>> SMOKED_FISH = List.of(
-        SMOKED_ALLIGATOR, SMOKED_ARROWHEAD_SHARK, SMOKED_BABY_LUNALOO, SMOKED_BARRED_KNIFEJAW,
-        SMOKED_BLUE_TANG, SMOKED_BONEFISH, SMOKED_BULL_TROUT, SMOKED_BUTTERFISH,
-        SMOKED_CLOWNFISH, SMOKED_DAGGERFISH, SMOKED_DIAMOND_CARP, SMOKED_FIBER_GOBY,
-        SMOKED_FROG, SMOKED_GAR, SMOKED_GEMFISH, SMOKED_GOLDENFISH, SMOKED_GOLDFISH,
-        SMOKED_GRASS_CARP, SMOKED_HIGHLANDS_BASS, SMOKED_KING_SALMON, SMOKED_KITTYFISH,
-        SMOKED_LUNALOO, SMOKED_METEOR_CARP, SMOKED_MINNOW, SMOKED_OCEAN_SUNFISH,
-        SMOKED_PUPPYFISH, SMOKED_RADIOACTIVE_BASS, SMOKED_RAZOR_TROUT, SMOKED_SEA_SPONGE,
-        SMOKED_SEAHORSE, SMOKED_SHARK, SMOKED_SHINY_LUNALOO, SMOKED_SNATCHER_WORM,
-        SMOKED_STARFISH, SMOKED_SWAMP_CRAB, SMOKED_TADPOLE,
-        SMOKED_TORPEDO_TROUT, SMOKED_TURRETFISH, SMOKED_UNDEADFISH, SMOKED_VIPER_EEL,
-        SMOKED_VOID_EEL, SMOKED_WATER_GRUB, SMOKED_WOLF_SNAPPER
-    );
+    private static DeferredHolder<Item, Item> registerSmokedFish(String fishPath) {
+        return SMOKED_FISH_ITEMS.register("smoked_" + fishPath,
+                () -> new SmokedFishItem(() -> registeredFish(fishPath), stackableProperties()));
+    }
+
+    private static Item registeredFish(String path) {
+        ResourceLocation id = ResourceLocation.fromNamespaceAndPath(StardewcraftsveMod.MODID, path);
+        Item item = BuiltInRegistries.ITEM.get(id);
+        if (!(item instanceof FishItem)) {
+            throw new IllegalStateException("Canonical fish is not registered as FishItem: " + id);
+        }
+        return item;
+    }
 
     private static DeferredHolder<Item, Item> artisan(String id, PreserveType type) {
         return ARTISAN_ITEMS.register(id, () -> new PreservesItem(type, stackableProperties()));

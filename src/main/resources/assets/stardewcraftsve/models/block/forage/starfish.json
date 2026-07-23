@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "cross": "stardewcraftsve:item/forage/starfish",
-    "particle": "stardewcraftsve:item/forage/starfish"
-  },
-  "render_type": "minecraft:cutout"
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "cross": "stardewcraftsve:item/forage/swamp_essence",
-    "particle": "stardewcraftsve:item/forage/swamp_essence"
-  },
-  "render_type": "minecraft:cutout"
-}

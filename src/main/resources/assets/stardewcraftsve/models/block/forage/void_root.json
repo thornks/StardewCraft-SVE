@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "cross": "stardewcraftsve:item/forage/void_root",
-    "particle": "stardewcraftsve:item/forage/void_root"
-  },
-  "render_type": "minecraft:cutout"
-}

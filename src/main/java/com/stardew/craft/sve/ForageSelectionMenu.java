@@ -86,7 +86,6 @@ public class ForageSelectionMenu extends AbstractContainerMenu {
             ModBlocks.FORAGE_BIG_CONCH.get(),
             ModBlocks.FORAGE_DRIED_SAND_DOLLAR.get(),
             ModBlocks.FORAGE_DULSE_SEAWEED.get(),
-            ModBlocks.FORAGE_YARN.get(),
             ModBlocks.FORAGE_SHARK_TOOTH.get(),
             ModBlocks.FORAGE_BEARBERRYS.get(),
             ModBlocks.FORAGE_LUCKY_FOUR_LEAF_CLOVER.get(),

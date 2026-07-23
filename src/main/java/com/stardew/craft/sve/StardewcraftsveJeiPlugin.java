@@ -233,7 +233,7 @@ public final class StardewcraftsveJeiPlugin implements IModPlugin {
     private static List<FishPondInfoCategory.DisplayEntry> buildSveFishPondRecipes() {
         FishPondDataService pondData = FishPondDataService.get();
         List<FishPondInfoCategory.DisplayEntry> recipes = new ArrayList<>();
-        for (String fishId : SveFishData.FISH_POND_ITEMS) {
+        for (String fishId : SveFishData.SVE_FISH) {
             Item fishItem = item(StardewcraftsveMod.MODID, fishId);
             if (fishItem == Items.AIR) {
                 continue;

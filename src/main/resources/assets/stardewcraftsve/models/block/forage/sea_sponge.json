@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "cross": "stardewcraftsve:item/forage/sea_sponge",
-    "particle": "stardewcraftsve:item/forage/sea_sponge"
-  },
-  "render_type": "minecraft:cutout"
-}

@@ -1,6 +1,7 @@
 const fs = require("fs");
 
 const path = "src/main/resources/data/stardewcraftsve/fishing/locations/sve_fish.json";
+const fishTagPath = "src/main/resources/data/stardewcraft/tags/item/fishes.json";
 const data = JSON.parse(fs.readFileSync(path, "utf8"));
 
 const custom = (biomes, biomeTags = []) => ({ biomes, biomeTags });
@@ -97,4 +98,9 @@ for (const rule of data.fish) {
 }
 
 fs.writeFileSync(path, `${JSON.stringify(data, null, 2)}\n`);
-console.log(`Synchronized ${actualIds.size} location mappings.`);
+const fishTag = {
+  replace: false,
+  values: [...actualIds].map(id => `stardewcraftsve:${id}`)
+};
+fs.writeFileSync(fishTagPath, `${JSON.stringify(fishTag, null, 2)}\n`);
+console.log(`Synchronized ${actualIds.size} location mappings and fish tag entries.`);

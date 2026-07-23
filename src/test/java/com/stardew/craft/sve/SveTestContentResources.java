@@ -20,7 +20,7 @@ final class SveTestContentResources {
     private static final Path ITEM_SOURCE = Path.of(
             "src/main/java/com/stardew/craft/sve/ModItems.java");
     private static final List<Pattern> REGISTRATION_PATTERNS = List.of(
-            Pattern.compile("(?:ITEMS|STARDEWCRAFT_ITEMS|SMOKED_FISH_ITEMS)"
+            Pattern.compile("(?<![A-Z_])(?:ITEMS|STARDEWCRAFT_ITEMS)"
                     + "\\.register\\(\\s*\"([^\"]+)\""),
             Pattern.compile("artisan\\(\\s*\"([^\"]+)\""),
             Pattern.compile("\\breg\\(\\s*\"([^\"]+)\""));
@@ -40,6 +40,9 @@ final class SveTestContentResources {
                 .forEach(items::add);
         Stream.concat(SvePreservesData.preservesJar().stream(), SvePreservesData.dehydratorCrops().stream())
                 .map(product -> StardewcraftsveMod.MODID + ":" + product.displayOutputPath())
+                .forEach(items::add);
+        SveFishData.SVE_FISH.stream()
+                .map(path -> StardewcraftsveMod.MODID + ":smoked_" + path)
                 .forEach(items::add);
         return Set.copyOf(items);
     }

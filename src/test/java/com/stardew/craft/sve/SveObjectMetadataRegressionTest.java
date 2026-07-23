@@ -94,11 +94,13 @@ public final class SveObjectMetadataRegressionTest {
         String forageSection = creativeTabs.substring(forageStart, fishStart);
         String fishSection = creativeTabs.substring(fishStart, fishEnd);
         String forageMenu = Files.readString(FORAGE_MENU);
+        expect(fishSection.contains("for (String path : SveFishData.SVE_FISH)"),
+                "Fish creative tab must derive from the canonical fish catalog");
         for (String id : Set.of("SEA_SPONGE", "STARFISH", "SWAMP_CRAB")) {
             expect(!forageSection.contains("ModItems." + id),
                     id + " must not be displayed in the forage creative tab");
-            expect(fishSection.contains("ModItems." + id),
-                    id + " must be displayed in the fish creative tab");
+            expect(SveFishData.SVE_FISH.contains(id.toLowerCase(java.util.Locale.ROOT)),
+                    id + " must be displayed through the canonical fish catalog");
             expect(!forageMenu.contains("FORAGE_" + id + ".get()"),
                     id + " must not be exposed by the forage debug selector");
         }
@@ -160,11 +162,11 @@ public final class SveObjectMetadataRegressionTest {
                         "stardewcraftsve:smoked_swamp_crab"),
                 "Smoked Swamp Crab must remain planned until its SVE resource zone is ported");
 
-        Set<String> registrations = new LinkedHashSet<>();
-        Matcher matcher = Pattern.compile("SMOKED_FISH_ITEMS\\.register\\(\"smoked_([^\"]+)\"")
-                .matcher(source);
-        while (matcher.find()) registrations.add(matcher.group(1));
-        expect(registrations.equals(expected), "Smoked fish registrations differ: " + registrations);
+        expect(source.contains("SveFishData.SVE_FISH.stream().map(ModItems::registerSmokedFish)"),
+                "Smoked fish registrations must derive from the canonical fish catalog");
+        expect(!Pattern.compile("SMOKED_FISH_ITEMS\\.register\\(\"smoked_[^\"]+\"")
+                        .matcher(source).find(),
+                "Smoked fish must not return to per-fish hand-written registrations");
 
         Set<String> fishTag = readNamespacedValues(DATA.resolve("stardewcraft/tags/item/fishes.json"));
         expect(fishTag.equals(expected), "Fish item tag differs from smoker inputs: " + fishTag);

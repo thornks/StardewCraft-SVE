@@ -17,10 +17,10 @@ public final class SveAnimalProductRegressionTest {
     private static final Path ARTISAN = RESOURCES.resolve("data/stardewcraft/artisan");
     private static final Path ITEM_SOURCE = Path.of(
             "src/main/java/com/stardew/craft/sve/ModItems.java");
-    private static final Path YARN_SPOOLER_SOURCE = Path.of(
-            "src/main/java/com/stardew/craft/sve/YarnSpoolerBlockEntity.java");
-    private static final Path BUTTER_CHURNER_SOURCE = Path.of(
-            "src/main/java/com/stardew/craft/sve/ButterChurnerBlockEntity.java");
+    private static final Path BLOCK_SOURCE = Path.of(
+            "src/main/java/com/stardew/craft/sve/ModBlocks.java");
+    private static final Path TIMED_MACHINE_SOURCE = Path.of(
+            "src/main/java/com/stardew/craft/sve/SveTimedMachineBlockEntity.java");
     private static final Path ITEM_MODELS = RESOURCES.resolve(
             "assets/stardewcraftsve/models/item");
 
@@ -61,8 +61,8 @@ public final class SveAnimalProductRegressionTest {
         }
         expectEquals(expectedInputs, actualInputs, "butter input set");
 
-        String source = Files.readString(BUTTER_CHURNER_SOURCE);
-        expect(source.contains("recipe.minutes() > 0 ? recipe.minutes() : FALLBACK_PROCESSING_MINUTES"),
+        String source = Files.readString(TIMED_MACHINE_SOURCE);
+        expect(source.contains("recipe.minutes() > 0 ? recipe.minutes() : fallbackProcessingMinutes"),
                 "butter churner runtime must use recipe processing time");
         expectEquals(1, countOccurrences(source,
                         "readyAtAbsMinute = getCurrentAbsMinute()"),
@@ -81,7 +81,7 @@ public final class SveAnimalProductRegressionTest {
         expectEquals(120, recipe.get("minutes").getAsInt(), "yarn processing time");
         expectEquals("keep", recipe.get("quality").getAsString(),
                 "yarn quality inheritance");
-        String source = Files.readString(YARN_SPOOLER_SOURCE);
+        String source = Files.readString(TIMED_MACHINE_SOURCE);
         expect(source.contains("QualityHelper.setQuality(output, QualityHelper.getQuality(source))"),
                 "yarn spooler runtime must copy input quality");
     }
@@ -127,6 +127,7 @@ public final class SveAnimalProductRegressionTest {
 
     private static void validateItemMetadataAndCollections() throws IOException {
         String source = Files.readString(ITEM_SOURCE);
+        String blocks = Files.readString(BLOCK_SOURCE);
         Map<String, String> registrations = Map.of(
                 "butter", "\"stardewcraft.type.artisan_goods\", 215, 31, true",
                 "camel_wool", "\"stardewcraft.type.animal_product\", 450, -300, true",
@@ -146,6 +147,11 @@ public final class SveAnimalProductRegressionTest {
             expect(shipping.contains("stardewcraftsve:" + path),
                     path + " must appear in the shipping collection");
         }
+        expect(!blocks.contains("FORAGE_YARN"),
+                "obsolete yarn forage block must not remain registered");
+        expect(!Files.exists(RESOURCES.resolve(
+                        "assets/stardewcraftsve/blockstates/forage_yarn.json")),
+                "obsolete yarn forage blockstate must be removed");
     }
 
     private static void validateQualityModels(String path) throws IOException {

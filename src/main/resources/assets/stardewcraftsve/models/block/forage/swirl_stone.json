@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "cross": "stardewcraftsve:item/forage/swirl_stone",
-    "particle": "stardewcraftsve:item/forage/swirl_stone"
-  },
-  "render_type": "minecraft:cutout"
-}

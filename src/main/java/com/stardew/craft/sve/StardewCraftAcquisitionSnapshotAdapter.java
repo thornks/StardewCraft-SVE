@@ -403,7 +403,7 @@ final class StardewCraftAcquisitionSnapshotAdapter {
     ) {
         FishPondDataService service = FishPondDataService.get();
         Map<String, FishPondDataService.PondData> accepted = new LinkedHashMap<>();
-        for (String path : SveFishData.FISH_POND_ITEMS) {
+        for (String path : SveFishData.SVE_FISH) {
             ResourceLocation fishId = ResourceLocation.fromNamespaceAndPath(
                     StardewcraftsveMod.MODID, path);
             if (!BuiltInRegistries.ITEM.containsKey(fishId)

@@ -39,9 +39,7 @@ public final class SveFishPondDataTest {
             }
         }
 
-        expectEquals(new HashSet<>(SveFishData.FISH_POND_ITEMS), files, "fish pond file set");
-        expect(new HashSet<>(SveFishData.FISH_POND_ITEMS).containsAll(SveFishData.SVE_FISH),
-                "every SVE fish must have fish pond data");
+        expectEquals(new HashSet<>(SveFishData.SVE_FISH), files, "fish pond file set");
         expectEquals(43, files.size(), "fish pond definition count");
         System.out.println("SVE fish pond data regression suite passed");
     }

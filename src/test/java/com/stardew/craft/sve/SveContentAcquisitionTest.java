@@ -742,7 +742,7 @@ public final class SveContentAcquisitionTest {
             }
         }
         Set<String> fishCollection = Set.copyOf(SveCollectionCatalog.configuredItemIdsForTab(1));
-        Set<String> pondFish = SveFishData.FISH_POND_ITEMS.stream()
+        Set<String> pondFish = SveFishData.SVE_FISH.stream()
                 .map(path -> StardewcraftsveMod.MODID + ":" + path)
                 .collect(java.util.stream.Collectors.toCollection(LinkedHashSet::new));
         pondFish.remove("stardewcraftsve:razor_trout");
