@@ -1,4 +1,8 @@
 {
+  "command.stardewcraftsve.debug_season.enabled": "Debug season enabled. Crops and fruit trees from every season can now grow; the calendar season is unchanged.",
+  "command.stardewcraftsve.debug_season.disabled": "Debug season disabled. Normal crop and fruit-tree season rules have been restored.",
+  "command.stardewcraftsve.debug_season.status.enabled": "Debug season is enabled.",
+  "command.stardewcraftsve.debug_season.status.disabled": "Debug season is disabled.",
   "item.stardewcraftsve.goose_spawn_egg": "Goose Spawn Egg",
   "item.stardewcraftsve.camel_spawn_egg": "Camel Spawn Egg",
   "entity.stardewcraftsve.goose": "Goose",

@@ -43,6 +43,7 @@
     "NpcFriendshipRewardServiceMixin",
     "NpcSocialRulesMixin",
     "SeedMakerOutputResolverMixin",
+    "StardewTeleportCommandMixin",
     "WeaponRegistryAccessor"
   ],
   "client": [

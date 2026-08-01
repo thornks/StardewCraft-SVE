@@ -18,7 +18,7 @@ It does not currently recreate the SVE world map or the complete SVE NPC, dialog
 - Java 21
 - Addon version: 0.2.0
 - Mod id: `stardewcraftsve`
-- Required StardewCraft version: 0.5.2
+- Required StardewCraft version: 0.5.4
 
 ## Implemented or In-Progress Systems
 
@@ -33,7 +33,7 @@ It does not currently recreate the SVE world map or the complete SVE NPC, dialog
 
 ## Requirements
 
-- [StarfieldPastoral (StardewCraft)](https://github.com/ChangQingElysium/Starfield-Pastoral) 0.5.2
+- [StarfieldPastoral (StardewCraft)](https://github.com/ChangQingElysium/Starfield-Pastoral) 0.5.4
 - GeckoLib 4.7.7
 - JEI 19.27.0.340 for JEI integration
 - Jade 15.10.5 for Jade integration
@@ -50,7 +50,7 @@ Third-party dependency JARs, extracted reference material, decompiled sources, s
 
 ## Development
 
-JEI, GeckoLib, and Jade are resolved at their pinned public Maven versions. For local development, place the official `stardewcraft-0.5.2.jar` in the parent directory. Its SHA-256 is verified before compilation. A StardewCraft JAR built from the pinned source commit can be selected with `-Pstardewcraft_jar=<path>` or the `STARDEWCRAFT_JAR` environment variable.
+JEI, GeckoLib, and Jade are resolved at their pinned public Maven versions. For local development, place the official `stardewcraft-0.5.4.jar` in the parent directory. Its SHA-256 is verified before compilation. A StardewCraft JAR built from the pinned source commit can be selected with `-Pstardewcraft_jar=<path>` or the `STARDEWCRAFT_JAR` environment variable.
 
 Common validation commands:
 

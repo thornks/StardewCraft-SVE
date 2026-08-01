@@ -23,6 +23,15 @@ public final class SveDebugCommand {
 
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
         dispatcher.register(Commands.literal("sve")
+                .then(Commands.literal("debugseason")
+                        .requires(source -> source.hasPermission(2))
+                        .executes(SveDebugCommand::debugSeasonStatus)
+                        .then(Commands.literal("status")
+                                .executes(SveDebugCommand::debugSeasonStatus))
+                        .then(Commands.literal("on")
+                                .executes(context -> setDebugSeason(context, true)))
+                        .then(Commands.literal("off")
+                                .executes(context -> setDebugSeason(context, false))))
                 .then(Commands.literal("animalaudit")
                         .requires(source -> source.hasPermission(2))
                         .executes(SveAnimalAudit::run))
@@ -44,6 +53,34 @@ public final class SveDebugCommand {
                                 .then(Commands.argument("npc", StringArgumentType.word())
                                         .then(Commands.argument("points", IntegerArgumentType.integer(0, 5000))
                                                 .executes(SveDebugCommand::setFriendship))))));
+
+        // Brigadier merges this branch into StardewCraft's existing command tree.
+        dispatcher.register(Commands.literal("stardew")
+                .then(Commands.literal("time")
+                        .then(Commands.literal("set")
+                                .then(Commands.literal("season")
+                                        .then(Commands.literal("debug")
+                                                .requires(source -> source.hasPermission(2))
+                                                .executes(context -> setDebugSeason(context, true)))))));
+    }
+
+    private static int setDebugSeason(CommandContext<CommandSourceStack> context,
+                                      boolean enabled) {
+        SveDebugSeasonState.setEnabled(context.getSource().getServer(), enabled);
+        String key = enabled
+                ? "command.stardewcraftsve.debug_season.enabled"
+                : "command.stardewcraftsve.debug_season.disabled";
+        context.getSource().sendSuccess(() -> Component.translatable(key), true);
+        return 1;
+    }
+
+    private static int debugSeasonStatus(CommandContext<CommandSourceStack> context) {
+        boolean enabled = SveDebugSeasonState.isEnabled(context.getSource().getServer());
+        String key = enabled
+                ? "command.stardewcraftsve.debug_season.status.enabled"
+                : "command.stardewcraftsve.debug_season.status.disabled";
+        context.getSource().sendSuccess(() -> Component.translatable(key), false);
+        return 1;
     }
 
     private static int setFriendship(CommandContext<CommandSourceStack> context) {

@@ -218,14 +218,14 @@ public final class SveFishingRegressionTest {
                 "resolveVanillaAlignedLocationKeysStatic",
                 ServerLevel.class, Holder.class, BlockPos.class);
         equal(locationResolver.getReturnType(), List.class,
-                "0.5.2 fishing location resolver return type");
+                "0.5.4 fishing location resolver return type");
 
         Method conditionMatcher = FishingDataManager.class.getDeclaredMethod(
                 "matchesVanillaCondition",
                 ServerPlayer.class, ServerLevel.class, BlockPos.class, Holder.class,
                 SpawnFishRule.class, boolean.class);
         equal(conditionMatcher.getReturnType(), boolean.class,
-                "0.5.2 fishing condition matcher return type");
+                "0.5.4 fishing condition matcher return type");
 
         Method lookupResolver = FishingDataManager.class.getDeclaredMethod(
                 "resolveFishingLookupKeys", boolean.class, boolean.class, List.class);
@@ -241,12 +241,12 @@ public final class SveFishingRegressionTest {
         expect(jeiClass.contains("location")
                         && jeiClass.contains(
                         "(Ljava/lang/String;)Lnet/minecraft/network/chat/Component;"),
-                "0.5.2 FishingInfoCategory location Mixin target changed");
+                "0.5.4 FishingInfoCategory location Mixin target changed");
 
         expect(resourceExists("/com/stardew/craft/world/MutantBugLairService.class"),
-                "0.5.2 mutant bug lair runtime is absent");
+                "0.5.4 mutant bug lair runtime is absent");
         expect(resourceExists("/com/stardew/craft/world/WitchAreaService.class"),
-                "0.5.2 witch swamp runtime is absent");
+                "0.5.4 witch swamp runtime is absent");
         validateHostFishingPool("/data/stardewcraft/fishing/locations/bugland.json",
                 "BugLand", "#stardewcraft:is_mutant_bug_lair");
         validateHostFishingPool("/data/stardewcraft/fishing/locations/witchswamp.json",
@@ -255,15 +255,15 @@ public final class SveFishingRegressionTest {
         equal(new LinkedHashSet<>(strings(rules.get("snatcher_worm")
                         .getAsJsonArray("biomeTags"))),
                 Set.of("#stardewcraft:is_mutant_bug_lair"),
-                "snatcher worm 0.5.2 location");
+                "snatcher worm 0.5.4 location");
         equal(new LinkedHashSet<>(strings(rules.get("water_grub")
                         .getAsJsonArray("biomeTags"))),
                 Set.of("#stardewcraft:is_mutant_bug_lair"),
-                "water grub 0.5.2 location");
+                "water grub 0.5.4 location");
         equal(new LinkedHashSet<>(strings(rules.get("void_eel")
                         .getAsJsonArray("biomeTags"))),
                 Set.of("#stardewcraft:is_witch_swamp"),
-                "void eel 0.5.2 location");
+                "void eel 0.5.4 location");
     }
 
     private static void validateHostFishingPool(
