@@ -1,4 +1,8 @@
 {
+  "command.stardewcraftsve.debug_season.enabled": "Отладочный сезон включён. Теперь могут расти культуры и фруктовые деревья из любого сезона; сезон календаря не изменился.",
+  "command.stardewcraftsve.debug_season.disabled": "Отладочный сезон выключен. Обычные сезонные правила для культур и фруктовых деревьев восстановлены.",
+  "command.stardewcraftsve.debug_season.status.enabled": "Отладочный сезон включён.",
+  "command.stardewcraftsve.debug_season.status.disabled": "Отладочный сезон выключен.",
   "item.stardewcraftsve.goose_spawn_egg": "Яйцо призыва гуся",
   "item.stardewcraftsve.camel_spawn_egg": "Яйцо призыва верблюда",
   "entity.stardewcraftsve.goose": "Гусь",
