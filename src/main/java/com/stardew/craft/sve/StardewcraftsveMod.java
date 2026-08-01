@@ -37,6 +37,7 @@ public class StardewcraftsveMod {
         SveHeavyShieldHandler.register();
         SveCropData.register();
         SveAnimalData.register();
+        SveDebugSeasonState.registerSeasonRule();
 
         ModItems.ITEMS.register(modEventBus);
         ModItems.STARDEWCRAFT_ITEMS.register(modEventBus);

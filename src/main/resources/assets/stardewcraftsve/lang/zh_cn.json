@@ -1,4 +1,8 @@
 {
+  "command.stardewcraftsve.debug_season.enabled": "调试季节已启用。所有季节的作物和果树现在都能正常生长，日历季节保持不变。",
+  "command.stardewcraftsve.debug_season.disabled": "调试季节已关闭，已恢复正常的作物与果树季节限制。",
+  "command.stardewcraftsve.debug_season.status.enabled": "调试季节当前已启用。",
+  "command.stardewcraftsve.debug_season.status.disabled": "调试季节当前未启用。",
   "item.stardewcraftsve.goose_spawn_egg": "鹅刷怪蛋",
   "item.stardewcraftsve.camel_spawn_egg": "骆驼刷怪蛋",
   "entity.stardewcraftsve.goose": "鹅",

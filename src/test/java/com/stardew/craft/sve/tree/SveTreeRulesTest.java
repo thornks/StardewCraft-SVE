@@ -85,7 +85,7 @@ public final class SveTreeRulesTest {
         expect(mixinSource.contains("SveFarmWildTreeGeneration.placeDebrisBlock"),
                 "daily debris integration must reuse the initial-farm sapling replacement rules");
         expect(mixinSource.contains("require = 2"),
-                "daily debris integration must fail fast if the 0.5.2 host call count changes");
+                "daily debris integration must fail fast if the 0.5.4 host call count changes");
 
         ClassNode hostClass = new ClassNode();
         try (InputStream stream = SveTreeRulesTest.class.getResourceAsStream(DAILY_DEBRIS_CLASS)) {
@@ -97,7 +97,7 @@ public final class SveTreeRulesTest {
                         && method.desc.equals(SPAWN_RANDOM_DEBRIS_DESCRIPTOR))
                 .findFirst()
                 .orElseThrow(() -> new AssertionError(
-                        "StardewCraft 0.5.2 spawnRandomDebris signature changed"));
+                        "StardewCraft 0.5.4 spawnRandomDebris signature changed"));
         int setBlockCalls = 0;
         for (AbstractInsnNode instruction : target.instructions) {
             if (instruction.getOpcode() == Opcodes.INVOKEVIRTUAL
@@ -110,7 +110,7 @@ public final class SveTreeRulesTest {
             }
         }
         expectEquals(2, setBlockCalls,
-                "StardewCraft 0.5.2 daily debris setBlock call count");
+                "StardewCraft 0.5.4 daily debris setBlock call count");
     }
 
     private static void expect(boolean condition, String label) {
