@@ -310,6 +310,14 @@ tasks.register('weaponRegressionTest', JavaExec) {
     mainClass = 'com.stardew.craft.sve.SveWeaponRegressionTest'
 }
 
+tasks.register('updateCheckerRegressionTest', JavaExec) {
+    group = 'verification'
+    description = 'Runs the CurseForge update filtering and prompt-state regression suite.'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.stardew.craft.sve.SveUpdateCheckerTest'
+}
+
 tasks.named('check') {
     dependsOn animalRegressionTest
     dependsOn animalProductRegressionTest
@@ -330,4 +338,5 @@ tasks.named('check') {
     dependsOn shopRegressionTest
     dependsOn consumableRegressionTest
     dependsOn weaponRegressionTest
+    dependsOn updateCheckerRegressionTest
 }

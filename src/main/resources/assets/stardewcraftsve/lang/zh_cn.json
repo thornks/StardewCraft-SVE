@@ -1,4 +1,8 @@
 {
+  "stardewcraftsve.update.title": "StardewCraft SVE 有可用更新",
+  "stardewcraftsve.update.message": "CurseForge 上已有新版本。当前版本：%s，最新版本：%s。",
+  "stardewcraftsve.update.open": "打开 CurseForge",
+  "stardewcraftsve.update.later": "稍后",
   "command.stardewcraftsve.debug_season.enabled": "调试季节已启用。所有季节的作物和果树现在都能正常生长，日历季节保持不变。",
   "command.stardewcraftsve.debug_season.disabled": "调试季节已关闭，已恢复正常的作物与果树季节限制。",
   "command.stardewcraftsve.debug_season.status.enabled": "调试季节当前已启用。",
@@ -562,6 +566,8 @@
   "stardewcraftsve.tooltip.butter_churner.input": "原料",
   "stardewcraftsve.tooltip.butter_churner.input.none": "无",
   "config.jade.plugin_stardewcraftsve.butter_churner": "黄油搅拌机信息",
+  "config.jade.plugin_stardewcraftsve.fruit_tree_info": "果树信息",
+  "config.jade.plugin_stardewcraftsve.wild_tree_info": "野生树木信息",
   "stardewcraftsve.tooltip.yarn_spooler.ready": "已完成 右键点击取出",
   "stardewcraftsve.tooltip.yarn_spooler.remaining": "剩余%1$s天%2$s小时",
   "stardewcraftsve.tooltip.yarn_spooler.input": "原料",

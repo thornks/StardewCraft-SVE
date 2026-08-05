@@ -6,6 +6,7 @@ import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.FoliageColor;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.ModelEvent;
@@ -28,6 +29,7 @@ public final class SveClientEvents {
     private SveClientEvents() {}
 
     public static void register(IEventBus modEventBus) {
+        NeoForge.EVENT_BUS.addListener(SveUpdatePrompt::onScreenOpening);
         modEventBus.addListener(SveClientEvents::onRegisterMenuScreens);
         modEventBus.addListener(SveClientEvents::onClientSetup);
         modEventBus.addListener(SveClientEvents::onRegisterRenderers);

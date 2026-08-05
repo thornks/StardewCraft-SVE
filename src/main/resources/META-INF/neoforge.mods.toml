@@ -8,6 +8,8 @@ version = "${mod_version}"
 displayName = "StardewCraftSVE"
 credits = "Stardew Valley Expanded by FlashShifter and the SVE team; StarfieldPastoral by ChangQingElysium and contributors"
 authors = "thornks"
+displayURL = "https://www.curseforge.com/minecraft/mc-mods/starfield-pastoral-sve"
+issueTrackerURL = "https://github.com/thornks/StardewCraft-SVE/issues"
 description = '''
 A non-commercial fan addon that adapts selected Stardew Valley Expanded content and gameplay for StarfieldPastoral (StardewCraft).
 

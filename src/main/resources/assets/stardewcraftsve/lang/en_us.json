@@ -1,4 +1,8 @@
 {
+  "stardewcraftsve.update.title": "StardewCraft SVE Update Available",
+  "stardewcraftsve.update.message": "A new version is available on CurseForge. Installed: %s, latest: %s.",
+  "stardewcraftsve.update.open": "Open CurseForge",
+  "stardewcraftsve.update.later": "Later",
   "command.stardewcraftsve.debug_season.enabled": "Debug season enabled. Crops and fruit trees from every season can now grow; the calendar season is unchanged.",
   "command.stardewcraftsve.debug_season.disabled": "Debug season disabled. Normal crop and fruit-tree season rules have been restored.",
   "command.stardewcraftsve.debug_season.status.enabled": "Debug season is enabled.",
@@ -564,6 +568,8 @@
   "stardewcraftsve.tooltip.butter_churner.input": "Input",
   "stardewcraftsve.tooltip.butter_churner.input.none": "None",
   "config.jade.plugin_stardewcraftsve.butter_churner": "Butter Churner Info",
+  "config.jade.plugin_stardewcraftsve.fruit_tree_info": "Fruit Tree Info",
+  "config.jade.plugin_stardewcraftsve.wild_tree_info": "Wild Tree Info",
   "stardewcraftsve.tooltip.yarn_spooler.ready": "Done. Right-click to collect.",
   "stardewcraftsve.tooltip.yarn_spooler.remaining": "Remaining %1$sd %2$sh",
   "stardewcraftsve.tooltip.yarn_spooler.input": "Input",
