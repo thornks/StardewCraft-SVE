@@ -1,5 +1,7 @@
 package com.stardew.craft.sve;
 
+import com.stardew.craft.combat.StardewWeaponCriticalRules;
+import com.stardew.craft.combat.StardewWeaponSpeedRules;
 import com.stardew.craft.combat.WeaponStats;
 import com.stardew.craft.item.weapon.WeaponData;
 import com.stardew.craft.item.weapon.WeaponRegistry;
@@ -46,18 +48,20 @@ public final class SveWeaponRegressionTest {
     }
 
     private static void validateRuntimeAttackSpeeds(Map<String, SveWeaponData.Definition> definitions) {
-        expectFloat(0.5F, SveWeaponData.runtimeAttacksPerSecond(definitions.get("heavy_shield")),
+        int clamped = 0;
+        for (SveWeaponData.Definition definition : definitions.values()) {
+            float converted = (float) StardewWeaponSpeedRules.attacksPerSecondFromRawSpeed(
+                    definition.type(), SveWeaponData.rawSpeed(definition), 0.0F);
+            float expected = Math.max(0.5F, converted);
+            expectFloat(expected, SveWeaponData.runtimeAttacksPerSecond(definition),
+                    definition.path() + " authoritative runtime attack speed");
+            if (converted < 0.5F) clamped++;
+        }
+        expectEquals(2, clamped, "only the two extreme negative-speed weapons are clamped");
+        expect(SveWeaponData.runtimeAttacksPerSecond(definitions.get("heavy_shield")) == 0.5F,
                 "heavy shield runtime attack speed floor");
-        expectFloat(0.5F, SveWeaponData.runtimeAttacksPerSecond(definitions.get("monster_splitter")),
+        expect(SveWeaponData.runtimeAttacksPerSecond(definitions.get("monster_splitter")) == 0.5F,
                 "monster splitter runtime attack speed floor");
-        expectFloat(2.2F, SveWeaponData.runtimeAttacksPerSecond(definitions.get("diamond_wand")),
-                "positive sword speed remains unchanged");
-        expectFloat(3.5F, SveWeaponData.runtimeAttacksPerSecond(definitions.get("tempered_galaxy_dagger")),
-                "positive dagger speed remains unchanged");
-        expectFloat(0.85F, SveWeaponData.runtimeAttacksPerSecond(definitions.get("tempered_galaxy_hammer")),
-                "positive club speed remains unchanged");
-        expectFloat(2.1F, SveWeaponData.runtimeAttacksPerSecond(definitions.get("tempered_galaxy_sword")),
-                "positive sword speed remains unchanged");
     }
 
     private static void validateSkillInheritance(Map<String, SveWeaponData.Definition> definitions) {
@@ -120,8 +124,12 @@ public final class SveWeaponRegressionTest {
             expectEquals(definition.speed(), stats.getSpeed(), definition.path() + " stack speed");
             expectEquals(definition.defense(), stats.getDefense(), definition.path() + " stack defense");
             expectFloat(definition.critChance(), stats.getCritChance(), definition.path() + " stack crit chance");
-            expectFloat(SveWeaponData.critPowerBonus(definition),
+            expectFloat(SveWeaponData.stackCritPowerPoints(definition),
                     stats.getBonusCritPower(), definition.path() + " stack crit power");
+            expectFloat(definition.critMultiplier(), StardewWeaponCriticalRules.multiplier(stats),
+                    definition.path() + " final stack critical multiplier");
+            expectEquals(SveWeaponData.rawSpeed(definition), stats.getRawSpeed(),
+                    definition.path() + " stack raw speed");
 
             CompoundTag root = new CompoundTag();
             CompoundTag legacyWeapon = new CompoundTag();
@@ -133,12 +141,20 @@ public final class SveWeaponRegressionTest {
                     .getFloat(WeaponStats.TAG_PRECISION), definition.path() + " migrated precision");
             expectFloat(definition.knockback(), root.getCompound(WeaponStats.TAG_STARDEW_WEAPON)
                     .getFloat(WeaponStats.TAG_KNOCKBACK), definition.path() + " migrated knockback");
-            expectFloat(SveWeaponData.critPowerBonus(definition), root.getCompound(WeaponStats.TAG_STARDEW_WEAPON)
+            expectFloat(SveWeaponData.stackCritPowerPoints(definition), root.getCompound(WeaponStats.TAG_STARDEW_WEAPON)
                     .getFloat(WeaponStats.TAG_CRIT_POWER), definition.path() + " migrated crit power");
+            expectEquals(SveWeaponData.rawSpeed(definition), root.getCompound(WeaponStats.TAG_STARDEW_WEAPON)
+                    .getInt(WeaponStats.TAG_RAW_SPEED), definition.path() + " migrated raw speed");
+            expectEquals(WeaponStats.CURRENT_DATA_VERSION, root.getCompound(WeaponStats.TAG_STARDEW_WEAPON)
+                    .getInt(WeaponStats.TAG_DATA_VERSION), definition.path() + " migrated data version");
+            float providerMultiplier = 3.0F
+                    * (1.0F + SveWeaponData.providerCritPowerMultiplierBonus(definition));
+            expectFloat(definition.critMultiplier(), providerMultiplier,
+                    definition.path() + " final provider critical multiplier");
         }
-        expectFloat(-200.0F, SveWeaponData.critPowerBonus(definitions.get("diamond_wand")),
+        expectFloat(-100.0F, SveWeaponData.stackCritPowerPoints(definitions.get("diamond_wand")),
                 "diamond wand final 1x crit conversion");
-        expectFloat(0.0F, SveWeaponData.critPowerBonus(definitions.get("tempered_galaxy_sword")),
+        expectFloat(0.0F, SveWeaponData.stackCritPowerPoints(definitions.get("tempered_galaxy_sword")),
                 "tempered galaxy final 3x crit conversion");
     }
 

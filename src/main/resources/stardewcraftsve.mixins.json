@@ -30,6 +30,7 @@
     "FarmInstanceRegistryBundleMixin",
     "FishSmokerBlockEntityMixin",
     "FishingLocationKeysMixin",
+    "MoonlightJelliesFestivalFishingBlockMixin",
     "FruitTreeRulesMixin",
     "GrowTreesPayloadMixin",
     "IncubatorBlockEntityMixin",

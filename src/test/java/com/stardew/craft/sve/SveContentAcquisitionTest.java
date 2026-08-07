@@ -1171,7 +1171,7 @@ public final class SveContentAcquisitionTest {
                 SveAcquisitionEntrypoints.fromResources(Map.of(
                         "stardewcraftsve:fishing/locations/host_052_probe.json", pool))
                         .fishingLocations().get("stardewcraftsve:sve_fish");
-        expect(location != null, "0.5.4 fishing probe pool was not parsed");
+        expect(location != null, "0.5.5 fishing probe pool was not parsed");
 
         Set<String> randomOutputs = location.rules().stream()
                 .filter(rule -> "random".equals(rule.id()))
@@ -1199,7 +1199,7 @@ public final class SveContentAcquisitionTest {
                 location, "mine_100_only");
         expect(mine100Only.stream().noneMatch(
                         SveAcquisitionEntrypoints.FishingRule::isAcquisitionSource),
-                "the 0.5.4 mines-100 early override leaked into location-pool acquisition");
+                "the 0.5.5 mines-100 early override leaked into location-pool acquisition");
         List<SveAcquisitionEntrypoints.FishingRule> mine60Or100 = fishingRules(
                 location, "mine_60_or_100");
         expect(mine60Or100.stream().allMatch(
@@ -1210,7 +1210,7 @@ public final class SveContentAcquisitionTest {
                 pool.getAsJsonArray("fish").get(0).getAsJsonObject());
         expect(Set.copyOf(StardewCraftAcquisitionSnapshotAdapter.fishingRuleOutputs(
                         acceptedRule)).equals(randomOutputs),
-                "live 0.5.4 adapter and candidate randomItems semantics diverged");
+                "live 0.5.5 adapter and candidate randomItems semantics diverged");
         expect(SveAcquisitionEntrypoints.hasPositiveBaselineCatchProbability(
                         0.0f, 0.05f, 1.0f, 0, 0, -1, 4, 0.0f, true),
                 "positive luck-level boost remained unreachable");

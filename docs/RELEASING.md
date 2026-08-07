@@ -18,7 +18,7 @@ Archive entry order, file timestamps, and file permissions are normalized by `bu
 
 ## Local Verification
 
-With the official `stardewcraft-0.5.4.jar` in the parent directory:
+With the official `stardewcraft-0.5.5.jar` in the parent directory:
 
 ```powershell
 .\gradlew.bat clean releaseBundle --no-daemon
@@ -28,7 +28,7 @@ The default local JAR is checked against the pinned SHA-256 before compilation. 
 
 ```powershell
 .\gradlew.bat clean releaseBundle --no-daemon `
-  -Pstardewcraft_jar=C:\path\to\stardewcraft-0.5.4.jar
+  -Pstardewcraft_jar=C:\path\to\stardewcraft-0.5.5.jar
 ```
 
 Release files are written to `build/release`:

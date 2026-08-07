@@ -33,7 +33,7 @@ Includes SVE crops, forage, fish, artisan machines, trees, farm animals, bundles
 [[dependencies.stardewcraftsve]]
     modId = "stardewcraft"
     type = "required"
-    versionRange = "[0.5.4]"
+    versionRange = "[0.5.5,)"
     ordering = "AFTER"
     side = "BOTH"
 

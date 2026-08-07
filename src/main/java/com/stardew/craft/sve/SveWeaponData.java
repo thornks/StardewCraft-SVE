@@ -3,6 +3,7 @@ package com.stardew.craft.sve;
 import com.stardew.craft.StardewCraft;
 import com.stardew.craft.api.v1.equipment.StardewEquipmentData;
 import com.stardew.craft.api.v1.equipment.StardewEquipmentDataApi;
+import com.stardew.craft.combat.StardewWeaponSpeedRules;
 import com.stardew.craft.combat.WeaponStats;
 import com.stardew.craft.combat.WeaponType;
 import com.stardew.craft.item.weapon.WeaponData;
@@ -81,8 +82,9 @@ public final class SveWeaponData {
                 .minDamage(definition.minDamage())
                 .maxDamage(definition.maxDamage())
                 .critChance(definition.critChance())
-                .bonusCritPower(critPowerBonus(definition))
+                .bonusCritPower(stackCritPowerPoints(definition))
                 .speed(definition.speed())
+                .rawSpeed(rawSpeed(definition))
                 .defense(definition.defense())
                 .precision(definition.precision())
                 .knockback(definition.knockback())
@@ -113,19 +115,22 @@ public final class SveWeaponData {
     }
 
     private static float convertedAttacksPerSecond(Definition definition) {
-        return definition.type().getAttackSpeed() + definition.speed() * 0.1F;
+        return (float) StardewWeaponSpeedRules.attacksPerSecondFromRawSpeed(
+                definition.type(), rawSpeed(definition), 0.0F);
     }
 
     static boolean patchExistingStackStats(CompoundTag root, Definition definition) {
         if (!root.contains(WeaponStats.TAG_STARDEW_WEAPON)) return false;
         CompoundTag weapon = root.getCompound(WeaponStats.TAG_STARDEW_WEAPON);
         CompoundTag updated = weapon.copy();
+        updated.putInt(WeaponStats.TAG_DATA_VERSION, WeaponStats.CURRENT_DATA_VERSION);
         updated.putInt(WeaponStats.TAG_WEAPON_TYPE, definition.type().getId());
         updated.putFloat(WeaponStats.TAG_MIN_DAMAGE, definition.minDamage());
         updated.putFloat(WeaponStats.TAG_MAX_DAMAGE, definition.maxDamage());
         updated.putFloat(WeaponStats.TAG_CRIT_CHANCE, definition.critChance());
-        updated.putFloat(WeaponStats.TAG_CRIT_POWER, critPowerBonus(definition));
+        updated.putFloat(WeaponStats.TAG_CRIT_POWER, stackCritPowerPoints(definition));
         updated.putInt(WeaponStats.TAG_SPEED, definition.speed());
+        updated.putInt(WeaponStats.TAG_RAW_SPEED, rawSpeed(definition));
         updated.putInt(WeaponStats.TAG_DEFENSE, definition.defense());
         updated.putFloat(WeaponStats.TAG_PRECISION, definition.precision());
         updated.putFloat(WeaponStats.TAG_KNOCKBACK, definition.knockback());
@@ -134,9 +139,16 @@ public final class SveWeaponData {
         return true;
     }
 
-    static float critPowerBonus(Definition definition) {
-        if (definition.critChance() <= 0.0F) return 0.0F;
-        return (definition.critMultiplier() - 3.0F) * 100.0F;
+    static float stackCritPowerPoints(Definition definition) {
+        return (definition.critMultiplier() - 3.0F) * 50.0F;
+    }
+
+    static float providerCritPowerMultiplierBonus(Definition definition) {
+        return definition.critMultiplier() / 3.0F - 1.0F;
+    }
+
+    static int rawSpeed(Definition definition) {
+        return StardewWeaponSpeedRules.rawSpeed(definition.type(), definition.speed());
     }
 
     private static StardewEquipmentData resolve(ItemStack stack) {
@@ -157,14 +169,15 @@ public final class SveWeaponData {
                 definition.precision(),
                 definition.knockback(),
                 skillId(weaponData.getSkill1()),
-                skillId(weaponData.getSkill2()));
+                skillId(weaponData.getSkill2()),
+                Optional.of(rawSpeed(definition)));
         return new StardewEquipmentData(
                 ResourceLocation.fromNamespaceAndPath("stardewcraft", "weapon"),
                 0,
                 0,
                 0,
                 0.0F,
-                critPowerBonus(definition),
+                providerCritPowerMultiplierBonus(definition),
                 0,
                 0.0F,
                 0.0F,
@@ -211,11 +224,13 @@ public final class SveWeaponData {
                     .type(definition.type())
                     .level(definition.level())
                     .damage(definition.minDamage(), definition.maxDamage())
-                    .weight(definition.knockback())
+                    .knockback(definition.knockback())
                     .speed(definition.speed())
+                    .rawSpeed(rawSpeed(definition))
                     .defense(definition.defense())
+                    .precision(Math.round(definition.precision()))
                     .critChance(definition.critChance())
-                    .critPower(definition.critMultiplier());
+                    .critMultiplier(definition.critMultiplier());
             inheritSkills(builder, definition.skillSource());
             weapons.put(definition.path(), builder.build());
         }

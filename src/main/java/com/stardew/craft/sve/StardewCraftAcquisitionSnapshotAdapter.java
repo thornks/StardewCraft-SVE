@@ -714,7 +714,7 @@ final class StardewCraftAcquisitionSnapshotAdapter {
                                 "stardewcraft", "ginger_island_ocean"))).orElse(true);
     }
 
-    /** Mirrors the early-return ordering in StardewCraft 0.5.4's mine catch override. */
+    /** Mirrors the early-return ordering in StardewCraft 0.5.5's mine catch override. */
     private static boolean isLocationPoolPreempted(Holder<Biome> biome) {
         return biome.is(MINES_100) && !biome.is(MINES_20) && !biome.is(MINES_60);
     }

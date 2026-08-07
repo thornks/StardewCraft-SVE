@@ -52,6 +52,9 @@ public final class SveFishingRegressionTest {
             "src/main/java/com/stardew/craft/sve/mixin/FishingInfoCategoryMixin.java");
     private static final Path FESTIVAL_MIXIN = Path.of(
             "src/main/java/com/stardew/craft/sve/mixin/MoonlightJelliesFishingMixin.java");
+    private static final Path FESTIVAL_BLOCK_MIXIN = Path.of(
+            "src/main/java/com/stardew/craft/sve/mixin/"
+                    + "MoonlightJelliesFestivalFishingBlockMixin.java");
 
     private static final Map<String, Integer> MOTION_TYPES = Map.of(
             "mixed", 0, "dart", 1, "smooth", 2, "sinker", 3, "floater", 4);
@@ -218,14 +221,14 @@ public final class SveFishingRegressionTest {
                 "resolveVanillaAlignedLocationKeysStatic",
                 ServerLevel.class, Holder.class, BlockPos.class);
         equal(locationResolver.getReturnType(), List.class,
-                "0.5.4 fishing location resolver return type");
+                "0.5.5 fishing location resolver return type");
 
         Method conditionMatcher = FishingDataManager.class.getDeclaredMethod(
                 "matchesVanillaCondition",
                 ServerPlayer.class, ServerLevel.class, BlockPos.class, Holder.class,
                 SpawnFishRule.class, boolean.class);
         equal(conditionMatcher.getReturnType(), boolean.class,
-                "0.5.4 fishing condition matcher return type");
+                "0.5.5 fishing condition matcher return type");
 
         Method lookupResolver = FishingDataManager.class.getDeclaredMethod(
                 "resolveFishingLookupKeys", boolean.class, boolean.class, List.class);
@@ -241,12 +244,12 @@ public final class SveFishingRegressionTest {
         expect(jeiClass.contains("location")
                         && jeiClass.contains(
                         "(Ljava/lang/String;)Lnet/minecraft/network/chat/Component;"),
-                "0.5.4 FishingInfoCategory location Mixin target changed");
+                "0.5.5 FishingInfoCategory location Mixin target changed");
 
         expect(resourceExists("/com/stardew/craft/world/MutantBugLairService.class"),
-                "0.5.4 mutant bug lair runtime is absent");
+                "0.5.5 mutant bug lair runtime is absent");
         expect(resourceExists("/com/stardew/craft/world/WitchAreaService.class"),
-                "0.5.4 witch swamp runtime is absent");
+                "0.5.5 witch swamp runtime is absent");
         validateHostFishingPool("/data/stardewcraft/fishing/locations/bugland.json",
                 "BugLand", "#stardewcraft:is_mutant_bug_lair");
         validateHostFishingPool("/data/stardewcraft/fishing/locations/witchswamp.json",
@@ -255,15 +258,15 @@ public final class SveFishingRegressionTest {
         equal(new LinkedHashSet<>(strings(rules.get("snatcher_worm")
                         .getAsJsonArray("biomeTags"))),
                 Set.of("#stardewcraft:is_mutant_bug_lair"),
-                "snatcher worm 0.5.4 location");
+                "snatcher worm 0.5.5 location");
         equal(new LinkedHashSet<>(strings(rules.get("water_grub")
                         .getAsJsonArray("biomeTags"))),
                 Set.of("#stardewcraft:is_mutant_bug_lair"),
-                "water grub 0.5.4 location");
+                "water grub 0.5.5 location");
         equal(new LinkedHashSet<>(strings(rules.get("void_eel")
                         .getAsJsonArray("biomeTags"))),
                 Set.of("#stardewcraft:is_witch_swamp"),
-                "void eel 0.5.4 location");
+                "void eel 0.5.5 location");
     }
 
     private static void validateHostFishingPool(
@@ -438,6 +441,7 @@ public final class SveFishingRegressionTest {
         String locationMixin = Files.readString(LOCATION_MIXIN);
         String infoMixin = Files.readString(INFO_MIXIN);
         String festivalMixin = Files.readString(FESTIVAL_MIXIN);
+        String festivalBlockMixin = Files.readString(FESTIVAL_BLOCK_MIXIN);
         expect(locationMixin.contains("stardewcraftsve:moonlight_jellies_festival"),
                 "Beach location resolver does not include the festival pool");
         expect(locationMixin.contains("level.dimension().location().toString()"),
@@ -450,6 +454,12 @@ public final class SveFishingRegressionTest {
                 "JEI has no Moonlight Jellies festival location label");
         expect(festivalMixin.contains("MoonlightJelliesFestivalService.isParticipant(player)"),
                 "Festival catches are not gated by active player participation");
+        expect(festivalBlockMixin.contains("blocksFishingDuringActiveFestival"),
+                "Moonlight Jellies does not override the host festival fishing block");
+        expect(festivalBlockMixin.contains("MoonlightJelliesFestivalService.isParticipant(player)"),
+                "Moonlight Jellies fishing override is not scoped to participants");
+        expect(festivalBlockMixin.contains("cir.setReturnValue(false)"),
+                "Moonlight Jellies fishing override does not allow the cast");
     }
 
     private static Map<String, JsonObject> readRules() throws IOException {

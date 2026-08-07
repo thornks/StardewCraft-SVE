@@ -19,6 +19,8 @@ public final class SveTreeRulesTest {
             "src/main/java/com/stardew/craft/sve/tree/wild/SveWildTreeGrowthManager.java");
     private static final Path DAILY_DEBRIS_MIXIN = Path.of(
             "src/main/java/com/stardew/craft/sve/mixin/FarmDebrisDailyServiceMixin.java");
+    private static final Path INTERACTION_HINT_PROVIDER = Path.of(
+            "src/main/java/com/stardew/craft/sve/SveInteractionHintProvider.java");
     private static final String DAILY_DEBRIS_CLASS =
             "/com/stardew/craft/farm/FarmDebrisDailyService.class";
     private static final String SPAWN_RANDOM_DEBRIS_DESCRIPTOR =
@@ -31,6 +33,7 @@ public final class SveTreeRulesTest {
         fruitTreeGrowthStagesAndSeasons();
         offlineDaysUseTheCorrectSeason();
         wildTreeGeometryAndTapperRules();
+        wildTreeInteractionHintUsesPublicApi();
         dailyWildTreeSpawningStaysHostOwned();
         System.out.println("SVE tree rule regression suite passed");
     }
@@ -68,6 +71,18 @@ public final class SveTreeRulesTest {
                 "birch trunk must be taller than fir");
     }
 
+    private static void wildTreeInteractionHintUsesPublicApi() throws IOException {
+        String source = Files.readString(INTERACTION_HINT_PROVIDER);
+        expect(source.contains("StardewInteractionHints.register"),
+                "SVE wild trees must register an interaction hint provider");
+        expect(source.contains("StardewInteractionHintType.GRAB"),
+                "SVE wild trees must use the host grab hint");
+        expect(source.contains("getMainHandItem().isEmpty()"),
+                "SVE wild tree hint must require an empty hand");
+        expect(source.contains("FarmAreaProtectionEvents.canModifyAt"),
+                "SVE wild tree hint must honor farm protection");
+    }
+
     private static void dailyWildTreeSpawningStaysHostOwned() throws IOException {
         String managerSource = Files.readString(WILD_GROWTH_MANAGER);
         expect(!managerSource.contains("spawnNaturalFarmSaplings"),
@@ -85,7 +100,7 @@ public final class SveTreeRulesTest {
         expect(mixinSource.contains("SveFarmWildTreeGeneration.placeDebrisBlock"),
                 "daily debris integration must reuse the initial-farm sapling replacement rules");
         expect(mixinSource.contains("require = 2"),
-                "daily debris integration must fail fast if the 0.5.4 host call count changes");
+                "daily debris integration must fail fast if the 0.5.5 host call count changes");
 
         ClassNode hostClass = new ClassNode();
         try (InputStream stream = SveTreeRulesTest.class.getResourceAsStream(DAILY_DEBRIS_CLASS)) {
@@ -97,7 +112,7 @@ public final class SveTreeRulesTest {
                         && method.desc.equals(SPAWN_RANDOM_DEBRIS_DESCRIPTOR))
                 .findFirst()
                 .orElseThrow(() -> new AssertionError(
-                        "StardewCraft 0.5.4 spawnRandomDebris signature changed"));
+                        "StardewCraft 0.5.5 spawnRandomDebris signature changed"));
         int setBlockCalls = 0;
         for (AbstractInsnNode instruction : target.instructions) {
             if (instruction.getOpcode() == Opcodes.INVOKEVIRTUAL
@@ -110,7 +125,7 @@ public final class SveTreeRulesTest {
             }
         }
         expectEquals(2, setBlockCalls,
-                "StardewCraft 0.5.4 daily debris setBlock call count");
+                "StardewCraft 0.5.5 daily debris setBlock call count");
     }
 
     private static void expect(boolean condition, String label) {
