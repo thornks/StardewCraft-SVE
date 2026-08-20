@@ -3,6 +3,7 @@ package com.stardew.craft.sve;
 import com.stardew.craft.core.ModDimensions;
 import com.stardew.craft.shop.SaloonService;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.api.distmarker.Dist;
@@ -19,6 +20,7 @@ import com.stardew.craft.sve.tree.wild.SveWildTreeGrowthManager;
 import com.stardew.craft.sve.animal.SveAnimalData;
 import com.stardew.craft.sve.animal.SveAnimalEntities;
 import com.stardew.craft.sve.network.SveNetwork;
+import com.stardew.craft.npc.runtime.NpcSpawnManager;
 
 @Mod(StardewcraftsveMod.MODID)
 public class StardewcraftsveMod {
@@ -55,6 +57,21 @@ public class StardewcraftsveMod {
         NeoForge.EVENT_BUS.addListener(
                 PlayerEvent.PlayerLoggedInEvent.class,
                 SveFriendshipRewards::onPlayerLoggedIn);
+        // Run after StardewCraft's own login handler. 0.5.6 keeps NPC existence
+        // maintenance separate from time simulation; re-running the idempotent
+        // entry sweep here recovers entities when the host listener observed a
+        // stale process-local player state during a world switch.
+        NeoForge.EVENT_BUS.addListener(
+                EventPriority.LOWEST,
+                PlayerEvent.PlayerLoggedInEvent.class,
+                event -> {
+                    if (!(event.getEntity() instanceof ServerPlayer player)) return;
+                    ServerLevel level = player.serverLevel();
+                    if (level.dimension().equals(ModDimensions.STARDEW_VALLEY)) {
+                        NpcSpawnManager.onPlayerEntered(level);
+                        NpcSpawnManager.tick(level);
+                    }
+                });
         NeoForge.EVENT_BUS.addListener(
                 PlayerEvent.PlayerLoggedOutEvent.class,
                 event -> SveBundleSelectionPending.remove(event.getEntity().getUUID()));
